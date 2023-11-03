@@ -39,19 +39,28 @@ nav {
     display: flex;
     background-color: #333;
     justify-content: center;
+    align-items: center; /* Aggiunto per centrare verticalmente gli elementi */
     padding: 10px;
 }
 
-nav a {
+.menu ul {
+    display: flex; /* Imposta l'elenco come elemento flessibile */
+    list-style-type: none;
+}
+
+.menu ul li {
+    margin: 0 15px; /* Rimuovi il margine da .menu e applica qui */
+}
+
+.menu ul li a, .menu ul li{
     text-decoration: none;
-    color: #fff;
-    margin: 0 15px;
+    color: var(--linkColor);
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 nav a:hover {
-    color: #fff;
+    color: var(--visitedLinkColor);
 }
 
 section {
