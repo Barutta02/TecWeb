@@ -1,5 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --headerBgColor: rgb(0,0,0);
+    --headerTxtColor:rgb(255,255,255);
+    --bgColor: rgb(0,0,0);
+    --txtColor:rgb(0, 0, 0);
+    --footerBgColor: rgb(0,0,0);
+    --footerTxtColor:rgb(255,255,255);
+    --linkColor:rgb(255,255,255);
+    --visitedLinkColor:rgb(230,12,83); /*importante il contrasto tra link visitato e non*/
+    --flagColor:rgb(218,103,60);
+    --font-body-family: "Roboto Condensed", sans-serif;
+}
+
+html{
+    font-size: 100%; /* rispetto requisti utente*/
+    font-family: var(--font-body-family);
+    line-height: 1.5em; /* da mettere sempre*/
+    margin: auto;/* per centrare*/
+}
+
 body {
-    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -33,6 +57,56 @@ nav a:hover {
 section {
     padding: 2em;
     text-align: center;
+}
+
+#menuTitle{
+width: 100%;
+text-align: center;
+}
+
+#menu{
+    width: 90%;
+    height: 800px;
+    margin: auto;
+}
+#menu dl{
+    font-size: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+}
+
+.menuItem{
+    display: grid;
+    grid-template-columns: 1fr 4fr; /* Crea due colonne con larghezza uguale */
+    width: 250px;
+}
+
+section.colonne div dt , section.colonne div dd { /* 0 1 3*/
+display: inline;
+text-transform: uppercase;
+}
+
+#menu .imageMenuItem{
+    width: 50px;
+    height: 50px;
+    background-image: url(../assets/Images/nighiriSalmone.png);
+}
+#menu .nomePiatto{
+    display: block;
+    font-weight: bold;
+
+}
+
+dd.ingradienti{
+    color: var(--flagColor);
+}
+
+main dl div{
+    padding-top: .3em;
 }
 
 footer {
