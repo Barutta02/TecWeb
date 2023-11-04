@@ -4,11 +4,14 @@
 }
 
 :root{
-    --headerBgColor: rgb(0,0,0);
+    --headerBgColor:  #000;
+    --menuBackground : #000;
     --headerTxtColor:rgb(255,255,255);
+    --menuTxtcolor: #fff;
+    --pageTxtColor: #fff;
     --bgColor: rgb(0,0,0);
     --txtColor:rgb(0, 0, 0);
-    --footerBgColor: rgb(0,0,0);
+    --footerBgColor:  #000;
     --footerTxtColor:rgb(255,255,255);
     --linkColor:rgb(255,255,255);
     --visitedLinkColor:rgb(230,12,83); /*importante il contrasto tra link visitato e non*/
@@ -21,6 +24,8 @@ html{
     font-family: var(--font-body-family);
     line-height: 1.5em; /* da mettere sempre*/
     margin: auto;/* per centrare*/
+    background-color: var(--bgColor);
+    color: var(--pageTxtColor);
 }
 
 body {
@@ -29,15 +34,14 @@ body {
 }
 
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--headerBgColor);
     padding: 1em;
     text-align: center;
 }
 
 nav {
     display: flex;
-    background-color: #333;
+    background-color: var(--headerBgColor);
     justify-content: center;
     align-items: center; /* Aggiunto per centrare verticalmente gli elementi */
     padding: 10px;
@@ -71,6 +75,7 @@ section {
 #menuTitle{
 width: 100%;
 text-align: center;
+padding-bottom: 1em;
 }
 
 #menu{
@@ -86,6 +91,8 @@ text-align: center;
     flex-wrap: wrap;
     align-content: center;
     justify-content: flex-start;
+    background-color: var(--menuBackground);
+    color: var(--menuTxtcolor)
 }
 
 .menuItem{
@@ -102,8 +109,9 @@ text-transform: uppercase;
 #menu .imageMenuItem{
     width: 50px;
     height: 50px;
-    background-image: url(../assets/Images/nighiriSalmone.png);
 }
+
+
 #menu .nomePiatto{
     display: block;
     font-weight: bold;
@@ -119,7 +127,7 @@ main dl div{
 }
 
 footer {
-    background-color: #333;
+    background-color: var(--footerBgColor);
     color: #fff;
     text-align: center;
     padding: 1em;
