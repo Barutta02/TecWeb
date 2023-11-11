@@ -20,6 +20,41 @@ class PiattoDAO
         $result = $stmt->get_result();
         return $result->fetch_assoc();
     }
+    public function getPiattoByTipoMenu($tipo)
+    {
+        $query = "SELECT * FROM Piatto WHERE TipoMenu = ?";
+        $stmt = $this->conn->prepare($query);
+        // Check for errors in preparing the statement
+        if (!$stmt) {
+            die('Error in query preparation: ' . $this->conn->error);
+        }
+        // Bind the parameter
+        $stmt->bind_param('s', $tipo);
+        // Execute the prepared statement
+        $stmt->execute();
+
+        // Get the result set from the executed statement
+        $result = $stmt->get_result();
+
+        // Check for errors in executing the statement
+        if (!$result) {
+            die('Error in query execution: ' . $this->conn->error);
+        }
+
+        $rows = [];
+
+        // Fetch the data from the result set
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+
+        // Close the prepared statement
+        $stmt->close();
+
+        // Return the fetched data
+        return $rows;
+    }
+
 
     public function getAllPiatti()
     {

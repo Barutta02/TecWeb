@@ -16,7 +16,8 @@
     --linkColor:rgb(255,255,255);
     --visitedLinkColor:rgb(230,12,83); /*importante il contrasto tra link visitato e non*/
     --flagColor:rgb(218,103,60);
-    --font-body-family: "Roboto Condensed", sans-serif;
+    --alternative_text: darkgoldenrod;
+    --font-body-family: "sans-serif", sans-serif;
 }
 
 html{
@@ -28,6 +29,9 @@ html{
     color: var(--pageTxtColor);
 }
 
+a{
+    text-decoration: underline;
+}
 body {
     margin: 0;
     padding: 0;
@@ -39,29 +43,44 @@ header {
     text-align: center;
 }
 
-nav {
-    display: flex;
+header h1{
+    text-transform: uppercase;
+}
+
+header h3{
+    letter-spacing: .5em;
+}
+
+nav.menu {
     background-color: var(--headerBgColor);
-    justify-content: center;
     align-items: center; /* Aggiunto per centrare verticalmente gli elementi */
     padding: 10px;
 }
-
-.menu ul {
-    display: flex; /* Imposta l'elenco come elemento flessibile */
-    list-style-type: none;
+nav.menu ul{
+text-align: center;
+list-style-type: none;
 }
 
-.menu ul li {
+nav.menu ul li{
+    display: inline;
     margin: 0 15px; /* Rimuovi il margine da .menu e applica qui */
+
 }
 
-.menu ul li a, .menu ul li{
-    text-decoration: none;
+nav.menu ul li a{
     color: var(--linkColor);
     font-weight: bold;
     transition: color 0.3s ease;
+    text-underline-offset: .3em;
 }
+
+nav#breadcrumb{
+    justify-content: flex-start;
+}
+
+
+
+
 
 nav a:hover {
     color: var(--visitedLinkColor);
@@ -78,12 +97,11 @@ text-align: center;
 padding-bottom: 1em;
 }
 
-#menu{
+#PiattiMenu{
     width: 90%;
-    height: 800px;
     margin: auto;
 }
-#menu dl{
+#PiattiMenu ul{
     font-size: 90%;
     margin: auto;
     display: flex;
@@ -99,20 +117,23 @@ padding-bottom: 1em;
     display: grid;
     grid-template-columns: 1fr 4fr; /* Crea due colonne con larghezza uguale */
     width: 250px;
+    text-align: left;
 }
 
-section.colonne div dt , section.colonne div dd { /* 0 1 3*/
-display: inline;
-text-transform: uppercase;
+.prezzo{
+    float: right;
 }
 
-#menu .imageMenuItem{
-    width: 50px;
-    height: 50px;
+#PiattiMenu .imageMenuItem{
+    background-repeat: no-repeat;
+    background-position-x: center;
+    width: 60px;
+    background-size: contain;
+    margin: 0.3em;
 }
 
 
-#menu .nomePiatto{
+#PiattiMenu .nomePiatto{
     display: block;
     font-weight: bold;
 
@@ -122,7 +143,7 @@ dd.ingradienti{
     color: var(--flagColor);
 }
 
-main dl div{
+main div{
     padding-top: .3em;
 }
 
@@ -131,4 +152,36 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1em;
+}
+
+
+/*******************MENU *********************/
+dl#ListinoPrezziPranzo {
+    padding: 1.5em;
+    justify-content: center;
+}
+dl#ListinoPrezziPranzo div{
+    display: inline-block;
+}
+
+#ListinoPrezziPranzo dd{
+    color: var(--alternative_text);
+    font-weight: bold;
+    display: block;
+    font-size: 3em;
+    padding-top: 0.5em;
+}
+#ListinoPrezziPranzo dt{
+    font-weight: bold;
+}
+#ListinoPrezziPranzo div{
+    padding: 2.5em;
+}
+
+#PiattiMenu h2{
+    color: var(--alternative_text);
+}
+
+#PiattiMenu>p{
+    padding-bottom: 1em;
 }
