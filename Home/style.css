@@ -78,10 +78,6 @@ nav#breadcrumb{
     justify-content: flex-start;
 }
 
-
-
-
-
 nav a:hover {
     color: var(--visitedLinkColor);
 }

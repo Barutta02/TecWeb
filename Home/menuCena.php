@@ -13,20 +13,20 @@
 </head>
 
 <body>
-    <header>
+    <header tabindex="1">
         <h1>Sushi Brombeis</h1>
         <h3>all you can eat</h3>
     </header>
     <nav class="menu">
         <ul>
-            <li><a href="index.html"> <span lang="en">Home</span> </a></li>
-            <li> <a href="menuPranzo.php">Menu pranzo</a></li>
-            <li>Menu cena</li>
-            <li> <a href="chiSiamo.html"> Chi siamo </a> </li>
-            <li> <a href="contattaci.html"> Contattaci </a> </li>
+            <li><a href="index.html" tabindex="2"> <span lang="en">Home</span> </a></li>
+            <li> <a href="menuPranzo.php" tabindex="3">Menu pranzo</a></li>
+            <li tabindex="4">Menu cena</li>
+            <li> <a href="chiSiamo.html" tabindex="5"> Chi siamo </a> </li>
+            <li> <a href="contattaci.html" tabindex="6"> Contattaci </a> </li>
         </ul>
     </nav>
-    <nav id="breadcrumb">
+    <nav id="breadcrumb" tabindex="7" role="Breadcrumb">
         <p>Ti trovi in: Menu Cena</p>
     </nav>
     <main>
@@ -37,29 +37,32 @@
         $piatti = $piattoDAO->getAllPiatti();
         ?>
         <section id="PiattiMenu" class="colonne">
-            <h2>Menu All You Can Eat - Pranzo</h2>
+            <h2 tabindex="9">Menu All You Can Eat - Cena</h2>
             <dl id="ListinoPrezziPranzo">
-                <div>
+                <div tabindex="10">
                     <dt>Dal lunedi al venerdi:</dt>
                     <dd>20.90 €</dd>
                 </div>
-                <div>
+                <div tabindex="11">
                     <dt>Sabato domenica e festivi:</dt>
                     <dd>23.90 €</dd>
                 </div>
             </dl>
-            <p>Escluse bevande, dolci e coperto, prezzi riferiti al take away</p>
+            <p tabindex="12">Escluse bevande, dolci e coperto, prezzi riferiti al take away</p>
             <!-- Inserisci qui il tuo menu sushi -->
-            <ul>
+            <ul role="Menu Cena">
                 <?php
+                $tabIndex_offset = 12;
                 if (!empty($piatti)) {
                     foreach ($piatti as $piatto) {
-                        echo '<li class="menuItem">';
+                        $tabIndex_offset = $tabIndex_offset + 1;
+                        $ariaLabel = 'Piatto: ' . $piatto['NomePiatto'] . ', Descrizione: ' . $piatto['Descrizione'] . ', Prezzo: ' . $piatto['Prezzo'] . ' Euro';
+                        echo '<li class="menuItem" tabindex="' . (10 + $tabIndex_offset) . '" aria-label="' . $ariaLabel . '">';
                         echo '<div class="imageMenuItem ' . str_replace(' ', '_', strtolower($piatto['NomePiatto'])) . '"></div>';
                         echo '<div class="infoItem">';
-                        echo '<dl><dt class="nomePiatto">' . $piatto['NomePiatto'] . '</dt>';
-                        echo '<dd class="ingradienti">' . $piatto['Descrizione'] . '</dd>';
-                        echo '<dd class="prezzo">' . $piatto['Prezzo'] . '€</dd> </dl>';
+                        echo '<dl><dt class="nomePiatto" data-title="Nome Piatto">' . $piatto['NomePiatto'] . '</dt>';
+                        echo '<dd class="ingradienti" data-title="Descrizione ingradienti">' . $piatto['Descrizione'] . '</dd>';
+                        echo '<dd class="prezzo" data-title="Prezzo">' . $piatto['Prezzo'] . '€</dd> </dl>';
                         echo '</div>';
                         echo '</li>';
                     }
