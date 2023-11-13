@@ -13,8 +13,8 @@
     --txtColor:rgb(0, 0, 0);
     --footerBgColor:  #000;
     --footerTxtColor:rgb(255,255,255);
-    --linkColor:rgb(255,255,255);
-    --visitedLinkColor:rgb(230,12,83); /*importante il contrasto tra link visitato e non*/
+    --linkColor:#3498db;
+    --visitedLinkColor:#e74c3c; /*importante il contrasto tra link visitato e non*/
     --flagColor:rgb(218,103,60);
     --alternative_text: darkgoldenrod;
     --font-body-family: "sans-serif", sans-serif;
@@ -29,9 +29,15 @@ html{
     color: var(--pageTxtColor);
 }
 
-a{
+a:link{
     text-decoration: underline;
+    color: var(--linkColor);
+
 }
+a:visited{
+    color: var(--visitedLinkColor);
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -68,7 +74,6 @@ nav.menu ul li{
 }
 
 nav.menu ul li a{
-    color: var(--linkColor);
     font-weight: bold;
     transition: color 0.3s ease;
     text-underline-offset: .3em;
@@ -78,9 +83,6 @@ nav#breadcrumb{
     justify-content: flex-start;
 }
 
-nav a:hover {
-    color: var(--visitedLinkColor);
-}
 
 section {
     padding: 2em;

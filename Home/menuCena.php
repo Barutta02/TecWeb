@@ -17,7 +17,7 @@
         <h1>Sushi Brombeis</h1>
         <h3>all you can eat</h3>
     </header>
-    <nav class="menu">
+    <nav class="menu" role="navigation">
         <ul>
             <li><a href="index.html" tabindex="2"> <span lang="en">Home</span> </a></li>
             <li> <a href="menuPranzo.php" tabindex="3">Menu pranzo</a></li>
