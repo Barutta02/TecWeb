@@ -39,7 +39,7 @@ Inoltre ogni piatto deve mostrare gli allergeni che contiene fornendo all'utente
 
 ## Siti utili secondo la prof
 - [Microformati](https://microformats.org/), per i microformati;
-- [Pallet cromatiche accessibili](http://colorsafe.co/), permette di generare delle pallet cromatiche a partire dal colore di bandiera, rispetta il WCAG 2.1.
+- [Palette cromatiche accessibili](http://colorsafe.co/), permette di generare delle palette cromatiche a partire dal colore di bandiera, rispetta il WCAG 2.1.
 
 
  That is it, per il momento...
