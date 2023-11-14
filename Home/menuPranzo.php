@@ -2,13 +2,13 @@
 <html lang="it">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ristorante Sushi</title>
-  <meta name="keywords" content="Sushi Brombeis, Ristorante sushi via brombeis" />
-  <meta name="description" content="Sito ufficiale del ristorante di sushi a Napoli in via brombeis" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="images.css" />
+  <meta name="keywords" content="Sushi Brombeis, Ristorante sushi via brombeis">
+  <meta name="description" content="Sito ufficiale del ristorante di sushi a Napoli in via brombeis">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="images.css">
 </head>
 
 <body>
@@ -16,7 +16,7 @@
     <h1>Sushi Brombeis</h1>
     <h3>all you can eat</h3>
   </header>
-  <nav class="menu" role="navigation">
+  <nav class="menu">
     <ul>
       <li><a href="index.html" tabindex="2"> <span lang="en">Home </span></a></li>
       <li tabindex="3"> Menu pranzo</li>
@@ -25,7 +25,7 @@
       <li> <a href="contattaci.html" tabindex="6"> Contattaci </a> </li>
     </ul>
   </nav>
-  <nav id="breadcrumb" tabindex="7" role="breadcrumb">
+  <nav id="breadcrumb" tabindex="7">
     <p>Ti trovi in: Menu Pranzo</p>
   </nav>
   <main>
@@ -49,7 +49,7 @@
       </dl>
       <p tabindex="12">Escluse bevande, dolci e coperto, prezzi riferiti al take away</p>
       <!-- Inserisci qui il tuo menu sushi -->
-      <ul role="Menu Cena">
+      <ul>
         <?php
         $tabIndex_offset = 12;
         if (!empty($piatti)) {
