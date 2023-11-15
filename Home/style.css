@@ -190,6 +190,7 @@ dl#ListinoPrezziPranzo div {
 
 #PiattiMenu h2 {
     color: var(--alternative_text);
+    margin: 1.5em;
 }
 
 #PiattiMenu>p {
@@ -226,4 +227,8 @@ fieldset legend {
     margin-top: 1em;
     padding: 1em;
     border: 0;
+}
+
+fieldset ul li {
+    margin: 1em
 }

@@ -82,8 +82,8 @@ VALUES
         8,
         'Tartare di Salmone',
         'Salmone crudo tritato con cipolla rossa e avocado',
-        17.99,
         'Tartare',
+        17.99,
         'Pranzo',
         'AllaCarta'
     ),
@@ -91,8 +91,8 @@ VALUES
         9,
         'Gyoza di Verdure',
         'Ravioli giapponesi ripieni di verdure',
+        'Secondi Piatti'
         11.99,
-        'Nigiri',
         'Entrambi',
         'AllaCarta'
     ),
