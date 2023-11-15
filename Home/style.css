@@ -1,40 +1,47 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-:root{
-    --headerBgColor:  #000;
-    --menuBackground : #000;
-    --headerTxtColor:rgb(255,255,255);
+:root {
+    --headerBgColor: #000;
+    --menuBackground: #000;
+    --headerTxtColor: rgb(255, 255, 255);
     --menuTxtcolor: #fff;
     --pageTxtColor: #fff;
-    --bgColor: rgb(0,0,0);
-    --txtColor:rgb(0, 0, 0);
-    --footerBgColor:  #000;
-    --footerTxtColor:rgb(255,255,255);
-    --linkColor:#3498db;
-    --visitedLinkColor:#e74c3c; /*importante il contrasto tra link visitato e non*/
-    --flagColor:rgb(218,103,60);
+    --bgColor: rgb(0, 0, 0);
+    --txtColor: rgb(0, 0, 0);
+    --footerBgColor: #000;
+    --footerTxtColor: rgb(255, 255, 255);
+    --linkColor: #3498db;
+    --visitedLinkColor: #e74c3c;
+    /*importante il contrasto tra link visitato e non*/
+    --flagColor: rgb(218, 103, 60);
+    --fieldSetBorderColor: darkgoldenrod;
+    --LegendTxtColor: darkgoldenrod;
     --alternative_text: darkgoldenrod;
+    --submitButtonColor: rgb(2, 117, 0);
     --font-body-family: "sans-serif", sans-serif;
 }
 
-html{
-    font-size: 100%; /* rispetto requisti utente*/
+html {
+    font-size: 100%;
+    /* rispetto requisti utente*/
     font-family: var(--font-body-family);
-    line-height: 1.5em; /* da mettere sempre*/
-    margin: auto;/* per centrare*/
+    line-height: 1.5em;
+    /* da mettere sempre*/
+    margin: auto;
+    /* per centrare*/
     background-color: var(--bgColor);
     color: var(--pageTxtColor);
 }
 
-a:link{
+a:link {
     text-decoration: underline;
     color: var(--linkColor);
-
 }
-a:visited{
+
+a:visited {
     color: var(--visitedLinkColor);
 }
 
@@ -49,57 +56,59 @@ header {
     text-align: center;
 }
 
-header h1{
+header h1 {
     text-transform: uppercase;
 }
 
-header h3{
+header h3 {
     letter-spacing: .5em;
 }
 
 nav.menu {
     background-color: var(--headerBgColor);
-    align-items: center; /* Aggiunto per centrare verticalmente gli elementi */
+    align-items: center;
+    /* Aggiunto per centrare verticalmente gli elementi */
     padding: 10px;
 }
-nav.menu ul{
-text-align: center;
-list-style-type: none;
+
+nav.menu ul {
+    text-align: center;
+    list-style-type: none;
 }
 
-nav.menu ul li{
+nav.menu ul li {
     display: inline;
-    margin: 0 15px; /* Rimuovi il margine da .menu e applica qui */
-
+    margin: 0 15px;
+    /* Rimuovi il margine da .menu e applica qui */
 }
 
-nav.menu ul li a{
+nav.menu ul li a {
     font-weight: bold;
     transition: color 0.3s ease;
     text-underline-offset: .3em;
 }
 
-nav#breadcrumb{
+nav#breadcrumb {
     justify-content: flex-start;
 }
-
 
 section {
     padding: 2em;
     text-align: center;
 }
 
-#menuTitle{
-width: 100%;
-text-align: center;
-padding-bottom: 1em;
+#menuTitle {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 1em;
 }
 
-#PiattiMenu{
+#PiattiMenu {
     width: 90%;
     margin: auto;
 }
-#PiattiMenu ul{
+
+#PiattiMenu ul {
     font-size: 90%;
     margin: auto;
     display: flex;
@@ -111,18 +120,19 @@ padding-bottom: 1em;
     color: var(--menuTxtcolor)
 }
 
-.menuItem{
+.menuItem {
     display: grid;
-    grid-template-columns: 1fr 4fr; /* Crea due colonne con larghezza uguale */
+    grid-template-columns: 1fr 4fr;
+    /* Crea due colonne con larghezza uguale */
     width: 250px;
     text-align: left;
 }
 
-.prezzo{
+.prezzo {
     float: right;
 }
 
-#PiattiMenu .imageMenuItem{
+#PiattiMenu .imageMenuItem {
     background-repeat: no-repeat;
     background-position-x: center;
     width: 60px;
@@ -130,18 +140,16 @@ padding-bottom: 1em;
     margin: 0.3em;
 }
 
-
-#PiattiMenu .nomePiatto{
+#PiattiMenu .nomePiatto {
     display: block;
     font-weight: bold;
-
 }
 
-dd.ingradienti{
+dd.ingradienti {
     color: var(--flagColor);
 }
 
-main div{
+main div {
     padding-top: .3em;
 }
 
@@ -154,32 +162,68 @@ footer {
 
 
 /*******************MENU *********************/
+
 dl#ListinoPrezziPranzo {
     padding: 1.5em;
     justify-content: center;
 }
-dl#ListinoPrezziPranzo div{
+
+dl#ListinoPrezziPranzo div {
     display: inline-block;
 }
 
-#ListinoPrezziPranzo dd{
+#ListinoPrezziPranzo dd {
     color: var(--alternative_text);
     font-weight: bold;
     display: block;
     font-size: 3em;
     padding-top: 0.5em;
 }
-#ListinoPrezziPranzo dt{
+
+#ListinoPrezziPranzo dt {
     font-weight: bold;
 }
-#ListinoPrezziPranzo div{
+
+#ListinoPrezziPranzo div {
     padding: 2.5em;
 }
 
-#PiattiMenu h2{
+#PiattiMenu h2 {
     color: var(--alternative_text);
 }
 
-#PiattiMenu>p{
+#PiattiMenu>p {
     padding-bottom: 1em;
+}
+
+
+/*******************PRENOTA *********************/
+
+.inptQuantita {
+    width: 3em;
+}
+
+fieldset {
+    border: 1px solid var(--fieldSetBorderColor);
+    /* Replace YourColor with the desired color code */
+    border-radius: 8px;
+    padding: 1em;
+}
+
+fieldset legend {
+    color: var(--LegendTxtColor);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#submitPrenotazione {
+    background-color: var(--submitButtonColor);
+    color: #fff;
+    width: 10%;
+    min-width: 30px;
+    font-size: 1.3em;
+    border-radius: 10px;
+    margin-top: 1em;
+    padding: 1em;
+    border: 0;
 }

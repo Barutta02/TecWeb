@@ -54,33 +54,6 @@ class UserDao {
     // Add more methods for CRUD operations on the User table
 }
 
-class AdminDao {
-    private $conn;
-
-    public function __construct($db) {
-        $this->conn = $db->getConnection();
-    }
-
-    public function getAdminByUsername($username) {
-        // Implement your logic to fetch admin by username from the Admin table
-    }
-
-    // Add more methods for CRUD operations on the Admin table
-}
-
-class PiattoDao {
-    private $conn;
-
-    public function __construct($db) {
-        $this->conn = $db->getConnection();
-    }
-
-    public function getPiattoById($id) {
-        // Implement your logic to fetch a dish by ID from the Piatto table
-    }
-
-    // Add more methods for CRUD operations on the Piatto table
-}
 
 // Repeat the process for other DAO classes (AllergeneDao, TavoloDao, PrenotazioneDao, OrdineDao, RecensioniDao)
 ?>

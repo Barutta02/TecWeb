@@ -7,17 +7,26 @@ CREATE TABLE User (
     Password VARCHAR(255)
 );
 
-CREATE TABLE Admin(
+CREATE TABLE Admin (
     Username VARCHAR(20) PRIMARY KEY,
     Password VARCHAR(255)
-) -- Tabella Menu
+);
+
+-- Tabella categoria
+CREATE TABLE Categoria (
+   Nome VARCHAR(100)  PRIMARY KEY
+);
+-- Tabella Menu
 CREATE TABLE Piatto (
     IDPiatto INT PRIMARY KEY,
     NomePiatto VARCHAR(100),
     Descrizione VARCHAR(100),
+    Categoria VARCHAR(20),
     Prezzo FLOAT,
     TipoMenu ENUM('Pranzo', 'Cena', 'Entrambi') NOT NULL,
-    TipoPortata ENUM('AllYouCanEat', 'AllaCarta') NOT NULL
+    TipoPortata ENUM('AllYouCanEat', 'AllaCarta') NOT NULL,
+    FOREIGN KEY (Categoria) REFERENCES Categoria(Nome)
+
 );
 
 CREATE TABLE Allergene (NomeAllergene VARCHAR(100) PRIMARY KEY);
@@ -36,6 +45,8 @@ CREATE TABLE Tavolo (
     numPosti INT
 );
 
+
+
 -- Tabella Prenotazioni
 CREATE TABLE Prenotazione (
     Username VARCHAR(20),
@@ -51,7 +62,7 @@ CREATE TABLE Prenotazione (
 -- Tabella Ordini
 CREATE TABLE Ordine (
     IDOrdine INT PRIMARY KEY,
-    Username varchar(20),
+    Username VARCHAR(20),
     DataPrenotazione DATETIME,
     Quantita INT,
     Consegnato BOOL,

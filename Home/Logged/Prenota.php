@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ristorante Sushi</title>
+  <meta name="keywords" content="Sushi Brombeis, Ristorante sushi via brombeis">
+  <meta name="description" content="Pagina per la prenotazione dei piatti del ristorante di sushi Brombeis">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../images.css">
+</head>
+
+<body>
+  <header tabindex="1">
+    <h1>Sushi Brombeis</h1>
+    <h3>all you can eat</h3>
+  </header>
+  <nav class="menu">
+    <ul>
+      <li tabindex="2">Prenota</li>
+      <li tabindex="3"><a href="#"> Visualizza ordini</a></li>
+      <li><a href="menuCena.php" tabindex="4">Chiama cameriere</a></li>
+    </ul>
+  </nav>
+  <nav id="breadcrumb" tabindex="7">
+    <p>Ti trovi in: Prenota</p>
+  </nav>
+  <main>
+    <section id="PiattiMenu" class="colonne">
+        <h2  tabindex="5">Ordina qui i tuoi piatti</h2>
+      <!-- Inserisci qui il tuo menu sushi -->
+      <form action="process.php" method="post">
+        <?php
+        require_once '../DAO/PiattoDAO.php';
+        require_once '../DAO/CategoriaDAO.php';
+
+        $piattoDAO = new PiattoDAO();
+        $categoriaDAO = new CategoriaDAO();
+        $categorie = $categoriaDAO->getAllCategory();
+        $tabIndex_offset = 5;
+        if (!empty($categorie)) {
+          foreach ($categorie as $categoria) {
+            $piatti = $piattoDAO->getPiattoByTipoCategory($categoria['Nome']);
+            if (!empty($piatti)) {
+                echo " <fieldset> <legend>" . $categoria['Nome'] ."</legend> <ul>";
+                foreach ($piatti as $piatto) {
+                    $tabIndex_offset = $tabIndex_offset + 1;
+                    $refactorNomePiatto = str_replace(' ', '_', strtolower($piatto['NomePiatto']));
+                    $ariaLabel = 'Piatto: ' . $piatto['NomePiatto'] . ', Descrizione: ' . $piatto['Descrizione'];
+                    echo '<li class="menuItem" tabindex="' . (10 + $tabIndex_offset) . '" aria-label="' . $ariaLabel . '">';
+                    echo '<div class="imageMenuItem ' . $refactorNomePiatto . '"></div>';
+                    echo '<div class="infoItem">';
+                    echo '<dl><dt class="nomePiatto" data-title="Nome Piatto">' . $piatto['NomePiatto'] . '</dt>';
+                    echo '<dd class="ingradienti" data-title="Descrizione ingradienti">' . $piatto['Descrizione'] . '</dd></dl>';
+                    echo '<label for="quantita_' .  $refactorNomePiatto  .'">Quantità:</label> <input type="number" class="inptQuantita" id="quantita_' .  $refactorNomePiatto  .'" name="quantita_' .  $refactorNomePiatto  .'" value="0" min="0" max="10">';
+                    echo '</div>';
+                    echo '</li>';
+                }
+                echo "</ul></fieldset>";
+            } else {
+                echo "No piatti found.";
+            }
+           
+          }
+        } else {
+          echo "No Categories found.";
+        }
+        ?>
+      <button type="submit" id="submitPrenotazione">Invia ordine</button>
+    </form>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2023 Sushi Brombeis. Tutti i diritti riservati.</p>
+  </footer>
+</body>
+
+</html>

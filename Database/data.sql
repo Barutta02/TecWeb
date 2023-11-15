@@ -1,8 +1,15 @@
 INSERT INTO
+    Categoria (
+       Nome
+    )VALUES('Nigiri'),('Tartare'),('Sashimi'),('Secondi Piatti'),( 'Uromaki' ), ('Fritti','Barche');
+
+
+INSERT INTO
     Piatto (
         IDPiatto,
         NomePiatto,
         Descrizione,
+        Categoria,
         Prezzo,
         TipoMenu,
         TipoPortata
@@ -12,6 +19,7 @@ VALUES
         1,
         'Nigiri di Salmone',
         'Salmone fresco su letto di riso',
+        'Nigiri',
         12.99,
         'Cena',
         'AllaCarta'
@@ -20,6 +28,7 @@ VALUES
         2,
         'Maki California',
         'Avocado, granchio e cetriolo avvolti in alga e riso',
+        'Uromaki',
         14.99,
         'Pranzo',
         'AllaCarta'
@@ -28,6 +37,7 @@ VALUES
         3,
         'Sashimi di Tonno',
         'Fette sottili di tonno fresco',
+        'Sashimi',
         16.99,
         'Cena',
         'AllaCarta'
@@ -36,6 +46,7 @@ VALUES
         4,
         'Tempura di Gamberi',
         'Gamberi fritti in pastella leggera',
+        'Fritti',
         18.99,
         'Entrambi',
         'AllaCarta'
@@ -44,6 +55,7 @@ VALUES
         5,
         'Menu Sushi Deluxe',
         'Assortimento di nigiri, maki e sashimi',
+        'Barche',
         29.99,
         'Cena',
         'AllYouCanEat'
@@ -52,6 +64,7 @@ VALUES
         6,
         'Dragon Roll',
         'Granchio, avocado e cetriolo avvolti in anguilla e avocado',
+        'Uromaki',
         22.99,
         'Pranzo',
         'AllaCarta'
@@ -60,6 +73,7 @@ VALUES
         7,
         'Uramaki Philly',
         'Salmone, formaggio cremoso e cetriolo',
+        'Uromaki',
         15.99,
         'Cena',
         'AllaCarta'
@@ -69,6 +83,7 @@ VALUES
         'Tartare di Salmone',
         'Salmone crudo tritato con cipolla rossa e avocado',
         17.99,
+        'Tartare',
         'Pranzo',
         'AllaCarta'
     ),
@@ -77,6 +92,7 @@ VALUES
         'Gyoza di Verdure',
         'Ravioli giapponesi ripieni di verdure',
         11.99,
+        'Nigiri',
         'Entrambi',
         'AllaCarta'
     ),
@@ -84,6 +100,7 @@ VALUES
         10,
         'Roll di Avocado',
         'Avocado, cetriolo e riso avvolti in alga',
+        'Uromaki',
         13.99,
         'Pranzo',
         'AllaCarta'
@@ -92,25 +109,17 @@ VALUES
         11,
         'Tataki di Manzo',
         'Fettine di manzo leggermente scottate e marinato',
+                'Secondi piatti',
         23.99,
+
         'Cena',
         'AllaCarta'
-    );
-
-INSERT INTO
-    Piatto (
-        IDPiatto,
-        NomePiatto,
-        Descrizione,
-        Prezzo,
-        TipoMenu,
-        TipoPortata
-    )
-VALUES
+    ),
     (
         12,
         'Maki Salmone e Avocado',
         'Salmone e avocado avvolti in alga e riso',
+        'Uromaki',
         16.99,
         'Pranzo',
         'AllaCarta'
@@ -119,6 +128,7 @@ VALUES
         13,
         'Sashimi Misto',
         'Assortimento di sashimi con pesce misto',
+        'Sashimi',
         19.99,
         'Cena',
         'AllaCarta'
@@ -127,6 +137,7 @@ VALUES
         14,
         'Tempura di Verdure',
         'Verdure miste fritte in pastella leggera',
+        'Fritti',
         15.99,
         'Entrambi',
         'AllaCarta'
@@ -135,6 +146,7 @@ VALUES
         15,
         'Menu Sushi Premium',
         'Selezione premium di nigiri, maki e sashimi',
+        'Barche',
         34.99,
         'Cena',
         'AllYouCanEat'
@@ -143,6 +155,7 @@ VALUES
         16,
         'Rainbow Roll',
         'Maki con strati di pesce vari',
+        'Uromaki',
         26.99,
         'Pranzo',
         'AllaCarta'
@@ -151,6 +164,7 @@ VALUES
         17,
         'Uramaki Tempura',
         'Tempura di gamberi avvolta in riso e alga',
+        'Uromaki',
         20.99,
         'Cena',
         'AllaCarta'
@@ -159,6 +173,7 @@ VALUES
         18,
         'Tartare di Tonno',
         'Tonno crudo tritato con avocado e salsa piccante',
+        'Tartare',
         18.99,
         'Pranzo',
         'AllaCarta'
@@ -167,6 +182,7 @@ VALUES
         19,
         'Gyoza di Pollo',
         'Ravioli giapponesi ripieni di pollo',
+        'Secondi piatti',
         12.99,
         'Entrambi',
         'AllaCarta'
@@ -175,6 +191,7 @@ VALUES
         20,
         'Roll Vegano',
         'Risotto, avocado, cetriolo e verdure',
+        'Uromaki',
         14.99,
         'Pranzo',
         'AllaCarta'
@@ -183,16 +200,8 @@ VALUES
         21,
         'Nigiri di Tonno',
         'Tonno fresco su letto di riso',
+        'Nigiri',
         14.99,
-        'Cena',
-        'AllaCarta'
-    ),
-    -- Aggiungi altri piatti fino a raggiungere almeno 50...
-    (
-        22,
-        'Tataki di Manzo',
-        'Fettine di manzo leggermente scottate e marinato',
-        23.99,
         'Cena',
         'AllaCarta'
     );
