@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="it">
+<?php
+session_start();
+?>
 
 <head>
   <meta charset="UTF-8">
@@ -28,7 +31,9 @@
   </nav>
   <main>
     <section id="PiattiMenu" class="colonne">
-        <h2  tabindex="5">Ordina qui i tuoi piatti</h2>
+      <h2 tabindex="5">
+        <?php echo $_SESSION['name'] . ' '; ?> ordina qui i tuoi piatti
+      </h2>
       <!-- Inserisci qui il tuo menu sushi -->
       <form action="process.php" method="post">
         <?php
@@ -43,32 +48,32 @@
           foreach ($categorie as $categoria) {
             $piatti = $piattoDAO->getPiattoByTipoCategory($categoria['Nome']);
             if (!empty($piatti)) {
-                echo " <fieldset> <legend>" . $categoria['Nome'] ."</legend> <ul>";
-                foreach ($piatti as $piatto) {
-                    $tabIndex_offset = $tabIndex_offset + 1;
-                    $refactorNomePiatto = str_replace(' ', '_', strtolower($piatto['NomePiatto']));
-                    $ariaLabel = 'Piatto: ' . $piatto['NomePiatto'] . ', Descrizione: ' . $piatto['Descrizione'];
-                    echo '<li class="menuItem" tabindex="' . (10 + $tabIndex_offset) . '" aria-label="' . $ariaLabel . '">';
-                    echo '<div class="imageMenuItem ' . $refactorNomePiatto . '"></div>';
-                    echo '<div class="infoItem">';
-                    echo '<dl><dt class="nomePiatto" data-title="Nome Piatto">' . $piatto['NomePiatto'] . '</dt>';
-                    echo '<dd class="ingradienti" data-title="Descrizione ingradienti">' . $piatto['Descrizione'] . '</dd></dl>';
-                    echo '<label for="quantita_' .  $refactorNomePiatto  .'">Quantità:</label> <input type="number" class="inptQuantita" id="quantita_' .  $refactorNomePiatto  .'" name="quantita_' .  $refactorNomePiatto  .'" value="0" min="0" max="10">';
-                    echo '</div>';
-                    echo '</li>';
-                }
-                echo "</ul></fieldset>";
+              echo " <fieldset> <legend>" . $categoria['Nome'] . "</legend> <ul>";
+              foreach ($piatti as $piatto) {
+                $tabIndex_offset = $tabIndex_offset + 1;
+                $refactorNomePiatto = str_replace(' ', '_', strtolower($piatto['NomePiatto']));
+                $ariaLabel = 'Piatto: ' . $piatto['NomePiatto'] . ', Descrizione: ' . $piatto['Descrizione'];
+                echo '<li class="menuItem" tabindex="' . (10 + $tabIndex_offset) . '" aria-label="' . $ariaLabel . '">';
+                echo '<div class="imageMenuItem ' . $refactorNomePiatto . '"></div>';
+                echo '<div class="infoItem">';
+                echo '<dl><dt class="nomePiatto" data-title="Nome Piatto">' . $piatto['NomePiatto'] . '</dt>';
+                echo '<dd class="ingradienti" data-title="Descrizione ingradienti">' . $piatto['Descrizione'] . '</dd></dl>';
+                echo '<label for="quantita_' . $refactorNomePiatto . '">Quantità:</label> <input type="number" class="inptQuantita" id="quantita_' . $refactorNomePiatto . '" name="quantita_' . $refactorNomePiatto . '" value="0" min="0" max="10">';
+                echo '</div>';
+                echo '</li>';
+              }
+              echo "</ul></fieldset>";
             } else {
-                echo "No piatti found.";
+              echo "No piatti found.";
             }
-           
+
           }
         } else {
           echo "No Categories found.";
         }
         ?>
-      <button type="submit" id="submitPrenotazione">Invia ordine</button>
-    </form>
+        <button type="submit" id="submitPrenotazione">Invia ordine</button>
+      </form>
     </section>
   </main>
   <footer>

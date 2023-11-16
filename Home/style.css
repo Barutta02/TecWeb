@@ -71,13 +71,13 @@ nav.menu {
     padding: 10px;
 }
 
-nav.menu ul {
+nav.menu ul , #login ul , #signIn ul {
     text-align: center;
     list-style-type: none;
 }
 
 nav.menu ul li {
-    display: inline;
+    display: inline-block;
     margin: 0 15px;
     /* Rimuovi il margine da .menu e applica qui */
 }
@@ -209,6 +209,7 @@ fieldset {
     /* Replace YourColor with the desired color code */
     border-radius: 8px;
     padding: 1em;
+
 }
 
 fieldset legend {
@@ -217,18 +218,42 @@ fieldset legend {
     font-weight: bold;
 }
 
-#submitPrenotazione {
+#submitPrenotazione , #signIn button , #login button{
     background-color: var(--submitButtonColor);
     color: #fff;
-    width: 10%;
     min-width: 30px;
     font-size: 1.3em;
     border-radius: 10px;
     margin-top: 1em;
     padding: 1em;
     border: 0;
+    text-align: center;
 }
 
 fieldset ul li {
     margin: 1em
 }
+
+
+/*******************login signin *********************/
+
+#signIn label,#login label {
+font-size: 1.4em;
+}
+#signIn fieldset,#login fieldset {
+    width: fit-content;
+}
+#signIn ul,#login ul {
+text-align: right; 
+width: fit-content;
+}
+
+#signIn form, #login form {
+    text-align: -webkit-center;
+}
+
+input {
+    padding: .2em;
+    font-size: 1.2em;
+}
+

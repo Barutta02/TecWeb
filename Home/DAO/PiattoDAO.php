@@ -21,14 +21,16 @@ class PiattoDAO
         return $result->fetch_assoc();
     }
 
-    private static function isTimeForDinner() {
+    private static function isTimeForDinner()
+    {
         $currentHour = date('H');
         return ($currentHour >= 18 && $currentHour < 22);
     }
 
-    public function getPlatesByHours() {
+    public function getPlatesByHours()
+    {
         if (self::isTimeForDinner()) {
-            return $this->getPiattoByTipoMenu('Cena');
+            return $this->getAllPiatti();
         } else {
             return $this->getPiattoByTipoMenu('Pranzo');
         }
