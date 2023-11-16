@@ -2,12 +2,12 @@
 <html lang="it">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ristorante Sushi</title>
-  <meta name="keywords" content="Sushi Brombeis, Ristorante sushi via brombeis" />
-  <meta name="description" content="Sito ufficiale del ristorante di sushi a Napoli in via brombeis" />
-  <link rel="stylesheet" href="../style.css" />
+  <meta name="keywords" content="Sushi Brombeis, Ristorante sushi via brombeis">
+  <meta name="description" content="Sito ufficiale del ristorante di sushi a Napoli in via brombeis">
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -31,6 +31,7 @@
   </nav>
   <main>
     <section id="signIn">
+      <h2>SignIn</h2>
       <form action="signIn_request.php" method="post">
         <fieldset>
           <legend>
@@ -58,9 +59,10 @@
         </fieldset>
       </form>
     </section>
-    <footer>
-      <p>&copy; 2023 Sushi Brombeis. Tutti i diritti riservati.</p>
-    </footer>
+  </main>
+  <footer>
+    <p>&copy; 2023 Sushi Brombeis. Tutti i diritti riservati.</p>
+  </footer>
 </body>
 
 </html>

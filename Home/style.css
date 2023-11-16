@@ -188,7 +188,7 @@ dl#ListinoPrezziPranzo div {
     padding: 2.5em;
 }
 
-#PiattiMenu h2 {
+#signIn h2,#login h2 ,#PiattiMenu h2 {
     color: var(--alternative_text);
     margin: 1.5em;
 }

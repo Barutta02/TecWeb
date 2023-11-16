@@ -2,12 +2,12 @@
 <html lang="it">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ristorante Sushi</title>
-  <meta name="keywords" content="Sushi Brombeis, Ristorante sushi via brombeis" />
-  <meta name="description" content="Sito ufficiale del ristorante di sushi a Napoli in via brombeis" />
-  <link rel="stylesheet" href="../style.css" />
+  <meta name="keywords" content="Sushi Brombeis, Ristorante sushi via brombeis">
+  <meta name="description" content="Sito ufficiale del ristorante di sushi a Napoli in via brombeis">
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -17,13 +17,13 @@
   </header>
   <nav class="menu">
     <ul>
-      <li><a href="../home.html"></a><span lang="en">Home</span> </li>
+      <li><a href="../index.html"><span lang="en">Home</span></a> </li>
       <li> <a href="../menuPranzo.php">Menu pranzo</a></li>
       <li> <a href="../menuCena.php">Menu pranzo</a></li>
       <li> <a href="../chiSiamo.html"> Chi siamo </a> </li>
       <li> <a href="../contattaci.html"> Contattaci </a> </li>
       <li> <a href="signIn.php"><span lang="en">SignIn</span> </a></li>
-      <li> <span lang="en">Login</span> </a></li>
+      <li> <span lang="en">Login</span> </li>
     </ul>
   </nav>
   <nav id="breadcrumb">
@@ -31,6 +31,7 @@
   </nav>
   <main>
     <section id="login">
+      <h2>Login</h2>
       <form action="login_request.php" method="post">
         <fieldset>
           <legend>
@@ -52,9 +53,10 @@
         </fieldset>
       </form>
     </section>
-    <footer>
-      <p>&copy; 2023 Sushi Brombeis. Tutti i diritti riservati.</p>
-    </footer>
+  </main>
+  <footer>
+    <p>&copy; 2023 Sushi Brombeis. Tutti i diritti riservati.</p>
+  </footer>
 </body>
 
 </html>
