@@ -30,19 +30,22 @@ session_start();
     <p>Ti trovi in: Prenota</p>
   </nav>
   <main>
-    <section id="allergeni" tabindex="6">
-      <h4>Seleziona gli allergeni da evitare:</h4>
+    <section id="allergeni">
+      <h4 tabindex="6">Seleziona gli allergeni da evitare:</h4>
       <form>
         <ul id="listaAllergeni">
           <?php
           require_once '../DAO/AllergeneDAO.php';
           $allergeneDAO = new AllergeneDAO();
           $allergeni = AllergeneDAO::getAllAllergeni();
+          $tabIndex_offset = 6;
+
           if (!empty($allergeni)) {
             foreach ($allergeni as $allergene) {
-              echo "<li>";
-              echo '<input type="checkbox" id="' . $allergene["NomeAllergene"] . 'Chbox" name="allergeni[]" value="' . $allergene["NomeAllergene"] . '">';
-              echo '<label for="' . $allergene["NomeAllergene"] . 'Chbox">' . $allergene["NomeAllergene"] . '</label>';
+              $tabIndex_offset = $tabIndex_offset + 2;
+              echo '<li tabindex="' . ($tabIndex_offset) . '">';
+              echo '<input role="checkbox" type="checkbox" id="' . $allergene["NomeAllergene"] . 'Chbox" name="allergeni[]" value="' . $allergene["NomeAllergene"] . '" aria-labelledby="' . $allergene["NomeAllergene"] . '"  tabindex="0">';
+              echo '<label id="' . $allergene["NomeAllergene"] . 'Label" for="' . $allergene["NomeAllergene"] . 'Chbox" tabindex="0">' . $allergene["NomeAllergene"] . '</label>';
               echo "</li>";
             }
           }
@@ -51,7 +54,7 @@ session_start();
       </form>
     </section>
     <section id="PiattiMenu" class="colonne">
-      <h2 tabindex="7">
+      <h2 tabindex="20">
         <?php echo $_SESSION['name'] . ' '; ?> ordina qui i tuoi piatti
       </h2>
       <!-- Inserisci qui il tuo menu sushi -->
@@ -62,9 +65,9 @@ session_start();
 
         $piattoDAO = new PiattoDAO();
         $categoriaDAO = new CategoriaDAO();
+        $tabIndex_offset = 20;
 
         $categorie = CategoriaDAO::getAllCategory();
-        $tabIndex_offset = 7;
         if (!empty($categorie)) {
           foreach ($categorie as $categoria) {
             $piatti = PiattoDAO::getPiattoByTipoCategory($categoria['Nome']);
