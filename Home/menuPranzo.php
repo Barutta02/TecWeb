@@ -32,8 +32,8 @@
     <?php
     // Include the Database and UserDao classes
     require_once 'DAO/PiattoDAO.php';
-    $piattoDAO = new PiattoDAO();
-    $piatti = $piattoDAO->getPiattoByTipoMenu('Pranzo');
+    $piattoDao = new PiattoDAO();
+    $piatti = PiattoDAO::getPiattoByTipoMenu('Pranzo');
     ?>
     <section id="PiattiMenu" class="colonne">
       <h2 tabindex="9">Menu All You Can Eat - Pranzo</h2>

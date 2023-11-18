@@ -2,18 +2,18 @@
 require_once 'Connect.php';
 class PiattoDAO
 {
-    private $conn;
+    private static $conn;
 
     public function __construct()
     {
         $db = Database::getInstance();
-        $this->conn = $db->getConnection();
+        self::$conn = $db->getConnection();
     }
 
-    public function getPiattoById($id)
+    public static function getPiattoById($id)
     {
         $query = "SELECT * FROM Piatto WHERE IDPiatto = ?";
-        $stmt = $this->conn->prepare($query);
+        $stmt = self::$conn->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
 
@@ -27,22 +27,22 @@ class PiattoDAO
         return ($currentHour >= 18 && $currentHour < 22);
     }
 
-    public function getPlatesByHours()
+    public static function getPlatesByHours()
     {
         if (self::isTimeForDinner()) {
-            return $this->getAllPiatti();
+            return self::getAllPiatti();
         } else {
-            return $this->getPiattoByTipoMenu('Pranzo');
+            return self::getPiattoByTipoMenu('Pranzo');
         }
     }
 
-    public function getPiattoByTipoMenu($tipo)
+    public static function getPiattoByTipoMenu($tipo)
     {
         $query = "SELECT * FROM Piatto WHERE TipoMenu = ?";
-        $stmt = $this->conn->prepare($query);
+        $stmt = self::$conn->prepare($query);
         // Check for errors in preparing the statement
         if (!$stmt) {
-            die('Error in query preparation: ' . $this->conn->error);
+            die('Error in query preparation: ' . self::$conn->error);
         }
         // Bind the parameter
         $stmt->bind_param('s', $tipo);
@@ -54,7 +54,7 @@ class PiattoDAO
 
         // Check for errors in executing the statement
         if (!$result) {
-            die('Error in query execution: ' . $this->conn->error);
+            die('Error in query execution: ' . self::$conn->error);
         }
 
         $rows = [];
@@ -72,13 +72,13 @@ class PiattoDAO
     }
 
 
-    public function getPiattoByTipoCategory($categoria)
+    public static function getPiattoByTipoCategory($categoria)
     {
         $query = "SELECT * FROM Piatto WHERE Categoria = ?";
-        $stmt = $this->conn->prepare($query);
+        $stmt = self::$conn->prepare($query);
         // Check for errors in preparing the statement
         if (!$stmt) {
-            die('Error in query preparation: ' . $this->conn->error);
+            die('Error in query preparation: ' . self::$conn->error);
         }
         // Bind the parameter
         $stmt->bind_param('s', $categoria);
@@ -90,7 +90,7 @@ class PiattoDAO
 
         // Check for errors in executing the statement
         if (!$result) {
-            die('Error in query execution: ' . $this->conn->error);
+            die('Error in query execution: ' . self::$conn->error);
         }
 
         $rows = [];
@@ -108,10 +108,10 @@ class PiattoDAO
     }
 
 
-    public function getAllPiatti()
+    public static function getAllPiatti()
     {
         $query = "SELECT * FROM Piatto";
-        $result = $this->conn->query($query);
+        $result = self::$conn->query($query);
 
         if ($result) {
             $rows = [];
@@ -120,15 +120,15 @@ class PiattoDAO
             }
             return $rows;
         } else {
-            die('Error in query: ' . mysqli_error($this->conn));
+            die('Error in query: ' . mysqli_error(self::$conn));
         }
     }
 
-    public function addPiatto($nome, $descrizione, $prezzo, $tipoMenu, $tipoPortata)
+    public static function addPiatto($nome, $descrizione, $prezzo, $tipoMenu, $tipoPortata)
     {
         $query = "INSERT INTO Piatto (NomePiatto, Descrizione, Prezzo, TipoMenu, TipoPortata) 
                   VALUES (?, ?, ?, ?, ?)";
-        $stmt = $this->conn->prepare($query);
+        $stmt = self::$conn->prepare($query);
         $stmt->bind_param('ssdss', $nome, $descrizione, $prezzo, $tipoMenu, $tipoPortata);
 
         return $stmt->execute();
@@ -137,10 +137,10 @@ class PiattoDAO
 
 
     // Function to update a dish in the table
-    public function updateDish($id, $nome, $descrizione, $prezzo, $tipoMenu, $tipoPortata)
+    public static function updateDish($id, $nome, $descrizione, $prezzo, $tipoMenu, $tipoPortata)
     {
         $query = "UPDATE Piatto SET NomePiatto = ?, Descrizione = ?, Prezzo = ?, TipoMenu = ?, TipoPortata = ? WHERE IDPiatto = ?";
-        $stmt = $this->conn->prepare($query);
+        $stmt = self::$conn->prepare($query);
         $stmt->bindParam(1, $nome);
         $stmt->bindParam(2, $descrizione);
         $stmt->bindParam(3, $prezzo);
@@ -156,10 +156,10 @@ class PiattoDAO
     }
 
     // Function to delete a dish from the table
-    public function deleteDish($id)
+    public static function deleteDish($id)
     {
         $query = "DELETE FROM Piatto WHERE IDPiatto = ?";
-        $stmt = $this->conn->prepare($query);
+        $stmt = self::$conn->prepare($query);
         $stmt->bindParam(1, $id);
 
         if ($stmt->execute()) {

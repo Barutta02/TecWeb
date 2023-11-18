@@ -1,8 +1,12 @@
 INSERT INTO
-    Categoria (
-       Nome
-    )VALUES('Nigiri'),('Tartare'),('Sashimi'),('Secondi Piatti'),( 'Uromaki' ), ('Fritti','Barche');
-
+    Categoria (Nome)
+VALUES
+    ('Nigiri'),
+    ('Tartare'),
+    ('Sashimi'),
+    ('Secondi Piatti'),
+    ('Uromaki'),
+    ('Fritti', 'Barche');
 
 INSERT INTO
     Piatto (
@@ -91,8 +95,7 @@ VALUES
         9,
         'Gyoza di Verdure',
         'Ravioli giapponesi ripieni di verdure',
-        'Secondi Piatti'
-        11.99,
+        'Secondi Piatti' 11.99,
         'Entrambi',
         'AllaCarta'
     ),
@@ -109,9 +112,8 @@ VALUES
         11,
         'Tataki di Manzo',
         'Fettine di manzo leggermente scottate e marinato',
-                'Secondi piatti',
+        'Secondi piatti',
         23.99,
-
         'Cena',
         'AllaCarta'
     ),
@@ -205,3 +207,61 @@ VALUES
         'Cena',
         'AllaCarta'
     );
+
+INSERT INTO
+    Allergene (NomeAllergene)
+VALUES
+    ('Uova'),
+    ('Soia'),
+    ('Pesce'),
+    ('Crostacei'),
+    ('Sedano'),
+    ('Senape');
+
+-- Inserisci dati nella tabella AllergenePiatto
+INSERT INTO
+    AllergenePiatto (Allergene, Piatto)
+VALUES
+    ('Pesce', 1),
+    -- Nigiri di Salmone
+    ('Soia', 2),
+    -- Maki California
+    ('Pesce', 3),
+    -- Sashimi di Tonno
+    ('Crostacei', 4),
+    -- Tempura di Gamberi
+    ('Soia', 5),
+    -- Menu Sushi Deluxe
+    ('Pesce', 6),
+    -- Dragon Roll
+    ('Pesce', 7),
+    -- Uramaki Philly
+    ('Pesce', 8),
+    -- Tartare di Salmone
+    ('Sedano', 9),
+    -- Gyoza di Verdure
+    ('Sedano', 10),
+    -- Roll di Avocado
+    ('Pesce', 11),
+    -- Tataki di Manzo
+    ('Pesce', 12),
+    -- Maki Salmone e Avocado
+    ('Pesce', 13),
+    -- Sashimi Misto
+    ('Sedano', 14),
+    -- Tempura di Verdure
+    ('Pesce', 15),
+    -- Menu Sushi Premium
+    ('Pesce', 16),
+    -- Rainbow Roll
+    ('Crostacei', 17),
+    -- Uramaki Tempura
+    ('Pesce', 18),
+    -- Tartare di Tonno
+    ('Sedano', 19),
+    -- Gyoza di Pollo
+    ('Pesce', 20),
+    -- Roll Vegano
+    ('Pesce', 21);
+
+-- Nigiri di Tonno

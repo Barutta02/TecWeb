@@ -26,12 +26,32 @@ session_start();
       <li><a href="menuCena.php" tabindex="4">Chiama cameriere</a></li>
     </ul>
   </nav>
-  <nav id="breadcrumb" tabindex="7">
+  <nav id="breadcrumb" tabindex="4">
     <p>Ti trovi in: Prenota</p>
   </nav>
   <main>
+    <section id="allergeni" tabindex="6">
+      <h4>Seleziona gli allergeni da evitare:</h4>
+      <form>
+        <ul id="listaAllergeni">
+          <?php
+          require_once '../DAO/AllergeneDAO.php';
+          $allergeneDAO = new AllergeneDAO();
+          $allergeni = AllergeneDAO::getAllAllergeni();
+          if (!empty($allergeni)) {
+            foreach ($allergeni as $allergene) {
+              echo "<li>";
+              echo '<input type="checkbox" id="' . $allergene["NomeAllergene"] . 'Chbox" name="allergeni[]" value="' . $allergene["NomeAllergene"] . '">';
+              echo '<label for="' . $allergene["NomeAllergene"] . 'Chbox">' . $allergene["NomeAllergene"] . '</label>';
+              echo "</li>";
+            }
+          }
+          ?>
+        </ul>
+      </form>
+    </section>
     <section id="PiattiMenu" class="colonne">
-      <h2 tabindex="5">
+      <h2 tabindex="7">
         <?php echo $_SESSION['name'] . ' '; ?> ordina qui i tuoi piatti
       </h2>
       <!-- Inserisci qui il tuo menu sushi -->
@@ -42,18 +62,20 @@ session_start();
 
         $piattoDAO = new PiattoDAO();
         $categoriaDAO = new CategoriaDAO();
-        $categorie = $categoriaDAO->getAllCategory();
-        $tabIndex_offset = 5;
+
+        $categorie = CategoriaDAO::getAllCategory();
+        $tabIndex_offset = 7;
         if (!empty($categorie)) {
           foreach ($categorie as $categoria) {
-            $piatti = $piattoDAO->getPiattoByTipoCategory($categoria['Nome']);
+            $piatti = PiattoDAO::getPiattoByTipoCategory($categoria['Nome']);
             if (!empty($piatti)) {
               echo " <fieldset> <legend>" . $categoria['Nome'] . "</legend> <ul>";
               foreach ($piatti as $piatto) {
+                $allergeniPiatto = AllergeneDAO::getAllergeniByPiatto(intval($piatto['IDPiatto']));
                 $tabIndex_offset = $tabIndex_offset + 1;
                 $refactorNomePiatto = str_replace(' ', '_', strtolower($piatto['NomePiatto']));
                 $ariaLabel = 'Piatto: ' . $piatto['NomePiatto'] . ', Descrizione: ' . $piatto['Descrizione'];
-                echo '<li class="menuItem" tabindex="' . (10 + $tabIndex_offset) . '" aria-label="' . $ariaLabel . '">';
+                echo '<li class="menuItem ' . implode(" ", $allergeniPiatto) . '" tabindex="' . (10 + $tabIndex_offset) . '" aria-label="' . $ariaLabel . '">';
                 echo '<div class="imageMenuItem ' . $refactorNomePiatto . '"></div>';
                 echo '<div class="infoItem">';
                 echo '<dl><dt class="nomePiatto" data-title="Nome Piatto">' . $piatto['NomePiatto'] . '</dt>';
@@ -76,6 +98,20 @@ session_start();
       </form>
     </section>
   </main>
+  <script>
+    <?php
+    if (!empty($allergeni)) {
+      foreach ($allergeni as $allergene) {
+        echo 'document.getElementById("' . $allergene["NomeAllergene"] . 'Chbox").addEventListener("change", function() {
+          document.querySelectorAll(".' . $allergene["NomeAllergene"] . '").forEach(function(element) { element.classList.toggle("hide", this.checked);}, this);});';
+      }
+    }
+
+    ?>
+
+
+
+  </script>
   <footer>
     <p>&copy; 2023 Sushi Brombeis. Tutti i diritti riservati.</p>
   </footer>

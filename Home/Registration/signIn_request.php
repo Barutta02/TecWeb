@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         require_once '../DAO/UserDAO.php';
         $userDAO = new UserDAO();
-        $userDAO->createUser($username, $firstname, $lastname, $email, $password);
+        UserDAO::createUser($username, $firstname, $lastname, $email, $password);
         echo "Registrazione avvenuta con successo.";
         header("Location: login.php");
     }

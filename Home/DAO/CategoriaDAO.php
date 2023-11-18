@@ -2,19 +2,19 @@
 require_once 'Connect.php';
 class CategoriaDAO
 {
-    private $conn;
+    private static $conn;
 
     public function __construct()
     {
         $db = Database::getInstance();
-        $this->conn = $db->getConnection();
+        self::$conn = $db->getConnection();
     }
 
-    
-    public function getAllCategory()
+
+    public static function getAllCategory()
     {
         $query = "SELECT * FROM Categoria";
-        $result = $this->conn->query($query);
+        $result = self::$conn->query($query);
 
         if ($result) {
             $rows = [];
@@ -23,10 +23,10 @@ class CategoriaDAO
             }
             return $rows;
         } else {
-            die('Error in query: ' . mysqli_error($this->conn));
+            die('Error in query: ' . mysqli_error(self::$conn));
         }
     }
 
-  
+
 }
 ?>

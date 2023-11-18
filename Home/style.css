@@ -71,7 +71,7 @@ nav.menu {
     padding: 10px;
 }
 
-nav.menu ul , #login ul , #signIn ul {
+nav.menu ul , #login ul , #signIn ul , #listaAllergeni {
     text-align: center;
     list-style-type: none;
 }
@@ -199,14 +199,15 @@ dl#ListinoPrezziPranzo div {
 
 
 /*******************PRENOTA *********************/
-
+.hide{
+    display: none;
+}
 .inptQuantita {
     width: 3em;
 }
 
 fieldset {
-    border: 1px solid var(--fieldSetBorderColor);
-    /* Replace YourColor with the desired color code */
+border: 0;    /* Replace YourColor with the desired color code */
     border-radius: 8px;
     padding: 1em;
 
@@ -216,6 +217,7 @@ fieldset legend {
     color: var(--LegendTxtColor);
     font-size: 1.5em;
     font-weight: bold;
+    text-align: left;
 }
 
 #submitPrenotazione , #signIn button , #login button{
@@ -233,6 +235,57 @@ fieldset legend {
 fieldset ul li {
     margin: 1em
 }
+#listaAllergeni li{
+    display: inline-block;
+    padding: 1em;
+}
+
+/* Nascondi la checkbox predefinita */
+input[type="checkbox"] {
+    display: none;
+  }
+  
+  /* Stile della checkbox personalizzata */
+  input[type="checkbox"] + label {
+    position: relative;
+    padding-left: 30px; /* Regola se necessario */
+    cursor: pointer;
+  }
+  
+  /* Stile del segno di spunta */
+  input[type="checkbox"] + label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px; /* Regola la dimensione della checkbox */
+    height: 20px; /* Regola la dimensione della checkbox */
+    background-color: #fff; /* Colore di sfondo */
+    transition: background 0.3s;
+  }
+  
+  /* Stile del segno di spunta quando è selezionato */
+  input[type="checkbox"]:checked + label:before {
+    background-color: #3498db; /* Cambia il colore di sfondo quando è selezionato */
+  }
+  
+  /* Stile dell'area interna del segno di spunta (opzionale) */
+  input[type="checkbox"] + label:after {
+    content: "\2713"; /* Carattere Unicode per il checkmark */
+    position: absolute;
+    left: 4px; /* Regola la posizione se necessario */
+    top: 0px; /* Regola la posizione se necessario */
+    color: #ffffff; /* Colore dell'icona del checkmark */
+    font-size: 16px; /* Regola la dimensione dell'icona del checkmark */
+    visibility: hidden;
+    transition: color 0.3s;
+  }
+  
+  /* Stile dell'area interna quando è selezionata (opzionale) */
+  input[type="checkbox"]:checked + label:after {
+    visibility: visible;
+  }
+  
 
 
 /*******************login signin *********************/
