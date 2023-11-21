@@ -220,7 +220,7 @@ fieldset legend {
     text-align: left;
 }
 
-#submitPrenotazione , #signIn button , #login button{
+#submitPrenotazione , #signIn button , #login button , input[type="submit"]{
     background-color: var(--submitButtonColor);
     color: #fff;
     min-width: 30px;

@@ -265,3 +265,17 @@ VALUES
     ('Pesce', 21);
 
 -- Nigiri di Tonno
+INSERT INTO
+    Tavolo (IDTavolo, numPosti)
+SELECT
+    n AS IDTavolo,
+    FLOOR(RAND() * (10 - 2 + 1) + 2) AS numPosti
+FROM
+    (
+        SELECT
+            ROW_NUMBER() OVER () AS n
+        FROM
+            information_schema.tables
+    ) AS numbers
+LIMIT
+    50;

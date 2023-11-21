@@ -13,9 +13,8 @@ CREATE TABLE Admin (
 );
 
 -- Tabella categoria
-CREATE TABLE Categoria (
-   Nome VARCHAR(100)  PRIMARY KEY
-);
+CREATE TABLE Categoria (Nome VARCHAR(100) PRIMARY KEY);
+
 -- Tabella Menu
 CREATE TABLE Piatto (
     IDPiatto INT PRIMARY KEY,
@@ -26,7 +25,6 @@ CREATE TABLE Piatto (
     TipoMenu ENUM('Pranzo', 'Cena', 'Entrambi') NOT NULL,
     TipoPortata ENUM('AllYouCanEat', 'AllaCarta') NOT NULL,
     FOREIGN KEY (Categoria) REFERENCES Categoria(Nome)
-
 );
 
 CREATE TABLE Allergene (NomeAllergene VARCHAR(100) PRIMARY KEY);
@@ -45,8 +43,6 @@ CREATE TABLE Tavolo (
     numPosti INT
 );
 
-
-
 -- Tabella Prenotazioni
 CREATE TABLE Prenotazione (
     Username VARCHAR(20),
@@ -61,12 +57,15 @@ CREATE TABLE Prenotazione (
 
 -- Tabella Ordini
 CREATE TABLE Ordine (
-    IDOrdine INT PRIMARY KEY,
+    IDPiatto INT,
     Username VARCHAR(20),
+    DataOraOrdine DATETIME,
     DataPrenotazione DATETIME,
     Quantita INT,
     Consegnato BOOL,
-    FOREIGN KEY (Username, DataPrenotazione) REFERENCES Prenotazione(Username, DataPrenotazione)
+    PRIMARY KEY (IDPiatto, Username, DataOraOrdine),
+    FOREIGN KEY (Username, DataPrenotazione) REFERENCES Prenotazione(Username, DataPrenotazione),
+    FOREIGN KEY (IDPiatto) REFERENCES Piatto(IDPiatto)
 );
 
 -- Tabella Recensioni

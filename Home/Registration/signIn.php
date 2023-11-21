@@ -55,7 +55,7 @@
               <input type="password" id="password" name="password" required>
             </li>
           </ul>
-          <button type="submit">Registrati</button>
+          <input type="submit" value="Registrati">
         </fieldset>
       </form>
     </section>

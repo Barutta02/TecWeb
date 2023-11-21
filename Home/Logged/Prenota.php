@@ -44,7 +44,7 @@ session_start();
             foreach ($allergeni as $allergene) {
               $tabIndex_offset = $tabIndex_offset + 2;
               echo '<li tabindex="' . ($tabIndex_offset) . '">';
-              echo '<input role="checkbox" type="checkbox" id="' . $allergene["NomeAllergene"] . 'Chbox" name="allergeni[]" value="' . $allergene["NomeAllergene"] . '" aria-labelledby="' . $allergene["NomeAllergene"] . '"  tabindex="0">';
+              echo '<input type="checkbox" id="' . $allergene["NomeAllergene"] . 'Chbox" name="allergeni[]" value="' . $allergene["NomeAllergene"] . '" aria-labelledby="' . $allergene["NomeAllergene"] . 'Label"  tabindex="0" >';
               echo '<label id="' . $allergene["NomeAllergene"] . 'Label" for="' . $allergene["NomeAllergene"] . 'Chbox" tabindex="0">' . $allergene["NomeAllergene"] . '</label>';
               echo "</li>";
             }
@@ -58,7 +58,7 @@ session_start();
         <?php echo $_SESSION['name'] . ' '; ?> ordina qui i tuoi piatti
       </h2>
       <!-- Inserisci qui il tuo menu sushi -->
-      <form action="process.php" method="post">
+      <form action="process_prenotazione.php" method="post">
         <?php
         require_once '../DAO/PiattoDAO.php';
         require_once '../DAO/CategoriaDAO.php';
@@ -83,7 +83,7 @@ session_start();
                 echo '<div class="infoItem">';
                 echo '<dl><dt class="nomePiatto" data-title="Nome Piatto">' . $piatto['NomePiatto'] . '</dt>';
                 echo '<dd class="ingradienti" data-title="Descrizione ingradienti">' . $piatto['Descrizione'] . '</dd></dl>';
-                echo '<label for="quantita_' . $refactorNomePiatto . '">Quantità:</label> <input type="number" class="inptQuantita" id="quantita_' . $refactorNomePiatto . '" name="quantita_' . $refactorNomePiatto . '" value="0" min="0" max="10">';
+                echo '<label for="quantita_' . $piatto['IDPiatto'] . '">Quantità:</label> <input type="number" class="inptQuantita" id="quantita_' . $piatto['IDPiatto'] . '" name="quantita_' . $piatto['IDPiatto'] . '" value="0" min="0" max="10">';
                 echo '</div>';
                 echo '</li>';
               }
@@ -97,23 +97,23 @@ session_start();
           echo "No Categories found.";
         }
         ?>
-        <button type="submit" id="submitPrenotazione">Invia ordine</button>
+        <input type="submit" id="submitPrenotazione" value="Invia ordine">
       </form>
     </section>
   </main>
   <script>
-    <?php
-    if (!empty($allergeni)) {
-      foreach ($allergeni as $allergene) {
-        echo 'document.getElementById("' . $allergene["NomeAllergene"] . 'Chbox").addEventListener("change", function() {
-          document.querySelectorAll(".' . $allergene["NomeAllergene"] . '").forEach(function(element) { element.classList.toggle("hide", this.checked);}, this);});';
-      }
+    function addCheckboxListeners() {
+      var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+          var className = checkbox.id.replace("Chbox", "");
+          document.querySelectorAll("." + className).forEach(function (element) {
+            element.classList.toggle("hide", checkbox.checked);
+          });
+        });
+      });
     }
-
-    ?>
-
-
-
+    addCheckboxListeners();
   </script>
   <footer>
     <p>&copy; 2023 Sushi Brombeis. Tutti i diritti riservati.</p>
