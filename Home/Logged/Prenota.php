@@ -2,6 +2,12 @@
 <html lang="it">
 <?php
 session_start();
+if (!isset($_SESSION["username"])) {
+  header("Location: ../Registration/login.php");
+}
+if (!isset($_SESSION["data_prenotazione_inCorso"])) {
+  header("Location: NuovaPrenotazione.php");
+}
 ?>
 
 <head>
@@ -22,8 +28,7 @@ session_start();
   <nav class="menu">
     <ul>
       <li tabindex="2">Prenota</li>
-      <li tabindex="3"><a href="#"> Visualizza ordini</a></li>
-      <li><a href="menuCena.php" tabindex="4">Chiama cameriere</a></li>
+      <li tabindex="3"><a href="VisualizzaOrdini.php"> Visualizza ordini</a></li>
     </ul>
   </nav>
   <nav id="breadcrumb" tabindex="4">
@@ -53,12 +58,12 @@ session_start();
         </ul>
       </form>
     </section>
-    <section id="PiattiMenu" class="colonne">
+    <section id="PiattiMenu" class="containerPlatesViewer">
       <h2 tabindex="20">
         <?php echo $_SESSION['name'] . ' '; ?> ordina qui i tuoi piatti
       </h2>
       <!-- Inserisci qui il tuo menu sushi -->
-      <form action="process_prenotazione.php" method="post">
+      <form action="process/process_prenotazione.php" method="post">
         <?php
         require_once '../DAO/PiattoDAO.php';
         require_once '../DAO/CategoriaDAO.php';

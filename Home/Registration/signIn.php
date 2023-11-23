@@ -32,7 +32,7 @@
   <main>
     <section id="signIn">
       <h2>SignIn</h2>
-      <form action="signIn_request.php" method="post">
+      <form action="process/signIn_request.php" method="post">
         <fieldset>
           <legend>
             Inserisci dati per la registrazione

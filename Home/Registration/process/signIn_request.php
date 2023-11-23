@@ -12,15 +12,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($username) || empty($firstname) || empty($lastname) || empty($email) || empty($password)) {
         echo "Compila tutti i campi del modulo.";
     } else {
-        require_once '../DAO/UserDAO.php';
+        require_once '../../DAO/UserDAO.php';
         $userDAO = new UserDAO();
         UserDAO::createUser($username, $firstname, $lastname, $email, $password);
         echo "Registrazione avvenuta con successo.";
-        header("Location: login.php");
+        header("Location: ../login.php");
     }
 } else {
     // Se qualcuno tenta di accedere direttamente a questo file senza inviare il modulo, reindirizza alla pagina di registrazione
-    header("Location: signIn.php");
+    header("Location: ../signIn.php");
     exit();
 }
 ?>

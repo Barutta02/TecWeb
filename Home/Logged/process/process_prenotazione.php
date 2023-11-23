@@ -1,6 +1,6 @@
 <?php
 // Assicurati di avere accesso alle classi e ai metodi necessari
-require_once '../DAO/OrdineDAO.php';
+require_once '../../DAO/OrdineDAO.php';
 
 
 // Gestione del form
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-header("Location: prenota.php");
+header("Location: ../prenota.php");
 
 
 ?>

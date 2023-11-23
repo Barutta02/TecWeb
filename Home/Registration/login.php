@@ -32,7 +32,7 @@
   <main>
     <section id="login">
       <h2>Login</h2>
-      <form action="login_request.php" method="post">
+      <form action="process/login_request.php" method="post">
         <fieldset>
           <legend>
             Inserisci dati per il <span lang="en">Login</span>

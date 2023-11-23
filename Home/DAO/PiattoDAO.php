@@ -108,6 +108,7 @@ class PiattoDAO
     }
 
 
+
     public static function getAllPiatti()
     {
         $query = "SELECT * FROM Piatto";

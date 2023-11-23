@@ -103,12 +103,12 @@ section {
     padding-bottom: 1em;
 }
 
-#PiattiMenu {
+.containerPlatesViewer {
     width: 90%;
     margin: auto;
 }
 
-#PiattiMenu ul {
+.containerPlatesViewer ul {
     font-size: 90%;
     margin: auto;
     display: flex;
@@ -128,11 +128,22 @@ section {
     text-align: left;
 }
 
+.quantitaOrdine{
+    float: right;
+    padding: 0.5em;
+}
+
+.menuItem.oldOrders{
+    border: 1px solid #6f6969;
+    border-radius: 10px;
+    margin: 0.2em;
+}
+
 .prezzo {
     float: right;
 }
 
-#PiattiMenu .imageMenuItem {
+.containerPlatesViewer .imageMenuItem {
     background-repeat: no-repeat;
     background-position-x: center;
     width: 60px;
@@ -140,7 +151,7 @@ section {
     margin: 0.3em;
 }
 
-#PiattiMenu .nomePiatto {
+.containerPlatesViewer .nomePiatto{
     display: block;
     font-weight: bold;
 }
@@ -171,7 +182,12 @@ dl#ListinoPrezziPranzo {
 dl#ListinoPrezziPranzo div {
     display: inline-block;
 }
-
+.bold{
+    font-weight: bold;
+}
+.inline{
+    display: inline;
+}
 #ListinoPrezziPranzo dd {
     color: var(--alternative_text);
     font-weight: bold;
@@ -188,12 +204,12 @@ dl#ListinoPrezziPranzo div {
     padding: 2.5em;
 }
 
-#signIn h2,#login h2 ,#PiattiMenu h2 {
+#signIn h2,#login h2 ,.containerPlatesViewer h2 {
     color: var(--alternative_text);
     margin: 1.5em;
 }
 
-#PiattiMenu>p {
+.containerPlatesViewer>p {
     padding-bottom: 1em;
 }
 

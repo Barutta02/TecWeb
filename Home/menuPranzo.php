@@ -35,7 +35,7 @@
     $piattoDao = new PiattoDAO();
     $piatti = PiattoDAO::getPiattoByTipoMenu('Pranzo');
     ?>
-    <section id="PiattiMenu" class="colonne">
+    <section id="PiattiMenu" class="containerPlatesViewer">
       <h2 tabindex="9">Menu All You Can Eat - Pranzo</h2>
       <dl id="ListinoPrezziPranzo">
         <div tabindex="10">

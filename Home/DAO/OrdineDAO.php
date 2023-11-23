@@ -31,6 +31,36 @@ class OrdineDAO
         $stmt->close();
     }
 
+    public static function getOrdineByPrenotazione($username, $data)
+    {
+        $query = "SELECT  Piatto.NomePiatto as NomePiatto,Piatto.Descrizione as Descrizione, Ordine.Quantita as Quantita, Ordine.Consegnato as isConsegnato  FROM Ordine JOIN Piatto on Piatto.IDPiatto = Ordine.IDPiatto WHERE Ordine.Username = ? and Ordine.DataPrenotazione = ? Order by Ordine.Consegnato";
+        $stmt = self::$conn->prepare($query);
+        $stmt->bind_param('ss', $username, $data);
+        // Execute the prepared statement
+        $stmt->execute();
+
+        // Get the result set from the executed statement
+        $result = $stmt->get_result();
+
+        // Check for errors in executing the statement
+        if (!$result) {
+            die('Error in query execution: ' . self::$conn->error);
+        }
+
+        $rows = [];
+
+        // Fetch the data from the result set
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+
+        // Close the prepared statement
+        $stmt->close();
+
+        // Return the fetched data
+        return $rows;
+    }
+
 
     // Add more methods for CRUD operations on the User table
 }
