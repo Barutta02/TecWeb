@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($username) || empty($n_tavolo) || empty($n_persone)) {
         echo "Compila tutti i campi del modulo.";
     } else {
-        require_once '../../DAO/PrenotazioneDAO.php';
+        require_once '../DAO/PrenotazioneDAO.php';
         $prenotazioneDAO = new PrenotazioneDAO();
         PrenotazioneDAO::createPrenotazione($username, $data, $n_persone, $in_corso, $n_tavolo);
 

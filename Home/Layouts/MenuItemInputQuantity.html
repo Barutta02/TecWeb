@@ -1,0 +1,21 @@
+<li class="menuItem {{ListaAllergeni}}" tabindex="31">
+  <div class="imageMenuItem {{NomePiattoUnderscored}}"></div>
+  <div class="infoItem">
+    <dl>
+      <dt class="nomePiatto" data-title="Nome Piatto">{{NomePiatto}}</dt>
+      <dd class="ingradienti" data-title="Descrizione ingradienti">
+        {{Descrizione}}
+      </dd>
+    </dl>
+    <label for="quantita_{{IDPiatto}}">Quantità:</label>
+    <input
+      type="number"
+      class="inptQuantita"
+      id="quantita_{{IDPiatto}}"
+      name="quantita_{{IDPiatto}}"
+      value="0"
+      min="0"
+      max="10"
+    />
+  </div>
+</li>

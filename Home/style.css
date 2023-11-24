@@ -36,6 +36,15 @@ html {
     color: var(--pageTxtColor);
 }
 
+.srOnly{
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    color: var(--textcolor);
+}
+
 a:link {
     text-decoration: underline;
     color: var(--linkColor);
@@ -174,12 +183,12 @@ footer {
 
 /*******************MENU *********************/
 
-dl#ListinoPrezziPranzo {
+dl.ListinoPrezzi {
     padding: 1.5em;
     justify-content: center;
 }
 
-dl#ListinoPrezziPranzo div {
+dl.ListinoPrezzi div {
     display: inline-block;
 }
 .bold{
@@ -188,7 +197,7 @@ dl#ListinoPrezziPranzo div {
 .inline{
     display: inline;
 }
-#ListinoPrezziPranzo dd {
+.ListinoPrezzi dd {
     color: var(--alternative_text);
     font-weight: bold;
     display: block;
@@ -196,15 +205,15 @@ dl#ListinoPrezziPranzo div {
     padding-top: 0.5em;
 }
 
-#ListinoPrezziPranzo dt {
+.ListinoPrezzi dt {
     font-weight: bold;
 }
 
-#ListinoPrezziPranzo div {
+.ListinoPrezzi div {
     padding: 2.5em;
 }
 
-#signIn h2,#login h2 ,.containerPlatesViewer h2 {
+#signIn h2,#login h2 ,.containerPlatesViewer h2 , .prices h2 {
     color: var(--alternative_text);
     margin: 1.5em;
 }

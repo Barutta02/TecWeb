@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{title}}</title>
+    <meta name="description" content="{{description}}" />
+    <meta name="keywords" content="{{keywords}}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="images.css" />
+  </head>
+
+  <body id="{{pageID}}" onload="{{onload}}">
+    <a href="#content" class="srOnly">Vai al contenuto</a>
+    {{header}}
+    <nav id="menu" class="menu" aria-label="Navigazione Principale">
+      <ul>
+        {{menu}}
+      </ul>
+    </nav>
+    <nav id="breadcrumbs" aria-label="Percorso">{{breadcrumbs}}</nav>
+    <main id="content">{{content}}</main>
+    {{footer}}
+  </body>
+</html>
