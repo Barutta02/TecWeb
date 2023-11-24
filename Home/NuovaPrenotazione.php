@@ -13,7 +13,7 @@ if (!isset($_SESSION["username"])) {
   <title>Ristorante Sushi</title>
   <meta name="keywords" content="Sushi Brombeis, Ristorante sushi via brombeis" />
   <meta name="description" content="Sito ufficiale del ristorante di sushi a Napoli in via brombeis" />
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
