@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $_SESSION['data_prenotazione_inCorso'] = $data;
         echo "Prenotazione avvenuta con successo.";
-        header("Location: ../prenota.php");
+        header("Location: ../Prenota.php");
     }
 } else {
     // Se qualcuno tenta di accedere direttamente a questo file senza inviare il modulo, reindirizza alla pagina di registrazione

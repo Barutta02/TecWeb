@@ -1,0 +1,31 @@
+<section id="signIn">
+  <h2>SignIn</h2>
+  <form action="process/signIn_request.php" method="post">
+    <fieldset>
+      <legend>Inserisci dati per la registrazione</legend>
+      <ul>
+        <li>
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required />
+        </li>
+        <li>
+          <label for="firstname">Nome:</label>
+          <input type="text" id="firstname" name="firstname" required />
+        </li>
+        <li>
+          <label for="lastname">Cognome:</label>
+          <input type="text" id="lastname" name="lastname" required />
+        </li>
+        <li>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </li>
+        <li>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+        </li>
+      </ul>
+      <input type="submit" value="Registrati" />
+    </fieldset>
+  </form>
+</section>

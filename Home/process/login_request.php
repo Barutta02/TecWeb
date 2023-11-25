@@ -11,17 +11,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // Esempio di autenticazione (controlla se l'utente è registrato)
         // Questo è un esempio molto basico e insicuro. In un'applicazione del mondo reale, dovresti utilizzare un sistema di autenticazione sicuro.
-        require_once '../../DAO/UserDAO.php';
+        require_once '../DAO/UserDAO.php';
         $userDAO = new UserDAO();
         $emailAuth = UserDAO::getUserByEmailPassword($username_or_email, $password);
         if (!empty($emailAuth)) {
             save_username_session($emailAuth['Username'], $emailAuth['Nome'], $emailAuth['Cognome']);
-            header("Location: ../../Logged/NuovaPrenotazione.php");
+            header("Location: ../NuovaPrenotazione.php");
         } else {
             $UsernameAuth = UserDAO::getUserByUsernamePassword($username_or_email, $password);
             if (!empty($UsernameAuth)) {
                 save_username_session($UsernameAuth['Username'], $UsernameAuth['Nome'], $UsernameAuth['Cognome']);
-                header("Location: ../../Logged/NuovaPrenotazione.php");
+                header("Location: ../NuovaPrenotazione.php");
             } else {
                 header("Location: ../login.php");
             }

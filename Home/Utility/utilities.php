@@ -125,7 +125,7 @@ function get_menu_NoLogin()
             $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
         }
     }
-    $menu .= '<li><a class="button" href="Registration/login.php" >Area Utente</a></li>';
+    $menu .= '<li><a class="button" href="login.php" >Area Utente</a></li>';
     return $menu;
 }
 
@@ -154,7 +154,6 @@ function get_menu_Login()
             $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
         }
     }
-    $menu .= '<li><a class="button" href="Registration/login.php" >Area Utente</a></li>';
     return $menu;
 }
 

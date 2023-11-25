@@ -95,7 +95,7 @@ if (!empty($categorie)) {
     $content .= "No Categories found.";
 }
 
-$content .= '</ul>
+$content .= '
 <input type="submit" id="submitPrenotazione" value="Invia ordine">
 </form>
 </section> <script src="script/prenota.js"></script>';

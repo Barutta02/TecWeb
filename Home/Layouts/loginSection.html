@@ -1,0 +1,29 @@
+<section id="login">
+  <h2>Login</h2>
+  <form action="process/login_request.php" method="post">
+    <fieldset>
+      <legend>Dati di accesso</legend>
+      <ul>
+        <li>
+          <label for="username_or_email"
+            ><span lang="en">Username o Email:</span></label
+          >
+          <input
+            type="text"
+            id="username_or_email"
+            name="username_or_email"
+            required
+          />
+        </li>
+
+        <li>
+          <label for="password"><span lang="en">Password:</span></label>
+          <input type="password" id="password" name="password" required />
+        </li>
+      </ul>
+
+      <button type="submit"><span lang="en">Login</span></button>
+    </fieldset>
+  </form>
+  <p>Nuovo utente? <a href="signIn.php">Registrati</a></p>
+</section>
