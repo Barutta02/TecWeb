@@ -98,7 +98,7 @@ if (!empty($categorie)) {
 $content .= '
 <input type="submit" id="submitPrenotazione" value="Invia ordine">
 </form>
-</section> <script src="script/prenota.js"></script>';
+</section> <script src="script/script.js"></script>';
 
 
 $menu = get_menu_Login();

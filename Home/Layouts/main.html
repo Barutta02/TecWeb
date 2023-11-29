@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <title>{{title}}</title>
     <meta name="description" content="{{description}}" />
@@ -9,18 +10,25 @@
 
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="images.css" />
-  </head>
+</head>
 
-  <body id="{{pageID}}" onload="{{onload}}">
-    <a href="#content" class="srOnly">Vai al contenuto</a>
-    {{header}}
+<body id="{{pageID}}" onload="{{onload}}">
+    <a href="#content" class="srOnly">Vai al contenuto</a> {{header}}
+
     <nav id="menu" class="menu" aria-label="Navigazione Principale">
-      <ul>
-        {{menu}}
-      </ul>
+        <div class="menu-toggle" id="mobile-menu">
+            ☰ Menu
+        </div>
+        <ul class="nav-list">
+            {{menu}}
+        </ul>
     </nav>
-    <nav id="breadcrumbs" aria-label="Percorso">{{breadcrumbs}}</nav>
+    <nav id="breadcrumb" aria-label="Percorso">{{breadcrumbs}}</nav>
     <main id="content">{{content}}</main>
     {{footer}}
-  </body>
+
+
+    <script src="script/script.js"></script>
+</body>
+
 </html>
