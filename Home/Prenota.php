@@ -98,12 +98,12 @@ if (!empty($categorie)) {
 $content .= '
 <input type="submit" id="submitPrenotazione" value="Invia ordine">
 </form>
-</section> <script src="script/script.js"></script>';
+</section>';
 
 
 $menu = get_menu_Login();
 $template = str_replace('{{menu}}', $menu, $template);
 
 
-echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, 'ciaoo');
+echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
 ?>

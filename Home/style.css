@@ -39,13 +39,8 @@ html {
 }
 
 .srOnly {
-    position: absolute;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-    color: var(--textcolor);
-}
+    position:absolute;
+    left:-999em;}
 
 a:link {
     text-decoration: underline;
@@ -422,7 +417,7 @@ input {
     padding: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.2);
     /* L'ultimo valore (0.5) rappresenta l'opacità */
 }
 
