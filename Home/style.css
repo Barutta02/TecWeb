@@ -116,6 +116,8 @@ nav.menu ul li a {
 .containerPlatesViewer {
     width: 90%;
     margin: auto;
+    text-align: center;
+    padding: 1em;
 }
 
 .containerPlatesViewer ul {
@@ -229,6 +231,9 @@ dl.ListinoPrezzi div {
     margin: 1.5em;
 }
 
+.prices{
+    text-align: center;
+}
 .containerPlatesViewer>p {
     padding-bottom: 1em;
 }
@@ -282,7 +287,9 @@ fieldset ul li {
     padding: 1em;
 }
 
-
+#allergeni{
+    text-align: center;
+}
 /* Nascondi la checkbox predefinita */
 
 input[type="checkbox"] {
@@ -356,7 +363,9 @@ input[type="checkbox"]:checked+label:after {
 
 
 /*******************login signin *********************/
-
+#login, #signIn{
+    text-align: center;
+}
 #signIn label,
 #login label {
     font-size: 1.4em;
