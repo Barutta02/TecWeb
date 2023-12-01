@@ -577,7 +577,7 @@ input {
     left: 0;
     right: 0;
     z-index: 1;      
-    border-radius: calc(var(--curve) * 1px);    
+    border-radius:calc(var(--curve) * 1px) 0 0 0;    
     background-color: var(--surface-color);      
     transform: translateY(100%);
     transition: .2s ease-in-out;
