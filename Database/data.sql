@@ -6,7 +6,7 @@ VALUES
     ('Sashimi'),
     ('Secondi Piatti'),
     ('Uromaki'),
-    ('Fritti', 'Barche');
+    ('Fritti'), ('Barche');
 
 INSERT INTO
     Piatto (
@@ -95,7 +95,7 @@ VALUES
         9,
         'Gyoza di Verdure',
         'Ravioli giapponesi ripieni di verdure',
-        'Secondi Piatti' 11.99,
+        'Secondi Piatti', 11.99,
         'Entrambi',
         'AllaCarta'
     ),
@@ -264,7 +264,12 @@ VALUES
     -- Roll Vegano
     ('Pesce', 21);
 
+
 -- Nigiri di Tonno
+
+
+
+
 INSERT INTO
     Tavolo (IDTavolo, numPosti)
 SELECT
@@ -279,3 +284,22 @@ FROM
     ) AS numbers
 LIMIT
     50;
+
+--SE NON VA QUELLO SOPRA
+    /***
+    -- Nigiri di Tonno
+INSERT INTO
+    Tavolo (IDTavolo, numPosti)
+SELECT
+    n AS IDTavolo,
+    FLOOR(RAND() * (10 - 2 + 1) + 2) AS numPosti
+FROM
+    (
+        SELECT
+            @row_number:=@row_number+1 AS n
+        FROM
+            information_schema.tables, (SELECT @row_number:=0) AS t
+    ) AS numbers
+LIMIT
+    50;
+*/

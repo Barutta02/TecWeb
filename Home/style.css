@@ -4,6 +4,8 @@
 }
 
 :root {
+    --surface-color: #fff;
+  --curve: 40;
     --headerBgColor: #000;
     --menuBackground: #000;
     --headerTxtColor: rgb(255, 255, 255);
@@ -23,6 +25,7 @@
     --menuToggleColor: darkgoldenrod;
     --submitButtonColor: rgb(2, 117, 0);
     --borderMenuItem: rgb(58 58 58);
+    --NavmenuBorder: #fff;
     --font-body-family: system-ui, "sans-serif", sans-serif;
 }
 
@@ -62,11 +65,11 @@ header {
     text-align: center;
 }
 
-header h1 {
+h1.logo {
     text-transform: uppercase;
 }
 
-header h3 {
+h3.logo {
     letter-spacing: .5em;
 }
 
@@ -95,6 +98,38 @@ nav.menu ul li a {
     font-weight: bold;
     transition: color 0.3s ease;
     text-underline-offset: .3em;
+}
+
+/*ALLERGENI*/
+
+.allergeneImage {
+    position: relative;
+    top: 0.4em;
+    left: 0.5em;    display: inline-block;
+    width: 25px; /* Imposta la larghezza dell'immagine */
+    height: 25px; /* Imposta l'altezza dell'immagine */
+}
+#CrostaceiImage {
+    background: url(../assets/icon/Crostacei.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
+
+}
+
+#PesceImage {
+    background: url(../assets/icon/fish.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
+
+}
+#SedanoImage {
+    background: url(../assets/icon/celery.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
+}
+
+#SenapeImage {
+    background: url(../assets/icon/mustard.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
+}
+#SoiaImage {
+    background: url(../assets/icon/soy.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
+}
+#UovaImage {
+    background: url(../assets/icon/eggs.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
 #breadcrumb {
@@ -137,8 +172,11 @@ nav.menu ul li a {
     border-radius: 8px;
     padding: 1em;
     margin: .5em;
+    transition: .5s;
 }
-
+.menuItem:hover {
+    transform: scale(1.1);
+}
 .quantitaOrdine {
     float: right;
     padding: 0.5em;
@@ -177,11 +215,55 @@ main div {
 
 footer {
     background-color: var(--footerBgColor);
-    color: #fff;
+    color: var(--footerTxtColor);
     text-align: center;
+    border-top: 1px solid var(--NavmenuBorder);
+}
+#footerOrganizer {
     padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.footerDt{
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1.3em;
+    padding-top: 0.2em;
 }
 
+footer div, footer dl{
+    min-width: 200px;
+    text-align: left;
+    padding: 1em;
+}
+footer div{
+    padding: 1em;
+}
+#footerDesc{
+    max-width: 300px;
+}
+a.socialLogo::before {
+    content: "";
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    margin-right: .3em;
+    margin: .5em;
+}
+
+a.instagramLogo::before {
+    background-image: url(../assets/icon/instagram.png);
+}
+
+a.facebookLogo::before {
+    background-image: url(../assets/icon/facebook-app-symbol.png);
+}
+
+a.tikTokLogo::before {
+    background-image: url(../assets/icon/tik-tok.png);
+}
 
 /*******************MENU *********************/
 
@@ -426,7 +508,7 @@ input {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     max-width: 1024px;
     margin: auto;
 }
@@ -444,8 +526,133 @@ input {
     background-repeat: no-repeat;
     background-position: left top;
 }
+/**CHI SIAMO***/
+.componentList {
+    list-style: none;
+    margin: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
 
 
+
+.componentList li{
+    height: 300px;
+    background: #fff;
+    border-radius: calc(var(--curve) * 1px);
+    margin: 1em;
+    padding: .2em;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 4rem 5vw;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .card {
+    position: relative;
+    display: block;
+    height: 100%;  
+    border-radius: calc(var(--curve) * 1px);
+    overflow: hidden;
+    text-decoration: none;
+    padding: 0;
+  }
+  
+  .card__image {      
+    min-height: 250px;
+    min-width: 250px;
+    max-width: 250px;
+  }
+  
+  .card__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;      
+    border-radius: calc(var(--curve) * 1px);    
+    background-color: var(--surface-color);      
+    transform: translateY(100%);
+    transition: .2s ease-in-out;
+  }
+  
+  .card:hover .card__overlay {
+    transform: translateY(0);
+  }
+  
+  .card__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    padding: 1em;
+    border-radius: calc(var(--curve) * 1px) 0 0 0;    
+    background-color: var(--surface-color);
+    transform: translateY(-100%);
+    transition: .2s ease-in-out;
+  }
+  
+  .card__arc {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    bottom: 100%;
+    right: 0;      
+    z-index: 1;
+  }
+  
+  .card__arc path {
+    fill: var(--surface-color);
+  }       
+  
+  .card:hover .card__header {
+    transform: translateY(0);
+  }
+  
+  .card__thumb {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;      
+    border-radius: 50%;      
+  }
+  
+  .card__title {
+    font-size: 1em;
+    margin: 0 0 .3em;
+    color: #6A515E;
+  }
+  
+  .card__tagline {
+    display: block;
+    margin: 1em 0;
+    font-family: "MockFlowFont";  
+    font-size: .8em; 
+    color: #D7BDCA;  
+  }
+  
+  .card__status {
+    font-size: .8em;
+    color: #D7BDCA;
+  }
+  
+  .card__description {
+    padding: 0 2em 2em;
+    margin: 0;
+    color: #D7BDCA;
+    font-family: "MockFlowFont";   
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }    
+  
 /**NAVBAR MOBILE***/
 
 .menu-toggle {
@@ -485,6 +692,12 @@ input {
     }
     .homeImage {
         height: 40vh;
+    }
+    .nav-list.show{
+        border-bottom: 1px solid var(--NavmenuBorder);
+    }
+    #footerOrganizer {
+        justify-content: start;
     }
 }
 
