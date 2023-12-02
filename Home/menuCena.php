@@ -35,7 +35,7 @@ $content = '';
 $content .= $prices;
 $content .= '<section id="PiattiMenu" class="containerPlatesViewer"><h2>Plates</h2>';
 
-$content .= '<ul>';
+$content .= '<ul class="flexable">';
 $piattoDAO = new PiattoDAO();
 $piatti = PiattoDAO::getAllPiatti();
 if (!empty($piatti)) {

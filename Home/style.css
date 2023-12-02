@@ -11,6 +11,7 @@
     --headerTxtColor: rgb(255, 255, 255);
     --menuTxtcolor: #fff;
     --pageTxtColor: #fff;
+    --logoTxtColor: darkgoldenrod;
     --bgColor: rgb(0, 0, 0);
     --txtColor: rgb(0, 0, 0);
     --footerBgColor: #000;
@@ -67,6 +68,7 @@ header {
 
 h1.logo {
     text-transform: uppercase;
+    color: var(--logoTxtColor);
 }
 
 h3.logo {
@@ -150,12 +152,15 @@ nav.menu ul li a {
     padding: 1em;
 }
 
-.containerPlatesViewer ul {
-    font-size: 90%;
-    margin: auto;
+.flexable{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+.containerPlatesViewer ul {
+    font-size: 90%;
+    margin: auto;
     align-content: center;
     justify-content: center;
     background-color: var(--menuBackground);
@@ -221,13 +226,12 @@ footer {
 }
 #footerOrganizer {
     padding: 1em;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: space-evenly;
 }
 .footerDt{
     display: inline-block;
     font-weight: bold;
+    color: var(--LegendTxtColor);
     font-size: 1.3em;
     padding-top: 0.2em;
 }
@@ -505,9 +509,6 @@ input {
 
 #homeDescription {
     text-align: left;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
     justify-content: space-evenly;
     max-width: 1024px;
     margin: auto;
@@ -530,8 +531,6 @@ input {
 .componentList {
     list-style: none;
     margin: 2em;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
     
 }
@@ -617,7 +616,6 @@ input {
   }
   
   .card__thumb {
-    flex-shrink: 0;
     width: 50px;
     height: 50px;      
     border-radius: 50%;      
@@ -632,7 +630,6 @@ input {
   .card__tagline {
     display: block;
     margin: 1em 0;
-    font-family: "MockFlowFont";  
     font-size: .8em; 
     color: #D7BDCA;  
   }
@@ -646,13 +643,28 @@ input {
     padding: 0 2em 2em;
     margin: 0;
     color: #D7BDCA;
-    font-family: "MockFlowFont";   
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
     overflow: hidden;
   }    
   
+/****ADMIN PANEL*********/
+.DoneButton{
+    min-width: 65px;
+    height: 32px;
+    background-color: var(--submitButtonColor);
+    color: var(--pageTxtColor);
+    border-radius: 5px;
+    border: 0;
+    float: right;
+}
+
+.buttonDoneCompleted{
+    background: #6f6969;
+    content: 'Consegnato';
+}
+.buttonDoneCompleted::after {
+    content: ' - Consegnato';
+}
+
 /**NAVBAR MOBILE***/
 
 .menu-toggle {
@@ -662,6 +674,8 @@ input {
     font-weight: bold;
     display: none;
 }
+
+
 
 
 /* Stili per schermi di larghezza massima 600px */

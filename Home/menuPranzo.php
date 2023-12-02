@@ -17,7 +17,7 @@ if ($template === false) {
 
 $pageID = 'menuCenaBody';
 $title = "Menu Cena - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in:  Menu Cena</p> ';
+$breadcrumbs = '<p>Ti trovi in:  Menu Pranzo</p> ';
 
 $prices = file_get_contents($pricesTPath);
 if ($prices === false) {
@@ -35,7 +35,7 @@ $content = '';
 $content .= $prices;
 $content .= '<section id="PiattiMenu" class="containerPlatesViewer"><h2>Plates</h2>';
 
-$content .= '<ul>';
+$content .= '<ul class="flexable">';
 $piattoDAO = new PiattoDAO();
 $piatti = PiattoDAO::getPiattoByTipoMenu('Pranzo');
 if (!empty($piatti)) {

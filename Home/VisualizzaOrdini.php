@@ -9,7 +9,7 @@ require_once 'DAO/PrenotazioneDAO.php';
 //Control login e di aver gia scelto numero di persone e tavolo
 session_start();
 if (!isset($_SESSION["username"])) {
-    header("Location: ../Registration/login.php");
+    header("Location: login.php");
 }
 if (!isset($_SESSION["data_prenotazione_inCorso"])) {
     header("Location: NuovaPrenotazione.php");
@@ -38,7 +38,7 @@ if ($templatePlatesQ === false) {
 
 $pageID = 'ViewOrdiniBody';
 $title = "Visualizza ordini - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in:  Visualizza ordini</p> ';
+$breadcrumbs = '<p>Ti trovi in:  Area utente>>Visualizza ordini</p> ';
 
 
 $content = '<section id="ordiniOdierni" class="containerPlatesViewer">
@@ -48,7 +48,7 @@ $content = '<section id="ordiniOdierni" class="containerPlatesViewer">
 $ordineDAO = new OrdineDAO();
 $piatti = OrdineDAO::getOrdineByPrenotazione($_SESSION['username'], $_SESSION['data_prenotazione_inCorso']);
 if (!empty($piatti)) {
-    $content .= "<ul>";
+    $content .= "<ul class='flexable'>";
     foreach ($piatti as $piatto) {
         $refactorNomePiatto = str_replace(' ', '_', strtolower($piatto['NomePiatto']));
         $templatePlatesInputIter = $templatePlatesQC;
@@ -73,7 +73,7 @@ if (!empty($prenotazioniPassate)) {
         $ordini = OrdineDAO::getOrdineByPrenotazione($_SESSION['username'], $prenotazione["DataPrenotazione"]);
         if (!empty($ordini)) {
             $content .= '<section class="containerPlatesViewer"> <h3>     Questi sono i piatti che hai ordinato in data ' . $prenotazione["DataPrenotazione"] . '</h3>';
-            $content .= "<ul>";
+            $content .= "<ul class='flexable'>";
             foreach ($ordini as $piatto) {
                 $refactorNomePiatto = str_replace(' ', '_', strtolower($piatto['NomePiatto']));
                 //$ariaLabel = 'Piatto: ' . $piatto['NomePiatto'] . ', Descrizione: ' . $piatto['Descrizione'];

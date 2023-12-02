@@ -6,7 +6,7 @@ require_once 'DAO/CategoriaDAO.php';
 //Control login e di aver gia scelto numero di persone e tavolo
 session_start();
 if (!isset($_SESSION["username"])) {
-    header("Location: Registration/login.php");
+    header("Location: login.php");
 }
 if (!isset($_SESSION["data_prenotazione_inCorso"])) {
     header("Location: NuovaPrenotazione.php");
@@ -33,7 +33,7 @@ if ($templatePlatesInput === false) {
 
 $pageID = 'PrenotaBody';
 $title = "Prenota piatti - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in:  Prenota</p> ';
+$breadcrumbs = '<p>Ti trovi in:  Area utente>>Prenota</p> ';
 
 
 $content = '<section id="allergeni">
@@ -71,7 +71,7 @@ if (!empty($categorie)) {
     foreach ($categorie as $categoria) {
         $piatti = PiattoDAO::getPiattoByTipoCategory($categoria['Nome']);
         if (!empty($piatti)) {
-            $content .= " <fieldset> <legend>" . $categoria['Nome'] . "</legend> <ul>";
+            $content .= " <fieldset> <legend>" . $categoria['Nome'] . "</legend> <ul class='flexable'>";
             foreach ($piatti as $piatto) {
                 $templatePlatesInputIter = $templatePlatesInput;
                 $allergeniPiatto = AllergeneDAO::getAllergeniByPiatto(intval($piatto['IDPiatto']));

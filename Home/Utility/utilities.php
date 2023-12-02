@@ -106,7 +106,7 @@ function get_menu_NoLogin()
     $menu = '';
 
     // Link da inserire
-    $links = ["index.html", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "contattaci.html"];
+    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "contattaci.php"];
     // Nomi delle voci di menu
     $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti"];
     // Lingue dei link (se diverse da Italiano)
@@ -135,9 +135,37 @@ function get_menu_Login()
     $menu = '';
 
     // Link da inserire
-    $links = ["Prenota.php", "VisualizzaOrdini.php"];
+    $links = ["Prenota.php", "VisualizzaOrdini.php","NuovaPrenotazione.php"];
     // Nomi delle voci di menu
-    $names = ["Prenota", "Visualizza ordini"];
+    $names = ["Prenota", "Visualizza ordini","Gestisci prenotazione"];
+    // Lingue dei link (se diverse da Italiano)
+    $langs = ["", "",""];
+    // Numero dei link da mostrare (grandezza array)
+    $nLinks = count($links);
+
+    //Togliere dall'url restituito da PHP -- cambierà in base all'hosting 
+    $strToRemove = ROOT_FOLDER;
+    $currentPage = str_replace($strToRemove, "", $_SERVER['REQUEST_URI']);
+
+    for ($i = 0; $i < $nLinks; $i++) {
+        if ($currentPage == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
+            $menu .= '<li id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</li>';
+        } else {
+            $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
+        }
+    }
+    return $menu;
+}
+
+function get_menu_Admin()
+{
+
+    $menu = '';
+
+    // Link da inserire
+    $links = ["AdminPanel.php", "#" ];
+    // Nomi delle voci di menu
+    $names = ["Pannello amministratore", "Tavoli occupati"];
     // Lingue dei link (se diverse da Italiano)
     $langs = ["", ""];
     // Numero dei link da mostrare (grandezza array)
@@ -156,7 +184,6 @@ function get_menu_Login()
     }
     return $menu;
 }
-
 /*
     Restituisce il blocco nella productRow usato in Home, Categorie e Categoria
     $category indica se si trova nella pagina categoria o no
