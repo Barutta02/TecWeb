@@ -23,7 +23,7 @@ $prices = file_get_contents($pricesTPath);
 if ($prices === false) {
     die("Failed to load template file: $pricesTPath");
 }
-$prices = str_replace('{{TipoMenu}}', 'cena', $prices);
+$prices = str_replace('{{TipoMenu}}', 'Cena', $prices);
 $prices = str_replace('{{PrezzoLunVen}}', '20.10', $prices);
 $prices = str_replace('{{PrezzoFestivo}}', '23.10', $prices);
 

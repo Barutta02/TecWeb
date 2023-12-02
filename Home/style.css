@@ -17,11 +17,13 @@
     --footerBgColor: #000;
     --footerTxtColor: rgb(255, 255, 255);
     --linkColor: #ffffff;
-    --visitedLinkColor: #e74c3c;
+    --visitedLinkColor: #f4524d;
     /*importante il contrasto tra link visitato e non*/
-    --flagColor: rgb(218, 103, 60);
+    --flagColor: #f4524d;
     --fieldSetBorderColor: darkgoldenrod;
     --LegendTxtColor: darkgoldenrod;
+    --secondBodyColor:#fcf3dc;
+    --secondTitleColor:#c79e63;
     --alternative_text: darkgoldenrod;
     --menuToggleColor: darkgoldenrod;
     --submitButtonColor: rgb(2, 117, 0);
@@ -66,6 +68,16 @@ header {
     text-align: center;
 }
 
+/**
+    non riesco a farlo funzionare
+.userAreaLink::before{
+    content: url('../assets/Images/user.svg'); 
+    margin-right: 5px;
+position: relative;
+top: 7px;
+color: #ff0000; 
+
+}**/
 h1.logo {
     text-transform: uppercase;
     color: var(--logoTxtColor);
@@ -164,7 +176,7 @@ nav.menu ul li a {
     align-content: center;
     justify-content: center;
     background-color: var(--menuBackground);
-    color: var(--menuTxtcolor)
+    color: var(--menuTxtcolor);    
 }
 
 .menuItem {
@@ -172,14 +184,18 @@ nav.menu ul li a {
     grid-template-columns: 1fr 4fr;
     /* Crea due colonne con larghezza uguale */
     width: 250px;
+    background-color: var(--menuBackground);
     text-align: left;
     border: 0.5px solid var(--borderMenuItem);
+    flex-grow: 1;
     border-radius: 8px;
     padding: 1em;
     margin: .5em;
     transition: .5s;
 }
+
 .menuItem:hover {
+    box-shadow: 0 0 11px rgba(255, 250, 250, 0.2); 
     transform: scale(1.1);
 }
 .quantitaOrdine {
@@ -280,6 +296,21 @@ dl.ListinoPrezzi div {
     display: inline-block;
 }
 
+.iconTime{
+    max-width: 40px;
+    height: 40px;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: auto;
+    display: block;
+}
+.Cena{
+    background-image: url(../assets/Images/moon.PNG);
+}
+.Pranzo{
+    background-image: url(../assets/Images/sun.PNG);
+}
 .bold {
     font-weight: bold;
 }
@@ -507,25 +538,51 @@ input {
     /* L'ultimo valore (0.5) rappresenta l'opacità */
 }
 
-#homeDescription {
+.homeSection {
     text-align: left;
     justify-content: space-evenly;
-    max-width: 1024px;
     margin: auto;
 }
-
-#homeDescription div {
+#homeDescription{
+    margin: 2em;
+}
+.homeSection div{
     padding: 2em;
     max-width: 500px;
 }
 
-#imageDescription {
-    background-image: url(../assets/Images/home_image.jpg);
+.homeSection h3{
+    color: var(--LegendTxtColor);
+    font-size: 1.8em;
+    padding: 1em;
+}
+.homeSection p{
+    padding: 1em;
+}
+#presentationMenu{
+    background-color: var(--secondBodyColor);
+    color: #000;
+}
+.homeSection .image{
     min-width: 300px;
     min-height: 300px;
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: left top;
+    background-position: center top;
+    margin: 0.5em;
+
+}
+#restaurantImage{
+    background-image: url(../assets/Images/restoraunt.jpg);
+    position: relative;
+    top: -3em;
+}
+#imageDescription {
+    background-image: url(../assets/Images/home_image.jpg);
+}
+#qualityImage{
+    background-image: url(../assets/Images/quality.jpg);
+
 }
 /**CHI SIAMO***/
 .componentList {
@@ -534,7 +591,10 @@ input {
     justify-content: space-around;
     
 }
-
+#chiSiamoSection h2{
+    padding: 1em;
+    text-align: center;
+}
 
 
 .componentList li{
@@ -712,6 +772,9 @@ input {
     }
     #footerOrganizer {
         justify-content: start;
+    }
+    #restaurantImage{
+        top:0;
     }
 }
 
