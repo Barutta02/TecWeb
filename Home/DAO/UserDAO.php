@@ -7,8 +7,7 @@ class UserDao
 
     public function __construct()
     {
-        $db = Database::getInstance();
-        self::$conn = $db->getConnection();
+        self::$conn = Database::getInstance();
     }
 
 

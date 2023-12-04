@@ -7,8 +7,7 @@ class PrenotazioneDAO
 
     public function __construct()
     {
-        $db = Database::getInstance();
-        self::$conn = $db->getConnection();
+        self::$conn = Database::getInstance();
     }
 
     public static function createPrenotazione($username, $dataPrenotazione, $n_persone, $is_inCorso, $n_tavolo)

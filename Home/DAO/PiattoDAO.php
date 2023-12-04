@@ -6,8 +6,7 @@ class PiattoDAO
 
     public function __construct()
     {
-        $db = Database::getInstance();
-        self::$conn = $db->getConnection();
+        self::$conn = Database::getInstance();
     }
 
     public static function getPiattoById($id)

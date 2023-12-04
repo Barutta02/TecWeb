@@ -7,8 +7,7 @@ class OrdineDAO
 
     public function __construct()
     {
-        $db = Database::getInstance();
-        self::$conn = $db->getConnection();
+        self::$conn = Database::getInstance();
     }
 
     public static function createOrdine($idPiatto, $username, $dataOraOrdine, $dataPrenotazione, $quantita, $consegnato = false)

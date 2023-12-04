@@ -1,31 +1,28 @@
 <?php
 class Database {
-    private static $instance;
-    private $conn;
+    private static $conn;
 
-    private $host = '127.0.0.1';
-    private $username = 'root';
-    private $password = '';
-    private $database = 'sushirestoraunt';
-    private $port = '3306';
+    private static $host = '127.0.0.1';
+    private static $username = 'root';
+    private static $password = '';
+    private static $database = 'sushirestaurant';
+    private static $port = '3306';
 
-    public function __construct() {
-        $this->conn = new mysqli($this->host, $this->username, $this->password, $this->database,$this->port);
-        if ($this->conn->connect_error) {
-            die("Connection failed: " . $this->conn->connect_error);
-        }
+    private function __construct() {
+        
     }
 
     public static function getInstance() {
-        if (self::$instance === null) {
-            self::$instance = new Database();
+        if (self::$conn === null) {
+            self::$conn = new mysqli( self::$host,  self::$username,  self::$password,  self::$database,  self::$port);
+            if ( self::$conn->connect_error) {
+                die("Connection failed: " .  self::$conn->connect_error);
+            }
         }
-        return self::$instance;
+        return self::$conn;
     }
 
-    public function getConnection() {
-        return $this->conn;
-    }
 }
+
 
 ?>
