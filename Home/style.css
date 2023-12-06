@@ -806,6 +806,12 @@ input {
 #SezioneGestionePrenotazioni h2{
     padding: .5em;
 }
+
+#SezioneGestionePrenotazioni
+.buttonDoneCompleted::after {
+    content: ' - Terminata';
+}
+
 /**NAVBAR MOBILE***/
 
 .menu-toggle {
