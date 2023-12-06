@@ -112,7 +112,7 @@ function get_prenotation_form_menu($process_php_action)
     if ($templatePlatesInput === false) {
         die("Failed to load template file: $platesQuanityInputlayoutPath");
     }
-    $content = ' <form action="'. $process_php_action .'" method="post">';
+    $content = ' <form action="' . $process_php_action . '" method="post">';
     $piattoDAO = new PiattoDAO();
     $categoriaDAO = new CategoriaDAO();
     $categorie = CategoriaDAO::getAllCategory();
@@ -122,17 +122,17 @@ function get_prenotation_form_menu($process_php_action)
             if (!empty($piatti)) {
                 $content .= " <fieldset> <legend>" . $categoria['Nome'] . "</legend> <ul class='flexable'>";
                 foreach ($piatti as $piatto) {
-                    $templatePlatesInputIter = $templatePlatesInput;
+                    $templateSliderInputIter = $templatePlatesInput;
                     $allergeniPiatto = AllergeneDAO::getAllergeniByPiatto(intval($piatto['IDPiatto']));
                     $refactorNomePiatto = str_replace(' ', '_', strtolower($piatto['NomePiatto']));
                     // $ariaLabel = 'Piatto: ' . $piatto['NomePiatto'] . ', Descrizione: ' . $piatto['Descrizione'];
-                    $templatePlatesInputIter = str_replace('{{ListaAllergeni}}', implode(" ", $allergeniPiatto), $templatePlatesInputIter);
-                    $templatePlatesInputIter = str_replace('{{NomePiattoUnderscored}}', $refactorNomePiatto, $templatePlatesInputIter);
-                    $templatePlatesInputIter = str_replace('{{NomePiatto}}', $piatto['NomePiatto'], $templatePlatesInputIter);
-                    $templatePlatesInputIter = str_replace('{{Descrizione}}', $piatto['Descrizione'], $templatePlatesInputIter);
-                    $templatePlatesInputIter = str_replace('{{IDPiatto}}', $piatto['IDPiatto'], $templatePlatesInputIter);
+                    $templateSliderInputIter = str_replace('{{ListaAllergeni}}', implode(" ", $allergeniPiatto), $templateSliderInputIter);
+                    $templateSliderInputIter = str_replace('{{NomePiattoUnderscored}}', $refactorNomePiatto, $templateSliderInputIter);
+                    $templateSliderInputIter = str_replace('{{NomePiatto}}', $piatto['NomePiatto'], $templateSliderInputIter);
+                    $templateSliderInputIter = str_replace('{{Descrizione}}', $piatto['Descrizione'], $templateSliderInputIter);
+                    $templateSliderInputIter = str_replace('{{IDPiatto}}', $piatto['IDPiatto'], $templateSliderInputIter);
 
-                    $content .= $templatePlatesInputIter;
+                    $content .= $templateSliderInputIter;
                 }
                 $content .= "</ul></fieldset>";
             } else {
@@ -147,8 +147,68 @@ function get_prenotation_form_menu($process_php_action)
     $content .= '
 <input type="submit" id="submitPrenotazione" value="Invia ordine">
 </form>';
-return $content;
+    return $content;
 }
+
+function get_table_avaible()
+{
+    require_once 'DAO/TavoloDAO.php';
+    $tableSliderLayoutPath = 'Layouts/DisponibilitaTavoli.html';
+    $tableSliderLayout = file_get_contents($tableSliderLayoutPath);
+    if ($tableSliderLayout === false) {
+        die("Failed to load template file: $tableSliderLayoutPath");
+    }
+    $tavoli = TavoloDAO::getAvaibleTable();
+    $content = '';
+    if (!empty($tavoli)) {
+        $content .= " <ul class='tableList'>";
+
+        foreach ($tavoli as $tavolo) {
+
+            $templateSliderInputIter = $tableSliderLayout;
+            // $ariaLabel = 'Piatto: ' . $piatto['NomePiatto'] . ', Descrizione: ' . $piatto['Descrizione'];
+            $templateSliderInputIter = str_replace('{{Totale_tavoli}}', $tavolo['totale_disp'], $templateSliderInputIter);
+            $templateSliderInputIter = str_replace('{{Occupati}}', $tavolo['numeroOccupati'], $templateSliderInputIter);
+            $templateSliderInputIter = str_replace('{{NumPosti}}', $tavolo['numPosti'], $templateSliderInputIter);
+
+            $content .= $templateSliderInputIter;
+        }
+        $content .= "</ul>";
+    } else {
+        $content .= "No table found.";
+    }
+    return $content;
+}
+function get_active_prenotation()
+{
+    require_once 'DAO/PrenotazioneDAO.php';
+    $tableSliderLayoutPath = 'Layouts/activePrenotation.html';
+    $tableSliderLayout = file_get_contents($tableSliderLayoutPath);
+    if ($tableSliderLayout === false) {
+        die("Failed to load template file: $tableSliderLayoutPath");
+    }
+    $tavoli = PrenotazioneDAO::getActivePrenotation();
+    $content = '';
+    if (!empty($tavoli)) {
+        $content .= " <ul class='ActivePrenotationList'>";
+
+        foreach ($tavoli as $tavolo) {
+
+            $templateSliderInputIter = $tableSliderLayout;
+            // $ariaLabel = 'Piatto: ' . $piatto['NomePiatto'] . ', Descrizione: ' . $piatto['Descrizione'];
+            $templateSliderInputIter = str_replace('{{numTavolo}}', $tavolo['Tavolo'], $templateSliderInputIter);
+            $templateSliderInputIter = str_replace('{{Orario}}', $tavolo['DataPrenotazione'], $templateSliderInputIter);
+            $templateSliderInputIter = str_replace('{{Username}}', $tavolo['Username'], $templateSliderInputIter);
+
+            $content .= $templateSliderInputIter;
+        }
+        $content .= "</ul>";
+    } else {
+        $content .= "No active prenotation found.";
+    }
+    return $content;
+}
+
 /*
     Rimpiazza i placeholder del template html dell'area utente
     Senza keywords e descrizione
@@ -281,9 +341,9 @@ function get_menu_Admin()
     $menu = '';
 
     // Link da inserire
-    $links = ["AdminPanel.php", "#"];
+    $links = ["AdminPanel.php", "freeTable.php"];
     // Nomi delle voci di menu
-    $names = ["Pannello amministratore", "Tavoli occupati"];
+    $names = ["Pannello amministratore", "Gestione Prenotazioni"];
     // Lingue dei link (se diverse da Italiano)
     $langs = ["", ""];
     // Numero dei link da mostrare (grandezza array)

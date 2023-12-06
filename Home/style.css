@@ -725,6 +725,87 @@ input {
     content: ' - Consegnato';
 }
 
+
+/***TABLE MANAGMENT**********/
+.tableList, .ActivePrenotationList{
+    padding: 1em;
+    list-style-type: none;
+    margin: .3em;
+
+}
+.tableList li, .ActivePrenotationList li{
+    padding: .5em;
+    font-size: 1.3em;
+}
+
+.ActivePrenotationList li {
+    border-top: 1px solid var(--flagColor);
+    margin: 1em;
+    min-height: 75px;
+}
+
+
+.ActivePrenotationList li button{
+        margin: 1em 0 1em 
+}
+.sliderTablelider {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.sliderTable {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 80%;
+    height: 10px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+
+}
+
+.sliderTable:hover {
+    opacity: 1;
+}
+
+.sliderTable::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--flagColor);
+    cursor: pointer;
+}
+
+.sliderTable::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--flagColor);
+    cursor: pointer;
+}
+
+
+#SezioneGestioneTavoli {
+    width:70%;
+    min-width: 400px;
+}
+#SezioneGestionePrenotazioni ul {
+    width: 30%;
+    min-width: 400px;
+    max-height: 500px;
+    overflow-y: scroll;
+    direction: rtl;
+}
+#SezioneGestionePrenotazioni ul > * {
+    direction: ltr;
+}
+#SezioneGestionePrenotazioni h2{
+    padding: .5em;
+}
 /**NAVBAR MOBILE***/
 
 .menu-toggle {

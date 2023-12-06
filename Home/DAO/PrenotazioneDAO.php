@@ -1,9 +1,11 @@
 <?php
 require_once 'Connection.php';
 
-class PrenotazioneDAO {
+class PrenotazioneDAO
+{
 
-    public static function createPrenotazione($username, $dataPrenotazione, $n_persone, $is_inCorso, $n_tavolo) {
+    public static function createPrenotazione($username, $dataPrenotazione, $n_persone, $is_inCorso, $n_tavolo)
+    {
         try {
             DBAccess::open_connection();
 
@@ -17,24 +19,25 @@ class PrenotazioneDAO {
             $stmt->bind_param("ssiii", $username, $dataPrenotazione, $n_persone, $is_inCorso, $n_tavolo);
 
             // Esegui la query
-            if($stmt->execute()) {
+            if ($stmt->execute()) {
                 echo "Prenotazione inserita con successo";
             } else {
-                throw new Exception("Errore nell'inserimento della prenotazione: ".$stmt->error);
+                throw new Exception("Errore nell'inserimento della prenotazione: " . $stmt->error);
             }
         } catch (Exception $e) {
             // Handle the exception (log, display an error message, etc.)
             die($e->getMessage());
         } finally {
             // Chiudi il prepared statement e la connessione in ogni caso
-            if(isset($stmt)) {
+            if (isset($stmt)) {
                 $stmt->close();
             }
             DBAccess::close_connection();
         }
     }
 
-    public static function getOldPrenotazioniByUsername($username, $todayPrenotation) {
+    public static function getOldPrenotazioniByUsername($username, $todayPrenotation)
+    {
         try {
             DBAccess::open_connection();
 
@@ -49,14 +52,14 @@ class PrenotazioneDAO {
             $result = $stmt->get_result();
 
             // Check for errors in executing the statement
-            if(!$result) {
-                throw new Exception('Error in query execution: '.DBAccess::get_connection_state()->error);
+            if (!$result) {
+                throw new Exception('Error in query execution: ' . DBAccess::get_connection_state()->error);
             }
 
             $rows = [];
 
             // Fetch the data from the result set
-            while($row = $result->fetch_assoc()) {
+            while ($row = $result->fetch_assoc()) {
                 $rows[] = $row;
             }
 
@@ -66,12 +69,60 @@ class PrenotazioneDAO {
             die($e->getMessage());
         } finally {
             // Close the prepared statement and the database connection in every case
-            if(isset($stmt)) {
+            if (isset($stmt)) {
                 $stmt->close();
             }
             DBAccess::close_connection();
         }
     }
+
+    public static function getActivePrenotation()
+    {
+
+        try {
+            DBAccess::open_connection();
+
+            $query = "SELECT Tavolo, DataPrenotazione, Username  from Prenotazione where InCorso = 1 order by DataPrenotazione         ";
+            $result = DBAccess::get_connection_state()->query($query);
+
+            if ($result) {
+                $rows = [];
+                while ($row = $result->fetch_assoc()) {
+                    $rows[] = $row;
+                }
+
+                return $rows;
+            } else {
+                die('Error in query: ' . mysqli_error(DBAccess::get_connection_state()));
+            }
+        } catch (Exception $e) {
+            // Handle the exception (log, display an error message, etc.)
+            die($e->getMessage());
+        } finally {
+            // Ensure the database connection is always closed
+            DBAccess::close_connection();
+        }
+    }
+
+
+    public static function TerminaPrenotazione($username, $dataPrenotazione)
+    {
+        try {
+            DBAccess::open_connection();
+
+            $sql = "UPDATE Prenotazione SET InCorso = 0 WHERE Username = ? AND DataPrenotazione = ?";
+            $stmt = DBAccess::get_connection_state()->prepare($sql);
+
+            $stmt->bind_param("ss", $username, $dataPrenotazione);
+            $stmt->execute();
+        } catch (Exception $e) {
+            die($e->getMessage());
+        } finally {
+            $stmt->close();
+            DBAccess::close_connection();
+        }
+    }
+
     // Add more methods for CRUD operations on the User table
 
 }
