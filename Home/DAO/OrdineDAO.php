@@ -1,112 +1,106 @@
 <?php
-require_once 'Connect.php';
+require_once 'Connection.php';
 
-class OrdineDAO
-{
-    private static $conn;
+class OrdineDAO {
 
-    public function __construct()
-    {
-        self::$conn = Database::getInstance();
+    public static function createOrdine($idPiatto, $username, $dataOraOrdine, $dataPrenotazione, $quantita, $consegnato = false) {
+        try {
+            DBAccess::open_connection();
+
+            $sql = "INSERT INTO Ordine (IDPiatto, Username, DataOraOrdine, DataPrenotazione, Quantita, Consegnato) 
+                VALUES (?, ?, ?, ?, ?, ?)";
+
+            $stmt = DBAccess::get_connection_state()->prepare($sql);
+            $stmt->bind_param("isssii", $idPiatto, $username, $dataOraOrdine, $dataPrenotazione, $quantita, $consegnato);
+
+            if($stmt->execute()) {
+                echo "Ordine inserito con successo";
+            } else {
+                echo "Errore nell'inserimento dell'ordine: ".$stmt->error;
+            }
+        } catch (Exception $e) {
+            die($e->getMessage());
+        } finally {
+            DBAccess::close_connection();
+        }
     }
 
-    public static function createOrdine($idPiatto, $username, $dataOraOrdine, $dataPrenotazione, $quantita, $consegnato = false)
-    {
-        $sql = "INSERT INTO Ordine (IDPiatto, Username, DataOraOrdine, DataPrenotazione, Quantita, Consegnato) 
-            VALUES (?, ?, ?, ?, ?, ?)";
+    public static function getOrdineByPrenotazione($username, $data) {
+        try {
+            DBAccess::open_connection();
 
-        // Prepara il statement
-        $stmt = self::$conn->prepare($sql);
+            $query = "SELECT  Piatto.NomePiatto as NomePiatto,Piatto.Descrizione as Descrizione, Ordine.Quantita as Quantita, Ordine.Consegnato as isConsegnato  
+                      FROM Ordine JOIN Piatto on Piatto.IDPiatto = Ordine.IDPiatto 
+                      WHERE Ordine.Username = ? and Ordine.DataPrenotazione = ? 
+                      Order by Ordine.Consegnato";
 
-        // Lega i parametri
-        $stmt->bind_param("isssii", $idPiatto, $username, $dataOraOrdine, $dataPrenotazione, $quantita, $consegnato);
-        // Esegui la query
-        if ($stmt->execute()) {
-            echo "Ordine inserito con successo";
-        } else {
-            echo "Errore nell'inserimento dell'ordine: " . $stmt->error;
+            $stmt = DBAccess::get_connection_state()->prepare($query);
+            $stmt->bind_param('ss', $username, $data);
+
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if(!$result) {
+                die('Error in query execution: '.DBAccess::get_connection_state()->error);
+            }
+
+            $rows = [];
+            while($row = $result->fetch_assoc()) {
+                $rows[] = $row;
+            }
+
+            return $rows;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        } finally {
+            DBAccess::close_connection();
         }
-        // Chiudi il prepared statement e la connessione
-        $stmt->close();
     }
 
-    public static function getOrdineByPrenotazione($username, $data)
-    {
-        $query = "SELECT  Piatto.NomePiatto as NomePiatto,Piatto.Descrizione as Descrizione, Ordine.Quantita as Quantita, Ordine.Consegnato as isConsegnato  FROM Ordine JOIN Piatto on Piatto.IDPiatto = Ordine.IDPiatto WHERE Ordine.Username = ? and Ordine.DataPrenotazione = ? Order by Ordine.Consegnato";
-        $stmt = self::$conn->prepare($query);
-        $stmt->bind_param('ss', $username, $data);
-        // Execute the prepared statement
-        $stmt->execute();
+    public static function getAllToDoOrder() {
+        try {
+            DBAccess::open_connection();
 
-        // Get the result set from the executed statement
-        $result = $stmt->get_result();
+            $query = "SELECT  Piatto.NomePiatto as NomePiatto,Piatto.Descrizione as Descrizione, Ordine.Quantita as Quantita, 
+                              Ordine.Consegnato as isConsegnato, Ordine.DataOraOrdine as Dataora , Ordine.IDPiatto as IDPiatto, 
+                              Ordine.Username as cliente  
+                      FROM Ordine JOIN Piatto on Piatto.IDPiatto = Ordine.IDPiatto 
+                      WHERE Ordine.Consegnato = 0";
 
-        // Check for errors in executing the statement
-        if (!$result) {
-            die('Error in query execution: ' . self::$conn->error);
+            $result = DBAccess::get_connection_state()->query($query);
+
+            if($result) {
+                $rows = [];
+                while($row = $result->fetch_assoc()) {
+                    $rows[] = $row;
+                }
+
+                return $rows;
+            } else {
+                die('Error in query: '.mysqli_error(DBAccess::get_connection_state()));
+            }
+        } catch (Exception $e) {
+            die($e->getMessage());
+        } finally {
+            DBAccess::close_connection();
         }
-
-        $rows = [];
-
-        // Fetch the data from the result set
-        while ($row = $result->fetch_assoc()) {
-            $rows[] = $row;
-        }
-
-        // Close the prepared statement
-        $stmt->close();
-
-        // Return the fetched data
-        return $rows;
     }
 
-    public static function getAllToDoOrder()
-    {
-        $query = "SELECT  Piatto.NomePiatto as NomePiatto,Piatto.Descrizione as Descrizione, Ordine.Quantita as Quantita, Ordine.Consegnato as isConsegnato, Ordine.DataOraOrdine as Dataora , Ordine.IDPiatto as IDPiatto, Ordine.Username as cliente  FROM Ordine JOIN Piatto on Piatto.IDPiatto = Ordine.IDPiatto WHERE Ordine.Consegnato = 0";
-        $stmt = self::$conn->prepare($query);
-        // Execute the prepared statement
-        $stmt->execute();
+    public static function aggiornaStatoConsegna($idPiatto, $username, $dataOraOrdine, $nuovoStatoConsegnato) {
+        try {
+            DBAccess::open_connection();
 
-        // Get the result set from the executed statement
-        $result = $stmt->get_result();
+            $sql = "UPDATE Ordine SET Consegnato = ? WHERE IDPiatto = ? AND Username = ? AND DataOraOrdine = ?";
+            $stmt = DBAccess::get_connection_state()->prepare($sql);
 
-        // Check for errors in executing the statement
-        if (!$result) {
-            die('Error in query execution: ' . self::$conn->error);
+            $stmt->bind_param("siss", $nuovoStatoConsegnato, $idPiatto, $username, $dataOraOrdine);
+            $stmt->execute();
+        } catch (Exception $e) {
+            die($e->getMessage());
+        } finally {
+            $stmt->close();
+            DBAccess::close_connection();
         }
-
-        $rows = [];
-
-        // Fetch the data from the result set
-        while ($row = $result->fetch_assoc()) {
-            $rows[] = $row;
-        }
-
-        // Close the prepared statement
-        $stmt->close();
-
-        // Return the fetched data
-        return $rows;
     }
-
-function aggiornaStatoConsegna($idPiatto, $username, $dataOraOrdine, $nuovoStatoConsegnato) {
-    // Preparazione della query di aggiornamento
-    $sql = "UPDATE Ordine SET Consegnato = ? WHERE IDPiatto = ? AND Username = ? AND DataOraOrdine = ?";
-
-    // Preparazione dello statement
-    $stmt = self::$conn->prepare($sql);
-
-    // Binding dei parametri
-    $stmt->bind_param("siss", $nuovoStatoConsegnato, $idPiatto, $username, $dataOraOrdine);
-
-    // Esecuzione dello statement
-    $stmt->execute();
-
-    // Chiusura dello statement e della connessione
-    $stmt->close();
 }
-}
-
-
-// Repeat the process for other DAO classes (AllergeneDao, TavoloDao, PrenotazioneDao, OrdineDao, RecensioniDao)
 ?>
