@@ -32,7 +32,6 @@ $breadcrumbs = '<p>Ti trovi in:  Pannello amministratore</p> ';
 $content = '<section id="ordiniOdierni" class="containerPlatesViewer">
 <h2> Piatti da fare </h2>';
 
-$ordineDAO = new OrdineDAO();
 $piatti = OrdineDAO::getAllToDoOrder();
 if (!empty($piatti)) {
     $content .= "<ul class='flexable'>";

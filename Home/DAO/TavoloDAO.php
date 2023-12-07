@@ -16,14 +16,14 @@ class TavoloDAO
      ORDER BY T1.numPosti;
      
      ";
-            $result = DBAccess::get_connection_state()->query($query);
+            $result = mysqli_query(DBAccess::get_connection_state(), $query);
 
             if ($result) {
                 $rows = [];
                 while ($row = $result->fetch_assoc()) {
                     $rows[] = $row;
                 }
-
+                $result->free();
                 return $rows;
             } else {
                 die('Error in query: ' . mysqli_error(DBAccess::get_connection_state()));

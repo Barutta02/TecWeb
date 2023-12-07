@@ -85,7 +85,6 @@ function get_allergeni_form_section()
 <form>
   <ul id="listaAllergeni">';
 
-    $allergeneDAO = new AllergeneDAO();
     $allergeni = AllergeneDAO::getAllAllergeni();
 
     if (!empty($allergeni)) {
@@ -113,8 +112,6 @@ function get_prenotation_form_menu($process_php_action)
         die("Failed to load template file: $platesQuanityInputlayoutPath");
     }
     $content = ' <form action="' . $process_php_action . '" method="post">';
-    $piattoDAO = new PiattoDAO();
-    $categoriaDAO = new CategoriaDAO();
     $categorie = CategoriaDAO::getAllCategory();
     if (!empty($categorie)) {
         foreach ($categorie as $categoria) {
