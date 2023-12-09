@@ -5,3 +5,4 @@
 *.ipr
 .idea_modules/
 out/
+.DS_STORE
