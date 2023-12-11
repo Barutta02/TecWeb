@@ -404,14 +404,14 @@ fieldset ul li {
 }
 /* Nascondi la checkbox predefinita */
 
-input[type="checkbox"] {
+.PrenotaBody input[type="checkbox"] {
     display: none;
 }
 
 
 /* Stile della checkbox personalizzata */
 
-input[type="checkbox"]+label {
+.PrenotaBody input[type="checkbox"]+label {
     position: relative;
     padding-left: 30px;
     /* Regola se necessario */
@@ -421,7 +421,7 @@ input[type="checkbox"]+label {
 
 /* Stile del segno di spunta */
 
-input[type="checkbox"]+label:before {
+.PrenotaBody input[type="checkbox"]+label:before {
     content: "";
     position: absolute;
     left: 0;
@@ -438,7 +438,7 @@ input[type="checkbox"]+label:before {
 
 /* Stile del segno di spunta quando è selezionato */
 
-input[type="checkbox"]:checked+label:before {
+.PrenotaBody input[type="checkbox"]:checked+label:before {
     background-color: #3498db;
     /* Cambia il colore di sfondo quando è selezionato */
 }
@@ -446,7 +446,7 @@ input[type="checkbox"]:checked+label:before {
 
 /* Stile dell'area interna del segno di spunta (opzionale) */
 
-input[type="checkbox"]+label:after {
+.PrenotaBody input[type="checkbox"]+label:after {
     content: "\2713";
     /* Carattere Unicode per il checkmark */
     position: absolute;
@@ -465,7 +465,7 @@ input[type="checkbox"]+label:after {
 
 /* Stile dell'area interna quando è selezionata (opzionale) */
 
-input[type="checkbox"]:checked+label:after {
+.PrenotaBody input[type="checkbox"]:checked+label:after {
     visibility: visible;
 }
 
@@ -814,7 +814,7 @@ input {
 
 /**NAVBAR MOBILE***/
 
-.menu-toggle {
+.menu-toggle-label  , #mobile-menu-toggle {
     cursor: pointer;
     text-align: right;
     color: var(--menuToggleColor);
@@ -823,13 +823,12 @@ input {
 }
 
 
-
-
 /* Stili per schermi di larghezza massima 600px */
 
 @media only screen and (max-width: 600px) {
-    .menu-toggle {
+    .menu-toggle-label   {
         display: block;
+        z-index: 3;
     }
     .nav-list {
         display: none;
@@ -840,23 +839,33 @@ input {
         width: 100%;
         background-color: var(--headerBgColor);
     }
-    .nav-list.show {
+    #mobile-menu-toggle:checked + .menu-toggle-label + .nav-list {
         display: flex;
-    }
+        position: static;
+      }
+      
+      .menu-toggle-label::before {
+        content: "☰ Menu";
+      }
+      /* Cambia il contenuto prima dell'icona quando il checkbox è selezionato */
+      #mobile-menu-toggle:checked + .menu-toggle-label::before {
+        content: "✕ Close";
+      }
+      
+      /* Animazione di transizione */
+      .nav-list {
+        transition: display 0.3s ease-in-out;
+      }
     .nav-list li {
         margin: 0;
         text-align: center;
         padding: 10px;
     }
-    .menu-toggle {
-        display: block;
-    }
+
     .homeImage {
         height: 40vh;
     }
-    .nav-list.show{
-        border-bottom: 1px solid var(--NavmenuBorder);
-    }
+
     #footerOrganizer {
         justify-content: start;
     }

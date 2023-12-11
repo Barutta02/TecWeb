@@ -11,21 +11,6 @@ function addCheckboxListeners() {
 }
 addCheckboxListeners();
 
-document.addEventListener("DOMContentLoaded", function () {
-  var mobileMenu = document.getElementById("mobile-menu");
-  var navList = document.querySelector(".nav-list");
-
-  mobileMenu.addEventListener("click", function () {
-    navList.classList.toggle("show");
-  });
-
-  document.addEventListener("click", function (event) {
-    if (!event.target.closest(".menu")) {
-      navList.classList.remove("show");
-    }
-  });
-});
-
 function aggiornaConsegna(button) {
   // Recupera i dati direttamente dal pulsante
   var dataOra = button.getAttribute("data-dataOra");
