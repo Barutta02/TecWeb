@@ -1,3 +1,4 @@
+<!-- LTeX: language=it -->
 # TecWeb
 ## Descrizione
 Creare un applicazione di un ristorante sushi all you can eat che permetta al ristorante di gestire il proprio menù, la quantità di tavoli e posti a sedere. 
@@ -17,6 +18,44 @@ Solo al termine di una cena la recensione può essere lasciata.
 
 Inoltre ogni piatto deve mostrare gli allergeni che contiene fornendo all'utente la possibilità di escludere dalla vista i piatti che contengono determinati allergeni.
 
+## Come accedere al sito da remoto (Tunnel SSH)
+### Aprire il tunnel SSH
+Aprire il tunnel SSH verso il server del Paolotti:
+```console
+ssh paolotti.studenti.math.unipd.it -l nome_utente_labortorio -L8080:tecweb:80 -L8443:tecweb:443 -L8022:tecweb:22
+```
+Il tunnel va tenuto aperto per tutto il tempo necessario (non chiudere la shell SSH), altrimenti i comandi e URL dei paragrafi successivi non saranno più validi!
+
+### Accedere al sito e al pannello PHPMyAdmin
+Per accedere usare:
+| **Contenuto** | **URL** |
+|---|---|
+| Sito | http://localhost:8080/nome_utente_laboratorio/Home/index.php |
+| PHPMyAdmin  | http://localhost:8080/phpmyadmin/ |
+
+### Recuperare la password del proprio database
+Nella shell dove è stata aperta la connessione del tunnel SSH, aprire un'altra connessione SSH verso il server *tecweb.studenti.math.unipd.it* e fare il *cat* del file con la password:
+```console
+ssh nome_utente_laboratorio@tecweb.studenti.math.unipd.it
+cat pwd_db_2023-24.txt
+```
+Verrà stampata la password del database. Successivamente chiudere la connessione verso il server *tecweb*:
+```console
+exit
+```
+
+### Copiare il progetto nel server del Paolotti
+Usare il seguente comando dentro la root della cartella del progetto di Tecnologie Web:
+```console
+scp -P 8022 -r -p * nome_utente_laboratorio@localhost:public_html/
+```
+Usando l'argomento *-r* (ricorsivo) e *-p \** veranno caricati tutti i file dentro la cartella corrente sul server di **tecweb.studenti.math.unipd.it** nella posizione corretta.
+
+### Chiudere il tunnel SSH
+Importante: chiudere sempre il tunnel SSH correttamente quando avete terminato. Andare nella shell dove avete aperto il tunnel, eseguire:
+```console
+exit
+```
 
 ## Validatori e strumenti
 - ### Struttura
@@ -26,20 +65,32 @@ Inoltre ogni piatto deve mostrare gli allergeni che contiene fornendo all'utente
         - la presenza di tutte le keyword;
         - l'assenza di "untitled";
         - l'assenza di doppioni di parole;
+    - [W3C HTML Tool (nu)](https://validator.w3.org/nu), per regole ARIA? 
 
 - ### Presentazione
     - [W3C CSS Tool](https://jigsaw.w3.org/css-validator/), controllo della conformità allo standard CSS 3;
     - ["Emulatore di daltonismo"](https://colororacle.org/), serve a verificare che i colori siano corretti anche per le persone con daltonismo;
     - [Controllo contrasto e accessibilità del colore](https://color.a11y.com/), attenzione, a volte può dare falsi positivi oppure potrebbe dare dei falsi negativi;
-    - [CCA](https://www.tpgi.com/color-contrast-checker/), è un programma che permette di controllare il contrastro del colore, e di capire per quali parti della pagina è utilizzabile.
+    - [CCA](https://www.tpgi.com/color-contrast-checker/), è un programma che permette di controllare il contrasto del colore, e di capire per quali parti della pagina è utilizzabile;
+    - [Color Oracle](https://colororacle.org);
+    - [Color Contrast Accessibility Validator](https://color.a11y.com).
 
 - ### Tool solo in LAB140
-    - **Total Validator, versione Pro**, è essenziale l'assenza di errori prima della consegna del progetto.
+    - **Total Validator, versione Basic**, è essenziale controllare prima della consegna del progetto, ogni tanto da dei falsi positivi, in caso di dubbi chiedere alla prof.
+
+- ### Altro
+    - [Screen reader](https://www.nvaccess.org/download/), consigliato dalla prof;
+    - [Velocità di caricamento sito](https://pagespeed.web.dev/), per verificare la "pesantezza" del sito;
+    - [Wcag4All](https://web.math.unipd.it/accessibility/test.html);
+    - **Testare il sito con i browser più importanti: Firefox, MS Edge/Chrome, Safari**.
+
 ---
 
-## Siti utili secondo la prof
+## Siti utili secondo la prof.
 - [Microformati](https://microformats.org/), per i microformati;
-- [Palette cromatiche accessibili](http://colorsafe.co/), permette di generare delle palette cromatiche a partire dal colore di bandiera, rispetta il WCAG 2.1.
-
+- [Palette cromatiche accessibili](http://colorsafe.co/), permette di generare delle palette cromatiche a partire dal colore di bandiera, rispetta il WCAG 2.1;
+- [WAI-ARI](https://w3c.github.io/using-aria/), preferibilmente non usarlo;
+- [Lista ruoli WAI-ARI](https://www.w3.org/WAI/PF/aria/roles);
+- [PageSpeed Insights](https://pagespeed.web.dev/).
 
  That is it, per il momento...
