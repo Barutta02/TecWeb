@@ -1,6 +1,5 @@
 <li class="menuItem">
-    <!--TODO  aria-label="Immagine rappresentativa del piatto {{NomePiattoUnderscore}}-->
-    <div class="imageMenuItem {{NomePiattoUnderscored}}">g</div>
+    <div class="imageMenuItem {{NomePiattoUnderscored}}" aria-label="Immagine rappresentativa del piatto {{NomePiattoUnderscore}}"></div>
     <div class="infoItem">
       <dl>
         <dt class="nomePiatto" data-title="Nome Piatto">{{NomePiatto}}</dt>
@@ -9,7 +8,8 @@
         </dd>
         <dd data-title="Quantità">
           Quantità:
-          <p class="bold inline">{{Quantita}}</p>
+            <!-- BEFORE <p class="bold inline">{{Quantita}}</p> -->
+            <span class="bold inline">{{Quantita}}</span>
         </dd>
         <button onclick="aggiornaConsegna(this)" class="DoneButton" data-dataOra="{{Orario}}" data-piatto="{{IdPiatto}}" data-cliente="{{Cliente}}">Fatto</button>
       </dl>
