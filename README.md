@@ -50,7 +50,7 @@ Usare il seguente comando dentro la root della cartella del progetto di Tecnolog
 scp -P 8022 -r -p * nome_utente_laboratorio@localhost:public_html/
 ```
 Usando l'argomento *-r* (ricorsivo) e *-p \** veranno caricati tutti i file dentro la cartella corrente sul server di **tecweb.studenti.math.unipd.it** nella posizione corretta.
-
+Se possibile, meglio caricare solo le cartelle strettamente necessarie.
 ### Chiudere il tunnel SSH
 Importante: chiudere sempre il tunnel SSH correttamente quando avete terminato. Andare nella shell dove avete aperto il tunnel, eseguire:
 ```console
