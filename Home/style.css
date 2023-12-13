@@ -115,7 +115,12 @@ nav.menu ul li a {
 }
 
 /*ALLERGENI*/
-
+.menuItem .allergeneImage{
+margin: 0;
+}
+.allergeniPlateList , .allergeniPlateList + dd{
+    display: inline-block;
+}
 .allergeneImage {
     position: relative;
     top: 0.4em;
@@ -123,26 +128,26 @@ nav.menu ul li a {
     width: 25px; /* Imposta la larghezza dell'immagine */
     height: 25px; /* Imposta l'altezza dell'immagine */
 }
-#CrostaceiImage {
+.CrostaceiImage {
     background: url(../assets/icon/Crostacei.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
 
 }
 
-#PesceImage {
+.PesceImage {
     background: url(../assets/icon/fish.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
 
 }
-#SedanoImage {
+.SedanoImage {
     background: url(../assets/icon/celery.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
-#SenapeImage {
+.SenapeImage {
     background: url(../assets/icon/mustard.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
 }
-#SoiaImage {
+.SoiaImage {
     background: url(../assets/icon/soy.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
 }
-#UovaImage {
+.UovaImage {
     background: url(../assets/icon/eggs.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
@@ -211,6 +216,8 @@ nav.menu ul li a {
 .infoItem {
     padding-left: 4%;
 }
+.allergeniPlateList{
+    list-style-type: none;}
 
 .prezzo,
 .quantitaOrdine {

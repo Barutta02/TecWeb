@@ -128,6 +128,11 @@ function get_prenotation_form_menu($process_php_action)
                     $templateSliderInputIter = str_replace('{{NomePiatto}}', $piatto['NomePiatto'], $templateSliderInputIter);
                     $templateSliderInputIter = str_replace('{{Descrizione}}', $piatto['Descrizione'], $templateSliderInputIter);
                     $templateSliderInputIter = str_replace('{{IDPiatto}}', $piatto['IDPiatto'], $templateSliderInputIter);
+                    $platesAllergeniList = "";
+                    foreach ($allergeniPiatto as $allergene) {
+                        $platesAllergeniList .= '<dd class="allergeneImage ' . $allergene . 'Image" data-allergene="' . $allergene . '"></dd>';
+                    }
+                    $templateSliderInputIter = str_replace('{{Allergeni}}', $platesAllergeniList, $templateSliderInputIter);
 
                     $content .= $templateSliderInputIter;
                 }
