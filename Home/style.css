@@ -860,7 +860,7 @@ input {
       }
       /* Cambia il contenuto prima dell'icona quando il checkbox è selezionato */
       #mobile-menu-toggle:checked + .menu-toggle-label::before {
-        content: "✕ Close";
+        content: "✕ Chiudi";
       }
       
       /* Animazione di transizione */
