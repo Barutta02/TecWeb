@@ -23,9 +23,8 @@ $content .= get_prices_section('Pranzo', '14.10', '16.10');
 $content .= '<section id="PiattiMenu" class="containerPlatesViewer"><h2>Plates</h2>';
 
 
-$piattoDAO = new PiattoDAO();
 $piatti = PiattoDAO::getPiattoByTipoMenu('Pranzo');
- 
+
 $content .= get_all_formatted_plates_Menu($piatti);
 
 $content .= ' </section>';

@@ -14,7 +14,7 @@ if ($template === false) {
 }
 $pageID = 'homeID';
 $title = "Home - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in: <span lan="en">Home</span></p> ';
+$breadcrumbs = '<p>Ti trovi in: <span lang="en">Home</span></p> ';
 
 
 //Sezione di presentazione del ristorante

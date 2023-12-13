@@ -31,7 +31,7 @@ $content = get_allergeni_form_section();
 $content .= ' <section id="PiattiMenu" class="containerPlatesViewer">
 <h2 > ' . $_SESSION['name'] . ' ordina qui i tuoi piatti
 </h2>' . get_prenotation_form_menu('process/process_prenotazione.php')
-.'</section>';
+    . '</section>';
 
 
 $menu = get_menu_Login();

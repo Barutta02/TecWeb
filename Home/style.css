@@ -238,6 +238,7 @@ nav.menu ul li a {
 
 dd.ingradienti {
     color: var(--flagColor);
+    padding:  .4em 0 .4em;
 }
 
 main div {

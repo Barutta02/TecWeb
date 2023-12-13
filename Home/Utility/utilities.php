@@ -115,7 +115,7 @@ function get_prenotation_form_menu($process_php_action)
     $categorie = CategoriaDAO::getAllCategory();
     if (!empty($categorie)) {
         foreach ($categorie as $categoria) {
-            $piatti = PiattoDAO::getPiattoByTipoCategory($categoria['Nome']);
+            $piatti = PiattoDAO::getPlatesByHours_Category($categoria['Nome']);
             if (!empty($piatti)) {
                 $content .= " <fieldset> <legend>" . $categoria['Nome'] . "</legend> <ul class='flexable'>";
                 foreach ($piatti as $piatto) {
@@ -133,7 +133,7 @@ function get_prenotation_form_menu($process_php_action)
                 }
                 $content .= "</ul></fieldset>";
             } else {
-                $content .= "No piatti found.";
+                $content .= "";
             }
 
         }
