@@ -27,7 +27,7 @@ class PiattoDAO
     private static function isTimeForDinner()
     {
         $currentHour = date('H');
-        return ($currentHour >= 18 && $currentHour < 22);
+        return ($currentHour >= 18 && $currentHour < 23);
     }
 
     public static function getPlatesByHours_Category($categoria)

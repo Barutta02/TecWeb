@@ -1,9 +1,14 @@
 <!-- TODO menu image manca aria-label o da cambiare il div che contiene un immagine con tag img-->
 <li class="menuItem {{ListaAllergeni}}" tabindex="31">
-  <div class="imageMenuItem {{NomePiattoUnderscored}}" aria-label= "questo è un {{NomeUnderscored}}"></div>
+  <div
+    class="imageMenuItem {{NomePiattoUnderscored}}"
+    aria-label="questo è un {{NomeUnderscored}}"
+  ></div>
   <div>
     <dl>
-      <dt class="nomePiatto" data-title="Nome Piatto">{{NomePiatto}}</dt>
+      <dt class="nomePiatto" data-title="Nome Piatto" lang="it-JP">
+        {{NomePiatto}}
+      </dt>
       <dd class="ingradienti" data-title="Descrizione ingredienti">
         {{Descrizione}}
       </dd>

@@ -193,6 +193,11 @@ nav.menu ul li a {
     transition: 0.5s;
 }
 
+.menuItem dl{
+    padding-left: 0.5em;
+
+}
+
 .menuItem:hover {
     box-shadow: 0 0 11px rgba(255, 250, 250, 0.2);
     transform: scale(1.1);
