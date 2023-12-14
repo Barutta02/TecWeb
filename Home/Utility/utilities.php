@@ -56,7 +56,7 @@ function get_all_formatted_plates_Menu($piatti)
         $piattotemplate = file_get_contents($plateslayoutPath);
         foreach ($piatti as $piatto) {
             $piattotemplates = $piattotemplate;
-            $piattotemplates = str_replace('{{NomeUnderscored}}', str_replace(' ', '_', strtolower($piatto['NomePiatto'])), $piattotemplates);
+            $piattotemplates = str_replace('{{NomeUnderscored}}', str_replace(' ', '', strtolower($piatto['NomePiatto'])), $piattotemplates);
             $piattotemplates = str_replace('{{Nome}}', $piatto['NomePiatto'], $piattotemplates);
             $piattotemplates = str_replace('{{Descrizione}}', $piatto['Descrizione'], $piattotemplates);
             $piattotemplates = str_replace('{{Prezzo}}', $piatto['Prezzo'], $piattotemplates);
@@ -122,7 +122,7 @@ function get_prenotation_form_menu($process_php_action)
                 foreach ($piatti as $piatto) {
                     $templateSliderInputIter = $templatePlatesInput;
                     $allergeniPiatto = AllergeneDAO::getAllergeniByPiatto(intval($piatto['IDPiatto']));
-                    $refactorNomePiatto = str_replace(' ', '_', strtolower($piatto['NomePiatto']));
+                    $refactorNomePiatto = str_replace(' ', '', strtolower($piatto['NomePiatto']));
                     // $ariaLabel = 'Piatto: ' . $piatto['NomePiatto'] . ', Descrizione: ' . $piatto['Descrizione'];
                     $templateSliderInputIter = str_replace('{{ListaAllergeni}}', implode(" ", $allergeniPiatto), $templateSliderInputIter);
                     $templateSliderInputIter = str_replace('{{NomePiattoUnderscored}}', $refactorNomePiatto, $templateSliderInputIter);

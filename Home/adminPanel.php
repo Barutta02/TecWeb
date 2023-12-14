@@ -36,7 +36,7 @@ $piatti = OrdineDAO::getAllToDoOrder();
 if (!empty($piatti)) {
     $content .= "<ul class='flexable'>";
     foreach ($piatti as $piatto) {
-        $refactorNomePiatto = str_replace(' ', '_', strtolower($piatto['NomePiatto']));
+        $refactorNomePiatto = str_replace(' ', '', strtolower($piatto['NomePiatto']));
         $templatePlatesInputIter = $templatePlatesAdmin;
         $templatePlatesInputIter = str_replace('{{NomePiattoUnderscored}}', $refactorNomePiatto, $templatePlatesInputIter);
         $templatePlatesInputIter = str_replace('{{NomePiatto}}', $piatto['NomePiatto'], $templatePlatesInputIter);

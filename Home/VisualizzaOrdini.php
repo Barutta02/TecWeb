@@ -50,7 +50,7 @@ $piatti = OrdineDAO::getOrdineByPrenotazione($_SESSION['username'], $_SESSION['d
 if (!empty($piatti)) {
     $content .= "<ul class='flexable'>";
     foreach ($piatti as $piatto) {
-        $refactorNomePiatto = str_replace(' ', '_', strtolower($piatto['NomePiatto']));
+        $refactorNomePiatto = str_replace(' ', '', strtolower($piatto['NomePiatto']));
         $templatePlatesInputIter = $templatePlatesQC;
         $templatePlatesInputIter = str_replace('{{NomePiattoUnderscored}}', $refactorNomePiatto, $templatePlatesInputIter);
         $templatePlatesInputIter = str_replace('{{NomePiatto}}', $piatto['NomePiatto'], $templatePlatesInputIter);
@@ -75,7 +75,7 @@ if (!empty($prenotazioniPassate)) {
             $content .= '<section class="containerPlatesViewer"> <h3>     Questi sono i piatti che hai ordinato in data ' . $prenotazione["DataPrenotazione"] . '</h3>';
             $content .= "<ul class='flexable'>";
             foreach ($ordini as $piatto) {
-                $refactorNomePiatto = str_replace(' ', '_', strtolower($piatto['NomePiatto']));
+                $refactorNomePiatto = str_replace(' ', '', strtolower($piatto['NomePiatto']));
                 //$ariaLabel = 'Piatto: ' . $piatto['NomePiatto'] . ', Descrizione: ' . $piatto['Descrizione'];
                 $templatePlatesOld = $templatePlatesQ;
                 $templatePlatesOld = str_replace('{{NomePiattoUnderscored}}', $refactorNomePiatto, $templatePlatesOld);
