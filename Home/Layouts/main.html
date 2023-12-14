@@ -15,16 +15,15 @@
     <a href="#content" class="srOnly">Vai al contenuto</a> {{header}}
 
     <nav id="menu" class="menu" aria-label="Navigazione Principale">
-      <form id="#toggleMenuForm">
+      <form id="toggleMenuForm">
         <div>
           <input type="checkbox" id="mobile-menu-toggle" />
           <label for="mobile-menu-toggle" class="menu-toggle-label"></label>
+          <ul class="nav-list">
+            {{menu}}
+          </ul>
         </div>
       </form>
-
-      <ul class="nav-list">
-        {{menu}}
-      </ul>
     </nav>
     <nav id="breadcrumb" aria-label="Percorso">{{breadcrumbs}}</nav>
     <main id="content">{{content}}</main>

@@ -857,7 +857,7 @@ input {
         width: 100%;
         background-color: var(--headerBgColor);
     }
-    #mobile-menu-toggle:checked ~ #toggleMenuForm + .menu-toggle-label + .nav-list {
+   #mobile-menu-toggle:checked  + .menu-toggle-label + .nav-list {
         display: flex;
         position: static;
       }
