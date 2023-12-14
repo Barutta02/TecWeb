@@ -23,7 +23,7 @@ if ($signInSectionhtml === false) {
 
 $content = $signInSectionhtml;
 
-$menu = '';
+$menu = get_menu_NoLogin();
 $template = str_replace('{{menu}}', $menu, $template);
 
 

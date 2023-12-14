@@ -23,8 +23,9 @@ if ($loginSectionhtml === false) {
 
 $content = $loginSectionhtml;
 
-$menu = '';
+$menu = get_menu_NoLogin();
 $template = str_replace('{{menu}}', $menu, $template);
+
 
 
 echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');

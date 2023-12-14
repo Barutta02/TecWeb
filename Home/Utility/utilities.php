@@ -1,7 +1,7 @@
 <?php
 
 
-define("ROOT_FOLDER", "/Home/");
+define("ROOT_FOLDER", "/TecWeb/Home/");
 
 
 /*
@@ -316,11 +316,11 @@ function get_menu_Login()
     $menu = '';
 
     // Link da inserire
-    $links = ["Prenota.php", "VisualizzaOrdini.php", "NuovaPrenotazione.php"];
+    $links = ["Prenota.php", "VisualizzaOrdini.php", "NuovaPrenotazione.php", "index.php"];
     // Nomi delle voci di menu
-    $names = ["Prenota", "Visualizza ordini", "Gestisci prenotazione"];
+    $names = ["Prenota", "Visualizza ordini", "Gestisci prenotazione", "Torna in Home"];
     // Lingue dei link (se diverse da Italiano)
-    $langs = ["", "", ""];
+    $langs = ["", "", "", "it-en"];
     // Numero dei link da mostrare (grandezza array)
     $nLinks = count($links);
 
@@ -344,11 +344,11 @@ function get_menu_Admin()
     $menu = '';
 
     // Link da inserire
-    $links = ["AdminPanel.php", "freeTable.php"];
+    $links = ["AdminPanel.php", "freeTable.php", "index.php"];
     // Nomi delle voci di menu
-    $names = ["Pannello amministratore", "Gestione Prenotazioni"];
+    $names = ["Pannello amministratore", "Gestione Prenotazioni", "Torna in home"];
     // Lingue dei link (se diverse da Italiano)
-    $langs = ["", ""];
+    $langs = ["", "", "it-en"];
     // Numero dei link da mostrare (grandezza array)
     $nLinks = count($links);
 
