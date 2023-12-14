@@ -83,6 +83,7 @@ function get_allergeni_form_section()
     $content = '<section id="allergeni">
 <h4 >Seleziona gli allergeni da evitare:</h4>
 <form>
+<fieldset>
   <ul id="listaAllergeni">';
 
     $allergeni = AllergeneDAO::getAllAllergeni();
@@ -94,7 +95,7 @@ function get_allergeni_form_section()
             $content .= $templateAllergeniChboxN;
         }
     }
-    $content .= '</ul>
+    $content .= '</ul></fieldset>
 </form>
 </section>';
     return $content;
@@ -130,7 +131,7 @@ function get_prenotation_form_menu($process_php_action)
                     $templateSliderInputIter = str_replace('{{IDPiatto}}', $piatto['IDPiatto'], $templateSliderInputIter);
                     $platesAllergeniList = "";
                     foreach ($allergeniPiatto as $allergene) {
-                        $platesAllergeniList .= '<dd class="allergeneImage ' . $allergene . 'Image" data-allergene="' . $allergene . '"></dd>';
+                        $platesAllergeniList .= '<dd aria-label="Allergene ' . $allergene . '" title="' . $allergene . '" class="allergeneImage ' . $allergene . 'Image" data-allergene="' . $allergene . '"></dd>';
                     }
                     $templateSliderInputIter = str_replace('{{Allergeni}}', $platesAllergeniList, $templateSliderInputIter);
 

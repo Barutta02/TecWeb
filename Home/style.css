@@ -427,14 +427,14 @@ fieldset ul li {
 }
 /* Nascondi la checkbox predefinita */
 
-.PrenotaBody input[type="checkbox"] {
+#allergeni input[type="checkbox"] {
     display: none;
 }
 
 
 /* Stile della checkbox personalizzata */
 
-.PrenotaBody input[type="checkbox"]+label {
+#allergeni input[type="checkbox"]+label {
     position: relative;
     padding-left: 30px;
     /* Regola se necessario */
@@ -444,7 +444,7 @@ fieldset ul li {
 
 /* Stile del segno di spunta */
 
-.PrenotaBody input[type="checkbox"]+label:before {
+#allergeni input[type="checkbox"]+label:before {
     content: "";
     position: absolute;
     left: 0;
@@ -461,7 +461,7 @@ fieldset ul li {
 
 /* Stile del segno di spunta quando è selezionato */
 
-.PrenotaBody input[type="checkbox"]:checked+label:before {
+#allergeni input[type="checkbox"]:checked+label:before {
     background-color: #3498db;
     /* Cambia il colore di sfondo quando è selezionato */
 }
@@ -469,7 +469,7 @@ fieldset ul li {
 
 /* Stile dell'area interna del segno di spunta (opzionale) */
 
-.PrenotaBody input[type="checkbox"]+label:after {
+#allergeni input[type="checkbox"]+label:after {
     content: "\2713";
     /* Carattere Unicode per il checkmark */
     position: absolute;
@@ -488,7 +488,7 @@ fieldset ul li {
 
 /* Stile dell'area interna quando è selezionata (opzionale) */
 
-.PrenotaBody input[type="checkbox"]:checked+label:after {
+#allergeni input[type="checkbox"]:checked+label:after {
     visibility: visible;
 }
 
