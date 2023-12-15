@@ -10,12 +10,8 @@ if (!isset($_SESSION["data_prenotazione_inCorso"])) {
     header("Location: NuovaPrenotazione.php");
 }
 
-$templatePath = 'Layouts/main.html';
 
-if (!file_exists($templatePath)) {
-    die("Template file not found: $templatePath");
-}
-$template = file_get_contents($templatePath);
+$template = getTemplate('Layouts/main.html');
 
 
 

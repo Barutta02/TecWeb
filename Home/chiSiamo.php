@@ -4,14 +4,9 @@ require_once "Utility/utilities.php";
 
 
 //TEMPLATE comune
-$templatePath = 'Layouts/main.html';
-if (!file_exists($templatePath)) {
-    die("Template file not found: $templatePath");
-}
-$template = file_get_contents($templatePath);
-if ($template === false) {
-    die("Failed to load template file: $templatePath");
-}
+
+$template = getTemplate('Layouts/main.html');
+
 $pageID = 'chiSiamoID';
 $title = "Chi siamo - Sushi Brombeis";
 $breadcrumbs = '<p>Ti trovi in: Chi siamo</p> ';

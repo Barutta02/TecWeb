@@ -10,18 +10,9 @@ if (!isset($_SESSION["adminLogged"]) || $_SESSION["adminLogged"] != 1) {
 }
 
 //TEMPLATE MAIN
-$templatePath = 'Layouts/main.html';
-if (!file_exists($templatePath)) {
-    die("Template file not found: $templatePath");
-}
-$template = file_get_contents($templatePath);
+$template = getTemplate('Layouts/main.html');
 
-//TEMPLATE ORDINAZIONI DA FARE
-$templatePlatesAdminPath = 'Layouts/adminOrderManager.html';
-if (!file_exists($templatePlatesAdminPath)) {
-    die("Template file not found: $templatePlatesAdmin");
-}
-$templatePlatesAdmin = file_get_contents($templatePlatesAdminPath);
+
 
 
 $pageID = 'AdminPanelBody';
@@ -32,25 +23,7 @@ $breadcrumbs = '<p>Ti trovi in:  Pannello amministratore</p> ';
 $content = '<section id="ordiniOdierni" class="containerPlatesViewer">
 <h2> Piatti da fare </h2>';
 
-$piatti = OrdineDAO::getAllToDoOrder();
-if (!empty($piatti)) {
-    $content .= "<ul class='flexable'>";
-    foreach ($piatti as $piatto) {
-        $refactorNomePiatto = str_replace(' ', '', strtolower($piatto['NomePiatto']));
-        $templatePlatesInputIter = $templatePlatesAdmin;
-        $templatePlatesInputIter = str_replace('{{NomePiattoUnderscored}}', $refactorNomePiatto, $templatePlatesInputIter);
-        $templatePlatesInputIter = str_replace('{{NomePiatto}}', $piatto['NomePiatto'], $templatePlatesInputIter);
-        $templatePlatesInputIter = str_replace('{{Descrizione}}', $piatto['Descrizione'], $templatePlatesInputIter);
-        $templatePlatesInputIter = str_replace('{{Quantita}}', $piatto['Quantita'], $templatePlatesInputIter);
-        $templatePlatesInputIter = str_replace('{{IdPiatto}}', $piatto['IDPiatto'], $templatePlatesInputIter);
-        $templatePlatesInputIter = str_replace('{{Orario}}', $piatto['Dataora'], $templatePlatesInputIter);
-        $templatePlatesInputIter = str_replace('{{Cliente}}', $piatto['cliente'], $templatePlatesInputIter);
-        $content .= $templatePlatesInputIter;
-    }
-    $content .= "</ul>";
-} else {
-    $content .= "Devono ancora effettuare ordinazioni.";
-}
+$content .= toDoOrdersView();
 
 
 $menu = get_menu_Admin();

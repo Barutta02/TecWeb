@@ -3,15 +3,10 @@
 require_once "Utility/utilities.php";
 require_once 'DAO/PiattoDAO.php';
 
-$templatePath = 'Layouts/main.html';
-if (!file_exists($templatePath)) {
-    die("Template file not found: $templatePath");
-}
 
-$template = file_get_contents($templatePath);
-if ($template === false) {
-    die("Failed to load template file: $templatePath");
-}
+
+$template = getTemplate('Layouts/main.html');
+
 
 $pageID = 'menuCenaBody';
 $title = "Menu Cena - Sushi Brombeis";
@@ -21,7 +16,8 @@ $breadcrumbs = '<p>Ti trovi in:  Menu Cena</p> ';
 
 
 $content = '';
-$content .= get_prices_section('Cena', '20.10', '23.10');;
+$content .= get_prices_section('Cena', '20.10', '23.10');
+;
 $content .= '<section id="PiattiMenu" class="containerPlatesViewer"><h2>Plates</h2>';
 
 $piattoDAO = new PiattoDAO();

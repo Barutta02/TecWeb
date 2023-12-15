@@ -2,24 +2,16 @@
 
 require_once "Utility/utilities.php";
 
-$templatePath = 'Layouts/main.html';
-$loginSection = 'Layouts/loginSection.html';
-if (!file_exists($templatePath)) {
-  die("Template file not found: $templatePath");
-}
-$template = file_get_contents($templatePath);
-if ($template === false) {
-  die("Failed to load template file: $templatePath");
-}
+$template = getTemplate('Layouts/main.html');
+$loginSectionhtml = getTemplate('Layouts/loginSection.html');
+
 
 $pageID = 'loginBody';
 $title = "Login - Sushi Brombeis";
 $breadcrumbs = '<p>Ti trovi in:  Area Utente >> <span lang="en">Login</span></p> ';
 
-$loginSectionhtml = file_get_contents($loginSection);
-if ($loginSectionhtml === false) {
-  die("Failed to load template file: $loginSection");
-}
+
+
 
 $content = $loginSectionhtml;
 

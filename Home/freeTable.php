@@ -6,12 +6,8 @@ session_start();
 if (!isset($_SESSION["adminLogged"]) || $_SESSION["adminLogged"] != 1) {
     header("Location: login.php");
 }
-$templatePath = 'Layouts/main.html';
 
-if (!file_exists($templatePath)) {
-    die("Template file not found: $templatePath");
-}
-$template = file_get_contents($templatePath);
+$template = getTemplate('Layouts/main.html');
 
 
 
