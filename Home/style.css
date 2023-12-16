@@ -43,10 +43,13 @@ html {
     background-color: var(--bgColor);
     color: var(--pageTxtColor);
 }
-
+.onlyMobile{
+    display: none;
+}
 .srOnly {
     position:absolute;
     left:-999em;}
+
 
 a:link {
     text-decoration: underline;
@@ -841,6 +844,82 @@ input {
 }
 
 
+.bottomMenu{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:1000;
+    height:50px;
+    box-shadow: 0 -2px 5px -2px #333;
+    background-color:#fff;
+    
+}
+
+
+.bottomMenu li a:link{
+   color: var(--alternative_text);
+}
+.bottomMenu li a:visited{
+    color: var(--visitedLinkColor);
+ }
+
+.bottomMenu .Ordini{
+    background-image: url('../assets/icon/list.png');
+
+}
+.bottomMenu .Prenota{
+    background-image: url('../assets/icon/sushi.png');
+
+}
+.bottomMenu .Tavolo{
+    background-image: url('../assets/icon/management.png');
+
+}
+.bottomMenu ul{
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    height: 100%;
+}
+.bottomMenu li {
+    padding: .1em;
+    position: relative;
+    list-style: none; /* Rimuove i punti elenco predefiniti */
+    font-size:12px;
+    color: var(--flagColor);
+    padding-left: 30px; /* Spazio a sinistra per l'icona e il testo */
+    display: grid;
+    grid-template-rows: auto auto; 
+    place-items: center; /* Centra gli elementi verticalmente e orizzontalmente */
+}
+.bottomMenu li a{
+    display: grid;
+    grid-template-rows: auto auto; 
+    place-items: center; /* Centra gli elementi verticalmente e orizzontalmente */
+
+}
+
+.bottomMenu li a .ListIcon  {
+    grid-row: 1; /* Posiziona nella prima riga */
+
+}
+.bottomMenu li a p {
+    grid-row: 2; /* Posiziona nella prima riga */
+  }
+  
+  .bottomMenu li .ListIcon  {
+    width: 20px; /* Larghezza dell'icona */
+    height: 20px; /* Altezza dell'icona */
+    background-size: contain; /* Adatta l'icona alle dimensioni specificate */
+    background-repeat: no-repeat;
+    grid-row: 1; /* Posiziona nella prima riga */
+  }
+
+  .bottomMenu li p, .bottomMenu li a p {
+    grid-row: 2; /* Posiziona nella prima riga */
+  }
+
 /* Stili per schermi di larghezza massima 600px */
 
 @media only screen and (max-width: 600px) {
@@ -879,7 +958,9 @@ input {
         text-align: center;
         padding: 10px;
     }
-
+    .onlyMobile{
+        display: block;
+    }
     .homeImage {
         height: 40vh;
     }
