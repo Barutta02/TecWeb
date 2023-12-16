@@ -1,14 +1,12 @@
 <?php
-
 require_once "Utility/utilities.php";
-
-
+session_start();
 //TEMPLATE comune
 $template = getTemplate('Layouts/main.html');
 
 $pageID = 'homeID';
 $title = "Home - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in: <span lang="en">Home</span></p> ';
+$breadcrumbs = '<p>Ti trovi in: <span lang="en" aria-current="page">Home</span></p> ';
 
 
 //Sezione di presentazione del ristorante
@@ -27,7 +25,15 @@ $content = '';
 $content .= $templatePres;
 
 
-$menu = get_menu_NoLogin();
+
+if (isset($_SESSION['username'])) {
+    // L'utente è autenticato, ottieni il menu per utenti autenticati
+    $menu = get_menu_Login_No_AreaUtente();
+} else {
+    // L'utente non è autenticato, ottieni il menu per utenti non autenticati
+    $menu = get_menu_NoLogin();
+}
+
 $template = str_replace('{{menu}}', $menu, $template);
 
 
