@@ -30,7 +30,15 @@ $content .= ' <section id="PiattiMenu" class="containerPlatesViewer">
     . '</section>';
 
 
-$menu = get_menu_Login();
+
+if (isset($_SESSION["username"])) {
+    $template = str_replace('{{BottomMenu}}', str_replace('{{ListMenuBottom}}', get_bottom_menu_Login(), getTemplate('Layouts/bottomMenu.html')), $template);
+    $menu = get_menu_Login();
+
+} else {
+    $menu = get_menu_NoLogin();
+    $template = str_replace('{{BottomMenu}}', "", $template);
+}
 $template = str_replace('{{menu}}', $menu, $template);
 
 

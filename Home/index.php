@@ -1,4 +1,5 @@
 <?php
+
 require_once "Utility/utilities.php";
 session_start();
 //TEMPLATE comune
@@ -25,15 +26,15 @@ $content = '';
 $content .= $templatePres;
 
 
+session_start();
+if (isset($_SESSION["username"])) {
+    $template = str_replace('{{BottomMenu}}', str_replace('{{ListMenuBottom}}', get_bottom_menu_Login(), getTemplate('Layouts/bottomMenu.html')), $template);
+    $menu = get_menu_Login();
 
-if (isset($_SESSION['username'])) {
-    // L'utente è autenticato, ottieni il menu per utenti autenticati
-    $menu = get_menu_Login_No_AreaUtente();
 } else {
-    // L'utente non è autenticato, ottieni il menu per utenti non autenticati
     $menu = get_menu_NoLogin();
+    $template = str_replace('{{BottomMenu}}', "", $template);
 }
-
 $template = str_replace('{{menu}}', $menu, $template);
 
 
