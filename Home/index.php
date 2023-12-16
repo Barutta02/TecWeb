@@ -1,7 +1,6 @@
 <?php
 
 require_once "Utility/utilities.php";
-session_start();
 //TEMPLATE comune
 $template = getTemplate('Layouts/main.html');
 
