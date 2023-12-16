@@ -150,11 +150,11 @@ function get_menu_Login()
     $menu = '';
 
     // Link da inserire
-    $links = ["Prenota.php", "VisualizzaOrdini.php", "NuovaPrenotazione.php", "index.php"];
+    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "contattaci.php"];
     // Nomi delle voci di menu
-    $names = ["Prenota", "Visualizza ordini", "Gestisci prenotazione", "Torna in <span lang='en'>Home</span>"];
+    $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti"];
     // Lingue dei link (se diverse da Italiano)
-    $langs = ["", "", "", ""];
+    $langs = ["en", "", "", "", ""];
     // Numero dei link da mostrare (grandezza array)
     $nLinks = count($links);
 
@@ -169,6 +169,7 @@ function get_menu_Login()
             $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
         }
     }
+    $menu .= '<li><a class="button userAreaLink" href="esci.php" >Esci</a></li>';
     return $menu;
 }
 function get_bottom_menu_Login()
