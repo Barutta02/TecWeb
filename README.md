@@ -18,6 +18,9 @@ Solo al termine di una cena la recensione può essere lasciata.
 
 Inoltre ogni piatto deve mostrare gli allergeni che contiene fornendo all'utente la possibilità di escludere dalla vista i piatti che contengono determinati allergeni.
 
+## Link relazione google docs
+https://docs.google.com/document/d/1JQ51cC0FUomPYfBO32lsqs7JvSVDxeoC7vSkVOxJ2Zg/edit
+
 ## Come accedere al sito da remoto (Tunnel SSH)
 ### Aprire il tunnel SSH
 Aprire il tunnel SSH verso il server del Paolotti:
