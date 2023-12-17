@@ -4,7 +4,7 @@ class DBAccess
 {
 
     private static $HOST_DB = "127.0.0.1";
-    private static $DATABASE_NAME = "test"; #dugoalberto
+    private static $DATABASE_NAME = "sushirestaurant"; #dugoalberto
     #private static $DATABASE_NAME = "sushirestaurant";
 
     private static $USERNAME = "root";

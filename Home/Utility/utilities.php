@@ -143,7 +143,7 @@ function get_bottom_menu_Login()
     }
     return $menu;
 }
-function get_menu_NoLogin()
+function get_menu_Login()
 {
 
     $menu = '';
@@ -176,14 +176,14 @@ function get_menu_NoLogin()
             $menu .= '><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
         }
     }
-    $menu .= '<li><a class="button userAreaLink" href="login.php" >Area Utente</a></li>';
-    #$menu .= '<li><a class="button userAreaLink" href="esci.php" >Esci</a></li>';
+    #$menu .= '<li><a class="button userAreaLink" href="login.php" >Area Utente</a></li>';
+    $menu .= '<li><a class="button userAreaLink" href="esci.php" >Esci</a></li>';
 
     return $menu;
 }
 
 
-function get_menu_Login()
+function get_menu_NoLogin()
 {
 
     $menu = '';
@@ -213,15 +213,14 @@ function get_menu_Login()
 
 function get_menu_Admin()
 {
-
     $menu = '';
 
     // Link da inserire
-    $links = ["AdminPanel.php", "freeTable.php", "index.php"];
+    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "contattaci.php", "AdminPanel.php", "freeTable.php"];
     // Nomi delle voci di menu
-    $names = ["Pannello amministratore", "Gestione Prenotazioni", "Torna in home"];
+    $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Pannello amministratore", "Gestione Prenotazioni"];
     // Lingue dei link (se diverse da Italiano)
-    $langs = ["", "", "it-en"];
+    $langs = ["", "", "", "", "", "", ""];
     // Numero dei link da mostrare (grandezza array)
     $nLinks = count($links);
 
@@ -236,6 +235,8 @@ function get_menu_Admin()
             $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
         }
     }
+    $menu .= '<li><a class="button userAreaLink" href="esci.php" >Esci</a></li>';
+
     return $menu;
 }
 
