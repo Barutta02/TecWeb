@@ -8,13 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="images.css" />
   </head>
 
   <body id="{{pageID}}" onload="{{onload}}">
     <a href="#content" class="srOnly">Vai al contenuto</a> {{header}}
 
     <nav id="menu" class="menu" aria-label="Navigazione Principale">
-      <form id="toggleMenuForm">
+        <!-- TODO aria-checked="{{state}} tabindex="0" ? dovrebbe funzionare con le freccette, dovrebbe essere già corretto -->
+        <form id="toggleMenuForm">
         <div>
           <input type="checkbox" id="mobile-menu-toggle" />
           <label for="mobile-menu-toggle" class="menu-toggle-label"></label>
@@ -25,7 +27,10 @@
       </form>
     </nav>
     <nav id="breadcrumb" aria-label="Percorso">{{breadcrumbs}}</nav>
+
     <main id="content">{{content}}</main>
+    <aside class="onlyMobile">{{BottomMenu}}</aside>
+
     {{footer}}
 
     <script src="script/script.js"></script>

@@ -115,6 +115,74 @@ function parse_abbr(string $string, bool $delete)
 /* 
     Rimpiazza {{menu}} con il menú in base alla pagina in cui si trova l'utente
 */
+
+function get_bottom_menu_Login()
+{
+
+    $menu = '';
+
+    // Link da inserire
+    $links = ["VisualizzaOrdini.php", "Prenota.php", "NuovaPrenotazione.php"];
+    // Nomi delle voci di menu
+    $names = ["Ordini", "Prenota", "Tavolo"];
+    // Lingue dei link (se diverse da Italiano)
+    $langs = ["", "", ""];
+    // Numero dei link da mostrare (grandezza array)
+    $nLinks = count($links);
+
+    //Togliere dall'url restituito da PHP -- cambierà in base all'hosting
+    $strToRemove = ROOT_FOLDER;
+    $currentPage = str_replace($strToRemove, "", $_SERVER['REQUEST_URI']);
+
+    for ($i = 0; $i < $nLinks; $i++) {
+        if ($currentPage == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
+            $menu .= '<li id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><i class="ListIcon ' . str_replace(" ", "", $names[$i]) . '""></i><p>' . $names[$i] . '</p></li>';
+        } else {
+            $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><i class="ListIcon ' . str_replace(" ", "", $names[$i]) . '""></i><p>' . $names[$i] . '</p></a></li>';
+        }
+    }
+    return $menu;
+}
+function get_menu_Login()
+{
+
+    $menu = '';
+
+    // Link da inserire
+    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "contattaci.php", "VisualizzaOrdini.php", "Prenota.php", "NuovaPrenotazione.php"];
+    // Nomi delle voci di menu
+    $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Ordini", "Prenota", "Tavolo"];
+    // Lingue dei link (se diverse da Italiano)
+    $langs = ["en", "", "", "", "", "", "", ""];
+    // Numero dei link da mostrare (grandezza array)
+    $nLinks = count($links);
+
+    //Togliere dall'url restituito da PHP -- cambierà in base all'hosting 
+    $strToRemove = ROOT_FOLDER;
+    $currentPage = str_replace($strToRemove, "", $_SERVER['REQUEST_URI']);
+
+    for ($i = 0; $i < $nLinks; $i++) {
+        if ($currentPage == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
+            $menu .= '<li ';
+            if ($names[$i] == "Ordini" || $names[$i] == "Prenota" || $names[$i] == "Tavolo") {
+                $menu .= 'class="bigScreenOnly"';
+            }
+            $menu .= 'id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</li>';
+        } else {
+            $menu .= '<li ';
+            if ($names[$i] == "Ordini" || $names[$i] == "Prenota" || $names[$i] == "Tavolo") {
+                $menu .= 'class="bigScreenOnly"';
+            }
+            $menu .= '><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
+        }
+    }
+    #$menu .= '<li><a class="button userAreaLink" href="login.php" >Area Utente</a></li>';
+    $menu .= '<li><a class="button userAreaLink" href="esci.php" >Esci</a></li>';
+
+    return $menu;
+}
+
+
 function get_menu_NoLogin()
 {
 
@@ -125,36 +193,7 @@ function get_menu_NoLogin()
     // Nomi delle voci di menu
     $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti"];
     // Lingue dei link (se diverse da Italiano)
-    $langs = ["en", "", "", "", ""];
-    // Numero dei link da mostrare (grandezza array)
-    $nLinks = count($links);
-
-    //Togliere dall'url restituito da PHP -- cambierà in base all'hosting 
-    $strToRemove = ROOT_FOLDER;
-    $currentPage = str_replace($strToRemove, "", $_SERVER['REQUEST_URI']);
-
-    for ($i = 0; $i < $nLinks; $i++) {
-        if ($currentPage == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
-            $menu .= '<li id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</li>';
-        } else {
-            $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
-        }
-    }
-    $menu .= '<li><a class="button userAreaLink" href="login.php" >Area Utente</a></li>';
-    return $menu;
-}
-
-function get_menu_Login()
-{
-
-    $menu = '';
-
-    // Link da inserire
-    $links = ["Prenota.php", "VisualizzaOrdini.php", "NuovaPrenotazione.php", "index.php"];
-    // Nomi delle voci di menu
-    $names = ["Prenota", "Visualizza ordini", "Gestisci prenotazione", "Torna in <span lang='en'>Home</span>"];
-    // Lingue dei link (se diverse da Italiano)
-    $langs = ["", "", "", ""];
+    $langs = ["", "", "", "", ""];
     // Numero dei link da mostrare (grandezza array)
     $nLinks = count($links);
 
@@ -174,15 +213,14 @@ function get_menu_Login()
 
 function get_menu_Admin()
 {
-
     $menu = '';
 
     // Link da inserire
-    $links = ["AdminPanel.php", "freeTable.php", "index.php"];
+    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "contattaci.php", "AdminPanel.php", "freeTable.php"];
     // Nomi delle voci di menu
-    $names = ["Pannello amministratore", "Gestione Prenotazioni", "Torna in home"];
+    $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Pannello amministratore", "Gestione Prenotazioni"];
     // Lingue dei link (se diverse da Italiano)
-    $langs = ["", "", "it-en"];
+    $langs = ["", "", "", "", "", "", ""];
     // Numero dei link da mostrare (grandezza array)
     $nLinks = count($links);
 
@@ -197,6 +235,8 @@ function get_menu_Admin()
             $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
         }
     }
+    $menu .= '<li><a class="button userAreaLink" href="esci.php" >Esci</a></li>';
+
     return $menu;
 }
 
