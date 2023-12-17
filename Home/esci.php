@@ -1,6 +1,6 @@
 <?php
+session_start();
 session_destroy();
-//NON VA
 header("Location: index.php");
 
 ?>
