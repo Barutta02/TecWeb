@@ -82,6 +82,8 @@ exit
     - [Screen reader](https://www.nvaccess.org/download/), consigliato dalla prof;
     - [Velocità di caricamento sito](https://pagespeed.web.dev/), per verificare la "pesantezza" del sito;
     - [Wcag4All](https://web.math.unipd.it/accessibility/test.html);
+    - [WAVE](https://wave.webaim.org/);
+    - [TPGI](https://www.tpgi.com/arc-platform/arc-toolkit/);
     - **Testare il sito con i browser più importanti: Firefox, MS Edge/Chrome, Safari**.
 
 ---
