@@ -844,19 +844,6 @@ input {
 }
 
 
-.bottomMenu{
-    position:fixed;
-    bottom:0;
-    left:0;
-    right:0;
-    z-index:1000;
-    height:50px;
-    box-shadow: 0 -2px 5px -2px #333;
-    background-color:#fff;
-    
-}
-
-
 .bottomMenu li a:link{
    color: var(--alternative_text);
 }
@@ -883,12 +870,11 @@ input {
     height: 100%;
 }
 .bottomMenu li {
-    padding: .1em;
+    padding: .3em;
     position: relative;
     list-style: none; /* Rimuove i punti elenco predefiniti */
     font-size:12px;
     color: var(--flagColor);
-    padding-left: 30px; /* Spazio a sinistra per l'icona e il testo */
     display: grid;
     grid-template-rows: auto auto; 
     place-items: center; /* Centra gli elementi verticalmente e orizzontalmente */
@@ -920,12 +906,29 @@ input {
     grid-row: 2; /* Posiziona nella prima riga */
   }
 
+  .bottomMenu{
+    z-index: 100;
+    box-shadow: 0 -2px 5px -2px #333;
+    background-color:#fff;   
+    position:fixed;
+    bottom:0;
+    left: 0.01em;
+    right:0;
+    width: 101vw;
+    height: 50px;
+    margin: 0;
+}
+
+
 /* Stili per schermi di larghezza massima 600px */
 
 @media only screen and (max-width: 600px) {
     .menu-toggle-label   {
         display: block;
         z-index: 3;
+    }
+    nav.menu ul li.bigScreenOnly{
+        display: none;
     }
     .nav-list {
         display: none;
@@ -961,6 +964,8 @@ input {
     .onlyMobile{
         display: block;
     }
+
+
     .homeImage {
         height: 40vh;
     }
