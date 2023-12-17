@@ -43,10 +43,13 @@ html {
     background-color: var(--bgColor);
     color: var(--pageTxtColor);
 }
-
+.onlyMobile{
+    display: none;
+}
 .srOnly {
     position:absolute;
     left:-999em;}
+
 
 a:link {
     text-decoration: underline;
@@ -69,7 +72,7 @@ header {
 }
 
 /**
-    non riesco a farlo funzionare
+    TODO non riesco a farlo funzionare
 .userAreaLink::before{
     content: url('../assets/Images/user.svg'); 
     margin-right: 5px;
@@ -109,13 +112,19 @@ nav.menu ul li {
 }
 
 nav.menu ul li a {
+    max-font-size: auto;
     font-weight: bold;
     transition: color 0.3s ease;
     text-underline-offset: .3em;
 }
 
 /*ALLERGENI*/
-
+.menuItem .allergeneImage{
+margin: 0;
+}
+.allergeniPlateList , .allergeniPlateList + dd{
+    display: inline-block;
+}
 .allergeneImage {
     position: relative;
     top: 0.4em;
@@ -123,26 +132,26 @@ nav.menu ul li a {
     width: 25px; /* Imposta la larghezza dell'immagine */
     height: 25px; /* Imposta l'altezza dell'immagine */
 }
-#CrostaceiImage {
+.CrostaceiImage {
     background: url(../assets/icon/Crostacei.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
 
 }
 
-#PesceImage {
+.PesceImage {
     background: url(../assets/icon/fish.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
 
 }
-#SedanoImage {
+.SedanoImage {
     background: url(../assets/icon/celery.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
-#SenapeImage {
+.SenapeImage {
     background: url(../assets/icon/mustard.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
 }
-#SoiaImage {
+.SoiaImage {
     background: url(../assets/icon/soy.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
 }
-#UovaImage {
+.UovaImage {
     background: url(../assets/icon/eggs.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
@@ -181,8 +190,7 @@ nav.menu ul li a {
 
 .menuItem {
     display: grid;
-    grid-template-columns: 1fr 4fr;
-    /* Crea due colonne con larghezza uguale */
+    grid-template-columns: 1fr 3fr;
     width: 250px;
     background-color: var(--menuBackground);
     text-align: left;
@@ -190,36 +198,49 @@ nav.menu ul li a {
     flex-grow: 1;
     border-radius: 8px;
     padding: 1em;
-    margin: .5em;
-    transition: .5s;
+    margin: 0.5em;
+    transition: 0.5s;
+}
+
+.menuItem dl{
+    padding-left: 0.5em;
+
 }
 
 .menuItem:hover {
-    box-shadow: 0 0 11px rgba(255, 250, 250, 0.2); 
+    box-shadow: 0 0 11px rgba(255, 250, 250, 0.2);
     transform: scale(1.1);
 }
-.quantitaOrdine {
-    float: right;
-    padding: 0.5em;
-}
-
 .menuItem.oldOrders {
     border: 1px solid #6f6969;
     border-radius: 10px;
     margin: 0.2em;
 }
 
-.prezzo {
+.infoItem {
+    padding-left: 4%;
+}
+.allergeniPlateList{
+    list-style-type: none;}
+
+.prezzo,
+.quantitaOrdine {
     float: right;
+    padding: 0.5em;
 }
 
-.containerPlatesViewer .imageMenuItem {
-    background-repeat: no-repeat;
-    background-position-x: center;
-    width: 60px;
-    background-size: contain;
-    margin: 0.3em;
+.imageMenuItem {
+    max-width: 125px;
+    height: auto;
+    display: block;
+    border: none;
+    vertical-align: middle;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0;
+    padding: 0;
 }
+
 
 .containerPlatesViewer .nomePiatto {
     display: block;
@@ -228,10 +249,11 @@ nav.menu ul li a {
 
 dd.ingradienti {
     color: var(--flagColor);
+    padding:  .4em 0 .4em;
 }
 
 main div {
-    padding-top: .3em;
+    /*padding-top: .3em;*/
 }
 
 footer {
@@ -405,14 +427,14 @@ fieldset ul li {
 }
 /* Nascondi la checkbox predefinita */
 
-.PrenotaBody input[type="checkbox"] {
+#allergeni input[type="checkbox"] {
     display: none;
 }
 
 
 /* Stile della checkbox personalizzata */
 
-.PrenotaBody input[type="checkbox"]+label {
+#allergeni input[type="checkbox"]+label {
     position: relative;
     padding-left: 30px;
     /* Regola se necessario */
@@ -422,7 +444,7 @@ fieldset ul li {
 
 /* Stile del segno di spunta */
 
-.PrenotaBody input[type="checkbox"]+label:before {
+#allergeni input[type="checkbox"]+label:before {
     content: "";
     position: absolute;
     left: 0;
@@ -439,7 +461,7 @@ fieldset ul li {
 
 /* Stile del segno di spunta quando è selezionato */
 
-.PrenotaBody input[type="checkbox"]:checked+label:before {
+#allergeni input[type="checkbox"]:checked+label:before {
     background-color: #3498db;
     /* Cambia il colore di sfondo quando è selezionato */
 }
@@ -447,7 +469,7 @@ fieldset ul li {
 
 /* Stile dell'area interna del segno di spunta (opzionale) */
 
-.PrenotaBody input[type="checkbox"]+label:after {
+#allergeni input[type="checkbox"]+label:after {
     content: "\2713";
     /* Carattere Unicode per il checkmark */
     position: absolute;
@@ -466,7 +488,7 @@ fieldset ul li {
 
 /* Stile dell'area interna quando è selezionata (opzionale) */
 
-.PrenotaBody input[type="checkbox"]:checked+label:after {
+#allergeni input[type="checkbox"]:checked+label:after {
     visibility: visible;
 }
 
@@ -523,6 +545,12 @@ input {
     position: relative;
     top: 70%;
     text-align: center;
+    color: #fff;
+    text-shadow:
+            3px 3px 2px #000,
+            -3px 3px 2px #000,
+            -3px -3px 0 #000,
+            3px -3px 0 #000;
 }
 
 #homeTitle {
@@ -842,12 +870,91 @@ input {
 }
 
 
+.bottomMenu li a:link{
+   color: var(--alternative_text);
+}
+.bottomMenu li a:visited{
+    color: var(--visitedLinkColor);
+ }
+
+.bottomMenu .Ordini{
+    background-image: url('../assets/icon/list.png');
+
+}
+.bottomMenu .Prenota{
+    background-image: url('../assets/icon/sushi.png');
+
+}
+.bottomMenu .Tavolo{
+    background-image: url('../assets/icon/management.png');
+
+}
+.bottomMenu ul{
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    height: 100%;
+}
+.bottomMenu li {
+    padding: .3em;
+    position: relative;
+    list-style: none; /* Rimuove i punti elenco predefiniti */
+    font-size:12px;
+    color: var(--flagColor);
+    display: grid;
+    grid-template-rows: auto auto; 
+    place-items: center; /* Centra gli elementi verticalmente e orizzontalmente */
+}
+.bottomMenu li a{
+    display: grid;
+    grid-template-rows: auto auto; 
+    place-items: center; /* Centra gli elementi verticalmente e orizzontalmente */
+
+}
+
+.bottomMenu li a .ListIcon  {
+    grid-row: 1; /* Posiziona nella prima riga */
+
+}
+.bottomMenu li a p {
+    grid-row: 2; /* Posiziona nella prima riga */
+  }
+  
+  .bottomMenu li .ListIcon  {
+    width: 20px; /* Larghezza dell'icona */
+    height: 20px; /* Altezza dell'icona */
+    background-size: contain; /* Adatta l'icona alle dimensioni specificate */
+    background-repeat: no-repeat;
+    grid-row: 1; /* Posiziona nella prima riga */
+  }
+
+  .bottomMenu li p, .bottomMenu li a p {
+    grid-row: 2; /* Posiziona nella prima riga */
+  }
+
+  .bottomMenu{
+    z-index: 100;
+    box-shadow: 0 -2px 5px -2px #333;
+    background-color:#fff;   
+    position:fixed;
+    bottom:0;
+    left: 0.01em;
+    right:0;
+    width: 101vw;
+    height: 50px;
+    margin: 0;
+}
+
+
 /* Stili per schermi di larghezza massima 600px */
 
 @media only screen and (max-width: 600px) {
     .menu-toggle-label   {
         display: block;
         z-index: 3;
+    }
+    nav.menu ul li.bigScreenOnly{
+        display: none;
     }
     .nav-list {
         display: none;
@@ -858,7 +965,7 @@ input {
         width: 100%;
         background-color: var(--headerBgColor);
     }
-    #mobile-menu-toggle:checked + .menu-toggle-label + .nav-list {
+   #mobile-menu-toggle:checked  + .menu-toggle-label + .nav-list {
         display: flex;
         position: static;
       }
@@ -868,7 +975,7 @@ input {
       }
       /* Cambia il contenuto prima dell'icona quando il checkbox è selezionato */
       #mobile-menu-toggle:checked + .menu-toggle-label::before {
-        content: "✕ Close";
+        content: "✕ Chiudi";
       }
       
       /* Animazione di transizione */
@@ -880,6 +987,10 @@ input {
         text-align: center;
         padding: 10px;
     }
+    .onlyMobile{
+        display: block;
+    }
+
 
     .homeImage {
         height: 40vh;

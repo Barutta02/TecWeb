@@ -1,7 +1,8 @@
 <?php
 
+require_once 'ViewsUtility.php';
 
-define("ROOT_FOLDER", "/Home/");
+define("ROOT_FOLDER", "/TecWeb/Home/");
 
 
 /*
@@ -31,180 +32,19 @@ function replace_in_page($html, $title, $id, $breadcrumbs, $keywords, $descripti
     return $html;
 }
 
-function get_prices_section($tipoMenu, $prezzoLunVen, $PrezzoFestivi)
+function getTemplate($templatePath)
 {
-    $pricesTPath = 'Layouts/pricesForMenu.html';
-    $prices = file_get_contents($pricesTPath);
-    if ($prices === false) {
-        die("Failed to load template file: $pricesTPath");
+    if (!file_exists($templatePath)) {
+        die("Template file not found: $templatePath");
     }
-    $prices = str_replace('{{TipoMenu}}', $tipoMenu, $prices);
-    $prices = str_replace('{{PrezzoLunVen}}', $prezzoLunVen, $prices);
-    $prices = str_replace('{{PrezzoFestivo}}', $PrezzoFestivi, $prices);
-    return $prices;
+    $template = file_get_contents($templatePath);
+    if ($template === false) {
+        die("Failed to load template file: $templatePath");
+    }
+    return $template;
+
 }
 
-function get_all_formatted_plates_Menu($piatti)
-{
-    $htmlContent = '';
-    $plateslayoutPath = 'Layouts/MenuItemWithPrice.html';
-    if (file_get_contents($plateslayoutPath) === false) {
-        die("Failed to load template file: $plateslayoutPath");
-    }
-    if (!empty($piatti)) {
-        $htmlContent .= '<ul class="flexable">';
-        $piattotemplate = file_get_contents($plateslayoutPath);
-        foreach ($piatti as $piatto) {
-            $piattotemplates = $piattotemplate;
-            $piattotemplates = str_replace('{{NomeUnderscored}}', str_replace(' ', '_', strtolower($piatto['NomePiatto'])), $piattotemplates);
-            $piattotemplates = str_replace('{{Nome}}', $piatto['NomePiatto'], $piattotemplates);
-            $piattotemplates = str_replace('{{Descrizione}}', $piatto['Descrizione'], $piattotemplates);
-            $piattotemplates = str_replace('{{Prezzo}}', $piatto['Prezzo'], $piattotemplates);
-            $htmlContent .= $piattotemplates;
-        }
-        $htmlContent .= '</ul>';
-    } else {
-        $htmlContent .= "No piatti found.";
-    }
-    return $htmlContent;
-}
-
-/*
-    RITORNA LA FORM PER LA NON VISUALIZZAZIONE DEGLI ALLERGENI
-*/
-function get_allergeni_form_section()
-{
-    require_once 'DAO/AllergeneDAO.php';
-    $templatePathAllergeniChBox = 'Layouts/checkboxItemAllergene.html';
-    $templateAllergeniChbox = file_get_contents($templatePathAllergeniChBox);
-    if ($templateAllergeniChbox === false) {
-        die("Failed to load template file: $templatePathAllergeniChBox");
-    }
-    $content = '<section id="allergeni">
-<h4 >Seleziona gli allergeni da evitare:</h4>
-<form>
-  <ul id="listaAllergeni">';
-
-    $allergeni = AllergeneDAO::getAllAllergeni();
-
-    if (!empty($allergeni)) {
-        foreach ($allergeni as $allergene) {
-            $templateAllergeniChboxN = $templateAllergeniChbox;
-            $templateAllergeniChboxN = str_replace('{{NomeAllergene}}', $allergene["NomeAllergene"], $templateAllergeniChbox);
-            $content .= $templateAllergeniChboxN;
-        }
-    }
-    $content .= '</ul>
-</form>
-</section>';
-    return $content;
-}
-
-
-/**PRENDI IL FORM PER LA PRENOTAZIONE DEI PIATTI DIVISI IN FIELDSET PER CATEGORIA */
-function get_prenotation_form_menu($process_php_action)
-{
-    require_once 'DAO/PiattoDAO.php';
-    require_once 'DAO/CategoriaDAO.php';
-    $platesQuanityInputlayoutPath = 'Layouts/MenuItemInputQuantity.html';
-    $templatePlatesInput = file_get_contents($platesQuanityInputlayoutPath);
-    if ($templatePlatesInput === false) {
-        die("Failed to load template file: $platesQuanityInputlayoutPath");
-    }
-    $content = ' <form action="' . $process_php_action . '" method="post">';
-    $categorie = CategoriaDAO::getAllCategory();
-    if (!empty($categorie)) {
-        foreach ($categorie as $categoria) {
-            $piatti = PiattoDAO::getPiattoByTipoCategory($categoria['Nome']);
-            if (!empty($piatti)) {
-                $content .= " <fieldset> <legend>" . $categoria['Nome'] . "</legend> <ul class='flexable'>";
-                foreach ($piatti as $piatto) {
-                    $templateSliderInputIter = $templatePlatesInput;
-                    $allergeniPiatto = AllergeneDAO::getAllergeniByPiatto(intval($piatto['IDPiatto']));
-                    $refactorNomePiatto = str_replace(' ', '_', strtolower($piatto['NomePiatto']));
-                    // $ariaLabel = 'Piatto: ' . $piatto['NomePiatto'] . ', Descrizione: ' . $piatto['Descrizione'];
-                    $templateSliderInputIter = str_replace('{{ListaAllergeni}}', implode(" ", $allergeniPiatto), $templateSliderInputIter);
-                    $templateSliderInputIter = str_replace('{{NomePiattoUnderscored}}', $refactorNomePiatto, $templateSliderInputIter);
-                    $templateSliderInputIter = str_replace('{{NomePiatto}}', $piatto['NomePiatto'], $templateSliderInputIter);
-                    $templateSliderInputIter = str_replace('{{Descrizione}}', $piatto['Descrizione'], $templateSliderInputIter);
-                    $templateSliderInputIter = str_replace('{{IDPiatto}}', $piatto['IDPiatto'], $templateSliderInputIter);
-
-                    $content .= $templateSliderInputIter;
-                }
-                $content .= "</ul></fieldset>";
-            } else {
-                $content .= "No piatti found.";
-            }
-
-        }
-    } else {
-        $content .= "No Categories found.";
-    }
-
-    $content .= '
-<input type="submit" id="submitPrenotazione" value="Invia ordine">
-</form>';
-    return $content;
-}
-
-function get_table_avaible()
-{
-    require_once 'DAO/TavoloDAO.php';
-    $tableSliderLayoutPath = 'Layouts/DisponibilitaTavoli.html';
-    $tableSliderLayout = file_get_contents($tableSliderLayoutPath);
-    if ($tableSliderLayout === false) {
-        die("Failed to load template file: $tableSliderLayoutPath");
-    }
-    $tavoli = TavoloDAO::getAvaibleTable();
-    $content = '';
-    if (!empty($tavoli)) {
-        $content .= " <ul class='tableList'>";
-
-        foreach ($tavoli as $tavolo) {
-
-            $templateSliderInputIter = $tableSliderLayout;
-            // $ariaLabel = 'Piatto: ' . $piatto['NomePiatto'] . ', Descrizione: ' . $piatto['Descrizione'];
-            $templateSliderInputIter = str_replace('{{Totale_tavoli}}', $tavolo['totale_disp'], $templateSliderInputIter);
-            $templateSliderInputIter = str_replace('{{Occupati}}', $tavolo['numeroOccupati'], $templateSliderInputIter);
-            $templateSliderInputIter = str_replace('{{NumPosti}}', $tavolo['numPosti'], $templateSliderInputIter);
-
-            $content .= $templateSliderInputIter;
-        }
-        $content .= "</ul>";
-    } else {
-        $content .= "No table found.";
-    }
-    return $content;
-}
-function get_active_prenotation()
-{
-    require_once 'DAO/PrenotazioneDAO.php';
-    $tableSliderLayoutPath = 'Layouts/activePrenotation.html';
-    $tableSliderLayout = file_get_contents($tableSliderLayoutPath);
-    if ($tableSliderLayout === false) {
-        die("Failed to load template file: $tableSliderLayoutPath");
-    }
-    $tavoli = PrenotazioneDAO::getActivePrenotation();
-    $content = '';
-    if (!empty($tavoli)) {
-        $content .= " <ul class='ActivePrenotationList'>";
-
-        foreach ($tavoli as $tavolo) {
-
-            $templateSliderInputIter = $tableSliderLayout;
-            // $ariaLabel = 'Piatto: ' . $piatto['NomePiatto'] . ', Descrizione: ' . $piatto['Descrizione'];
-            $templateSliderInputIter = str_replace('{{numTavolo}}', $tavolo['Tavolo'], $templateSliderInputIter);
-            $templateSliderInputIter = str_replace('{{Orario}}', $tavolo['DataPrenotazione'], $templateSliderInputIter);
-            $templateSliderInputIter = str_replace('{{Username}}', $tavolo['Username'], $templateSliderInputIter);
-
-            $content .= $templateSliderInputIter;
-        }
-        $content .= "</ul>";
-    } else {
-        $content .= "No active prenotation found.";
-    }
-    return $content;
-}
 
 /*
     Rimpiazza i placeholder del template html dell'area utente
@@ -275,6 +115,74 @@ function parse_abbr(string $string, bool $delete)
 /* 
     Rimpiazza {{menu}} con il menú in base alla pagina in cui si trova l'utente
 */
+
+function get_bottom_menu_Login()
+{
+
+    $menu = '';
+
+    // Link da inserire
+    $links = ["VisualizzaOrdini.php", "Prenota.php", "NuovaPrenotazione.php"];
+    // Nomi delle voci di menu
+    $names = ["Ordini", "Prenota", "Tavolo"];
+    // Lingue dei link (se diverse da Italiano)
+    $langs = ["", "", ""];
+    // Numero dei link da mostrare (grandezza array)
+    $nLinks = count($links);
+
+    //Togliere dall'url restituito da PHP -- cambierà in base all'hosting
+    $strToRemove = ROOT_FOLDER;
+    $currentPage = str_replace($strToRemove, "", $_SERVER['REQUEST_URI']);
+
+    for ($i = 0; $i < $nLinks; $i++) {
+        if ($currentPage == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
+            $menu .= '<li id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><i class="ListIcon ' . str_replace(" ", "", $names[$i]) . '""></i><p>' . $names[$i] . '</p></li>';
+        } else {
+            $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><i class="ListIcon ' . str_replace(" ", "", $names[$i]) . '""></i><p>' . $names[$i] . '</p></a></li>';
+        }
+    }
+    return $menu;
+}
+function get_menu_Login()
+{
+
+    $menu = '';
+
+    // Link da inserire
+    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "contattaci.php", "VisualizzaOrdini.php", "Prenota.php", "NuovaPrenotazione.php"];
+    // Nomi delle voci di menu
+    $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Ordini", "Prenota", "Tavolo"];
+    // Lingue dei link (se diverse da Italiano)
+    $langs = ["en", "", "", "", "", "", "", ""];
+    // Numero dei link da mostrare (grandezza array)
+    $nLinks = count($links);
+
+    //Togliere dall'url restituito da PHP -- cambierà in base all'hosting 
+    $strToRemove = ROOT_FOLDER;
+    $currentPage = str_replace($strToRemove, "", $_SERVER['REQUEST_URI']);
+
+    for ($i = 0; $i < $nLinks; $i++) {
+        if ($currentPage == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
+            $menu .= '<li ';
+            if ($names[$i] == "Ordini" || $names[$i] == "Prenota" || $names[$i] == "Tavolo") {
+                $menu .= 'class="bigScreenOnly"';
+            }
+            $menu .= 'id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</li>';
+        } else {
+            $menu .= '<li ';
+            if ($names[$i] == "Ordini" || $names[$i] == "Prenota" || $names[$i] == "Tavolo") {
+                $menu .= 'class="bigScreenOnly"';
+            }
+            $menu .= '><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
+        }
+    }
+    #$menu .= '<li><a class="button userAreaLink" href="login.php" >Area Utente</a></li>';
+    $menu .= '<li><a class="button userAreaLink" href="esci.php" >Esci</a></li>';
+
+    return $menu;
+}
+
+
 function get_menu_NoLogin()
 {
 
@@ -285,36 +193,7 @@ function get_menu_NoLogin()
     // Nomi delle voci di menu
     $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti"];
     // Lingue dei link (se diverse da Italiano)
-    $langs = ["en", "", "", "", ""];
-    // Numero dei link da mostrare (grandezza array)
-    $nLinks = count($links);
-
-    //Togliere dall'url restituito da PHP -- cambierà in base all'hosting 
-    $strToRemove = ROOT_FOLDER;
-    $currentPage = str_replace($strToRemove, "", $_SERVER['REQUEST_URI']);
-
-    for ($i = 0; $i < $nLinks; $i++) {
-        if ($currentPage == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
-            $menu .= '<li id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</li>';
-        } else {
-            $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
-        }
-    }
-    $menu .= '<li><a class="button userAreaLink" href="login.php" >Area Utente</a></li>';
-    return $menu;
-}
-
-function get_menu_Login()
-{
-
-    $menu = '';
-
-    // Link da inserire
-    $links = ["Prenota.php", "VisualizzaOrdini.php", "NuovaPrenotazione.php"];
-    // Nomi delle voci di menu
-    $names = ["Prenota", "Visualizza ordini", "Gestisci prenotazione"];
-    // Lingue dei link (se diverse da Italiano)
-    $langs = ["", "", ""];
+    $langs = ["", "", "", "", ""];
     // Numero dei link da mostrare (grandezza array)
     $nLinks = count($links);
 
@@ -334,15 +213,14 @@ function get_menu_Login()
 
 function get_menu_Admin()
 {
-
     $menu = '';
 
     // Link da inserire
-    $links = ["AdminPanel.php", "freeTable.php"];
+    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "contattaci.php", "AdminPanel.php", "freeTable.php"];
     // Nomi delle voci di menu
-    $names = ["Pannello amministratore", "Gestione Prenotazioni"];
+    $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Pannello amministratore", "Gestione Prenotazioni"];
     // Lingue dei link (se diverse da Italiano)
-    $langs = ["", ""];
+    $langs = ["", "", "", "", "", "", ""];
     // Numero dei link da mostrare (grandezza array)
     $nLinks = count($links);
 
@@ -357,6 +235,8 @@ function get_menu_Admin()
             $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
         }
     }
+    $menu .= '<li><a class="button userAreaLink" href="esci.php" >Esci</a></li>';
+
     return $menu;
 }
 

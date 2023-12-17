@@ -1,17 +1,31 @@
 <li class="menuItem">
-    <!--TODO  aria-label="Immagine rappresentativa del piatto {{NomePiattoUnderscore}}-->
-    <div class="imageMenuItem {{NomePiattoUnderscored}}">g</div>
-    <div class="infoItem">
-      <dl>
-        <dt class="nomePiatto" data-title="Nome Piatto">{{NomePiatto}}</dt>
-        <dd class="ingradienti" data-title="Descrizione ingredienti">
-          {{Descrizione}}
-        </dd>
-        <dd data-title="Quantità">
-          Quantità:
-          <p class="bold inline">{{Quantita}}</p>
-        </dd>
-        <button onclick="aggiornaConsegna(this)" class="DoneButton" data-dataOra="{{Orario}}" data-piatto="{{IdPiatto}}" data-cliente="{{Cliente}}">Fatto</button>
-      </dl>
-    </div>
-  </li>
+  <img
+    class="imageMenuItem"
+    alt=""
+    src="../assets/Images/sushi_plates/{{NomePiattoUnderscored}}.jpg"
+  />
+  <div class="infoItem">
+    <dl>
+      <dt class="nomePiatto" data-title="Nome Piatto" lang="it-JP">
+        {{NomePiatto}}
+      </dt>
+      <dd class="ingradienti" data-title="Descrizione ingredienti">
+        {{Descrizione}}
+      </dd>
+      <dd data-title="Quantità">
+        Quantità:
+        <!-- BEFORE <p class="bold inline">{{Quantita}}</p> -->
+        <span class="bold inline">{{Quantita}}</span>
+      </dd>
+      <button
+        onclick="aggiornaConsegna(this)"
+        class="DoneButton"
+        data-dataOra="{{Orario}}"
+        data-piatto="{{IdPiatto}}"
+        data-cliente="{{Cliente}}"
+      >
+        Fatto
+      </button>
+    </dl>
+  </div>
+</li>

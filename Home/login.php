@@ -2,28 +2,28 @@
 
 require_once "Utility/utilities.php";
 
-$templatePath = 'Layouts/main.html';
-$loginSection = 'Layouts/loginSection.html';
-if (!file_exists($templatePath)) {
-  die("Template file not found: $templatePath");
-}
-$template = file_get_contents($templatePath);
-if ($template === false) {
-  die("Failed to load template file: $templatePath");
-}
+$template = getTemplate('Layouts/main.html');
+$loginSectionhtml = getTemplate('Layouts/loginSection.html');
+
 
 $pageID = 'loginBody';
-$title = "Login - Sushi Brombeis";
+$title = '<span lang="en">Login</span><p> - Sushi Brombeis</p>';
 $breadcrumbs = '<p>Ti trovi in:  Area Utente >> <span lang="en">Login</span></p> ';
 
-$loginSectionhtml = file_get_contents($loginSection);
-if ($loginSectionhtml === false) {
-  die("Failed to load template file: $loginSection");
-}
+
+
 
 $content = $loginSectionhtml;
 
-$menu = '';
+session_start();
+if (isset($_SESSION["username"])) {
+    $template = str_replace('{{BottomMenu}}', str_replace('{{ListMenuBottom}}', get_bottom_menu_Login(), getTemplate('Layouts/bottomMenu.html')), $template);
+    $menu = get_menu_Login();
+
+} else {
+    $menu = get_menu_NoLogin();
+    $template = str_replace('{{BottomMenu}}', "", $template);
+}
 $template = str_replace('{{menu}}', $menu, $template);
 
 

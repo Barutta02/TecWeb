@@ -6,12 +6,8 @@ session_start();
 if (!isset($_SESSION["adminLogged"]) || $_SESSION["adminLogged"] != 1) {
     header("Location: login.php");
 }
-$templatePath = 'Layouts/main.html';
 
-if (!file_exists($templatePath)) {
-    die("Template file not found: $templatePath");
-}
-$template = file_get_contents($templatePath);
+$template = getTemplate('Layouts/main.html');
 
 
 
@@ -31,6 +27,7 @@ $content .= '<section id="SezioneGestionePrenotazioni"><h2>Prenotazioni attive</
 
 $menu = get_menu_Admin();
 $template = str_replace('{{menu}}', $menu, $template);
+$template = str_replace('{{BottomMenu}}', "", $template);
 
 
 echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');

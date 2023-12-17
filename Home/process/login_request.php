@@ -4,19 +4,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recupera i dati dal modulo
     $username_or_email = $_POST["username_or_email"];
     $password = $_POST["password"];
-    
+
     // Esempio di verifica delle credenziali (puoi personalizzarla in base alle tue esigenze)
     if (empty($username_or_email) || empty($password)) {
         echo "Compila tutti i campi del modulo.";
     } else {
-            if ($username_or_email == 'Admin' && $password == 'Admin') {
-                session_start();
-                header("Location: ../adminPanel.php");
-                $_SESSION['adminLogged'] = 1;
-                exit(); // Ensure that no further code is executed after the redirect
-            }
-        
-        
+        if ($username_or_email == 'Admin' && $password == 'Admin') {
+            session_start();
+            header("Location: ../adminPanel.php");
+            $_SESSION['adminLogged'] = 1;
+            exit(); // Ensure that no further code is executed after the redirect
+        }
+
+
         // Esempio di autenticazione (controlla se l'utente è registrato)
         // Questo è un esempio molto basico e insicuro. In un'applicazione del mondo reale, dovresti utilizzare un sistema di autenticazione sicuro.
         require_once '../DAO/UserDAO.php';

@@ -10,12 +10,8 @@ if (!isset($_SESSION["data_prenotazione_inCorso"])) {
     header("Location: NuovaPrenotazione.php");
 }
 
-$templatePath = 'Layouts/main.html';
 
-if (!file_exists($templatePath)) {
-    die("Template file not found: $templatePath");
-}
-$template = file_get_contents($templatePath);
+$template = getTemplate('Layouts/main.html');
 
 
 
@@ -31,10 +27,18 @@ $content = get_allergeni_form_section();
 $content .= ' <section id="PiattiMenu" class="containerPlatesViewer">
 <h2 > ' . $_SESSION['name'] . ' ordina qui i tuoi piatti
 </h2>' . get_prenotation_form_menu('process/process_prenotazione.php')
-.'</section>';
+    . '</section>';
 
 
-$menu = get_menu_Login();
+
+if (isset($_SESSION["username"])) {
+    $template = str_replace('{{BottomMenu}}', str_replace('{{ListMenuBottom}}', get_bottom_menu_Login(), getTemplate('Layouts/bottomMenu.html')), $template);
+    $menu = get_menu_Login();
+
+} else {
+    $menu = get_menu_NoLogin();
+    $template = str_replace('{{BottomMenu}}', "", $template);
+}
 $template = str_replace('{{menu}}', $menu, $template);
 
 

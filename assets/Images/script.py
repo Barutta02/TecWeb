@@ -1,30 +1,35 @@
 import os
 
-def rinomina_immagini(cartella_origine, cartella_destinazione):
-    # Ottieni la lista di nomi delle immagini dalla cartella origine
-    nomi_immagini_origine = sorted(os.listdir(cartella_origine))
-    print("Nomi immagini origine:", nomi_immagini_origine)
+def rinomina_con_nomi_ripetuti(directory, nomi):
+    # Ottieni la lista di tutti i file nella directory
+    files = os.listdir(directory)
 
-    # Ottieni la lista di nomi delle immagini dalla cartella destinazione
-    nomi_immagini_destinazione = sorted(os.listdir(cartella_destinazione))
-    print("Nomi immagini destinazione:", nomi_immagini_destinazione)
+    # Calcola il numero di file nella directory e il numero di nomi nella lista
+    num_files = len(files)
+    num_nomi = len(nomi)
 
-    # Assicurati che entrambe le cartelle abbiano lo stesso numero di immagini
-    if len(nomi_immagini_origine) != len(nomi_immagini_destinazione):
-        print("Errore: Il numero di immagini nelle due cartelle non corrisponde.")
-        return
+    for i in range(num_files):
+        # Crea il percorso completo del file
+        vecchio_percorso = os.path.join(directory, files[i])
 
-    # Rinomina le immagini nella cartella di destinazione
-    for i in range(len(nomi_immagini_origine)):
-        vecchio_nome = os.path.join(cartella_destinazione, nomi_immagini_destinazione[i])
-        nuovo_nome = os.path.join(cartella_destinazione, nomi_immagini_origine[i])
+        # Ottieni l'estensione del file
+        estensione = os.path.splitext(files[i])[1]
 
-        os.rename(vecchio_nome, nuovo_nome)
-       # print(f"Rinominato: {nomi_immagini_destinazione[i]} -> {nomi_immagini_origine[i]}")
+        # Ottieni il nuovo nome del file dalla lista (con ripetizione) mantenendo l'estensione
+        nuovo_nome = nomi[i % num_nomi] + estensione
 
-# Specifica le cartelle origine e destinazione
-cartella_origine = "sushi_plates_size50x50"
-cartella_destinazione = "sushi_plates"
+        # Crea il nuovo percorso completo del file
+        nuovo_percorso = os.path.join(directory, nuovo_nome)
 
-# Chiama la funzione per rinominare le immagini
-rinomina_immagini(cartella_origine, cartella_destinazione)
+        # Rinomina il file
+        os.rename(vecchio_percorso, nuovo_percorso)
+        print(f"File rinominato: {files[i]} -> {nuovo_nome}")
+
+# Specifica la directory in cui desideri rinominare i file
+directory_da_rinominare = "sushi_plates"
+
+# Specifica la lista di nomi desiderati
+nomi_desiderati = ["nigiridisalmone", "makicalifornia", "sashimiditonno", "tempuradigamberi", "menusushideluxe", "dragonroll", "uramakiphilly", "tartaredisalmone", "gyozadiverdure", "rolldiavocado", "tatakidimanzo", "makisalmoneeavocado", "sashimimisto", "tempuradiverdure", "menusushipremium", "rainbowroll", "uramakitempura", "tartareditonno", "gyozadipollo", "rollvegano", "nigiriditonno"]
+
+# Chiama la funzione per rinominare i file mantenendo le estensioni
+rinomina_con_nomi_ripetuti(directory_da_rinominare, nomi_desiderati)
