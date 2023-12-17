@@ -239,6 +239,7 @@ footer {
     color: var(--footerTxtColor);
     text-align: center;
     border-top: 1px solid var(--NavmenuBorder);
+    margin-top: 100%;
 }
 #footerOrganizer {
     padding: 1em;
@@ -811,6 +812,24 @@ input {
 .buttonDoneCompleted::after {
     content: ' - Terminata';
 }
+
+/*******************404*********************/
+
+#Section404{
+    text-align: center;
+    padding: 2em;
+}
+
+#Section404 p{
+    margin: auto;
+    max-width: 50vw;
+}
+
+#nigiriTriste{
+    width: 10em;
+    height: auto;
+}
+
 
 /**NAVBAR MOBILE***/
 
