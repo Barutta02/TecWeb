@@ -49,8 +49,6 @@ function get_all_formatted_plates_Menu($piatti)
     return $htmlContent;
 }
 
-
-
 /*
     RITORNA LA FORM PER LA NON VISUALIZZAZIONE DEGLI ALLERGENI
  * Metodo utilizzato per prenota.php
@@ -81,7 +79,6 @@ function get_allergeni_form_section()
     $content = str_replace('{{ListaAllergeni}}', $content, $templateListaAllergeni);
     return $content;
 }
-
 
 /**PRENDI IL FORM PER LA PRENOTAZIONE DEI PIATTI DIVISI IN FIELDSET PER CATEGORIA */
 function get_prenotation_form_menu($process_php_action)

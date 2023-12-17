@@ -112,6 +112,7 @@ nav.menu ul li {
 }
 
 nav.menu ul li a {
+    max-font-size: auto;
     font-weight: bold;
     transition: color 0.3s ease;
     text-underline-offset: .3em;
@@ -543,6 +544,12 @@ input {
     position: relative;
     top: 70%;
     text-align: center;
+    color: #fff;
+    text-shadow:
+            3px 3px 2px #000,
+            -3px 3px 2px #000,
+            -3px -3px 0 #000,
+            3px -3px 0 #000;
 }
 
 #homeTitle {

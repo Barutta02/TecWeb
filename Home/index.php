@@ -1,14 +1,12 @@
 <?php
 
 require_once "Utility/utilities.php";
-
-
 //TEMPLATE comune
 $template = getTemplate('Layouts/main.html');
 
 $pageID = 'homeID';
 $title = "Home - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in: <span lang="en">Home</span></p> ';
+$breadcrumbs = '<p>Ti trovi in: <span lang="en" aria-current="page">Home</span></p> ';
 
 
 //Sezione di presentazione del ristorante
@@ -37,6 +35,7 @@ if (isset($_SESSION["username"])) {
     $template = str_replace('{{BottomMenu}}', "", $template);
 }
 $template = str_replace('{{menu}}', $menu, $template);
+
 
 echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
 ?>
