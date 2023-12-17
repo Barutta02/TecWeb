@@ -11,13 +11,33 @@ function get_prices_section($tipoMenu, $prezzoLunVen, $PrezzoFestivi)
     return $prices;
 }
 
+# Aggiunge alla stringa la corretta formattazione per le lingue
+function add_translation_span($text) {
+    $word_span_replace = Array(
+        # Japan
+        'Nigiri'    => '<span lang="ja">Nigiri</span>',
+        'Tartare'   => '<span lang="ja">Tartare</span>',
+        'Sashimi'   => '<span lang="ja">Sashimi</span>',
+        'Uramaki'   => '<span lang="ja">Uramaki</span>',
+        'Tatkai'    => '<span lang="ja">Tatkai</span>',
+        # English
+        'Deluxe'    => '<span lang="en">Deluxe</span>'
+    );
+
+    foreach ($word_span_replace as $word => $tag) {
+        $text = str_replace($word, $tag, $text);
+    }
+
+    return $text;
+}
+
 /**
  * Metodo universale che dato un template per visionare piatti sostituisce il contenuto con i dati passati
  */
 function formatPlateString($piattotemplates, $nomePiatto = "", $Descrizione = "", $Prezzo = "", $Quantita = "", $IDPiatto = "", $allergeniPiatto = [])
 {
     $piattotemplates = str_replace('{{NomePiattoUnderscored}}', str_replace(' ', '', strtolower($nomePiatto)), $piattotemplates);
-    $piattotemplates = str_replace('{{NomePiatto}}', $nomePiatto, $piattotemplates);
+    $piattotemplates = str_replace('{{NomePiatto}}', add_translation_span($nomePiatto), $piattotemplates);
     $piattotemplates = str_replace('{{Descrizione}}', $Descrizione, $piattotemplates);
     $piattotemplates = str_replace('{{Prezzo}}', $Prezzo, $piattotemplates);
     $piattotemplates = str_replace('{{Quantita}}', $Quantita, $piattotemplates);
