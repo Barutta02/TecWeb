@@ -189,11 +189,11 @@ function get_menu_NoLogin()
     $menu = '';
 
     // Link da inserire
-    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "contattaci.php"];
+    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", " #", "login.php"];
     // Nomi delle voci di menu
-    $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti"];
+    $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Area utente"];
     // Lingue dei link (se diverse da Italiano)
-    $langs = ["", "", "", "", ""];
+    $langs = ["", "", "", "", "", ""];
     // Numero dei link da mostrare (grandezza array)
     $nLinks = count($links);
 

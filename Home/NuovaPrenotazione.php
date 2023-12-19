@@ -2,9 +2,12 @@
 
 require_once "Utility/utilities.php";
 
-
+session_start();
 //TEMPLATE comune
+if (!isset($_SESSION["username"])) {
+    header("Location: login.php");
 
+}
 $template = getTemplate('Layouts/main.html');
 
 $pageID = 'newPrenotationId';
@@ -29,7 +32,7 @@ $content .= $templatePren;
 
 
 
-session_start();
+
 if (isset($_SESSION["username"])) {
     $template = str_replace('{{BottomMenu}}', str_replace('{{ListMenuBottom}}', get_bottom_menu_Login(), getTemplate('Layouts/bottomMenu.html')), $template);
     $menu = get_menu_Login();
