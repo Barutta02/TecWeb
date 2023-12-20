@@ -1,0 +1,103 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --logoTxtColor: darkgoldenrod;
+    --borderColor: #DDD;
+    --linkColor: blue;
+    --visitedLinkColor: purple;
+    --LegendTxtColor: darkgoldenrod;
+}
+
+html, body {
+    font-size: 11pt;
+    font-family: "Times New Roman", Time, sans-serif;
+    margin: auto;
+}
+
+a:link {
+    text-decoration: underline;
+    color: var(--linkColor);
+}
+
+a:visited {
+    text-decoration: underline;
+    color: var(--visitedLinkColor);
+}
+
+a[href^="tel"] {
+    text-decoration: none;
+    color: unset;
+}
+
+a:not([href^="tel"]):link:after, a:not([href^="tel"]):visited:after {
+    content: " [" attr(href) "] ";
+    font-size:90%;
+}
+
+#menu, #bottomMenu, .srOnly, .onlyMobile{
+    display: none;
+}
+
+#breadcrumb {
+    padding: 0.5em 0 0.5em 0;
+    margin-top: 0.5em;
+    border-top: 1px solid var(--borderColor);
+    border-bottom: 1px solid var(--borderColor);
+    font-weight: bold;
+}
+
+header {
+    padding: 1em;
+    text-align: center;
+}
+
+h1.logo {
+    text-transform: uppercase;
+    color: var(--logoTxtColor);
+}
+
+h3.logo {
+    letter-spacing: .5em;
+}
+
+.flexable{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+footer {
+    border-top: 1px solid var(--borderColor);
+    padding: 1em 0.5em 0.5em;
+}
+
+#footerOrganizer {
+    justify-content: space-between;
+    padding-bottom: 1em;
+}
+
+footer dt{
+    display: inline-block;
+    font-weight: bold;
+    color: var(--LegendTxtColor);
+    font-size: 1.3em;
+    padding-top: 0.2em;
+}
+
+footer div, footer dl{
+    min-width: 200px;
+    text-align: left;
+}
+
+#footerDesc{
+    max-width: 300px;
+}
+
+#footerRights{
+    border-top: 1px solid var(--borderColor);
+    padding: 1em;
+    text-align: center;
+}

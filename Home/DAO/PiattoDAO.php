@@ -140,7 +140,7 @@ class PiattoDAO
         try {
             DBAccess::open_connection();
 
-            $query = "SELECT * FROM Piato";
+            $query = "SELECT * FROM Piatto";
             $result = DBAccess::get_connection_state()->query($query);
 
             if ($result) {

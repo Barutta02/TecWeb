@@ -7,8 +7,8 @@
     <meta name="keywords" content="{{keywords}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="images.css">
+    <link rel="stylesheet" href="style.css" media="screen">
+    <link rel="stylesheet" href="print.css" media="print">
   </head>
 
   <body id="{{pageID}}" onload="{{onload}}">
@@ -29,7 +29,7 @@
     <nav id="breadcrumb" aria-label="Percorso">{{breadcrumbs}}</nav>
 
     <main id="content">{{content}}</main>
-    <aside class="onlyMobile">{{BottomMenu}}</aside>
+    <aside id="bottomMenu" class="onlyMobile">{{BottomMenu}}</aside>
 
     {{footer}}
 
