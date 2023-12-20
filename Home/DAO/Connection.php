@@ -21,7 +21,7 @@ class DBAccess
         self::$connection = new mysqli(self::$HOST_DB, self::$USERNAME, self::$PASSWORD, self::$DATABASE_NAME, self::$PORT);
 
         if (mysqli_connect_errno()) {
-            echo "Errore di connessione al database: " . mysqli_connect_error();
+            echo getDBError();
             return false;
         } else {
             return true;
@@ -31,7 +31,7 @@ class DBAccess
     public static function exec_select_query($query)
     {
 
-        $res = $query->execute() or die("Errore DB: " . mysqli_error(self::$connection));
+        $res = $query->execute() or die(getDBError());
 
         if (mysqli_num_rows($res) == 0) {
             return array();
@@ -52,7 +52,7 @@ class DBAccess
     //Esegui query che alterano il sistema
     public static function exec_alter_query($query)
     {
-        $res = mysqli_query(self::$connection, $query) or die("Errore DB: " . mysqli_error(self::$connection));
+        $res = mysqli_query(self::$connection, $query) or die(getDBError());
         return $res;
     }
 
@@ -66,6 +66,12 @@ class DBAccess
     public static function get_connection_state()
     {
         return self::$connection;
+    }
+
+
+    public static function getDBError()
+    {
+        return "<p class='DBerror'>Errore di connessione al database</p>";
     }
 
 }

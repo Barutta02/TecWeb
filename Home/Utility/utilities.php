@@ -149,7 +149,7 @@ function get_menu_Login()
     $menu = '';
 
     // Link da inserire
-    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "contattaci.php", "VisualizzaOrdini.php", "Prenota.php", "NuovaPrenotazione.php"];
+    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "#footerOrganizer", "VisualizzaOrdini.php", "Prenota.php", "NuovaPrenotazione.php"];
     // Nomi delle voci di menu
     $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Ordini", "Prenota", "Tavolo"];
     // Lingue dei link (se diverse da Italiano)
@@ -189,7 +189,7 @@ function get_menu_NoLogin()
     $menu = '';
 
     // Link da inserire
-    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", " #", "login.php"];
+    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "#footerOrganizer", "login.php"];
     // Nomi delle voci di menu
     $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Area utente"];
     // Lingue dei link (se diverse da Italiano)
@@ -216,7 +216,7 @@ function get_menu_Admin()
     $menu = '';
 
     // Link da inserire
-    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "contattaci.php", "AdminPanel.php", "freeTable.php"];
+    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "#footerOrganizer", "AdminPanel.php", "freeTable.php"];
     // Nomi delle voci di menu
     $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Pannello amministratore", "Gestione Prenotazioni"];
     // Lingue dei link (se diverse da Italiano)

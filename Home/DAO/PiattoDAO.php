@@ -17,7 +17,7 @@ class PiattoDAO
             return $result->fetch_assoc();
         } catch (Exception $e) {
             // Handle the exception (log, display an error message, etc.)
-            die($e->getMessage());
+            die(DBAccess::getDBError());
         } finally {
             // Ensure the database connection is always closed
             DBAccess::close_connection();
@@ -40,7 +40,7 @@ class PiattoDAO
             }
         } catch (Exception $e) {
             // Handle the exception (log, display an error message, etc.)
-            die($e->getMessage());
+            die(DBAccess::getDBError());
         }
     }
 
@@ -68,7 +68,7 @@ class PiattoDAO
 
             // Check for errors in executing the statement
             if (!$result) {
-                throw new Exception('Error in query execution: ' . DBAccess::get_connection_state()->error);
+                throw new Exception();
             }
 
             $rows = [];
@@ -81,7 +81,7 @@ class PiattoDAO
             return $rows;
         } catch (Exception $e) {
             // Handle the exception (log, display an error message, etc.)
-            die($e->getMessage());
+            die(DBAccess::getDBError());
         } finally {
             // Ensure the database connection is always closed
             DBAccess::close_connection();
@@ -101,7 +101,7 @@ class PiattoDAO
             $stmt = DBAccess::get_connection_state()->prepare($query);
             // Check for errors in preparing the statement
             if (!$stmt) {
-                throw new Exception('Error in query preparation: ' . DBAccess::get_connection_state()->error);
+                throw new Exception();
             }
 
             // Bind the parameter
@@ -115,7 +115,7 @@ class PiattoDAO
 
             // Check for errors in executing the statement
             if (!$result) {
-                throw new Exception('Error in query execution: ' . DBAccess::get_connection_state()->error);
+                throw new Exception();
             }
 
             $rows = [];
@@ -128,7 +128,7 @@ class PiattoDAO
             return $rows;
         } catch (Exception $e) {
             // Handle the exception (log, display an error message, etc.)
-            die($e->getMessage());
+            die(DBAccess::getDBError());
         } finally {
             // Ensure the database connection is always closed
             DBAccess::close_connection();
@@ -140,7 +140,7 @@ class PiattoDAO
         try {
             DBAccess::open_connection();
 
-            $query = "SELECT * FROM Piatto";
+            $query = "SELECT * FROM Piato";
             $result = DBAccess::get_connection_state()->query($query);
 
             if ($result) {
@@ -151,11 +151,11 @@ class PiattoDAO
 
                 return $rows;
             } else {
-                throw new Exception('Error in query: ' . mysqli_error(DBAccess::get_connection_state()));
+                throw new Exception();
             }
         } catch (Exception $e) {
             // Handle the exception (log, display an error message, etc.)
-            die($e->getMessage());
+            die(DBAccess::getDBError());
         } finally {
             // Ensure the database connection is always closed
             DBAccess::close_connection();
@@ -175,7 +175,7 @@ class PiattoDAO
             return $stmt->execute();
         } catch (Exception $e) {
             // Handle the exception (log, display an error message, etc.)
-            die($e->getMessage());
+            die(DBAccess::getDBError());
         } finally {
             // Ensure the database connection is always closed
             DBAccess::close_connection();
@@ -200,7 +200,7 @@ class PiattoDAO
             return $stmt->execute();
         } catch (Exception $e) {
             // Handle the exception (log, display an error message, etc.)
-            die($e->getMessage());
+            die(DBAccess::getDBError());
         } finally {
             // Ensure the database connection is always closed
             DBAccess::close_connection();
@@ -219,7 +219,7 @@ class PiattoDAO
             return $stmt->execute();
         } catch (Exception $e) {
             // Handle the exception (log, display an error message, etc.)
-            die($e->getMessage());
+            die(DBAccess::getDBError());
         } finally {
             // Ensure the database connection is always closed
             DBAccess::close_connection();
