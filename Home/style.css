@@ -341,7 +341,7 @@ dl.ListinoPrezzi div {
     font-weight: bold;
 }
 
-.inline {
+.afterDuePunti {
     display: inline;
 }
 
@@ -993,8 +993,6 @@ input {
     .onlyMobile{
         display: block;
     }
-
-
     .homeImage {
         height: 40vh;
     }
