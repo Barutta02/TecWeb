@@ -14,6 +14,16 @@ $breadcrumbs = '<p>Ti trovi in:  Area Utente >> <span lang="en">Login</span></p>
 
 
 $content = $loginSectionhtml;
+$errorList = array();
+
+if (isset($_GET['Errorcode'])) {
+    // Recupera il valore del parametro errorCode
+    if ($_GET['Errorcode'] == "1") {
+        array_push($errorList, "<p class='warning'>Utente non trovato</p> ");
+    }
+}
+$content = str_replace('{{error}}', implode(" ", $errorList), $content);
+
 
 session_start();
 if (isset($_SESSION["username"])) {

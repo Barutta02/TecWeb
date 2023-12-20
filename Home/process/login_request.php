@@ -31,7 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 save_username_session($UsernameAuth['Username'], $UsernameAuth['Nome'], $UsernameAuth['Cognome']);
                 header("Location: ../NuovaPrenotazione.php");
             } else {
-                header("Location: ../login.php");
+                header("Location: ../login.php?Errorcode=1");
+
             }
         }
     }
