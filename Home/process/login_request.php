@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Esempio di verifica delle credenziali (puoi personalizzarla in base alle tue esigenze)
     if (empty($username_or_email) || empty($password)) {
-        echo "Compila tutti i campi del modulo.";
+        header("Location: ../login.php?Errorcode=1");
     } else {
         if ($username_or_email == 'Admin' && $password == 'Admin') {
             session_start();

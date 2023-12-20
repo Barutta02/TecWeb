@@ -20,13 +20,30 @@ $pageID = 'PrenotaBody';
 $title = "Prenota piatti - Sushi Brombeis";
 $breadcrumbs = '<p>Ti trovi in:  Area utente>>Prenota</p> ';
 
+
+//RaccogliWarning
+$errorList = array();
+
+if (isset($_GET['ResponseCode'])) {
+    // Recupera il valore del parametro errorCode
+    if ($_GET['ResponseCode'] == "0") {
+        array_push($errorList, "<p class='good'>Ordinazione andata a buon fine.</p> ");
+    }
+    if ($_GET['ResponseCode'] == "1") {
+        array_push($errorList, "<p class='warning'>Qualcosa è andato storto.</p> ");
+    }
+}
+
+
+
+
 //PRENDO IL FORM PER LA SELEZIONE DEGLI ALLERGENI UTILITIES
 $content = get_allergeni_form_section();
 
 //PRENDO IL FORM PER LA  PRENOTAZIONE DEI PIATTI DA UTILITIES
 $content .= ' <section id="PiattiMenu" class="containerPlatesViewer">
 <h2 > ' . $_SESSION['name'] . ' ordina qui i tuoi piatti
-</h2>' . get_prenotation_form_menu('process/process_prenotazione.php')
+</h2>' . implode(" ", $errorList) . get_prenotation_form_menu('process/process_prenotazione.php')
     . '</section>';
 
 

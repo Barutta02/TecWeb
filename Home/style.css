@@ -21,6 +21,8 @@
     /*importante il contrasto tra link visitato e non*/
     --flagColor: #f4524d;
     --warningMessage: #f4524d ;
+    --goodEndingMessage: #07a61f ;
+
     --fieldSetBorderColor: darkgoldenrod;
     --LegendTxtColor: darkgoldenrod;
     --secondBodyColor:#fcf3dc;
@@ -87,6 +89,20 @@ header {
         background-position-y: 7px;
         background-repeat: no-repeat;
         background-image: url(../assets/icon/warning.png);
+}
+
+.good{
+    color: var(--goodEndingMessage);
+}
+.good::before{
+        content: "";
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-size: contain;
+        margin-right: .3em;
+        background-repeat: no-repeat;
+        background-image: url(../assets/icon/check.png);
 }
 /**
     TODO non riesco a farlo funzionare
