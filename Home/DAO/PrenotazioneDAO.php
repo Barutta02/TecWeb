@@ -76,6 +76,30 @@ class PrenotazioneDAO
         }
     }
 
+    public static function getPrenotationByUsernameData($username, $data)
+    {
+        try {
+            DBAccess::open_connection();
+
+            $query = "SELECT  * from Prenotazione where Username = ? and DataPrenotazione = ?";
+            $stmt = DBAccess::get_connection_state()->prepare($query);
+            $stmt->bind_param("ss", $username, $data);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $prenotazione = $result->fetch_assoc();
+            return $prenotazione;
+        } catch (Exception $e) {
+            // Handle the exception (log, display an error message, etc.)
+            die($e->getMessage());
+        } finally {
+            // Close the prepared statement and the database connection in every case
+            if (isset($stmt)) {
+                $stmt->close();
+            }
+            DBAccess::close_connection();
+        }
+    }
+
     public static function getActivePrenotation()
     {
 

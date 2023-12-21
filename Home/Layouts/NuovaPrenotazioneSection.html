@@ -1,20 +1,45 @@
 <section id="login">
-      <h2>Nuova prenotazione</h2>
-      <form action="process/newPrenotazione_process.php" method="post">
-        <fieldset>
-          <legend>Inserisci dati</legend>
-          <ul>
-            <li>
-              <label for="n_persone">Numero di persone:</label>
-              <input type="number" id="n_persone" name="n_persone" min="0" max="100" required/>
-            </li>
+  <h2>Nuova prenotazione</h2>
+  <form action="process/newPrenotazione_process.php" method="post">
+    <fieldset>
+      <legend>Inserisci dati</legend>
+      <ul>
+        <li>
+          <label for="n_persone">Numero di persone:</label>
+          <input
+            type="number"
+            id="n_persone"
+            name="n_persone"
+            min="0"
+            max="100"
+            value="{{NumeroPersone}}"
+            required
+          />
+        </li>
 
-            <li>
-              <label for="n_tavolo">Numero tavolo:</label>
-              <input type="number" id="n_tavolo" name="n_tavolo" min="0" max="100" required />
-            </li>
-          </ul>
-          <input type="submit" value="Crea nuova prenotazione" />
-        </fieldset>
-      </form>
-    </section>
+        <li>
+          <label for="n_tavolo">Numero tavolo:</label>
+          <input
+            type="number"
+            id="n_tavolo"
+            name="n_tavolo"
+            min="0"
+            max="100"
+            value="{{NumeroTavolo}}"
+            required
+          />
+        </li>
+        <li>
+          <label for="indicazioniAggiuntive">Indicazioni aggiuntive:</label>
+          <textarea
+            id="indicazioniAggiuntive"
+            name="indicazioniAggiuntive"
+            rows="4"
+            cols="50"
+          ></textarea>
+        </li>
+      </ul>
+      <input type="submit" value="Crea nuova prenotazione" />
+    </fieldset>
+  </form>
+</section>

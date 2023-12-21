@@ -6,8 +6,22 @@ session_start();
 //TEMPLATE comune
 if (!isset($_SESSION["username"])) {
     header("Location: login.php");
-
 }
+
+if (!isset($_SESSION["username"])) {
+    header("Location: login.php");
+}
+
+$n_tavolo = "";
+$n_persone = "";
+if (isset($_SESSION['data_prenotazione_inCorso'])) {
+    //Prendi i dati della prenotazione ovvero tavolo e numero di persone
+    require_once "DAO/PrenotazioneDAO.php";
+    $prenotazioneAttiva = PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso']);
+    $n_tavolo = $prenotazioneAttiva["Tavolo"];
+    $n_persone = $prenotazioneAttiva["NumPersone"];
+}
+
 $template = getTemplate('Layouts/main.html');
 
 $pageID = 'newPrenotationId';
@@ -25,8 +39,12 @@ if ($templatePren === false) {
     die("Failed to load template file: $sectionPrenotazione");
 }
 
-
 $content = '';
+
+
+
+$templatePren = str_replace('{{NumeroPersone}}', $n_persone, $templatePren);
+$templatePren = str_replace('{{NumeroTavolo}}', $n_tavolo, $templatePren);
 
 $content .= $templatePren;
 

@@ -558,7 +558,14 @@ input {
     font-size: 1.2em;
 }
 
+label[for="indicazioniAggiuntive"]{
+    display: block;
+}
 
+textarea{
+    margin-top: .4em;
+    box-sizing: border-box;
+}
 /*******************HOME************************/
 
 .homeImage {
