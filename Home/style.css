@@ -564,6 +564,7 @@ label[for="indicazioniAggiuntive"]{
 
 textarea{
     margin-top: .4em;
+    max-width: 300px;
     box-sizing: border-box;
 }
 /*******************HOME************************/
