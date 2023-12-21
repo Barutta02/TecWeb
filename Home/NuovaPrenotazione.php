@@ -14,12 +14,14 @@ if (!isset($_SESSION["username"])) {
 
 $n_tavolo = "";
 $n_persone = "";
+$operazione = "Crea nuova prenotazione";
 if (isset($_SESSION['data_prenotazione_inCorso'])) {
     //Prendi i dati della prenotazione ovvero tavolo e numero di persone
     require_once "DAO/PrenotazioneDAO.php";
     $prenotazioneAttiva = PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso']);
     $n_tavolo = $prenotazioneAttiva["Tavolo"];
     $n_persone = $prenotazioneAttiva["NumPersone"];
+    $operazione = "Modifica";
 }
 
 $template = getTemplate('Layouts/main.html');
@@ -45,6 +47,7 @@ $content = '';
 
 $templatePren = str_replace('{{NumeroPersone}}', $n_persone, $templatePren);
 $templatePren = str_replace('{{NumeroTavolo}}', $n_tavolo, $templatePren);
+$templatePren = str_replace('{{Operazione}}', $operazione, $templatePren);
 
 $content .= $templatePren;
 

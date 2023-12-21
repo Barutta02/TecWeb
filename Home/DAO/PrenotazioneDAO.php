@@ -147,6 +147,24 @@ class PrenotazioneDAO
         }
     }
 
+
+    public static function updatePrenotazione($username, $data, $n_persone, $n_tavolo)
+    {
+        try {
+            DBAccess::open_connection();
+
+            $sql = "UPDATE Prenotazione SET Tavolo = ? , NumPersone = ?  WHERE Username = ? AND DataPrenotazione = ?";
+            $stmt = DBAccess::get_connection_state()->prepare($sql);
+
+            $stmt->bind_param("iiss", $n_tavolo, $n_persone, $username, $data);
+            $stmt->execute();
+        } catch (Exception $e) {
+            die($e->getMessage());
+        } finally {
+            $stmt->close();
+            DBAccess::close_connection();
+        }
+    }
     // Add more methods for CRUD operations on the User table
 
 }

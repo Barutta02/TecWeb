@@ -1039,6 +1039,13 @@ textarea{
     #restaurantImage{
         top:0;
     }
+    .homeSection p{
+        padding: 0;
+    }
+    .homeSection h3 {
+        padding: 0;
+        padding-bottom: 1em;
+    }
 }
 
 
