@@ -157,23 +157,23 @@ function get_menu_Login()
     // Numero dei link da mostrare (grandezza array)
     $nLinks = count($links);
 
-    //Togliere dall'url restituito da PHP -- cambierà in base all'hosting 
-    $strToRemove = ROOT_FOLDER;
-    $currentPage = str_replace($strToRemove, "", $_SERVER['REQUEST_URI']);
+    //Togliere dall'url restituito da PHP -- cambierà in base all'hosting
+    $currentPage = str_replace(ROOT_FOLDER, "", $_SERVER['REQUEST_URI']);
+    $fileName = basename(parse_url($currentPage, PHP_URL_PATH));
 
     for ($i = 0; $i < $nLinks; $i++) {
-        if ($currentPage == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
+        if ( $fileName == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
             $menu .= '<li ';
             if ($names[$i] == "Ordini" || $names[$i] == "Prenota" || $names[$i] == "Tavolo") {
                 $menu .= 'class="bigScreenOnly"';
             }
-            $menu .= 'id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</li>';
+            $menu .= 'id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '> <p>' . $names[$i]. '</p></li>';
         } else {
             $menu .= '<li ';
             if ($names[$i] == "Ordini" || $names[$i] == "Prenota" || $names[$i] == "Tavolo") {
                 $menu .= 'class="bigScreenOnly"';
             }
-            $menu .= '><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
+            $menu .= '><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] .'</a></li>';
         }
     }
     #$menu .= '<li><a class="button userAreaLink" href="login.php" >Area Utente</a></li>';
@@ -181,7 +181,6 @@ function get_menu_Login()
 
     return $menu;
 }
-
 
 function get_menu_NoLogin()
 {
@@ -197,13 +196,13 @@ function get_menu_NoLogin()
     // Numero dei link da mostrare (grandezza array)
     $nLinks = count($links);
 
-    //Togliere dall'url restituito da PHP -- cambierà in base all'hosting 
-    $strToRemove = ROOT_FOLDER;
-    $currentPage = str_replace($strToRemove, "", $_SERVER['REQUEST_URI']);
+    //Togliere dall'url restituito da PHP -- cambierà in base all'hosting
+    $currentPage = str_replace(ROOT_FOLDER, "", $_SERVER['REQUEST_URI']);
+    $fileName = basename(parse_url($currentPage, PHP_URL_PATH));
 
     for ($i = 0; $i < $nLinks; $i++) {
-        if ($currentPage == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
-            $menu .= '<li id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</li>';
+        if ($fileName == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
+            $menu .= '<li id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><p>' . $names[$i] . '</p></li>';
         } else {
             $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
         }
@@ -216,7 +215,7 @@ function get_menu_Admin()
     $menu = '';
 
     // Link da inserire
-    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "#footerOrganizer", "AdminPanel.php", "freeTable.php"];
+    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "#footerOrganizer", "adminPanel.php", "freeTable.php"];
     // Nomi delle voci di menu
     $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Pannello amministratore", "Gestione Prenotazioni"];
     // Lingue dei link (se diverse da Italiano)
@@ -224,13 +223,14 @@ function get_menu_Admin()
     // Numero dei link da mostrare (grandezza array)
     $nLinks = count($links);
 
-    //Togliere dall'url restituito da PHP -- cambierà in base all'hosting 
-    $strToRemove = ROOT_FOLDER;
-    $currentPage = str_replace($strToRemove, "", $_SERVER['REQUEST_URI']);
+    //Togliere dall'url restituito da PHP -- cambierà in base all'hosting
+
+    $currentPage = str_replace(ROOT_FOLDER, "", $_SERVER['REQUEST_URI']);
+    $fileName = basename(parse_url($currentPage, PHP_URL_PATH));
 
     for ($i = 0; $i < $nLinks; $i++) {
-        if ($currentPage == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
-            $menu .= '<li id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</li>';
+        if ($fileName == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
+            $menu .= '<li id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><p>' . $names[$i] . '</p></li>';
         } else {
             $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
         }
