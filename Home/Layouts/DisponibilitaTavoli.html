@@ -1,16 +1,10 @@
 <li>
-  <label>Tavoli da {{NumPosti}} posti: {{Occupati}} su {{Totale_tavoli}} occupati</label>
-  <!--TODO che può essere usato con <- e -> della tastiera issue #9-->
-  <input
-    type="range"
-    class="sliderTable"
-    min="0"
-    aria-valuemin="0"
-    max="{{Totale_tavoli}}"
-    aria-valuemax="{{Totale_tavoli}}"
-    value="{{Occupati}}"
-    aria-valuenow="{{Occupati}}"
-    aria-describedby="slider per selezionare il numero di posti"
-    disabled
-  />
+  <label for="sliderTable">Tavoli da {{NumPosti}} posti: {{Occupati}} su {{Totale_tavoli}} occupati</label>
+  <progress
+          id="sliderTable"
+          class="progressTable"
+          max="{{Totale_tavoli}}"
+          value="{{Occupati}}"
+          aria-describedby="progress per visualizzare il numero di posti occupati"
+  ></progress>
 </li>

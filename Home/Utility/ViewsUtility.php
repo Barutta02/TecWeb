@@ -247,6 +247,8 @@ function get_active_prenotation()
             $templateSliderInputIter = $tableSliderLayout;
             // $ariaLabel = 'Piatto: ' . $piatto['NomePiatto'] . ', Descrizione: ' . $piatto['Descrizione'];
             $templateSliderInputIter = str_replace('{{numTavolo}}', $tavolo['Tavolo'], $templateSliderInputIter);
+            $templateSliderInputIter = str_replace('{{numClienti}}', $tavolo['NumPersone'], $templateSliderInputIter);
+
             $templateSliderInputIter = str_replace('{{Orario}}', $tavolo['DataPrenotazione'], $templateSliderInputIter);
             $templateSliderInputIter = str_replace('{{Username}}', $tavolo['Username'], $templateSliderInputIter);
 
