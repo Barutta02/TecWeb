@@ -60,6 +60,38 @@ class OrdineDAO
         }
     }
 
+    public static function getOrdiniFrequenti($username)
+    {
+        try {
+            DBAccess::open_connection();
+
+            $query = "SELECT DISTINCT Piatto.NomePiatto as NomePiatto, Piatto.Descrizione as Descrizione, count(*) as Frequenza
+                      FROM Ordine JOIN Piatto on Piatto.IDPiatto = Ordine.IDPiatto WHERE Ordine.Username = ?
+                      GROUP BY NomePiatto ORDER BY Frequenza DESC LIMIT 8;";
+
+            $stmt = DBAccess::get_connection_state()->prepare($query);
+            $stmt->bind_param('s', $username);
+
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if (!$result) {
+                die('Error in query execution: ' . DBAccess::get_connection_state()->error);
+            }
+
+            $rows = [];
+            while ($row = $result->fetch_assoc()) {
+                $rows[] = $row;
+            }
+
+            return $rows;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        } finally {
+            DBAccess::close_connection();
+        }
+    }
+
     public static function getAllToDoOrder()
     {
         try {
