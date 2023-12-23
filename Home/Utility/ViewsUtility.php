@@ -20,8 +20,17 @@ function add_translation_span($text) {
         'Sashimi'   => '<span lang="ja">Sashimi</span>',
         'Uramaki'   => '<span lang="ja">Uramaki</span>',
         'Tatkai'    => '<span lang="ja">Tatkai</span>',
+        'Maki'      => '<span lang="ja">Maki</span>',
+        'Gyoza'     => '<span lang="ja">Gyoza</span>',
+        'Tempura'   => '<span lang="ja">Tempura</span>',
+        'Sushi'     => '<span lang="ja">Sushi</span>',
         # English
-        'Deluxe'    => '<span lang="en">Deluxe</span>'
+        'Deluxe'    => '<span lang="en">Deluxe</span>',
+        'Roll'      => '<span lang="en">Roll</span>',
+        'Rainbow'   => '<span lang="en">Rainbow</span>',
+        'Dragon'    => '<span lang="en">Dragon</span>',
+        'Premium'   => '<span lang="en">Premium</span>',
+        'Philly'    => '<span lang="en">Philly</span>'
     );
 
     foreach ($word_span_replace as $word => $tag) {
