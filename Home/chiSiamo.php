@@ -9,7 +9,7 @@ $template = getTemplate('Layouts/main.html');
 
 $pageID = 'chiSiamoID';
 $title = "Chi siamo - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in: Chi siamo</p> ';
+$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span> </a> >> Chi siamo</p> ';
 
 
 //Sezione di presentazione del ristorante
@@ -36,11 +36,10 @@ if (isset($_SESSION["username"])) {
     $menu = get_menu_Login();
 
 
-}elseif (isset($_SESSION['adminLogged'])){
+} elseif (isset($_SESSION['adminLogged'])) {
     $template = str_replace('{{BottomMenu}}', str_replace('{{ListMenuBottom}}', get_bottom_menu_Login(), getTemplate('Layouts/bottomMenu.html')), $template);
     $menu = get_menu_Admin();
-}
-else{
+} else {
     $menu = get_menu_NoLogin();
     $template = str_replace('{{BottomMenu}}', "", $template);
 }

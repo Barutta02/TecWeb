@@ -10,7 +10,7 @@ $template = getTemplate('Layouts/main.html');
 
 $pageID = 'menuCenaBody';
 $title = "Menu Cena - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in:  Menu Pranzo</p> ';
+$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span> </a> >>  Menu Pranzo</p> ';
 
 
 $content = '';
@@ -31,11 +31,10 @@ if (isset($_SESSION["username"])) {
     $menu = get_menu_Login();
 
 
-}elseif (isset($_SESSION['adminLogged'])){
+} elseif (isset($_SESSION['adminLogged'])) {
     $template = str_replace('{{BottomMenu}}', str_replace('{{ListMenuBottom}}', get_bottom_menu_Login(), getTemplate('Layouts/bottomMenu.html')), $template);
     $menu = get_menu_Admin();
-}
-else{
+} else {
     $menu = get_menu_NoLogin();
     $template = str_replace('{{BottomMenu}}', "", $template);
 }

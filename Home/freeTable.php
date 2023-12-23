@@ -14,7 +14,7 @@ $template = getTemplate('Layouts/main.html');
 
 $pageID = 'GestioneTavoli';
 $title = "Gestione tavoli - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in:  Area amministratore>>Gestione tavoli</p> ';
+$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span> </a> >> <a href="login.php"> Area utente</a> >> Gestione tavoli</p> ';
 
 //PRENDO IL FORM PER LA SELEZIONE DEGLI ALLERGENI UTILITIES
 $content = '<div class="flexable"><section id="SezioneGestioneTavoli"><h2>Gestione tavoli</h2>' . get_table_avaible() . '</section>';
@@ -30,5 +30,5 @@ $template = str_replace('{{menu}}', $menu, $template);
 $template = str_replace('{{BottomMenu}}', "", $template);
 
 
-echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
+echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '', "Admin");
 ?>

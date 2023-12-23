@@ -8,12 +8,17 @@ define("ROOT_FOLDER", "/TecWeb/Home/");
 /*
     Rimpiazza i placeholder del template html del sito
 */
-function replace_in_page($html, $title, $id, $breadcrumbs, $keywords, $description, $content, $onload)
+function replace_in_page($html, $title, $id, $breadcrumbs, $keywords, $description, $content, $onload, $usertype = "User")
 {
     //Header presente in ogni pagina
     $header = file_get_contents('Layouts/header.html');
 
     $footer = file_get_contents('Layouts/footer.html');
+
+    if ($usertype == "Admin") {
+        $footer = file_get_contents('Layouts/adminFooter.html');
+
+    }
 
     $html = str_replace('{{onload}}', $onload, $html);
 
@@ -145,7 +150,6 @@ function get_bottom_menu_Login()
 }
 function get_menu_Login()
 {
-
     $menu = '';
 
     // Link da inserire
@@ -192,7 +196,7 @@ function get_menu_NoLogin()
     // Nomi delle voci di menu
     $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Area utente"];
     // Lingue dei link (se diverse da Italiano)
-    $langs = ["", "", "", "", "", ""];
+    $langs = ["en", "", "", "", "", ""];
     // Numero dei link da mostrare (grandezza array)
     $nLinks = count($links);
 
@@ -219,7 +223,7 @@ function get_menu_Admin()
     // Nomi delle voci di menu
     $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Pannello amministratore", "Gestione Prenotazioni"];
     // Lingue dei link (se diverse da Italiano)
-    $langs = ["", "", "", "", "", "", ""];
+    $langs = ["en", "", "", "", "", "", ""];
     // Numero dei link da mostrare (grandezza array)
     $nLinks = count($links);
 

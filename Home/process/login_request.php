@@ -10,8 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: ../login.php?Errorcode=1");
     } else {
         if ($username_or_email == 'Admin' && $password == 'Admin') {
-            session_start();
             header("Location: ../adminPanel.php");
+            session_destroy();
+            session_start();
             $_SESSION['adminLogged'] = 1;
             exit(); // Ensure that no further code is executed after the redirect
         }
@@ -23,11 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $userDAO = new UserDAO();
         $emailAuth = UserDAO::getUserByEmailPassword($username_or_email, $password);
         if (!empty($emailAuth)) {
+            session_destroy();
             save_username_session($emailAuth['Username'], $emailAuth['Nome'], $emailAuth['Cognome']);
             header("Location: ../NuovaPrenotazione.php");
         } else {
             $UsernameAuth = UserDAO::getUserByUsernamePassword($username_or_email, $password);
             if (!empty($UsernameAuth)) {
+                session_destroy();
                 save_username_session($UsernameAuth['Username'], $UsernameAuth['Nome'], $UsernameAuth['Cognome']);
                 header("Location: ../NuovaPrenotazione.php");
             } else {

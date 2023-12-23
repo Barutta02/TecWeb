@@ -17,7 +17,7 @@ $template = getTemplate('Layouts/main.html');
 
 $pageID = 'AdminPanelBody';
 $title = "Pannello ristoratore - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in:  Pannello amministratore</p> ';
+$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span> </a> >> <a href="login.php"> Area utente</a> >> Pannello amministratore</p> ';
 
 
 $content = '<section id="ordiniOdierni" class="containerPlatesViewer">
@@ -31,5 +31,5 @@ $template = str_replace('{{menu}}', $menu, $template);
 $template = str_replace('{{BottomMenu}}', "", $template);
 
 
-echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
+echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '', "Admin");
 ?>
