@@ -1,7 +1,7 @@
 <section id="login">
-  <h2>Nuova prenotazione</h2>
+  <h2>Modifica prenotazione</h2>
   {{Message}}
-  <form action="process/newPrenotazione_process.php" method="post">
+  <form action="process/modifyPrenotazione_process.php" method="post">
     <fieldset>
       <legend>Inserisci dati</legend>
       <ul>
@@ -11,10 +11,19 @@
             type="number"
             id="n_persone"
             name="n_persone"
-            min="1"
-            max="{{MaxPosti}}"
             value="{{NumeroPersone}}"
-            required
+            readonly
+          >
+        </li>
+
+        <li>
+          <label for="n_tavolo">Numero tavolo:</label>
+          <input
+            type="number"
+            id="n_tavolo"
+            name="n_tavolo"
+            value="{{NumeroTavolo}}"
+            readonly
           >
         </li>
         <li>
@@ -24,10 +33,10 @@
             name="indicazioniAggiuntive"
             rows="4"
             cols="50"
-          ></textarea>
+          >{{IndicazioniAggiuntive}}</textarea>
         </li>
       </ul>
-      <input type="submit" value="Crea nuova prenotazione" />
+      <input type="submit" value="Modifica" />
     </fieldset>
   </form>
 </section>
