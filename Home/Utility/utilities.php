@@ -136,7 +136,7 @@ function get_bottom_menu_Login()
 
     for ($i = 0; $i < $nLinks; $i++) {
         if ($currentPage == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
-            $menu .= '<li id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><i class="ListIcon ' . str_replace(" ", "", $names[$i]) . '"></i><p>' . $names[$i] . '</p></li>';
+            $menu .= '<li class="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><i class="ListIcon ' . str_replace(" ", "", $names[$i]) . '"></i><p>' . $names[$i] . '</p></li>';
         } else {
             $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><i class="ListIcon ' . str_replace(" ", "", $names[$i]) . '"></i><p>' . $names[$i] . '</p></a></li>';
         }
@@ -162,18 +162,18 @@ function get_menu_Login()
     $fileName = basename(parse_url($currentPage, PHP_URL_PATH));
 
     for ($i = 0; $i < $nLinks; $i++) {
-        if ( $fileName == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
+        if ($fileName == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
             $menu .= '<li ';
             if ($names[$i] == "Ordini" || $names[$i] == "Prenota" || $names[$i] == "Tavolo") {
-                $menu .= 'class="bigScreenOnly"';
+                $menu .= 'class="bigScreenOnly" ';
             }
-            $menu .= 'id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '> <p>' . $names[$i]. '</p></li>';
+            $menu .= 'class="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '> <p>' . $names[$i] . '</p></li>';
         } else {
             $menu .= '<li ';
             if ($names[$i] == "Ordini" || $names[$i] == "Prenota" || $names[$i] == "Tavolo") {
-                $menu .= 'class="bigScreenOnly"';
+                $menu .= 'class="bigScreenOnly" ';
             }
-            $menu .= '><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] .'</a></li>';
+            $menu .= '><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
         }
     }
     #$menu .= '<li><a class="button userAreaLink" href="login.php" >Area Utente</a></li>';
@@ -202,7 +202,7 @@ function get_menu_NoLogin()
 
     for ($i = 0; $i < $nLinks; $i++) {
         if ($fileName == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
-            $menu .= '<li id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><p>' . $names[$i] . '</p></li>';
+            $menu .= '<li class="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><p>' . $names[$i] . '</p></li>';
         } else {
             $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
         }
@@ -230,7 +230,7 @@ function get_menu_Admin()
 
     for ($i = 0; $i < $nLinks; $i++) {
         if ($fileName == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
-            $menu .= '<li id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><p>' . $names[$i] . '</p></li>';
+            $menu .= '<li class="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><p>' . $names[$i] . '</p></li>';
         } else {
             $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
         }
