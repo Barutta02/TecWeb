@@ -5,7 +5,7 @@
 
 :root {
     --surface-color: #fff;
-  --curve: 40;
+    --curve: 40;
     --headerBgColor: #000;
     --menuBackground: #000;
     --headerTxtColor: rgb(255, 255, 255);
@@ -142,7 +142,7 @@ nav.menu ul li {
 }
 
 nav.menu ul li a {
-    max-font-size: auto;
+    /* max-font-size: auto; Questo proprietà non esiste */
     font-weight: bold;
     transition: color 0.3s ease;
     text-underline-offset: .3em;
@@ -264,7 +264,7 @@ margin: 0;
     height: auto;
     display: block;
     border: none;
-    vertical-align: middle;
+    /*vertical-align: middle; Non funziona se l'elemento è un blocco*/
     object-fit: cover;
     border-radius: 8px;
     margin: 0;
@@ -552,6 +552,7 @@ fieldset ul li {
 #signIn form,
 #login form {
     text-align: -webkit-center;
+    text-align: -moz-center;
 }
 
 input {

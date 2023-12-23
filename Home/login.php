@@ -7,8 +7,9 @@ $loginSectionhtml = getTemplate('Layouts/loginSection.html');
 
 
 $pageID = 'loginBody';
-$title = '<span lang="en">Login</span><p> - Sushi Brombeis</p>';
-$breadcrumbs = '<p>Ti trovi in:  <a href="index.php"><span lang="en">Home</span> </a> >> <span lang="en">Login</span></p> ';
+$title = 'Login - Sushi Brombeis';
+$breadcrumbs = '<p>Ti trovi in:  Area Utente >> <span lang="en">Login</span></p> ';
+
 
 
 
