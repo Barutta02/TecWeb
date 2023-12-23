@@ -30,5 +30,5 @@ $template = str_replace('{{menu}}', $menu, $template);
 $template = str_replace('{{BottomMenu}}', "", $template);
 
 
-echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '', "Admin");
+echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Prenotazione tavolo da Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '', "Admin");
 ?>
