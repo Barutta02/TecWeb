@@ -37,6 +37,30 @@ class TavoloDAO
         }
     }
 
+    public static function getMaxPosti()
+    {
+        try {
+            DBAccess::open_connection();
+
+            $query = "SELECT MAX(numPosti) AS maxPosti FROM Tavolo;";
+            $result = mysqli_query(DBAccess::get_connection_state(), $query);
+
+            if ($result) {
+                $row = $result->fetch_assoc();
+                $result->free();
+                return $row["maxPosti"];
+            } else {
+                die('Error in query: ' . mysqli_error(DBAccess::get_connection_state()));
+            }
+        } catch (Exception $e) {
+            // Handle the exception (log, display an error message, etc.)
+            die($e->getMessage());
+        } finally {
+            // Ensure the database connection is always closed
+            DBAccess::close_connection();
+        }
+    }
+
 }
 
 
