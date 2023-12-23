@@ -296,6 +296,7 @@ footer {
 }
 #footerOrganizer {
     padding: 1em;
+    display: flex;
     justify-content: space-evenly;
 }
 
@@ -325,9 +326,15 @@ a.socialLogo::before {
     height: 40px;
     background-size: contain;
     margin-right: .3em;
-    margin: .5em;
-}
+    margin-top: 10%;
+    margin-bottom: 10%;
 
+}
+a.socialLogo {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
 a.instagramLogo::before {
     background-image: url(../assets/icon/instagram.png);
 }
@@ -507,7 +514,7 @@ fieldset ul li {
     position: absolute;
     left: 4px;
     /* Regola la posizione se necessario */
-    top: 0px;
+    top: 0;
     /* Regola la posizione se necessario */
     color: #ffffff;
     /* Colore dell'icona del checkmark */
@@ -916,7 +923,7 @@ label {
     padding: .5em;
 }
 
-#SezioneGestionePrenotazioni
+#SezioneGestionePrenotazioni,
 .buttonDoneCompleted::after {
     content: ' - Terminata';
 }
