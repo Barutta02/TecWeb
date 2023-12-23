@@ -163,11 +163,11 @@ function get_menu_Login()
 
     for ($i = 0; $i < $nLinks; $i++) {
         if ($fileName == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
-            $menu .= '<li ';
+            $menu .= '<li class="currentLink ';
             if ($names[$i] == "Ordini" || $names[$i] == "Prenota" || $names[$i] == "Tavolo") {
-                $menu .= 'class="bigScreenOnly" ';
+                $menu .= 'bigScreenOnly';
             }
-            $menu .= 'class="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '> <p>' . $names[$i] . '</p></li>';
+            $menu .= '"' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '> <p>' . $names[$i] . '</p></li>';
         } else {
             $menu .= '<li ';
             if ($names[$i] == "Ordini" || $names[$i] == "Prenota" || $names[$i] == "Tavolo") {
