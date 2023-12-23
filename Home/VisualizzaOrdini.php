@@ -28,7 +28,7 @@ $content = "";
 $content .= getThisPrenotationOrderView();
 
 
-$content .= getOldOrderView();
+$content .= getFrequentView();
 
 
 
