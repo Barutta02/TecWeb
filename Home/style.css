@@ -20,6 +20,7 @@
     --visitedLinkColor: #f4524d;
     /*importante il contrasto tra link visitato e non*/
     --flagColor: #f4524d;
+    --endPrenotation: #f4524d;
     --warningMessage: #f4524d ;
     --goodEndingMessage: #07a61f ;
 
@@ -778,7 +779,7 @@ input {
 }
 
 .buttonDoneCompleted{
-    background: #6f6969;
+    background: var(--endPrenotation);
     content: 'Consegnato';
 }
 .buttonDoneCompleted::after {
@@ -808,6 +809,7 @@ input {
 .ActivePrenotationList li button{
         margin: 1em 0 1em 
 }
+/*
 .sliderTablelider {
     width: 80%;
     margin: 20px auto;
@@ -847,6 +849,44 @@ input {
     background: var(--flagColor);
     cursor: pointer;
 }
+
+*/
+
+.progressTable {
+    width: 100%;
+    height: 20px; /* Set the height of the progress bar */
+    color: var(--alternative_text);
+    background-color: grey;
+}
+
+/* Customize the color and add a border to the progress bar based on occupancy */
+.progressTable::-webkit-progress-bar {
+    background-color: var(--menuBackground);
+    border: 1px solid grey; /* Add a border */
+}
+
+.progressTable::-webkit-progress-value {
+    background-color: var(--alternative_text); /* Red color for the progress bar */
+    border: 1px solid var(--alternative_text); /* Add a border */
+}
+
+.progressTable::-moz-progress-bar {
+    background-color: var(--alternative_text);
+    border: 1px solid var(--alternative_text);
+}
+
+/* Hide the default appearance on Firefox */
+progress[value]::-moz-progress-bar {
+    background-color: transparent;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+
 
 
 #SezioneGestioneTavoli {

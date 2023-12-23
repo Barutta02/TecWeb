@@ -82,7 +82,7 @@ class PrenotazioneDAO
         try {
             DBAccess::open_connection();
 
-            $query = "SELECT Tavolo, DataPrenotazione, Username  from Prenotazione where InCorso = 1 order by DataPrenotazione         ";
+            $query = "SELECT Tavolo, DataPrenotazione, Username, NumPersone  from Prenotazione where InCorso = 1 order by DataPrenotazione         ";
             $result = DBAccess::get_connection_state()->query($query);
 
             if ($result) {
