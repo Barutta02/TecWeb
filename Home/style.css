@@ -5,7 +5,7 @@
 
 :root {
     --surface-color: #fff;
-  --curve: 40;
+    --curve: 40;
     --headerBgColor: #000;
     --menuBackground: #000;
     --headerTxtColor: rgb(255, 255, 255);
@@ -551,6 +551,7 @@ fieldset ul li {
 #signIn form,
 #login form {
     text-align: -webkit-center;
+    text-align: -moz-center;
 }
 
 input {
