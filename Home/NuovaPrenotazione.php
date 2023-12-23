@@ -28,18 +28,12 @@ $template = getTemplate('Layouts/main.html');
 
 $pageID = 'newPrenotationId';
 $title = "Nuova Prenotazione - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in: Area utente>>Gestisci prenotazione</p> ';
+$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span> </a> >> <a href="login.php"> Area utente</a> >> Gestisci prenotazione</p> ';
 
 
 //Sezione di presentazione del ristorante
-$sectionPrenotazione = 'Layouts/NuovaPrenotazioneSection.html';
-if (!file_exists($sectionPrenotazione)) {
-    die("Template file not found: $sectionPrenotazione");
-}
-$templatePren = file_get_contents($sectionPrenotazione);
-if ($templatePren === false) {
-    die("Failed to load template file: $sectionPrenotazione");
-}
+$templatePren = getTemplate('Layouts/NuovaPrenotazioneSection.html');
+
 
 $content = '';
 

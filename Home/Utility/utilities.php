@@ -8,12 +8,17 @@ define("ROOT_FOLDER", "/TecWeb/Home/");
 /*
     Rimpiazza i placeholder del template html del sito
 */
-function replace_in_page($html, $title, $id, $breadcrumbs, $keywords, $description, $content, $onload)
+function replace_in_page($html, $title, $id, $breadcrumbs, $keywords, $description, $content, $onload, $usertype = "User")
 {
     //Header presente in ogni pagina
     $header = file_get_contents('Layouts/header.html');
 
     $footer = file_get_contents('Layouts/footer.html');
+
+    if ($usertype == "Admin") {
+        $footer = file_get_contents('Layouts/adminFooter.html');
+
+    }
 
     $html = str_replace('{{onload}}', $onload, $html);
 
@@ -136,7 +141,7 @@ function get_bottom_menu_Login()
 
     for ($i = 0; $i < $nLinks; $i++) {
         if ($currentPage == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
-            $menu .= '<li id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><i class="ListIcon ' . str_replace(" ", "", $names[$i]) . '"></i><p>' . $names[$i] . '</p></li>';
+            $menu .= '<li class="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><i class="ListIcon ' . str_replace(" ", "", $names[$i]) . '"></i><p>' . $names[$i] . '</p></li>';
         } else {
             $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><i class="ListIcon ' . str_replace(" ", "", $names[$i]) . '"></i><p>' . $names[$i] . '</p></a></li>';
         }
@@ -145,7 +150,6 @@ function get_bottom_menu_Login()
 }
 function get_menu_Login()
 {
-
     $menu = '';
 
     // Link da inserire
@@ -162,18 +166,18 @@ function get_menu_Login()
     $fileName = basename(parse_url($currentPage, PHP_URL_PATH));
 
     for ($i = 0; $i < $nLinks; $i++) {
-        if ( $fileName == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
-            $menu .= '<li ';
+        if ($fileName == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
+            $menu .= '<li class="currentLink ';
             if ($names[$i] == "Ordini" || $names[$i] == "Prenota" || $names[$i] == "Tavolo") {
-                $menu .= 'class="bigScreenOnly"';
+                $menu .= 'bigScreenOnly';
             }
-            $menu .= 'id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '> <p>' . $names[$i]. '</p></li>';
+            $menu .= '"' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '> <p>' . $names[$i] . '</p></li>';
         } else {
             $menu .= '<li ';
             if ($names[$i] == "Ordini" || $names[$i] == "Prenota" || $names[$i] == "Tavolo") {
-                $menu .= 'class="bigScreenOnly"';
+                $menu .= 'class="bigScreenOnly" ';
             }
-            $menu .= '><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] .'</a></li>';
+            $menu .= '><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
         }
     }
     #$menu .= '<li><a class="button userAreaLink" href="login.php" >Area Utente</a></li>';
@@ -192,7 +196,7 @@ function get_menu_NoLogin()
     // Nomi delle voci di menu
     $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Area utente"];
     // Lingue dei link (se diverse da Italiano)
-    $langs = ["", "", "", "", "", ""];
+    $langs = ["en", "", "", "", "", ""];
     // Numero dei link da mostrare (grandezza array)
     $nLinks = count($links);
 
@@ -202,7 +206,7 @@ function get_menu_NoLogin()
 
     for ($i = 0; $i < $nLinks; $i++) {
         if ($fileName == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
-            $menu .= '<li id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><p>' . $names[$i] . '</p></li>';
+            $menu .= '<li class="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><p>' . $names[$i] . '</p></li>';
         } else {
             $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
         }
@@ -219,7 +223,7 @@ function get_menu_Admin()
     // Nomi delle voci di menu
     $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Pannello amministratore", "Gestione Prenotazioni"];
     // Lingue dei link (se diverse da Italiano)
-    $langs = ["", "", "", "", "", "", ""];
+    $langs = ["en", "", "", "", "", "", ""];
     // Numero dei link da mostrare (grandezza array)
     $nLinks = count($links);
 
@@ -230,7 +234,7 @@ function get_menu_Admin()
 
     for ($i = 0; $i < $nLinks; $i++) {
         if ($fileName == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
-            $menu .= '<li id="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><p>' . $names[$i] . '</p></li>';
+            $menu .= '<li class="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><p>' . $names[$i] . '</p></li>';
         } else {
             $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
         }

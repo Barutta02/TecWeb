@@ -12,8 +12,9 @@ function get_prices_section($tipoMenu, $prezzoLunVen, $PrezzoFestivi)
 }
 
 # Aggiunge alla stringa la corretta formattazione per le lingue
-function add_translation_span($text) {
-    $word_span_replace = Array(
+function add_translation_span($text)
+{
+    $word_span_replace = array(
         # Japan
         'Nigiri'    => '<span lang="ja">Nigiri</span>',
         'Tartare'   => '<span lang="ja">Tartare</span>',
@@ -43,7 +44,7 @@ function add_translation_span($text) {
 /**
  * Metodo universale che dato un template per visionare piatti sostituisce il contenuto con i dati passati
  */
-function formatPlateString($piattotemplates, $nomePiatto = "", $Descrizione = "", $Prezzo = "", $Quantita = "", $IDPiatto = "", $allergeniPiatto = [])
+function formatPlateString($piattotemplates, $nomePiatto = "", $Descrizione = "", $Prezzo = "", $Quantita = "", $IDPiatto = "", $allergeniPiatto = [], $Ntavolo = "", $Cliente = "", $Orario = "", $isConsegnato = "")
 {
     $piattotemplates = str_replace('{{NomePiattoUnderscored}}', str_replace(' ', '', strtolower($nomePiatto)), $piattotemplates);
     $piattotemplates = str_replace('{{NomePiatto}}', add_translation_span($nomePiatto), $piattotemplates);
@@ -52,6 +53,10 @@ function formatPlateString($piattotemplates, $nomePiatto = "", $Descrizione = ""
     $piattotemplates = str_replace('{{Quantita}}', $Quantita, $piattotemplates);
     $piattotemplates = str_replace('{{IDPiatto}}', $IDPiatto, $piattotemplates);
     $piattotemplates = str_replace('{{ListaAllergeni}}', implode(" ", $allergeniPiatto), $piattotemplates);
+    $piattotemplates = str_replace('{{NTavolo}}', $Ntavolo, $piattotemplates);
+    $piattotemplates = str_replace('{{Cliente}}', $Cliente, $piattotemplates);
+    $piattotemplates = str_replace('{{Orario}}', $Orario, $piattotemplates);
+    $piattotemplates = str_replace('{{isConsegnato}}', (($isConsegnato == true) ? "Si" : "No"), $piattotemplates);
     $platesAllergeniList = "";
     foreach ($allergeniPiatto as $allergene) {
         $platesAllergeniList .= '<dd aria-label="Allergene ' . $allergene . '" title="' . $allergene . '" class="allergeneImage ' . $allergene . 'Image" data-allergene="' . $allergene . '"></dd>';
@@ -155,14 +160,7 @@ function getThisPrenotationOrderView()
     if (!empty($piatti)) {
 
         foreach ($piatti as $piatto) {
-            $refactorNomePiatto = str_replace(' ', '', strtolower($piatto['NomePiatto']));
-            $templatePlatesInputIter = $templatePlatesQC;
-            $templatePlatesInputIter = str_replace('{{NomePiattoUnderscored}}', $refactorNomePiatto, $templatePlatesInputIter);
-            $templatePlatesInputIter = str_replace('{{NomePiatto}}', $piatto['NomePiatto'], $templatePlatesInputIter);
-            $templatePlatesInputIter = str_replace('{{Descrizione}}', $piatto['Descrizione'], $templatePlatesInputIter);
-            $templatePlatesInputIter = str_replace('{{Quantita}}', $piatto['Quantita'], $templatePlatesInputIter);
-            $templatePlatesInputIter = str_replace('{{isConsegnato}}', (($piatto['isConsegnato'] == true) ? "Si" : "No"), $templatePlatesInputIter);
-            $content .= $templatePlatesInputIter;
+            $content .= formatPlateString($templatePlatesQC, $piatto['NomePiatto'], $piatto['Descrizione'], "", $piatto['Quantita'], "", [], "", "", "", $piatto['isConsegnato']);
         }
 
     } else {
@@ -209,16 +207,7 @@ function toDoOrdersView()
     if (!empty($piatti)) {
         $content .= "<ul class='flexable'>";
         foreach ($piatti as $piatto) {
-            $refactorNomePiatto = str_replace(' ', '', strtolower($piatto['NomePiatto']));
-            $templatePlatesInputIter = $templatePlatesAdmin;
-            $templatePlatesInputIter = str_replace('{{NomePiattoUnderscored}}', $refactorNomePiatto, $templatePlatesInputIter);
-            $templatePlatesInputIter = str_replace('{{NomePiatto}}', $piatto['NomePiatto'], $templatePlatesInputIter);
-            $templatePlatesInputIter = str_replace('{{Descrizione}}', $piatto['Descrizione'], $templatePlatesInputIter);
-            $templatePlatesInputIter = str_replace('{{Quantita}}', $piatto['Quantita'], $templatePlatesInputIter);
-            $templatePlatesInputIter = str_replace('{{IdPiatto}}', $piatto['IDPiatto'], $templatePlatesInputIter);
-            $templatePlatesInputIter = str_replace('{{Orario}}', $piatto['Dataora'], $templatePlatesInputIter);
-            $templatePlatesInputIter = str_replace('{{Cliente}}', $piatto['cliente'], $templatePlatesInputIter);
-            $content .= $templatePlatesInputIter;
+            $content .= formatPlateString($templatePlatesAdmin, $piatto['NomePiatto'], $piatto['Descrizione'], "", $piatto['Quantita'], $piatto['IDPiatto'], [], $piatto['Tavolo'], $piatto['cliente'], $piatto['Dataora']);
         }
         $content .= "</ul>";
     } else {
@@ -267,6 +256,8 @@ function get_active_prenotation()
             $templateSliderInputIter = $tableSliderLayout;
             // $ariaLabel = 'Piatto: ' . $piatto['NomePiatto'] . ', Descrizione: ' . $piatto['Descrizione'];
             $templateSliderInputIter = str_replace('{{numTavolo}}', $tavolo['Tavolo'], $templateSliderInputIter);
+            $templateSliderInputIter = str_replace('{{numClienti}}', $tavolo['NumPersone'], $templateSliderInputIter);
+
             $templateSliderInputIter = str_replace('{{Orario}}', $tavolo['DataPrenotazione'], $templateSliderInputIter);
             $templateSliderInputIter = str_replace('{{Username}}', $tavolo['Username'], $templateSliderInputIter);
 
