@@ -436,7 +436,7 @@ fieldset legend {
     color: var(--LegendTxtColor);
     font-size: 1.5em;
     font-weight: bold;
-    /*text-align: left;*/
+    text-align: center;
 }
 
 #submitPrenotazione,
@@ -456,7 +456,8 @@ input[type="submit"] {
 }
 
 fieldset ul li {
-    margin: 1em
+    margin: 1em;
+    text-align: center;
 }
 
 #listaAllergeni li {
