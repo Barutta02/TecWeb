@@ -11,25 +11,25 @@
     --headerTxtColor: rgb(255, 255, 255);
     --menuTxtcolor: #fff;
     --pageTxtColor: #fff;
-    --logoTxtColor: darkgoldenrod;
+    --logoTxtColor: #cb9407;
     --bgColor: rgb(0, 0, 0);
     --txtColor: rgb(0, 0, 0);
     --footerBgColor: #000;
     --footerTxtColor: rgb(255, 255, 255);
     --linkColor: #ffffff;
-    --visitedLinkColor: #f4524d;
+    --visitedLinkColor: #ff6758;
     /*importante il contrasto tra link visitato e non*/
-    --flagColor: #f4524d;
-    --endPrenotation: #f4524d;
-    --warningMessage: #f4524d ;
+    --flagColor: #ff6758;
+    --endPrenotation: #ff6758;
+    --warningMessage: #ff6758;
     --goodEndingMessage: #07a61f ;
 
-    --fieldSetBorderColor: darkgoldenrod;
-    --LegendTxtColor: darkgoldenrod;
+    --fieldSetBorderColor: #cb9407;
+    --LegendTxtColor: #cb9407;
     --secondBodyColor:#fcf3dc;
     --secondTitleColor:#c79e63;
-    --alternative_text: darkgoldenrod;
-    --menuToggleColor: darkgoldenrod;
+    --alternative_text: #cb9407;
+    --menuToggleColor: #cb9407;
     --submitButtonColor: rgb(2, 117, 0);
     --borderMenuItem: rgb(58 58 58);
     --NavmenuBorder: #fff;
