@@ -276,7 +276,7 @@ function get_active_prenotation()
 function getFrequentView()
 {
     $templatePlatesQC = getTemplate('Layouts/MenuItemViewFrequency.html');
-    $content = '<section id="ordiniOdierni" class="containerPlatesViewer">
+    $content = '<section id="ordiniFrequenti" class="containerPlatesViewer">
     <h2 >' . $_SESSION['name'] . ' questi sono i piatti che ordini più frequentemente
     </h2> <ul class="flexable">';
     $piatti = OrdineDAO::getOrdiniFrequenti($_SESSION['username']);

@@ -20,7 +20,7 @@ $template = getTemplate('Layouts/main.html');
 
 $pageID = 'ViewOrdiniBody';
 $title = "Visualizza ordini - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in:  <a href="index.php"><span lang="en">Home</span> </a> >> <a href="login.php"> Area utente</a> >> Visualizza ordini</p> ';
+$breadcrumbs = '<p>Ti trovi in:  <a href="index.php"><span lang="en">Home</span></a> >> <a href="login.php">Area utente</a> >> Visualizza ordini</p> ';
 
 $content = "";
 

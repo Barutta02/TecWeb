@@ -11,6 +11,10 @@
     --LegendTxtColor: darkgoldenrod;
     --alternative_text: darkgoldenrod;
     --flagColor: #f4524d;
+    --surface-color: #fff;
+    --curve: 40;
+    --warningMessage: #ff6758;
+    --goodEndingMessage: #07a61f ;
 }
 
 html, body {
@@ -29,12 +33,13 @@ a:visited {
     color: var(--visitedLinkColor);
 }
 
-a[href^="tel"] {
+a[href^="tel"]{
     text-decoration: none;
     color: unset;
 }
 
-a:not([href^="tel"]):link:after, a:not([href^="tel"]):visited:after {
+a:not([href^="tel"]):link:after, 
+a:not([href^="tel"]):visited:after{
     content: " [" attr(href) "] ";
     font-size:90%;
 }
@@ -74,6 +79,7 @@ h3.logo {
 footer {
     border-top: 1px solid var(--borderColor);
     padding: 10px 5px 5px;
+    text-align: center;
 }
 
 #footerOrganizer {
@@ -119,6 +125,24 @@ h3{
     margin-top: 10px;
 }
 
+#login ul,
+#signIn ul,
+#prenotazione ul,
+#listaAllergeni {
+    text-align: center;
+    list-style-type: none;
+}
+
+#submitPrenotazione,
+button,
+input[type="submit"] {
+    display: none;
+}
+
+.afterDuePunti {
+    display: inline;
+}
+
 /*******************HOME************************/
 
 #homeTitle {
@@ -150,7 +174,6 @@ h3{
 .containerPlatesViewer h2,
 .prices h2 {
     color: var(--alternative_text);
-    padding: 10px;
 }
 
 .menuItem {
@@ -204,7 +227,6 @@ h3{
     width: 90%;
     margin: auto;
     text-align: center;
-    padding: 10px;
 }
 
 .containerPlatesViewer .nomePiatto {
@@ -235,4 +257,253 @@ dl.ListinoPrezzi {
 
 .ListinoPrezzi div {
     padding: 5px;
+}
+
+/*******************CHISIAMO*********************/
+.componentList {
+    list-style: none;
+    margin: 10px;
+    justify-content: space-around;
+    
+}
+#chiSiamoSection h2{
+    padding: 5px;
+    text-align: center;
+}
+
+.componentList li{
+    height: 350px;
+    background: #fff;
+    border-radius: calc(var(--curve) * 1px);
+    margin: 5px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .card {
+    position: relative;
+    display: block;
+    height: 100%;  
+    border-radius: calc(var(--curve) * 1px);
+    border: 1px solid black;
+    overflow: hidden;
+    text-decoration: none;
+    padding: 0;
+  }
+  
+  .card__image {      
+    min-height: 250px;
+    min-width: 250px;
+    max-width: 250px;
+  }
+  
+  .card__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;      
+    border-radius:calc(var(--curve) * 1px) 0 0 0;    
+    background-color: var(--surface-color);      
+  }
+  
+  .card__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    border-top: 1px solid black;  
+    background-color: var(--surface-color);
+  }
+  
+  .card__arc {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    bottom: 100%;
+    right: 0;      
+    z-index: 1;
+  }
+  
+  .card__arc path {
+    fill: var(--surface-color);
+  }       
+  
+  .card__thumb {
+    width: 50px;
+    height: 50px;      
+    border-radius: 50%;      
+  }
+  
+  .card__title {
+    font-size: 14px;
+    margin: 0 0 3px;
+    color: #6A515E;
+  }
+  
+  .card__tagline {
+    display: block;
+    margin: 10px 0;
+    font-size: 12px; 
+    color: #D7BDCA;  
+  }
+  
+  .card__status {
+    font-size: 12px;
+    color: #D7BDCA;
+  }
+  
+  .card__description {
+    padding: 0 20px 20px;
+    margin: 0;
+    color: #D7BDCA;
+    overflow: hidden;
+  }    
+
+  /*******************login signin prenotazione *********************/
+#login, #signIn, #prenotazione{
+    text-align: center;
+    padding: 10px;
+}
+
+#signIn label,
+#login label,
+#prenotazione label {
+    font-size: 14px;
+}
+
+#signIn h2,
+#login h2,
+#prenotazione h2{
+    color: var(--alternative_text);
+    margin: 15px;
+}
+
+fieldset {
+    width: fit-content;
+    display: contents;
+}
+
+#signIn ul,
+#login ul,
+#signIn li,
+#login li  {
+    text-align: right;
+    width: auto;
+    padding: 5px;
+}
+
+#prenotazione ul,
+#prenotazione li {
+    text-align: left;
+    width: fit-content;
+    padding: 5px;
+}
+
+#signIn form,
+#login form,
+#prenotazione form {
+    text-align: -webkit-center;
+    text-align: -moz-center;
+}
+
+input {
+    padding: 2px;
+    font-size: 12px;
+    border: none;
+}
+
+label[for="indicazioniAggiuntive"]{
+    display: list-item;
+}
+
+textarea{
+    margin-top: 4px;
+    width: fit-content;
+    border: none;
+    resize: none;
+}
+
+fieldset legend {
+    color: var(--LegendTxtColor);
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+/************warning e good*************/
+.warning{
+    color: var(--warningMessage);
+}
+
+.good{
+    color: var(--goodEndingMessage);
+}
+
+/************prenota*************/
+#allergeni{
+    padding: 5px;
+}
+
+#listaAllergeni li {
+    display: inline-block;
+    padding-top: 10px;
+    padding-right: 25px;
+}
+
+.inputQuantityLabelInpt {
+    padding-left: 5px;
+}
+
+/*ALLERGENI*/
+.menuItem .allergeneImage{
+    margin: 0;
+}
+
+.allergeniPlateList , .allergeniPlateList + dd{
+   
+    display: inline-block;
+}
+.allergeneImage::after {
+    position: relative;
+    display: inline-block;
+    content: attr(data-allergene);
+}
+
+/************gestione prenotazioni*************/
+#SezioneGestioneTavoli {
+    width: 350px;
+}
+
+#SezioneGestionePrenotazioni ul {
+    width: 350px;
+    display: inline;
+}
+#SezioneGestionePrenotazioni h2,
+#SezioneGestioneTavoli h2{
+    padding: 5px;
+    text-align: center;
+}
+.tableList, .ActivePrenotationList{
+    list-style-type: none;
+}
+
+.tableList li{
+    padding: 10px;
+    text-align: center;
+}
+
+.ActivePrenotationList li {
+    margin-top: 2px ;
+    margin-bottom: 10px;
+}
+
+.progressTable {
+    display: none;
 }

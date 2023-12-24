@@ -9,7 +9,7 @@ $template = getTemplate('Layouts/main.html');
 
 $pageID = 'chiSiamoID';
 $title = "Chi siamo - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span> </a> >> Chi siamo</p> ';
+$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> >> Chi siamo</p> ';
 
 
 //Sezione di presentazione del ristorante

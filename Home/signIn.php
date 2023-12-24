@@ -9,7 +9,7 @@ $signInSectionhtml = getTemplate('Layouts/signInSection.html');
 
 $pageID = 'signInBody';
 $title = "SignIn - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in:  <a href="index.php"><span lang="en">Home</span> </a>  >> <span lang="en">SignIn</span></p> ';
+$breadcrumbs = '<p>Ti trovi in:  <a href="index.php"><span lang="en">Home</span></a>  >> <span lang="en">SignIn</span></p> ';
 
 
 
