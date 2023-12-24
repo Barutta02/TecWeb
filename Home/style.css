@@ -1058,11 +1058,13 @@ label {
       }
       
       .menu-toggle-label::before {
+        font-size: 1.5em;
         content: "☰ Menu";
       }
       /* Cambia il contenuto prima dell'icona quando il checkbox è selezionato */
       #mobile-menu-toggle:checked + .menu-toggle-label::before {
-        content: "✕ Chiudi";
+          font-size: 1.5em;
+          content: "✕ Chiudi";
       }
       
       /* Animazione di transizione */
@@ -1070,6 +1072,7 @@ label {
         transition: display 0.3s ease-in-out;
       }
     .nav-list li {
+        font-size: 1.3em;
         margin: 0;
         text-align: center;
         padding: 10px;
@@ -1093,6 +1096,9 @@ label {
     .homeSection h3 {
         padding: 0;
         padding-bottom: 1em;
+    }
+    .bottomMenu li p, .bottomMenu li a p{
+        font-size: 1.5em;
     }
 }
 
