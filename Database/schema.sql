@@ -50,6 +50,7 @@ CREATE TABLE Prenotazione (
     NumPersone INT,
     InCorso BOOL,
     Tavolo INT,
+    IndicazioniAggiuntive VARCHAR(100),
     PRIMARY KEY (Username, DataPrenotazione),
     FOREIGN KEY (Username) REFERENCES User(Username),
     FOREIGN KEY (Tavolo) REFERENCES Tavolo(IDTavolo)

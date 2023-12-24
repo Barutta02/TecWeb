@@ -12,7 +12,7 @@ if (!isset($_SESSION["username"])) {
     header("Location: login.php");
 }
 if (!isset($_SESSION["data_prenotazione_inCorso"])) {
-    header("Location: NuovaPrenotazione.php");
+    header("Location: prenotazione.php?MessageCode=6");
 }
 
 
@@ -28,7 +28,7 @@ $content = "";
 $content .= getThisPrenotationOrderView();
 
 
-$content .= getOldOrderView();
+$content .= getFrequentView();
 
 
 

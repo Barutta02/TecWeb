@@ -44,7 +44,7 @@ function add_translation_span($text)
 /**
  * Metodo universale che dato un template per visionare piatti sostituisce il contenuto con i dati passati
  */
-function formatPlateString($piattotemplates, $nomePiatto = "", $Descrizione = "", $Prezzo = "", $Quantita = "", $IDPiatto = "", $allergeniPiatto = [], $Ntavolo = "", $Cliente = "", $Orario = "", $isConsegnato = "")
+function formatPlateString($piattotemplates, $nomePiatto = "", $Descrizione = "", $Prezzo = "", $Quantita = "", $IDPiatto = "", $allergeniPiatto = [], $Ntavolo = "", $Cliente = "", $Orario = "", $isConsegnato = "", $frequenza = "")
 {
     $piattotemplates = str_replace('{{NomePiattoUnderscored}}', str_replace(' ', '', strtolower($nomePiatto)), $piattotemplates);
     $piattotemplates = str_replace('{{NomePiatto}}', add_translation_span($nomePiatto), $piattotemplates);
@@ -57,6 +57,7 @@ function formatPlateString($piattotemplates, $nomePiatto = "", $Descrizione = ""
     $piattotemplates = str_replace('{{Cliente}}', $Cliente, $piattotemplates);
     $piattotemplates = str_replace('{{Orario}}', $Orario, $piattotemplates);
     $piattotemplates = str_replace('{{isConsegnato}}', (($isConsegnato == true) ? "Si" : "No"), $piattotemplates);
+    $piattotemplates = str_replace('{{Frequenza}}', $frequenza, $piattotemplates);
     $platesAllergeniList = "";
     foreach ($allergeniPiatto as $allergene) {
         $platesAllergeniList .= '<dd aria-label="Allergene ' . $allergene . '" title="' . $allergene . '" class="allergeneImage ' . $allergene . 'Image" data-allergene="' . $allergene . '"></dd>';
@@ -267,6 +268,27 @@ function get_active_prenotation()
     } else {
         $content .= "No active prenotation found.";
     }
+    return $content;
+}
+/**
+ * Visualizza ordini frequenti nelle diverse prenotazioni
+ */
+function getFrequentView()
+{
+    $templatePlatesQC = getTemplate('Layouts/MenuItemViewFrequency.html');
+    $content = '<section id="ordiniOdierni" class="containerPlatesViewer">
+    <h2 >' . $_SESSION['name'] . ' questi sono i piatti che ordini più frequentemente
+    </h2> <ul class="flexable">';
+    $piatti = OrdineDAO::getOrdiniFrequenti($_SESSION['username']);
+    if (!empty($piatti)) {
+        foreach ($piatti as $piatto) {
+            $content .= formatPlateString($templatePlatesQC, $piatto['NomePiatto'], $piatto['Descrizione'],"", "", "", [], "", "", "", "", $piatto['Frequenza']);
+        }
+
+    } else {
+        $content .= "Devi ancora effettuare una prenotazione " . $_SESSION['name'] . '. Che aspetti? Fatti avanti!';
+    }
+    $content .= "</ul></section>";
     return $content;
 }
 ?>

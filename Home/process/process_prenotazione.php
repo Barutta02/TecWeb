@@ -21,13 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
         }
-        header("Location: ../prenota.php?ResponseCode=0");
+        header("Location: ../Prenota.php?ResponseCode=0");
         exit();
     } catch (Exception $e) {
-        header("Location: ../prenota.php?ResponseCode=1");
+        header("Location: ../Prenota.php?ResponseCode=1");
     }
 }
-header("Location: ../prenota.php");
+header("Location: ../Prenota.php");
 
 
 

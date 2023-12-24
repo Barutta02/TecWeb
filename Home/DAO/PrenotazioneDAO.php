@@ -4,19 +4,19 @@ require_once 'Connection.php';
 class PrenotazioneDAO
 {
 
-    public static function createPrenotazione($username, $dataPrenotazione, $n_persone, $is_inCorso, $n_tavolo)
+    public static function createPrenotazione($username, $dataPrenotazione, $n_persone, $indicazioniAggiuntive, $is_inCorso, $n_tavolo)
     {
         try {
             DBAccess::open_connection();
 
-            $sql = "INSERT INTO Prenotazione (Username, DataPrenotazione, NumPersone, InCorso, Tavolo) 
-                VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO Prenotazione (Username, DataPrenotazione, NumPersone, IndicazioniAggiuntive, InCorso, Tavolo) 
+                VALUES (?, ?, ?, ?, ?, ?)";
 
             // Prepara il statement
             $stmt = DBAccess::get_connection_state()->prepare($sql);
 
             // Lega i parametri
-            $stmt->bind_param("ssiii", $username, $dataPrenotazione, $n_persone, $is_inCorso, $n_tavolo);
+            $stmt->bind_param("ssisii", $username, $dataPrenotazione, $n_persone, $indicazioniAggiuntive, $is_inCorso, $n_tavolo);
 
             // Esegui la query
             if ($stmt->execute()) {
@@ -148,15 +148,15 @@ class PrenotazioneDAO
     }
 
 
-    public static function updatePrenotazione($username, $data, $n_persone, $n_tavolo)
+    public static function updatePrenotazione($username, $data, $indicazioniAggiuntive)
     {
         try {
             DBAccess::open_connection();
 
-            $sql = "UPDATE Prenotazione SET Tavolo = ? , NumPersone = ?  WHERE Username = ? AND DataPrenotazione = ?";
+            $sql = "UPDATE Prenotazione SET IndicazioniAggiuntive = ?  WHERE Username = ? AND DataPrenotazione = ?";
             $stmt = DBAccess::get_connection_state()->prepare($sql);
 
-            $stmt->bind_param("iiss", $n_tavolo, $n_persone, $username, $data);
+            $stmt->bind_param("sss", $indicazioniAggiuntive, $username, $data);
             $stmt->execute();
         } catch (Exception $e) {
             die($e->getMessage());
@@ -165,7 +165,35 @@ class PrenotazioneDAO
             DBAccess::close_connection();
         }
     }
-    // Add more methods for CRUD operations on the User table
+    
+    
+    public static function getTavoloForPrenotazione($n_persone)
+    {
+        try {
+            DBAccess::open_connection();
+
+            $query = "SELECT IDTavolo, numPosti FROM Tavolo WHERE numPosti>=? AND IDTavolo NOT IN
+            (SELECT IDTavolo FROM Tavolo JOIN Prenotazione ON IDTavolo=Tavolo WHERE InCorso=1) ORDER BY numPosti;";
+            $stmt = DBAccess::get_connection_state()->prepare($query);
+            $stmt->bind_param("i", $n_persone);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if($result->num_rows){
+                $tavolo = $result->fetch_assoc()["IDTavolo"];
+                return $tavolo;
+            }
+            return null;
+        } catch (Exception $e) {
+            // Handle the exception (log, display an error message, etc.)
+            die($e->getMessage());
+        } finally {
+            // Close the prepared statement and the database connection in every case
+            if (isset($stmt)) {
+                $stmt->close();
+            }
+            DBAccess::close_connection();
+        }
+    }
 
 }
 ?>

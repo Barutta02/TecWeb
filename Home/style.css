@@ -11,25 +11,25 @@
     --headerTxtColor: rgb(255, 255, 255);
     --menuTxtcolor: #fff;
     --pageTxtColor: #fff;
-    --logoTxtColor: darkgoldenrod;
+    --logoTxtColor: #cb9407;
     --bgColor: rgb(0, 0, 0);
     --txtColor: rgb(0, 0, 0);
     --footerBgColor: #000;
     --footerTxtColor: rgb(255, 255, 255);
     --linkColor: #ffffff;
-    --visitedLinkColor: #f4524d;
+    --visitedLinkColor: #ff6758;
     /*importante il contrasto tra link visitato e non*/
-    --flagColor: #f4524d;
-    --endPrenotation: #f4524d;
-    --warningMessage: #f4524d ;
+    --flagColor: #ff6758;
+    --endPrenotation: #ff6758;
+    --warningMessage: #ff6758;
     --goodEndingMessage: #07a61f ;
 
-    --fieldSetBorderColor: darkgoldenrod;
-    --LegendTxtColor: darkgoldenrod;
+    --fieldSetBorderColor: #cb9407;
+    --LegendTxtColor: #cb9407;
     --secondBodyColor:#fcf3dc;
     --secondTitleColor:#c79e63;
-    --alternative_text: darkgoldenrod;
-    --menuToggleColor: darkgoldenrod;
+    --alternative_text: #cb9407;
+    --menuToggleColor: #cb9407;
     --submitButtonColor: rgb(2, 117, 0);
     --borderMenuItem: rgb(58 58 58);
     --NavmenuBorder: #fff;
@@ -296,6 +296,7 @@ footer {
 }
 #footerOrganizer {
     padding: 1em;
+    display: flex;
     justify-content: space-evenly;
 }
 
@@ -325,9 +326,15 @@ a.socialLogo::before {
     height: 40px;
     background-size: contain;
     margin-right: .3em;
-    margin: .5em;
-}
+    margin-top: 10%;
+    margin-bottom: 10%;
 
+}
+a.socialLogo {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
 a.instagramLogo::before {
     background-image: url(../assets/icon/instagram.png);
 }
@@ -507,7 +514,7 @@ fieldset ul li {
     position: absolute;
     left: 4px;
     /* Regola la posizione se necessario */
-    top: 0px;
+    top: 0;
     /* Regola la posizione se necessario */
     color: #ffffff;
     /* Colore dell'icona del checkmark */
@@ -916,7 +923,7 @@ label {
     padding: .5em;
 }
 
-#SezioneGestionePrenotazioni
+#SezioneGestionePrenotazioni,
 .buttonDoneCompleted::after {
     content: ' - Terminata';
 }
@@ -1051,11 +1058,13 @@ label {
       }
       
       .menu-toggle-label::before {
+        font-size: 1.5em;
         content: "☰ Menu";
       }
       /* Cambia il contenuto prima dell'icona quando il checkbox è selezionato */
       #mobile-menu-toggle:checked + .menu-toggle-label::before {
-        content: "✕ Chiudi";
+          font-size: 1.5em;
+          content: "✕ Chiudi";
       }
       
       /* Animazione di transizione */
@@ -1063,6 +1072,7 @@ label {
         transition: display 0.3s ease-in-out;
       }
     .nav-list li {
+        font-size: 1.3em;
         margin: 0;
         text-align: center;
         padding: 10px;
@@ -1086,6 +1096,9 @@ label {
     .homeSection h3 {
         padding: 0;
         padding-bottom: 1em;
+    }
+    .bottomMenu li p, .bottomMenu li a p{
+        font-size: 1.5em;
     }
 }
 
