@@ -68,3 +68,72 @@ function closePrenotation(button) {
   var params = "username=" + username + "&dataOra=" + dataOra;
   xhr.send(params);
 }
+
+
+//Aggiungi l'evento onBlur agli elementi dei form
+function addOnBlur(){
+  // Aggiungi per gli input e le textarea
+  let inputs = document.querySelectorAll('input, textarea');
+  inputs.forEach(input => {
+      input.addEventListener('blur', validateInput);
+  });
+}
+
+//Validazione dei form
+function validateInput(event) {
+  const inputName = event.target.getAttribute('name');
+  const inputValue = event.target.value;
+
+  if (checks[inputName]) {
+      const conditionMet = checks[inputName].condition(inputValue);
+      if (!conditionMet) {
+          // Rimuovi il tag <p> di errore se presente
+          const siblingToRemove = event.target.nextSibling;
+          if (siblingToRemove) {
+              siblingToRemove.remove();
+          }
+
+          event.target.setAttribute('aria-invalid', 'true');
+
+          // Crea un nuovo elemento <p> con il messaggio di errore
+          const errorElement = document.createElement('p');
+          errorElement.classList.add('warning');
+          errorElement.innerHTML = checks[inputName].message;
+
+          //imposta il focus e selezione l'input errato
+          event.target.focus();
+          event.target.select();
+
+          // Inserisci il messaggio di errore sopra o sotto il campo
+          const parentNode = event.target.parentNode;
+          const insertBeforeElement = event.target.nextSibling;
+          parentNode.insertBefore(errorElement, insertBeforeElement);
+      } else {
+          // Il controllo è passato, rimuovi il tag <p> di errore se presente
+          const errorSibling = event.target.nextSibling;
+          if (errorSibling) {
+              errorSibling.remove();
+          }
+          event.target.setAttribute('aria-invalid', 'false');
+      }
+  }
+}
+
+function setSignInChecks(){
+  checks = {
+      username:{
+          message:"Formato username non corretto, deve avere almeno 2 caratteri!",
+          condition: function(str){
+              let expr = /\w{2,}/ ;
+              return expr.test(str);
+          }
+      },
+      password:{
+          message:"Formato <span lang='en'>password</span> non corretto!",
+          condition: function(str){
+              return str.length>=5;
+          }
+      }
+  }
+
+}
