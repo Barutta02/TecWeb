@@ -10,7 +10,7 @@ $template = getTemplate('Layouts/main.html');
 
 $pageID = 'menuCenaBody';
 $title = "Menu Cena - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span> </a> >>  Menu Pranzo</p> ';
+$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> >>  Menu Pranzo</p> ';
 
 
 $content = '';

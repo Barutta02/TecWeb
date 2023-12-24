@@ -130,6 +130,7 @@ nav.menu {
 nav.menu ul,
 #login ul,
 #signIn ul,
+#prenotazione ul,
 #listaAllergeni {
     text-align: center;
     list-style-type: none;
@@ -399,6 +400,7 @@ dl.ListinoPrezzi div {
 
 #signIn h2,
 #login h2,
+#prenotazione h2,
 .containerPlatesViewer h2,
 .prices h2 {
     color: var(--alternative_text);
@@ -440,6 +442,7 @@ fieldset legend {
 #submitPrenotazione,
 #signIn button,
 #login button,
+#prenotazione button,
 input[type="submit"] {
     background-color: var(--submitButtonColor);
     color: #fff;
@@ -536,28 +539,32 @@ fieldset ul li {
 }
 
 
-/*******************login signin *********************/
-#login, #signIn{
+/*******************login signin prenotazione *********************/
+#login, #signIn, #prenotazione{
     text-align: center;
 }
 #signIn label,
-#login label {
+#login label, 
+#prenotazione label{
     font-size: 1.4em;
 }
 
 #signIn fieldset,
-#login fieldset {
+#login fieldset,
+#prenotazione fieldset {
     width: fit-content;
 }
 
 #signIn ul,
-#login ul {
+#login ul,
+#prenotazione ul {
     text-align: right;
     width: fit-content;
 }
 
 #signIn form,
-#login form {
+#login form,
+#prenotazione form {
     text-align: -webkit-center;
     text-align: -moz-center;
 }
@@ -575,6 +582,7 @@ textarea{
     margin-top: .4em;
     max-width: 300px;
     box-sizing: border-box;
+    resize: none;
 }
 /*******************HOME************************/
 
@@ -796,9 +804,9 @@ textarea{
 
 .buttonDoneCompleted{
     background: var(--endPrenotation);
-    content: 'Consegnato';
 }
-.buttonDoneCompleted::after {
+
+#piattiDaFare .buttonDoneCompleted::after {
     content: ' - Consegnato';
 }
 
@@ -923,8 +931,7 @@ label {
     padding: .5em;
 }
 
-#SezioneGestionePrenotazioni,
-.buttonDoneCompleted::after {
+#SezioneGestionePrenotazioni .buttonDoneCompleted::after {
     content: ' - Terminata';
 }
 
