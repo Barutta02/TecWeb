@@ -399,6 +399,11 @@ fieldset {
     display: contents;
 }
 
+fieldset ul li {
+    text-align: center;
+    max-width: 400px;
+}
+
 #signIn ul,
 #login ul,
 #signIn li,

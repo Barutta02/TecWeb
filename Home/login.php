@@ -18,9 +18,12 @@ $content = $loginSectionhtml;
 $errorList = array();
 
 if (isset($_GET['Errorcode'])) {
-    // Recupera il valore del parametro errorCode
-    if ($_GET['Errorcode'] == "1") {
-        array_push($errorList, "<p class='warning'>Utente non trovato</p> ");
+    switch ($_GET['Errorcode']){
+        case 1: 
+            array_push($errorList, "<p class='warning'>Utente non trovato</p> ");
+            break;
+        default:
+            array_push($errorList, "<p class='warning'>Errore sconosciuto!</p> ");
     }
 }
 $content = str_replace('{{error}}', implode(" ", $errorList), $content);
@@ -38,5 +41,5 @@ if (isset($_SESSION["username"])) {
 $template = str_replace('{{menu}}', $menu, $template);
 
 
-echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
+echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, 'setLoginChecks();addOnBlur();');
 ?>
