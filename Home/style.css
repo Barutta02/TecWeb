@@ -350,8 +350,12 @@ a.tikTokLogo::before {
 
 /*******************MENU *********************/
 
+.downloadSize{
+    display: inline;
+}
+
 dl.ListinoPrezzi {
-    padding: 1.5em;
+    padding: .5em;
     justify-content: center;
 }
 
@@ -395,7 +399,7 @@ dl.ListinoPrezzi div {
 }
 
 .ListinoPrezzi div {
-    padding: 2.5em;
+    padding: 1.5em;
 }
 
 #signIn h2,
@@ -404,7 +408,7 @@ dl.ListinoPrezzi div {
 .containerPlatesViewer h2,
 .prices h2 {
     color: var(--alternative_text);
-    margin: 1.5em;
+    margin: 1em;
 }
 
 .prices{

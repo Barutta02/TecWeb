@@ -17,8 +17,8 @@ $breadcrumbs = '<p>Ti trovi in:  <a href="index.php"><span lang="en">Home</span>
 
 $content = '';
 $content .= get_prices_section('Cena', '20.10', '23.10');
-;
-$content .= '<section id="PiattiMenu" class="containerPlatesViewer"><h2>Plates</h2>';
+
+$content .= '<section id="PiattiMenu" class="containerPlatesViewer"><h2>Piatti</h2>';
 
 $piattoDAO = new PiattoDAO();
 $piatti = PiattoDAO::getAllPiatti();
@@ -35,7 +35,7 @@ if (isset($_SESSION["username"])) {
 
 
 } elseif (isset($_SESSION['adminLogged'])) {
-    $template = str_replace('{{BottomMenu}}', str_replace('{{ListMenuBottom}}', get_bottom_menu_Login(), getTemplate('Layouts/bottomMenu.html')), $template);
+    $template = str_replace('{{BottomMenu}}', str_replace('{{ListMenuBottom}}', get_bottom_menu_Login(), getTemplate('Layouts/bottomMenu.html')), $template);sftp://avedovat@localhost:8022/home/avedovat/public_html/TecWeb/assets/menu/MenuPranzo.pdf
     $menu = get_menu_Admin();
 } else {
     $menu = get_menu_NoLogin();
@@ -43,5 +43,5 @@ if (isset($_SESSION["username"])) {
 }
 $template = str_replace('{{menu}}', $menu, $template);
 
-echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Menu cena Sushi Brombeis, menu cena all you can eat', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
+echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Menu cena Sushi Brombeis, menu cena all you can eat', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, "updateLinkWithSize('../assets/menu/MenuCena.pdf','downloadMenu')");
 ?>

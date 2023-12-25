@@ -69,6 +69,35 @@ function closePrenotation(button) {
   xhr.send(params);
 }
 
+// Funzione per ottenere la dimensione del file
+function getFileSize(url, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("HEAD", url, true);
+  xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+          var size = xhr.getResponseHeader("Content-Length");
+          callback(size);
+      }
+  };
+  xhr.send();
+}
+
+// Funzione per aggiornare il link con la dimensione del file
+function updateLinkWithSize(url, linkId) {
+  getFileSize(url, function(size) {
+      const sizeInMB = (size / 1048576).toFixed(2);
+      const link = document.getElementById(linkId);
+      // Crea un nuovo elemento <p> con la dimensione del file
+      const sizeP = document.createElement('p');
+      sizeP.classList.add('downloadSize');
+      sizeP.innerHTML = (" (Dimensione: " + sizeInMB + " MB)");
+      // Inserisci la dimensione del file dopo il link
+      const parentNode = link.parentNode;
+      const insertBeforeElement = link.nextSibling;
+      parentNode.insertBefore(sizeP, insertBeforeElement);
+  });
+}
+
 
 //Aggiungi l'evento onBlur agli elementi dei form
 function addOnBlur(){
@@ -104,7 +133,7 @@ function validateInput(event) {
           event.target.focus();
           event.target.select();
 
-          // Inserisci il messaggio di errore sopra o sotto il campo
+          // Inserisci il messaggio di errore sotto il campo
           const parentNode = event.target.parentNode;
           const insertBeforeElement = event.target.nextSibling;
           parentNode.insertBefore(errorElement, insertBeforeElement);

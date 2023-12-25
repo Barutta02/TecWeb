@@ -168,12 +168,21 @@ input[type="submit"] {
 
 /*******************MENU*********************/
 
+#downloadMenu{
+    display: none;
+}
+
+.downloadSize{
+    display: none;
+}
+
 .prices{
     text-align: center;
 }
 .containerPlatesViewer h2,
 .prices h2 {
     color: var(--alternative_text);
+    padding: 5px;
 }
 
 .menuItem {
