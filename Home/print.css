@@ -152,17 +152,22 @@ input[type="submit"] {
 
 /*******************404*********************/
 
-#Section404{
+#Section404, #Section500{
     text-align: center;
 }
 
-#Section404 p{
+#Section404 p, #Section500 p{
     margin: auto;
     width: 450px;
 }
 
 #nigiriTriste{
-    width: 200px;
+    width: 300px;
+    height: auto;
+}
+
+#nigiriKO{
+    width: 300px;
     height: auto;
 }
 

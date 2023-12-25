@@ -946,20 +946,25 @@ label {
     content: ' - Terminata';
 }
 
-/*******************404*********************/
+/*******************404 e 500*********************/
 
-#Section404{
+#Section404, #Section500{
     text-align: center;
     padding: 2em;
 }
 
-#Section404 p{
+#Section404 p, #Section500 p{
     margin: auto;
     max-width: 50vw;
 }
 
 #nigiriTriste{
-    width: 10em;
+    width: 15em;
+    height: auto;
+}
+
+#nigiriKO{
+    width: 15em;
     height: auto;
 }
 
