@@ -23,8 +23,8 @@
     --endPrenotation: #ff6758;
     --warningMessage: #ff6758;
     --goodEndingMessage: #07a61f ;
-
-    --fieldSetBorderColor: #cb9407;
+    --instructionMessage: #f1ab33;
+    --fieldSetBorderColor: #6ccb07;
     --LegendTxtColor: #cb9407;
     --secondBodyColor:#fcf3dc;
     --secondTitleColor:#c79e63;
@@ -408,7 +408,7 @@ dl.ListinoPrezzi div {
 .containerPlatesViewer h2,
 .prices h2 {
     color: var(--alternative_text);
-    margin: 1em;
+    margin: .5em;
 }
 
 .prices{
@@ -431,9 +431,9 @@ dl.ListinoPrezzi div {
 
 fieldset {
     border: 0;
-    /* Replace YourColor with the desired color code */
     border-radius: 8px;
     padding: 1em;
+    margin-top: 1em;
 }
 
 fieldset legend {
@@ -462,6 +462,7 @@ input[type="submit"] {
 fieldset ul li {
     margin: 1em;
     text-align: center;
+    max-width: 650px;
 }
 
 #listaAllergeni li {
@@ -545,6 +546,11 @@ fieldset ul li {
 
 
 /*******************login signin prenotazione *********************/
+#passwordInstruction{
+    max-width: 600px;
+    color: var(--instructionMessage);
+}
+
 #login, #signIn, #prenotazione{
     text-align: center;
 }

@@ -79,7 +79,7 @@ function get_all_formatted_plates_Menu($piatti)
         }
         $htmlContent .= '</ul>';
     } else {
-        $htmlContent .= "No piatti found.";
+        $htmlContent .= "<p>No piatti found.</p>";
     }
     return $htmlContent;
 }
@@ -139,7 +139,7 @@ function get_prenotation_form_menu($process_php_action)
 
         }
     } else {
-        $content .= "No Categories found.";
+        $content .= "<p>No Categories found.</p>";
     }
 
     $content .= '
@@ -165,7 +165,7 @@ function getThisPrenotationOrderView()
         }
 
     } else {
-        $content .= "Devi ancora effettuare ordinazioni oggi " . $_SESSION['name'] . '.';
+        $content .= "<p>Devi ancora effettuare ordinazioni oggi " . $_SESSION['name'] . '.</p>';
     }
     $content .= "</ul></section>";
     return $content;
@@ -212,7 +212,7 @@ function toDoOrdersView()
         }
         $content .= "</ul>";
     } else {
-        $content .= "Devono ancora effettuare ordinazioni.";
+        $content .= "<p>Devono ancora effettuare ordinazioni.</p>";
     }
     return $content;
 }
@@ -238,7 +238,7 @@ function get_table_avaible()
         }
         $content .= "</ul>";
     } else {
-        $content .= "No table found.";
+        $content .= "<p>No table found.</p>";
     }
     return $content;
 }
@@ -266,7 +266,7 @@ function get_active_prenotation()
         }
         $content .= "</ul>";
     } else {
-        $content .= "No active prenotation found.";
+        $content .= "<p>No active prenotation found.</p>";
     }
     return $content;
 }
@@ -286,7 +286,7 @@ function getFrequentView()
         }
 
     } else {
-        $content .= "Devi ancora effettuare una prenotazione " . $_SESSION['name'] . '. Che aspetti? Fatti avanti!';
+        $content .= "<p>Devi ancora effettuare una prenotazione " . $_SESSION['name'] . '. Che aspetti? Fatti avanti!</p>';
     }
     $content .= "</ul></section>";
     return $content;

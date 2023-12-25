@@ -98,31 +98,32 @@ function updateLinkWithSize(url, linkId) {
   });
 }
 
-
 //Aggiungi l'evento onBlur agli elementi dei form
 function addOnBlur(){
   // Aggiungi per gli input e le textarea
-  let inputs = document.querySelectorAll('input, textarea');
+  const inputs = document.querySelectorAll('input, textarea');
   inputs.forEach(input => {
-      input.addEventListener('blur', validateInput);
+      input.addEventListener('blur', validateInputAfterEvent);
   });
 }
 
-//Validazione dei form
-function validateInput(event) {
-  const inputName = event.target.getAttribute('name');
-  const inputValue = event.target.value;
+function validateInputAfterEvent(event) {
+  return validateInput(event.target);
+}
+
+//Validazione degli input
+function validateInput(input) {
+  const inputName = input.getAttribute('name');
+  const inputValue = input.value;
 
   if (checks[inputName]) {
       const conditionMet = checks[inputName].condition(inputValue);
       if (!conditionMet) {
           // Rimuovi il tag <p> di errore se presente
-          const siblingToRemove = event.target.nextSibling;
+          const siblingToRemove = input.nextSibling;
           if (siblingToRemove) {
               siblingToRemove.remove();
           }
-
-          event.target.setAttribute('aria-invalid', 'true');
 
           // Crea un nuovo elemento <p> con il messaggio di errore
           const errorElement = document.createElement('p');
@@ -130,39 +131,122 @@ function validateInput(event) {
           errorElement.innerHTML = checks[inputName].message;
 
           //imposta il focus e selezione l'input errato
-          event.target.focus();
-          event.target.select();
+          input.focus();
+          input.select();
 
           // Inserisci il messaggio di errore sotto il campo
-          const parentNode = event.target.parentNode;
-          const insertBeforeElement = event.target.nextSibling;
+          const parentNode = input.parentNode;
+          const insertBeforeElement = input.nextSibling;
           parentNode.insertBefore(errorElement, insertBeforeElement);
+          return false;
       } else {
           // Il controllo è passato, rimuovi il tag <p> di errore se presente
-          const errorSibling = event.target.nextSibling;
+          const errorSibling = input.nextSibling;
           if (errorSibling) {
               errorSibling.remove();
           }
-          event.target.setAttribute('aria-invalid', 'false');
       }
   }
+  return true;
+}
+
+//Validazione del form
+function validateForm(){
+  const inputs = document.querySelectorAll('input, textarea');
+  let validInput = true;
+  for (let i = 0; i < inputs.length; i++) {
+    if(!validateInput(inputs[i])){
+      validInput=false;
+    }
+  }
+  return validInput;
 }
 
 function setSignInChecks(){
   checks = {
       username:{
-          message:"Formato username non corretto, deve avere almeno 2 caratteri!",
+          message:"Formato username non corretto, deve contenere almeno 2 caratteri!",
           condition: function(str){
               let expr = /\w{2,}/ ;
+              return expr.test(str);
+          }
+      },
+      firstname:{
+        message:"Questo campo non può essere vuoto!",
+          condition: function(str){
+              return str.length > 0;
+          }
+      },
+      lastname:{
+          message:"Questo campo non può essere vuoto!",
+          condition: function(str){
+              return str.length > 0;
+          }
+      },
+      email:{
+          message:"Formato email non corretto, deve avere questa forma: nomeutente@dominio.estensione!",
+          condition: function(str){
+              let expr = /^([\w\-\+\.]+)\@([\w\-\+\.]+)\.([\w\-\+\.]+)$/;
               return expr.test(str);
           }
       },
       password:{
           message:"Formato <span lang='en'>password</span> non corretto!",
           condition: function(str){
-              return str.length>=5;
+              return isStrongPassword(str);
           }
       }
   }
+}
 
+function isValidLength(password) {
+  return password.length >= 5;
+}
+
+function hasUpperCase(password) {
+  return /[A-Z]/.test(password);
+}
+
+function hasLowerCase(password) {
+  return /[a-z]/.test(password);
+}
+
+function hasNumber(password) {
+  return /\d/.test(password);
+}
+
+function hasSpecialCharacter(password) {
+  return /[!@#$%^&*()_+]/.test(password);
+}
+
+
+function isStrongPassword(password) {
+  return (
+      isValidLength(password) &&
+      hasUpperCase(password) &&
+      hasLowerCase(password) &&
+      hasNumber(password) &&
+      hasSpecialCharacter(password)
+  );
+}
+
+function setLoginChecks(){
+  checks = {
+      username_or_email:{
+          message:"Formato username o email non corretto, deve contenere almeno 2 caratteri!",
+          condition: function(str){
+              let expr = /\w{2,}/ ;
+              return expr.test(str);
+          }
+      }/*
+      tolto perchè altrimenti user e admin hanno password non sicure e non possono entrare. 
+      Altrimenti potrebbe essere sensato per ridurre il carico sul server
+      ,
+      password:{
+          message:"Formato <span lang='en'>password</span> non corretto, deve contenere almeno 5 caratteri, inclusi lettere maiuscole e minuscole, numeri e almeno uno dei seguenti caratteri speciali: !@#$%^&*",
+          condition: function(str){
+              return isStrongPassword(str);
+          }
+      }*/
+  }
 }
