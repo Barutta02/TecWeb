@@ -1,2 +1,0 @@
-ErrorDocument 404 /Home/404.php
-ErrorDocument 500 /Home/500.php

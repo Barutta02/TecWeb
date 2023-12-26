@@ -371,7 +371,7 @@ a.tikTokLogo::before {
     padding: 1em;
 }
 
-.message .title {
+.message.title {
     font-style: bold;
     font-size: 1.5em;
 }
@@ -403,6 +403,16 @@ a.tikTokLogo::before {
 .button.azioneIrreversibile {
     color: var(--irreversibleOperationTxtColor);
     background-color: var(--irreversibleOperationBgColor);
+}
+
+/******************* HOME >> LOGIN **********************/
+#loginButton {
+    font-size: 1.5em;
+}
+
+/******************* HOME >> SIGNIN **********************/
+#signInButton {
+    font-size: 1.5em;
 }
 
 /*******************MENU *********************/
@@ -1125,7 +1135,7 @@ label {
     margin: 0;
 }
 
-/* SITO: ADMIN > ELIMINAZIONE PRENOTAZIONE CONFERMA */
+/********************* SITO: ADMIN > ELIMINAZIONE PRENOTAZIONE CONFERMA ****************/
 #richiestaConferma {
     text-align: center;
     margin: 1em;
