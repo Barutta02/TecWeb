@@ -3,7 +3,7 @@
   {{error}}
   <form action="process/login_request.php" onsubmit="return validateForm();" method="post">
     <fieldset>
-      <legend>Dati di accesso</legend>
+      <legend id="loginLegend">Dati di accesso</legend>
       <ul>
         <li>
           <label for="username_or_email">
@@ -22,7 +22,7 @@
         </li>
       </ul>
 
-      <input type="submit" value="Login">
+      <input type="submit" id="loginButton" class="button azioneStandard" value="Login">
     </fieldset>
   </form>
   <p>

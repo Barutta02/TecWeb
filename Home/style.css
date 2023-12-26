@@ -149,6 +149,10 @@ nav.menu ul,
     list-style-type: none;
 }
 
+#loginLegend {
+    text-align: center;
+}
+
 nav.menu ul li {
     display: inline-block;
     margin: 0 15px;
@@ -372,7 +376,7 @@ a.tikTokLogo::before {
 }
 
 .message.title {
-    font-style: bold;
+    font-weight: bold;
     font-size: 1.5em;
 }
 
@@ -386,8 +390,8 @@ a.tikTokLogo::before {
 
 /******************* SITO: PULSANTI FORM **********************/
 .button {
-    /* min-width: 30px; */
-    font-size: 1em;
+    min-width: 30px;
+    font-size: 1.5em;
     text-align: center;
     border-radius: var(--buttonCurveBorder);
     margin-top: 1em;
@@ -405,9 +409,8 @@ a.tikTokLogo::before {
     background-color: var(--irreversibleOperationBgColor);
 }
 
-/******************* HOME >> LOGIN **********************/
-#loginButton {
-    font-size: 1.5em;
+.button.small {
+    font-size: 1em;
 }
 
 /******************* HOME >> SIGNIN **********************/
@@ -880,13 +883,6 @@ textarea{
     float: right;
 }
 
-input[type="submit"].cancellaButton {
-    font-size: 1em;
-    margin: 0.5em;
-    padding: 0.5em;
-    background-color: var(--endPrenotation);
-}
-
 input[type="submit"].doneButton {
     font-size: 1em;
     margin: 0.5em;
@@ -999,7 +995,6 @@ label {
     display: block;
     margin-bottom: 5px;
 }
-
 
 
 
@@ -1146,7 +1141,7 @@ label {
 
 /* Stili per schermi di larghezza massima 600px */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 850px) {
     .menu-toggle-label   {
         display: block;
         z-index: 3;
