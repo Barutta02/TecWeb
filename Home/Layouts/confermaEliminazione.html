@@ -1,0 +1,12 @@
+<div id="richiestaConferma">
+    <h2>Eliminazione di una prenotazione</h2>
+    <p>ATTENZIONE: sei sicuro di voler eliminare la prenotazione del tavolo {{numero_tavolo}} fatta alle {{timestamp_prenotazione}} dall'utente {{username_utente}}?</p>
+    <div>
+        <form action="process/gestionePrenotazione.php" method="post">
+            <input type="hidden" name="timestamp_prenotazione" value="{{timestamp_prenotazione}}">
+            <input type="hidden" name="username_utente" value="{{username_utente}}">
+            <input type="submit" name="action" class="button azioneStandard" value="Annulla">
+            <input type="submit" name='action' class="button azioneIrreversibile" value="Conferma"/>
+        </form>
+    </div>
+</div>

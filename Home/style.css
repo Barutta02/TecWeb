@@ -20,10 +20,23 @@
     --visitedLinkColor: #ff6758;
     /*importante il contrasto tra link visitato e non*/
     --flagColor: #ff6758;
-    --endPrenotation: #ff6758;
-    --warningMessage: #ff6758;
+    --endPrenotation: #b12d21;
     --goodEndingMessage: #07a61f ;
-    --instructionMessage: #f1ab33;
+    --instructionMessage: #f1ab33;    --warningMessage: #ff6758;
+
+    /* Message status*/
+    --messageTxtColor: white;
+    --errorMessageBgColor: red;
+    --goodMessageBgColor: #06a61f;
+    --curveMessage: 1em;
+
+    /* Button - Submit */
+    --buttonCurveBorder: 0.6em;
+    --standardOperationBgColor: #06a61f;
+    --standardOperationTxtColor: white;
+    --irreversibleOperationBgColor: red;
+    --irreversibleOperationTxtColor: white;
+
     --fieldSetBorderColor: #6ccb07;
     --LegendTxtColor: #cb9407;
     --secondBodyColor:#fcf3dc;
@@ -134,6 +147,10 @@ nav.menu ul,
 #listaAllergeni {
     text-align: center;
     list-style-type: none;
+}
+
+#loginLegend {
+    text-align: center;
 }
 
 nav.menu ul li {
@@ -285,7 +302,7 @@ dd.ingradienti {
 
 
 main {
-    margin-top: auto;
+    margin: 0;
 }
 
 footer {
@@ -346,6 +363,59 @@ a.facebookLogo::before {
 
 a.tikTokLogo::before {
     background-image: url(../assets/icon/tik-tok.png);
+}
+
+/******************* SITO: MESSAGGI *********************/
+.message {
+    text-align: center;
+    color: var(--messageTxtColor);
+    margin: auto;
+    width: 40%;
+    border-radius: var(--curveMessage);
+    padding: 1em;
+}
+
+.message.title {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.message.msgError {
+    background-color: var(--errorMessageBgColor);
+}
+
+.message.msgGood {
+    background-color: var(--goodMessageBgColor);
+}
+
+/******************* SITO: PULSANTI FORM **********************/
+.button {
+    min-width: 30px;
+    font-size: 1.5em;
+    text-align: center;
+    border-radius: var(--buttonCurveBorder);
+    margin-top: 1em;
+    padding: 0.5em;
+    border: 0;
+}
+
+.button.azioneStandard {
+    color: var(--standardOperationTxtColor);
+    background-color: var(--standardOperationBgColor);
+}
+
+.button.azioneIrreversibile {
+    color: var(--irreversibleOperationTxtColor);
+    background-color: var(--irreversibleOperationBgColor);
+}
+
+.button.small {
+    font-size: 1em;
+}
+
+/******************* HOME >> SIGNIN **********************/
+#signInButton {
+    font-size: 1.5em;
 }
 
 /*******************MENU *********************/
@@ -445,9 +515,9 @@ fieldset legend {
 
 #submitPrenotazione,
 #signIn button,
-#login button,
-#prenotazione button,
-input[type="submit"] {
+#login button , #prenotazione button
+/* input[type="submit"] Implementato sopra sulla def dei pulsanti*/ 
+{
     background-color: var(--submitButtonColor);
     color: #fff;
     min-width: 30px;
@@ -813,6 +883,13 @@ textarea{
     float: right;
 }
 
+input[type="submit"].doneButton {
+    font-size: 1em;
+    margin: 0.5em;
+    padding: 0.5em;
+    background-color: var(--submitButtonColor);
+}
+
 .buttonDoneCompleted{
     background: var(--endPrenotation);
 }
@@ -820,7 +897,6 @@ textarea{
 #piattiDaFare .buttonDoneCompleted::after {
     content: ' - Consegnato';
 }
-
 
 /***TABLE MANAGMENT**********/
 .tableList, .ActivePrenotationList{
@@ -919,7 +995,6 @@ label {
     display: block;
     margin-bottom: 5px;
 }
-
 
 
 
@@ -1055,10 +1130,18 @@ label {
     margin: 0;
 }
 
+/********************* SITO: ADMIN > ELIMINAZIONE PRENOTAZIONE CONFERMA ****************/
+#richiestaConferma {
+    text-align: center;
+    margin: 1em;
+    padding: 1em;
+    margin: auto;
+}
+
 
 /* Stili per schermi di larghezza massima 600px */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 850px) {
     .menu-toggle-label   {
         display: block;
         z-index: 3;

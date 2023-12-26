@@ -106,7 +106,7 @@ class PrenotazioneDAO
         try {
             DBAccess::open_connection();
 
-            $query = "SELECT Tavolo, DataPrenotazione, Username, NumPersone  from Prenotazione where InCorso = 1 order by DataPrenotazione         ";
+            $query = "SELECT Tavolo, DataPrenotazione, Username, NumPersone, IndicazioniAggiuntive  from Prenotazione where InCorso = 1 order by DataPrenotazione         ";
             $result = DBAccess::get_connection_state()->query($query);
 
             if ($result) {
@@ -141,6 +141,22 @@ class PrenotazioneDAO
             $stmt->execute();
         } catch (Exception $e) {
             die($e->getMessage());
+        } finally {
+            $stmt->close();
+            DBAccess::close_connection();
+        }
+    }
+
+    public static function EliminaPrenotazione($username, $timestamp_prenotazione) {
+        try {
+            DBAccess::open_connection();
+            
+            $query = "DELETE FROM Prenotazione WHERE Username = ? AND DataPrenotazione = ?";
+            $stmt = DBAccess::get_connection_state()->prepare($query);
+            $stmt->bind_param("ss", $username, $timestamp_prenotazione);
+            $stmt->execute();
+        } catch (Exception $errore) {
+            die($errore->getMessage());
         } finally {
             $stmt->close();
             DBAccess::close_connection();

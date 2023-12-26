@@ -261,6 +261,7 @@ function get_active_prenotation()
 
             $templateSliderInputIter = str_replace('{{Orario}}', $tavolo['DataPrenotazione'], $templateSliderInputIter);
             $templateSliderInputIter = str_replace('{{Username}}', $tavolo['Username'], $templateSliderInputIter);
+            $templateSliderInputIter = str_replace('{{IndicazioniAggiuntive}}',  empty($tavolo['IndicazioniAggiuntive']) || ctype_space($tavolo['IndicazioniAggiuntive']) ? 'Nessuna.' :  $tavolo['IndicazioniAggiuntive'], $templateSliderInputIter);
 
             $content .= $templateSliderInputIter;
         }

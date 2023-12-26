@@ -44,6 +44,7 @@ function aggiornaConsegna(button) {
   xhr.send(params);
 }
 
+/* Deprecata, se JS è disabilitato viene a mancare una funzionalità fondamentale
 function closePrenotation(button) {
   // Recupera i dati direttamente dal pulsante
   var dataOra = button.getAttribute("data-dataOra");
@@ -67,7 +68,7 @@ function closePrenotation(button) {
   };
   var params = "username=" + username + "&dataOra=" + dataOra;
   xhr.send(params);
-}
+}*/
 
 // Funzione per ottenere la dimensione del file
 function getFileSize(url, callback) {

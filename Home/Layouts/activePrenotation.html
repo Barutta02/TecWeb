@@ -1,13 +1,19 @@
 <li>
-  <p>Tavolo: {{numTavolo}}</p>
-  <p>Clienti: {{numClienti}}</p>
+  <dl>
+    <dt>Numero tavolo:</dt>
+      <dd>{{numTavolo}}</dd>
+    <dt>Clienti:</dt>
+      <dd>{{numClienti}}</dd>
+    <dt>Indicazioni aggiuntive dal cliente:</dt>
+      <dd>{{IndicazioniAggiuntive}}</dd>
+  </dl>
 
-  <button
-    onclick="closePrenotation(this)"
-    class="DoneButton"
-    data-dataOra="{{Orario}}"
-    data-username="{{Username}}"
-  >
-    Termina
-  </button>
+  <form action="process/gestionePrenotazione.php" method="post">
+    <input type="hidden" name="username_utente" value="{{Username}}">
+    <input type="hidden" name="timestamp_prenotazione" value="{{Orario}}">
+    <input type="hidden" name="numero_tavolo" value="{{numTavolo}}">
+
+    <input type="submit" name="action" class="button small azioneStandard" value="Termina">
+    <input type="submit" name="action" class="button small azioneIrreversibile" value="Elimina">
+  </form>
 </li>
