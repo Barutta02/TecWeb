@@ -147,6 +147,22 @@ class PrenotazioneDAO
         }
     }
 
+    public static function EliminaPrenotazione($username, $timestamp_prenotazione) {
+        try {
+            DBAccess::open_connection();
+            
+            $query = "DELETE FROM Prenotazione WHERE Username = ? AND DataPrenotazione = ?";
+            $stmt = DBAccess::get_connection_state()->prepare($query);
+            $stmt->bind_param("ss", $username, $timestamp_prenotazione);
+            $stmt->execute();
+        } catch (Exception $errore) {
+            die($errore->getMessage());
+        } finally {
+            $stmt->close();
+            DBAccess::close_connection();
+        }
+    }
+
 
     public static function updatePrenotazione($username, $data, $indicazioniAggiuntive)
     {

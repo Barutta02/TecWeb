@@ -20,9 +20,22 @@
     --visitedLinkColor: #ff6758;
     /*importante il contrasto tra link visitato e non*/
     --flagColor: #ff6758;
-    --endPrenotation: #ff6758;
-    --warningMessage: #ff6758;
+    --endPrenotation: #b12d21;
     --goodEndingMessage: #07a61f ;
+    --warningMessage: #ff6758;
+
+    /* Message status*/
+    --messageTxtColor: white;
+    --errorMessageBgColor: red;
+    --goodMessageBgColor: #06a61f;
+    --curveMessage: 1em;
+
+    /* Button - Submit */
+    --buttonCurveBorder: 0.6em;
+    --standardOperationBgColor: #06a61f;
+    --standardOperationTxtColor: white;
+    --irreversibleOperationBgColor: red;
+    --irreversibleOperationTxtColor: white;
 
     --fieldSetBorderColor: #cb9407;
     --LegendTxtColor: #cb9407;
@@ -284,7 +297,7 @@ dd.ingradienti {
 
 
 main {
-    margin-top: auto;
+    margin: 0;
 }
 
 footer {
@@ -345,6 +358,50 @@ a.facebookLogo::before {
 
 a.tikTokLogo::before {
     background-image: url(../assets/icon/tik-tok.png);
+}
+
+/******************* SITO: MESSAGGI *********************/
+.message {
+    text-align: center;
+    color: var(--messageTxtColor);
+    margin: auto;
+    width: 40%;
+    border-radius: var(--curveMessage);
+    padding: 1em;
+}
+
+.message .title {
+    font-style: bold;
+    font-size: 1.5em;
+}
+
+.message.msgError {
+    background-color: var(--errorMessageBgColor);
+}
+
+.message.msgGood {
+    background-color: var(--goodMessageBgColor);
+}
+
+/******************* SITO: PULSANTI FORM **********************/
+.button {
+    /* min-width: 30px; */
+    font-size: 1em;
+    text-align: center;
+    border-radius: var(--buttonCurveBorder);
+    margin-top: 1em;
+    padding: 0.5em;
+    border: 0;
+}
+
+.button.azioneStandard {
+    color: var(--standardOperationTxtColor);
+    background-color: var(--standardOperationBgColor);
+}
+
+.button.azioneIrreversibile {
+    color: var(--irreversibleOperationTxtColor);
+    background-color: var(--irreversibleOperationBgColor);
 }
 
 /*******************MENU *********************/
@@ -439,8 +496,8 @@ fieldset legend {
 
 #submitPrenotazione,
 #signIn button,
-#login button,
-input[type="submit"] {
+#login button /*, input[type="submit"] Implementato sopra sulla def dei pulsanti*/ 
+{
     background-color: var(--submitButtonColor);
     color: #fff;
     min-width: 30px;
@@ -794,6 +851,20 @@ textarea{
     float: right;
 }
 
+input[type="submit"].cancellaButton {
+    font-size: 1em;
+    margin: 0.5em;
+    padding: 0.5em;
+    background-color: var(--endPrenotation);
+}
+
+input[type="submit"].doneButton {
+    font-size: 1em;
+    margin: 0.5em;
+    padding: 0.5em;
+    background-color: var(--submitButtonColor);
+}
+
 .buttonDoneCompleted{
     background: var(--endPrenotation);
     content: 'Consegnato';
@@ -801,7 +872,6 @@ textarea{
 .buttonDoneCompleted::after {
     content: ' - Consegnato';
 }
-
 
 /***TABLE MANAGMENT**********/
 .tableList, .ActivePrenotationList{
@@ -1030,6 +1100,14 @@ label {
     width: 101vw;
     height: 50px;
     margin: 0;
+}
+
+/* SITO: ADMIN > ELIMINAZIONE PRENOTAZIONE CONFERMA */
+#richiestaConferma {
+    text-align: center;
+    margin: 1em;
+    padding: 1em;
+    margin: auto;
 }
 
 
