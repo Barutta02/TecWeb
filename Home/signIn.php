@@ -9,7 +9,7 @@ $signInSectionhtml = getTemplate('Layouts/signInSection.html');
 
 $pageID = 'signInBody';
 $title = "SignIn - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in:  <a href="index.php"><span lang="en">Home</span> </a>  >> <span lang="en">SignIn</span></p> ';
+$breadcrumbs = '<p>Ti trovi in:  <a href="index.php"><span lang="en">Home</span></a>  >> <span lang="en">SignIn</span></p> ';
 
 
 
@@ -26,5 +26,5 @@ if (isset($_SESSION["username"])) {
 }
 $template = str_replace('{{menu}}', $menu, $template);
 
-echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Registrazione per ordinare Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
+echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Registrazione per ordinare Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, 'setSignInChecks();addOnBlur();');
 ?>

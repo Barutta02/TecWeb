@@ -1,29 +1,28 @@
 <section id="login">
   <h2><span lang="en">Login</span></h2>
   {{error}}
-  <form action="process/login_request.php" method="post">
+  <form action="process/login_request.php" onsubmit="return validateForm();" method="post">
     <fieldset>
       <legend>Dati di accesso</legend>
       <ul>
         <li>
-          <label for="username_or_email"
-            ><span lang="en">Username</span> o
-            <span lang="en">Email:</span></label
-          >
+          <label for="username_or_email">
+            <span lang="en">Username</span> o
+            <span lang="en">Email</span>:
+          </label>
           <input
             type="text"
             id="username_or_email"
             name="username_or_email"
-            required
           />
         </li>
         <li>
           <label for="password"><span lang="en">Password:</span></label>
-          <input type="password" id="password" name="password" required />
+          <input type="password" id="password" name="password"/>
         </li>
       </ul>
 
-      <button type="submit"><span lang="en">Login</span></button>
+      <input type="submit" value="Login">
     </fieldset>
   </form>
   <p>

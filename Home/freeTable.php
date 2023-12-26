@@ -12,7 +12,7 @@ $template = getTemplate('Layouts/main.html');
 
 $pageID = 'GestioneTavoli';
 $title = "Gestione tavoli - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span> </a> >> <a href="login.php"> Area utente</a> >> Gestione tavoli</p> ';
+$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> >> <a href="login.php">Area utente</a> >> Gestione tavoli</p> ';
 
 //PRENDO IL FORM PER LA SELEZIONE DEGLI ALLERGENI UTILITIES
 $status = isset($_GET['StatusCode']) ? $_GET['StatusCode'] : null;

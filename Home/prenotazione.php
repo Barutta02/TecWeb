@@ -12,7 +12,7 @@ $template = getTemplate('Layouts/main.html');
 
 $pageID = 'prenotationId';
 $title = "Prenotazione - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span> </a> >> <a href="login.php"> Area utente</a> >> Gestisci prenotazione</p> ';
+$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> >> <a href="login.php">Area utente</a> >> Gestisci prenotazione</p> ';
 if (isset($_SESSION['data_prenotazione_inCorso'])) {
     //Prendi i dati della prenotazione
     require_once "DAO/PrenotazioneDAO.php";

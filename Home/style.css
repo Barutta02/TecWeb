@@ -22,7 +22,7 @@
     --flagColor: #ff6758;
     --endPrenotation: #b12d21;
     --goodEndingMessage: #07a61f ;
-    --warningMessage: #ff6758;
+    --instructionMessage: #f1ab33;    --warningMessage: #ff6758;
 
     /* Message status*/
     --messageTxtColor: white;
@@ -37,7 +37,7 @@
     --irreversibleOperationBgColor: red;
     --irreversibleOperationTxtColor: white;
 
-    --fieldSetBorderColor: #cb9407;
+    --fieldSetBorderColor: #6ccb07;
     --LegendTxtColor: #cb9407;
     --secondBodyColor:#fcf3dc;
     --secondTitleColor:#c79e63;
@@ -143,6 +143,7 @@ nav.menu {
 nav.menu ul,
 #login ul,
 #signIn ul,
+#prenotazione ul,
 #listaAllergeni {
     text-align: center;
     list-style-type: none;
@@ -406,8 +407,12 @@ a.tikTokLogo::before {
 
 /*******************MENU *********************/
 
+.downloadSize{
+    display: inline;
+}
+
 dl.ListinoPrezzi {
-    padding: 1.5em;
+    padding: .5em;
     justify-content: center;
 }
 
@@ -451,15 +456,16 @@ dl.ListinoPrezzi div {
 }
 
 .ListinoPrezzi div {
-    padding: 2.5em;
+    padding: 1.5em;
 }
 
 #signIn h2,
 #login h2,
+#prenotazione h2,
 .containerPlatesViewer h2,
 .prices h2 {
     color: var(--alternative_text);
-    margin: 1.5em;
+    margin: .5em;
 }
 
 .prices{
@@ -482,21 +488,22 @@ dl.ListinoPrezzi div {
 
 fieldset {
     border: 0;
-    /* Replace YourColor with the desired color code */
     border-radius: 8px;
     padding: 1em;
+    margin-top: 1em;
 }
 
 fieldset legend {
     color: var(--LegendTxtColor);
     font-size: 1.5em;
     font-weight: bold;
-    /*text-align: left;*/
+    text-align: center;
 }
 
 #submitPrenotazione,
 #signIn button,
-#login button /*, input[type="submit"] Implementato sopra sulla def dei pulsanti*/ 
+#login button , #prenotazione button
+/* input[type="submit"] Implementato sopra sulla def dei pulsanti*/ 
 {
     background-color: var(--submitButtonColor);
     color: #fff;
@@ -510,7 +517,9 @@ fieldset legend {
 }
 
 fieldset ul li {
-    margin: 1em
+    margin: 1em;
+    text-align: center;
+    max-width: 650px;
 }
 
 #listaAllergeni li {
@@ -593,28 +602,37 @@ fieldset ul li {
 }
 
 
-/*******************login signin *********************/
-#login, #signIn{
+/*******************login signin prenotazione *********************/
+#passwordInstruction{
+    max-width: 600px;
+    color: var(--instructionMessage);
+}
+
+#login, #signIn, #prenotazione{
     text-align: center;
 }
 #signIn label,
-#login label {
+#login label, 
+#prenotazione label{
     font-size: 1.4em;
 }
 
 #signIn fieldset,
-#login fieldset {
+#login fieldset,
+#prenotazione fieldset {
     width: fit-content;
 }
 
 #signIn ul,
-#login ul {
+#login ul,
+#prenotazione ul {
     text-align: right;
     width: fit-content;
 }
 
 #signIn form,
-#login form {
+#login form,
+#prenotazione form {
     text-align: -webkit-center;
     text-align: -moz-center;
 }
@@ -632,6 +650,7 @@ textarea{
     margin-top: .4em;
     max-width: 300px;
     box-sizing: border-box;
+    resize: none;
 }
 /*******************HOME************************/
 
@@ -867,9 +886,9 @@ input[type="submit"].doneButton {
 
 .buttonDoneCompleted{
     background: var(--endPrenotation);
-    content: 'Consegnato';
 }
-.buttonDoneCompleted::after {
+
+#piattiDaFare .buttonDoneCompleted::after {
     content: ' - Consegnato';
 }
 
@@ -993,25 +1012,29 @@ label {
     padding: .5em;
 }
 
-#SezioneGestionePrenotazioni,
-.buttonDoneCompleted::after {
+#SezioneGestionePrenotazioni .buttonDoneCompleted::after {
     content: ' - Terminata';
 }
 
-/*******************404*********************/
+/*******************404 e 500*********************/
 
-#Section404{
+#Section404, #Section500{
     text-align: center;
     padding: 2em;
 }
 
-#Section404 p{
+#Section404 p, #Section500 p{
     margin: auto;
     max-width: 50vw;
 }
 
 #nigiriTriste{
-    width: 10em;
+    width: 15em;
+    height: auto;
+}
+
+#nigiriKO{
+    width: 15em;
     height: auto;
 }
 
