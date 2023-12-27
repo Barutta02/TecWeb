@@ -21,8 +21,9 @@
     /*importante il contrasto tra link visitato e non*/
     --flagColor: #ff6758;
     --endPrenotation: #b12d21;
-    --goodEndingMessage: #07a61f ;
-    --instructionMessage: #f1ab33;    --warningMessage: #ff6758;
+    --goodEndingMessage: #07a61f;
+    --instructionMessage: #f1ab33;
+    --warningMessage: #ff6758;
 
     /* Message status*/
     --messageTxtColor: white;
@@ -39,8 +40,8 @@
 
     --fieldSetBorderColor: #6ccb07;
     --LegendTxtColor: #cb9407;
-    --secondBodyColor:#fcf3dc;
-    --secondTitleColor:#c79e63;
+    --secondBodyColor: #fcf3dc;
+    --secondTitleColor: #c79e63;
     --alternative_text: #cb9407;
     --menuToggleColor: #cb9407;
     --submitButtonColor: rgb(2, 117, 0);
@@ -60,12 +61,15 @@ html {
     background-color: var(--bgColor);
     color: var(--pageTxtColor);
 }
-.onlyMobile{
+
+.onlyMobile {
     display: none;
 }
+
 .srOnly {
-    position:absolute;
-    left:-999em;}
+    position: absolute;
+    left: -999em;
+}
 
 
 a:link {
@@ -90,30 +94,34 @@ header {
 }
 
 
-.warning{
+.warning {
     color: var(--warningMessage);
 }
 
-.good{
+.good {
     color: var(--goodEndingMessage);
 }
-.warning::before , .good::before{
-        content: "";
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        background-size: contain;
-        margin-right: .3em;
-        background-repeat: no-repeat;
+
+.warning::before,
+.good::before {
+    content: "";
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    margin-right: .3em;
+    background-repeat: no-repeat;
 }
 
 .warning::before {
     background-position-y: 7px;
     background-image: url(../assets/icon/warning.png);
 }
-.good::before{
-        background-image: url(../assets/icon/check.png);
+
+.good::before {
+    background-image: url(../assets/icon/check.png);
 }
+
 /**
     TODO non riesco a farlo funzionare
 .userAreaLink::before{
@@ -167,40 +175,56 @@ nav.menu ul li a {
 }
 
 /*ALLERGENI*/
-.menuItem .allergeneImage{
-margin: 0;
+.menuItem .allergeneImage {
+    margin: 0;
 }
-.allergeniPlateList , .allergeniPlateList + dd{
+
+.allergeniPlateList,
+.allergeniPlateList+dd {
     display: inline-block;
 }
+
 .allergeneImage {
     position: relative;
     top: 0.4em;
-    left: 0.5em;    display: inline-block;
-    width: 25px; /* Imposta la larghezza dell'immagine */
-    height: 25px; /* Imposta l'altezza dell'immagine */
+    left: 0.5em;
+    display: inline-block;
+    width: 25px;
+    /* Imposta la larghezza dell'immagine */
+    height: 25px;
+    /* Imposta l'altezza dell'immagine */
 }
+
 .CrostaceiImage {
-    background: url(../assets/icon/Crostacei.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
+    background: url(../assets/icon/Crostacei.png) center center/contain no-repeat;
+    /* Utilizza il percorso dell'immagine da data-allergene */
 
 }
 
 .PesceImage {
-    background: url(../assets/icon/fish.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
+    background: url(../assets/icon/fish.png) center center/contain no-repeat;
+    /* Utilizza il percorso dell'immagine da data-allergene */
 
 }
+
 .SedanoImage {
-    background: url(../assets/icon/celery.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
+    background: url(../assets/icon/celery.png) center center/contain no-repeat;
+    /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
 .SenapeImage {
-    background: url(../assets/icon/mustard.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
+    background: url(../assets/icon/mustard.png) center center/contain no-repeat;
+    /* Utilizza il percorso dell'immagine da data-allergene */
 }
+
 .SoiaImage {
-    background: url(../assets/icon/soy.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
+    background: url(../assets/icon/soy.png) center center/contain no-repeat;
+    /* Utilizza il percorso dell'immagine da data-allergene */
 }
+
 .UovaImage {
-    background: url(../assets/icon/eggs.png) center center/contain no-repeat; /* Utilizza il percorso dell'immagine da data-allergene */
+    background: url(../assets/icon/eggs.png) center center/contain no-repeat;
+    /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
 #breadcrumb {
@@ -221,7 +245,7 @@ margin: 0;
     padding: 1em;
 }
 
-.flexable{
+.flexable {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -233,7 +257,7 @@ margin: 0;
     align-content: center;
     justify-content: center;
     background-color: var(--menuBackground);
-    color: var(--menuTxtcolor);    
+    color: var(--menuTxtcolor);
 }
 
 .menuItem {
@@ -250,7 +274,7 @@ margin: 0;
     transition: 0.5s;
 }
 
-.menuItem dl{
+.menuItem dl {
     padding-left: 0.5em;
 
 }
@@ -259,6 +283,7 @@ margin: 0;
     box-shadow: 0 0 11px rgba(255, 250, 250, 0.2);
     transform: scale(1.1);
 }
+
 .menuItem.oldOrders {
     border: 1px solid #6f6969;
     border-radius: 10px;
@@ -268,8 +293,10 @@ margin: 0;
 .infoItem {
     padding-left: 4%;
 }
-.allergeniPlateList{
-    list-style-type: none;}
+
+.allergeniPlateList {
+    list-style-type: none;
+}
 
 .prezzo,
 .quantitaOrdine {
@@ -297,7 +324,7 @@ margin: 0;
 
 dd.ingradienti {
     color: var(--flagColor);
-    padding:  .4em 0 .4em;
+    padding: .4em 0 .4em;
 }
 
 
@@ -312,13 +339,14 @@ footer {
     border-top: 1px solid var(--NavmenuBorder);
     margin-top: auto;
 }
+
 #footerOrganizer {
     padding: 1em;
     display: flex;
     justify-content: space-evenly;
 }
 
-footer dt{
+footer dt {
     display: inline-block;
     font-weight: bold;
     color: var(--LegendTxtColor);
@@ -326,17 +354,21 @@ footer dt{
     padding-top: 0.2em;
 }
 
-footer div, footer dl{
+footer div,
+footer dl {
     min-width: 200px;
     text-align: left;
     padding: 1em;
 }
-footer div{
+
+footer div {
     padding: 1em;
 }
-#footerDesc{
+
+#footerDesc {
     max-width: 300px;
 }
+
 a.socialLogo::before {
     content: "";
     display: inline-block;
@@ -348,11 +380,13 @@ a.socialLogo::before {
     margin-bottom: 10%;
 
 }
+
 a.socialLogo {
     display: flex;
     align-items: center;
     text-align: center;
 }
+
 a.instagramLogo::before {
     background-image: url(../assets/icon/instagram.png);
 }
@@ -420,7 +454,7 @@ a.tikTokLogo::before {
 
 /*******************MENU *********************/
 
-.downloadSize{
+.downloadSize {
     display: inline;
 }
 
@@ -433,7 +467,7 @@ dl.ListinoPrezzi div {
     display: inline-block;
 }
 
-.iconTime{
+.iconTime {
     max-width: 40px;
     height: 40px;
     background-position: center center;
@@ -442,12 +476,15 @@ dl.ListinoPrezzi div {
     margin: auto;
     display: block;
 }
-.Cena{
+
+.Cena {
     background-image: url(../assets/Images/moon.PNG);
 }
-.Pranzo{
+
+.Pranzo {
     background-image: url(../assets/Images/sun.PNG);
 }
+
 .bold {
     font-weight: bold;
 }
@@ -481,9 +518,10 @@ dl.ListinoPrezzi div {
     margin: .5em;
 }
 
-.prices{
+.prices {
     text-align: center;
 }
+
 .containerPlatesViewer>p {
     padding-bottom: 1em;
 }
@@ -515,9 +553,11 @@ fieldset legend {
 
 #submitPrenotazione,
 #signIn button,
-#login button , #prenotazione button
-/* input[type="submit"] Implementato sopra sulla def dei pulsanti*/ 
-{
+#login button,
+#prenotazione button
+
+/* input[type="submit"] Implementato sopra sulla def dei pulsanti*/
+    {
     background-color: var(--submitButtonColor);
     color: #fff;
     min-width: 30px;
@@ -540,9 +580,10 @@ fieldset ul li {
     padding: 1em;
 }
 
-#allergeni{
+#allergeni {
     text-align: center;
 }
+
 /* Nascondi la checkbox predefinita */
 
 #allergeni input[type="checkbox"] {
@@ -616,17 +657,20 @@ fieldset ul li {
 
 
 /*******************login signin prenotazione *********************/
-#passwordInstruction{
+#passwordInstruction {
     max-width: 600px;
     color: var(--instructionMessage);
 }
 
-#login, #signIn, #prenotazione{
+#login,
+#signIn,
+#prenotazione {
     text-align: center;
 }
+
 #signIn label,
-#login label, 
-#prenotazione label{
+#login label,
+#prenotazione label {
     font-size: 1.4em;
 }
 
@@ -655,16 +699,17 @@ input {
     font-size: 1.2em;
 }
 
-label[for="indicazioniAggiuntive"]{
+label[for="indicazioniAggiuntive"] {
     display: block;
 }
 
-textarea{
+textarea {
     margin-top: .4em;
     max-width: 300px;
     box-sizing: border-box;
     resize: none;
 }
+
 /*******************HOME************************/
 
 .homeImage {
@@ -684,10 +729,10 @@ textarea{
     text-align: center;
     color: #fff;
     text-shadow:
-            3px 3px 2px #000,
-            -3px 3px 2px #000,
-            -3px -3px 0 #000,
-            3px -3px 0 #000;
+        3px 3px 2px #000,
+        -3px 3px 2px #000,
+        -3px -3px 0 #000,
+        3px -3px 0 #000;
 }
 
 #homeTitle {
@@ -709,27 +754,32 @@ textarea{
     justify-content: space-evenly;
     margin: auto;
 }
-#homeDescription{
+
+#homeDescription {
     margin: 2em;
 }
-.homeSection div{
+
+.homeSection div {
     padding: 2em;
     max-width: 500px;
 }
 
-.homeSection h3{
+.homeSection h3 {
     color: var(--LegendTxtColor);
     font-size: 1.8em;
     padding: 1em;
 }
-.homeSection p{
+
+.homeSection p {
     padding: 1em;
 }
-#presentationMenu{
+
+#presentationMenu {
     background-color: var(--secondBodyColor);
     color: #000;
 }
-.homeSection .image{
+
+.homeSection .image {
     min-width: 300px;
     min-height: 300px;
     background-size: contain;
@@ -738,33 +788,38 @@ textarea{
     margin: 0.5em;
 
 }
-#restaurantImage{
+
+#restaurantImage {
     background-image: url(../assets/Images/restoraunt.jpg);
     position: relative;
     top: -3em;
 }
+
 #imageDescription {
     background-image: url(../assets/Images/home_image.jpg);
 }
-#qualityImage{
+
+#qualityImage {
     background-image: url(../assets/Images/quality.jpg);
 
 }
+
 /**CHI SIAMO***/
 .componentList {
     list-style: none;
     margin: 2em;
     justify-content: space-around;
-    
+
 }
-#chiSiamoSection h2{
+
+#chiSiamoSection h2 {
     padding: 1em;
     text-align: center;
 }
 
 
-.componentList li{
-    height: 300px;
+.componentList li {
+    min-height: 300px;
     background: #fff;
     border-radius: calc(var(--curve) * 1px);
     margin: 1em;
@@ -778,102 +833,102 @@ textarea{
     margin: 4rem 5vw;
     padding: 0;
     list-style-type: none;
-  }
-  
-  .card {
+}
+
+.card {
     position: relative;
     display: block;
-    height: 100%;  
+    height: 100%;
     border-radius: calc(var(--curve) * 1px);
     overflow: hidden;
     text-decoration: none;
     padding: 0;
-  }
-  
-  .card__image {      
+}
+
+.card__image {
     min-height: 250px;
     min-width: 250px;
     max-width: 250px;
-  }
-  
-  .card__overlay {
+}
+
+.card__overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 1;      
-    border-radius:calc(var(--curve) * 1px) 0 0 0;    
-    background-color: var(--surface-color);      
+    z-index: 1;
+    border-radius: calc(var(--curve) * 1px) 0 0 0;
+    background-color: var(--surface-color);
     transform: translateY(100%);
     transition: .2s ease-in-out;
-  }
-  
-  .card:hover .card__overlay {
+}
+
+.card:hover .card__overlay {
     transform: translateY(0);
-  }
-  
-  .card__header {
+}
+
+.card__header {
     position: relative;
     display: flex;
     align-items: center;
     gap: 2em;
     padding: 1em;
-    border-radius: calc(var(--curve) * 1px) 0 0 0;    
+    border-radius: calc(var(--curve) * 1px) 0 0 0;
     background-color: var(--surface-color);
     transform: translateY(-100%);
     transition: .2s ease-in-out;
-  }
-  
-  .card__arc {
+}
+
+.card__arc {
     width: 80px;
     height: 80px;
     position: absolute;
     bottom: 100%;
-    right: 0;      
+    right: 0;
     z-index: 1;
-  }
-  
-  .card__arc path {
+}
+
+.card__arc path {
     fill: var(--surface-color);
-  }       
-  
-  .card:hover .card__header {
+}
+
+.card:hover .card__header {
     transform: translateY(0);
-  }
-  
-  .card__thumb {
+}
+
+.card__thumb {
     width: 50px;
-    height: 50px;      
-    border-radius: 50%;      
-  }
-  
-  .card__title {
+    height: 50px;
+    border-radius: 50%;
+}
+
+.card__title {
     font-size: 1em;
     margin: 0 0 .3em;
     color: #6A515E;
-  }
-  
-  .card__tagline {
+}
+
+.card__tagline {
     display: block;
     margin: 1em 0;
-    font-size: .8em; 
-    color: #D7BDCA;  
-  }
-  
-  .card__status {
     font-size: .8em;
     color: #D7BDCA;
-  }
-  
-  .card__description {
+}
+
+.card__status {
+    font-size: .8em;
+    color: #787175;
+}
+
+.card__description {
     padding: 0 2em 2em;
     margin: 0;
-    color: #D7BDCA;
+    color: #787175;
     overflow: hidden;
-  }    
-  
+}
+
 /****ADMIN PANEL*********/
-.DoneButton{
+.DoneButton {
     min-width: 65px;
     height: 32px;
     background-color: var(--submitButtonColor);
@@ -890,7 +945,7 @@ input[type="submit"].doneButton {
     background-color: var(--submitButtonColor);
 }
 
-.buttonDoneCompleted{
+.buttonDoneCompleted {
     background: var(--endPrenotation);
 }
 
@@ -899,13 +954,16 @@ input[type="submit"].doneButton {
 }
 
 /***TABLE MANAGMENT**********/
-.tableList, .ActivePrenotationList{
+.tableList,
+.ActivePrenotationList {
     padding: 1em;
     list-style-type: none;
     margin: .3em;
 
 }
-.tableList li, .ActivePrenotationList li{
+
+.tableList li,
+.ActivePrenotationList li {
     padding: .5em;
     font-size: 1.3em;
 }
@@ -917,9 +975,10 @@ input[type="submit"].doneButton {
 }
 
 
-.ActivePrenotationList li button{
-        margin: 1em 0 1em 
+.ActivePrenotationList li button {
+    margin: 1em 0 1em
 }
+
 /*
 .sliderTablelider {
     width: 80%;
@@ -965,7 +1024,8 @@ input[type="submit"].doneButton {
 
 .progressTable {
     width: 100%;
-    height: 20px; /* Set the height of the progress bar */
+    height: 20px;
+    /* Set the height of the progress bar */
     color: var(--alternative_text);
     background-color: grey;
 }
@@ -973,12 +1033,15 @@ input[type="submit"].doneButton {
 /* Customize the color and add a border to the progress bar based on occupancy */
 .progressTable::-webkit-progress-bar {
     background-color: var(--menuBackground);
-    border: 1px solid grey; /* Add a border */
+    border: 1px solid grey;
+    /* Add a border */
 }
 
 .progressTable::-webkit-progress-value {
-    background-color: var(--alternative_text); /* Red color for the progress bar */
-    border: 1px solid var(--alternative_text); /* Add a border */
+    background-color: var(--alternative_text);
+    /* Red color for the progress bar */
+    border: 1px solid var(--alternative_text);
+    /* Add a border */
 }
 
 .progressTable::-moz-progress-bar {
@@ -1000,9 +1063,10 @@ label {
 
 
 #SezioneGestioneTavoli {
-    width:70%;
+    width: 70%;
     min-width: 400px;
 }
+
 #SezioneGestionePrenotazioni ul {
     width: 30%;
     min-width: 400px;
@@ -1010,10 +1074,12 @@ label {
     overflow-y: scroll;
     direction: rtl;
 }
-#SezioneGestionePrenotazioni ul > * {
+
+#SezioneGestionePrenotazioni ul>* {
     direction: ltr;
 }
-#SezioneGestionePrenotazioni h2{
+
+#SezioneGestionePrenotazioni h2 {
     padding: .5em;
 }
 
@@ -1023,22 +1089,24 @@ label {
 
 /*******************404 e 500*********************/
 
-#Section404, #Section500{
+#Section404,
+#Section500 {
     text-align: center;
     padding: 2em;
 }
 
-#Section404 p, #Section500 p{
+#Section404 p,
+#Section500 p {
     margin: auto;
     max-width: 50vw;
 }
 
-#nigiriTriste{
+#nigiriTriste {
     width: 15em;
     height: auto;
 }
 
-#nigiriKO{
+#nigiriKO {
     width: 15em;
     height: auto;
 }
@@ -1046,7 +1114,8 @@ label {
 
 /**NAVBAR MOBILE***/
 
-.menu-toggle-label  , #mobile-menu-toggle {
+.menu-toggle-label,
+#mobile-menu-toggle {
     cursor: pointer;
     text-align: right;
     color: var(--menuToggleColor);
@@ -1055,76 +1124,94 @@ label {
 }
 
 
-.bottomMenu li a:link{
-   color: var(--alternative_text);
+.bottomMenu li a:link {
+    color: var(--alternative_text);
 }
-.bottomMenu li a:visited{
-    color: var(--visitedLinkColor);
- }
 
-.bottomMenu .Ordini{
+.bottomMenu li a:visited {
+    color: var(--visitedLinkColor);
+}
+
+.bottomMenu .Ordini {
     background-image: url('../assets/icon/list.png');
 
 }
-.bottomMenu .Prenota{
+
+.bottomMenu .Prenota {
     background-image: url('../assets/icon/sushi.png');
 
 }
-.bottomMenu .Tavolo{
+
+.bottomMenu .Tavolo {
     background-image: url('../assets/icon/management.png');
 
 }
-.bottomMenu ul{
+
+.bottomMenu ul {
     flex-wrap: nowrap;
     justify-content: space-evenly;
     align-items: stretch;
     height: 100%;
 }
+
 .bottomMenu li {
     padding: .3em;
     position: relative;
-    list-style: none; /* Rimuove i punti elenco predefiniti */
-    font-size:12px;
+    list-style: none;
+    /* Rimuove i punti elenco predefiniti */
+    font-size: 12px;
     color: var(--flagColor);
     display: grid;
-    grid-template-rows: auto auto; 
-    place-items: center; /* Centra gli elementi verticalmente e orizzontalmente */
+    grid-template-rows: auto auto;
+    place-items: center;
+    /* Centra gli elementi verticalmente e orizzontalmente */
 }
-.bottomMenu li a{
+
+.bottomMenu li a {
     display: grid;
-    grid-template-rows: auto auto; 
-    place-items: center; /* Centra gli elementi verticalmente e orizzontalmente */
+    grid-template-rows: auto auto;
+    place-items: center;
+    /* Centra gli elementi verticalmente e orizzontalmente */
 
 }
 
-.bottomMenu li a .ListIcon  {
-    grid-row: 1; /* Posiziona nella prima riga */
+.bottomMenu li a .ListIcon {
+    grid-row: 1;
+    /* Posiziona nella prima riga */
 
 }
+
 .bottomMenu li a p {
-    grid-row: 2; /* Posiziona nella prima riga */
-  }
-  
-  .bottomMenu li .ListIcon  {
-    width: 20px; /* Larghezza dell'icona */
-    height: 20px; /* Altezza dell'icona */
-    background-size: contain; /* Adatta l'icona alle dimensioni specificate */
+    grid-row: 2;
+    /* Posiziona nella prima riga */
+}
+
+.bottomMenu li .ListIcon {
+    width: 20px;
+    /* Larghezza dell'icona */
+    height: 20px;
+    /* Altezza dell'icona */
+    background-size: contain;
+    /* Adatta l'icona alle dimensioni specificate */
     background-repeat: no-repeat;
-    grid-row: 1; /* Posiziona nella prima riga */
-  }
+    grid-row: 1;
+    /* Posiziona nella prima riga */
+}
 
-  .bottomMenu li p, .bottomMenu li a p {
-    grid-row: 2; /* Posiziona nella prima riga */
-  }
+.bottomMenu li p,
+.bottomMenu li a p {
+    grid-row: 2;
+    /* Posiziona nella prima riga */
+}
 
-  .bottomMenu{
+.bottomMenu {
     z-index: 100;
     box-shadow: 0 -2px 5px -2px #333;
-    background-color:#fff;   
-    position:fixed;
-    bottom:0;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
     left: 0.01em;
-    right:0;
+    right: 0;
     width: 101vw;
     height: 50px;
     margin: 0;
@@ -1142,13 +1229,15 @@ label {
 /* Stili per schermi di larghezza massima 600px */
 
 @media only screen and (max-width: 850px) {
-    .menu-toggle-label   {
+    .menu-toggle-label {
         display: block;
         z-index: 3;
     }
-    nav.menu ul li.bigScreenOnly{
+
+    nav.menu ul li.bigScreenOnly {
         display: none;
     }
+
     .nav-list {
         display: none;
         flex-direction: column;
@@ -1158,34 +1247,39 @@ label {
         width: 100%;
         background-color: var(--headerBgColor);
     }
-   #mobile-menu-toggle:checked  + .menu-toggle-label + .nav-list {
+
+    #mobile-menu-toggle:checked+.menu-toggle-label+.nav-list {
         display: flex;
         position: static;
-      }
-      
-      .menu-toggle-label::before {
+    }
+
+    .menu-toggle-label::before {
         font-size: 1.5em;
         content: "☰ Menu";
-      }
-      /* Cambia il contenuto prima dell'icona quando il checkbox è selezionato */
-      #mobile-menu-toggle:checked + .menu-toggle-label::before {
-          font-size: 1.5em;
-          content: "✕ Chiudi";
-      }
-      
-      /* Animazione di transizione */
-      .nav-list {
+    }
+
+    /* Cambia il contenuto prima dell'icona quando il checkbox è selezionato */
+    #mobile-menu-toggle:checked+.menu-toggle-label::before {
+        font-size: 1.5em;
+        content: "✕ Chiudi";
+    }
+
+    /* Animazione di transizione */
+    .nav-list {
         transition: display 0.3s ease-in-out;
-      }
+    }
+
     .nav-list li {
         font-size: 1.3em;
         margin: 0;
         text-align: center;
         padding: 10px;
     }
-    .onlyMobile{
+
+    .onlyMobile {
         display: block;
     }
+
     .homeImage {
         height: 40vh;
     }
@@ -1193,17 +1287,22 @@ label {
     #footerOrganizer {
         justify-content: start;
     }
-    #restaurantImage{
-        top:0;
+
+    #restaurantImage {
+        top: 0;
     }
-    .homeSection p{
+
+    .homeSection p {
         padding: 0;
     }
+
     .homeSection h3 {
         padding: 0;
         padding-bottom: 1em;
     }
-    .bottomMenu li p, .bottomMenu li a p{
+
+    .bottomMenu li p,
+    .bottomMenu li a p {
         font-size: 1.5em;
     }
 }
