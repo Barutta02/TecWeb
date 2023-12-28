@@ -33,8 +33,6 @@ class OrdineDAO
             } else {
                 echo "Errore nell'inserimento dell'ordine: " . $stmt->error;
             }
-        } catch (Exception $e) {
-            die($e->getMessage());
         } finally {
             DBAccess::close_connection();
         }
@@ -57,7 +55,7 @@ class OrdineDAO
             $result = $stmt->get_result();
 
             if (!$result) {
-                die('Error in query execution: ' . DBAccess::get_connection_state()->error);
+                throw new Throwable('Error in query execution: ' . DBAccess::get_connection_state()->error);
             }
 
             $rows = [];
@@ -66,8 +64,6 @@ class OrdineDAO
             }
 
             return $rows;
-        } catch (Exception $e) {
-            die($e->getMessage());
         } finally {
             DBAccess::close_connection();
         }
@@ -89,7 +85,7 @@ class OrdineDAO
             $result = $stmt->get_result();
 
             if (!$result) {
-                die('Error in query execution: ' . DBAccess::get_connection_state()->error);
+                throw new Throwable('Error in query execution: ' . DBAccess::get_connection_state()->error);
             }
 
             $rows = [];
@@ -98,8 +94,6 @@ class OrdineDAO
             }
 
             return $rows;
-        } catch (Exception $e) {
-            die($e->getMessage());
         } finally {
             DBAccess::close_connection();
         }
@@ -127,10 +121,8 @@ class OrdineDAO
 
                 return $rows;
             } else {
-                die('Error in query: ' . mysqli_error(DBAccess::get_connection_state()));
+                throw new Throwable('Error in query: ' . mysqli_error(DBAccess::get_connection_state()));
             }
-        } catch (Exception $e) {
-            die($e->getMessage());
         } finally {
             DBAccess::close_connection();
         }
@@ -146,8 +138,6 @@ class OrdineDAO
 
             $stmt->bind_param("siss", $nuovoStatoConsegnato, $idPiatto, $username, $dataOraOrdine);
             $stmt->execute();
-        } catch (Exception $e) {
-            die($e->getMessage());
         } finally {
             $stmt->close();
             DBAccess::close_connection();

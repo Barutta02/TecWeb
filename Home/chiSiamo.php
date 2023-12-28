@@ -1,11 +1,12 @@
 <?php
-#session_start();
-require_once "Utility/utilities.php";
+try {
+    require_once "Utility/utilities.php";
 
-
-//TEMPLATE comune
-
-$template = getTemplate('Layouts/main.html');
+    $template = getTemplate('Layouts/main.html');
+} catch (Throwable $th) {
+    header('Location: 500.php');
+    exit(0);
+}
 
 $pageID = 'chiSiamoID';
 $title = "Chi siamo - Sushi Brombeis";
@@ -13,22 +14,14 @@ $breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span><
 
 
 //Sezione di presentazione del ristorante
-$sectionPresentation = 'Layouts/chiSiamo.html';
-if (!file_exists($sectionPresentation)) {
-    die("Template file not found: $sectionPresentation");
+try {
+    $templatePres = getTemplate('Layouts/chiSiamo.html');
+} catch (Throwable $th) {
+    $templatePres = get_error_msg();
 }
-$templatePres = file_get_contents($sectionPresentation);
-if ($templatePres === false) {
-    die("Failed to load template file: $templatePres");
-}
-
 
 $content = '';
-
-
 $content .= $templatePres;
-
-
 
 session_start();
 if (isset($_SESSION["username"])) {

@@ -27,11 +27,8 @@ class AllergeneDAO
 
                 return $rows;
             } else {
-                throw new Exception('Error in query: ' . mysqli_error(DBAccess::get_connection_state()));
+                throw new Throwable('Error in query: ' . mysqli_error(DBAccess::get_connection_state()));
             }
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die($e->getMessage());
         } finally {
             // Ensure the database connection is always closed
             DBAccess::close_connection();
@@ -49,7 +46,7 @@ class AllergeneDAO
 
             // Check for errors in preparing the statement
             if (!$stmt) {
-                die('Error in query preparation: ' . DBAccess::get_connection_state()->error);
+                throw new Throwable('Error in query preparation: ' . DBAccess::get_connection_state()->error);
             }
 
             // Bind the parameter
@@ -63,7 +60,7 @@ class AllergeneDAO
 
             // Check for errors in executing the statement
             if (!$result) {
-                die('Error in query execution: ' . DBAccess::get_connection_state()->error);
+                throw new Throwable('Error in query execution: ' . DBAccess::get_connection_state()->error);
             }
 
             $rows = [];
@@ -77,9 +74,6 @@ class AllergeneDAO
             $stmt->close();
 
             return $rows;
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die($e->getMessage());
         } finally {
             // Close the database connection
             DBAccess::close_connection();

@@ -1,18 +1,23 @@
 <?php
+try {
+    require_once "Utility/utilities.php";
+    
+    $template = getTemplate('Layouts/main.html');
+} catch (Throwable $th) {
+    header('Location: 500.php');
+    exit(0);
+}
 
-require_once "Utility/utilities.php";
 
-$template = getTemplate('Layouts/main.html');
-$loginSectionhtml = getTemplate('Layouts/loginSection.html');
-
+try {
+    $loginSectionhtml = getTemplate('Layouts/loginSection.html');
+} catch (Throwable $th) {
+    $loginSectionhtml = get_error_msg();
+}
 
 $pageID = 'loginBody';
 $title = 'Login - Sushi Brombeis';
 $breadcrumbs = '<p>Ti trovi in:  <a href="index.php"><span lang="en">Home</span></a>  >> <span lang="en">Login</span></p> ';
-
-
-
-
 
 $content = $loginSectionhtml;
 $errorList = array();

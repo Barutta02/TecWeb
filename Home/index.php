@@ -1,29 +1,25 @@
 <?php
-
-require_once "Utility/utilities.php";
-//TEMPLATE comune
-$template = getTemplate('Layouts/main.html');
+try {
+    require_once "Utility/utilities.php";
+    $template = getTemplate('Layouts/main.html');
+} catch (Throwable $th) {
+    header('Location: 500.php');
+    exit(0);
+}
 
 $pageID = 'homeID';
 $title = "Home - Sushi Brombeis";
 $breadcrumbs = '<p>Ti trovi in: <span lang="en" aria-current="page">Home</span></p> ';
 
-
 //Sezione di presentazione del ristorante
-$sectionPresentation = 'Layouts/presentationSection.html';
-if (!file_exists($sectionPresentation)) {
-    die("Template file not found: $sectionPresentation");
+try {
+    $templatePres = getTemplate('Layouts/presentationSection.html');
+} catch (Throwable $th) {
+    $templatePres = get_error_msg();
 }
-$templatePres = file_get_contents($sectionPresentation);
-if ($templatePres === false) {
-    die("Failed to load template file: $templatePres");
-}
-
 
 $content = '';
-
 $content .= $templatePres;
-
 
 session_start();
 if (isset($_SESSION["username"])) {

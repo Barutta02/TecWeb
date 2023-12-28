@@ -1,18 +1,22 @@
 <?php
-
+try {
 require_once "Utility/utilities.php";
+} catch (Throwable $th) {
+    header('Location: 500.php');
+    exit(0);
+}
 
-
-$template = getTemplate('Layouts/main.html');
-$signInSectionhtml = getTemplate('Layouts/signInSection.html');
-
+try {
+    $template = getTemplate('Layouts/main.html');
+    $signInSectionhtml = getTemplate('Layouts/signInSection.html');
+} catch (Throwable $th) {
+    header('Location: 500.php');
+    exit(0);
+}
 
 $pageID = 'signInBody';
 $title = "SignIn - Sushi Brombeis";
 $breadcrumbs = '<p>Ti trovi in:  <a href="index.php"><span lang="en">Home</span></a>  >> <span lang="en">SignIn</span></p> ';
-
-
-
 $content = $signInSectionhtml;
 
 session_start();

@@ -1,7 +1,12 @@
 <?php
-require_once "Utility/utilities.php";
-require_once "DAO/PrenotazioneDAO.php"; 
 
+try {
+    require_once "Utility/utilities.php";
+    require_once "DAO/PrenotazioneDAO.php"; 
+} catch (Throwable $th) {
+    header('Location: 500.php');
+    exit(0);
+}
 //Control login e di aver gia scelto numero di persone e tavolo
 session_start();
 if (!isset($_SESSION["username"])) {
@@ -11,21 +16,21 @@ if (!isset($_SESSION["data_prenotazione_inCorso"])) {
     header("Location: prenotazione.php?MessageCode=5");
 }
 
-if(PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso'])['stato']!='InCorso') {
-    unset($_SESSION['data_prenotazione_inCorso']);
-    header("Location: prenotazione.php?MessageCode=7");
+try {
+    if(PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso'])['stato']!='InCorso') {
+        unset($_SESSION['data_prenotazione_inCorso']);
+        header("Location: prenotazione.php?MessageCode=7");
+        exit(0);
+    }
+    $template = getTemplate('Layouts/main.html');
+} catch (Throwable $th) {
+    header('Location: 500.php');
     exit(0);
 }
-
-$template = getTemplate('Layouts/main.html');
-
-
-
 
 $pageID = 'PrenotaBody';
 $title = "Prenota piatti - Sushi Brombeis";
 $breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> >> <a href="login.php">Area utente</a> >> Prenota</p> ';
-
 
 //RaccogliWarning
 $errorList = array();
@@ -39,9 +44,6 @@ if (isset($_GET['ResponseCode'])) {
         array_push($errorList, "<p class='warning'>Qualcosa è andato storto.</p> ");
     }
 }
-
-
-
 
 //PRENDO IL FORM PER LA SELEZIONE DEGLI ALLERGENI UTILITIES
 $content = get_allergeni_form_section();

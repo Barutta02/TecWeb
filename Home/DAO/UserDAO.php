@@ -23,9 +23,6 @@ class UserDao
             $result = $stmt->get_result();
             $user = $result->fetch_assoc();
             return $user;
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die($e->getMessage());
         } finally {
             // Close the prepared statement and the database connection in every case
             if (isset($stmt)) {
@@ -60,11 +57,8 @@ class UserDao
                 return $user;
             } else {
                 // Handle the error if the statement was not prepared successfully
-                throw new Exception("Error preparing statement: " . DBAccess::get_connection_state()->error);
+                throw new Throwable("Error preparing statement: " . DBAccess::get_connection_state()->error);
             }
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die($e->getMessage());
         } finally {
             // Close the prepared statement and the database connection in every case
             if (isset($stmt)) {
@@ -99,11 +93,8 @@ class UserDao
                 return $user;
             } else {
                 // Handle the error if the statement was not prepared successfully
-                throw new Exception("Error preparing statement: " . DBAccess::get_connection_state()->error);
+                throw new Throwable("Error preparing statement: " . DBAccess::get_connection_state()->error);
             }
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die($e->getMessage());
         } finally {
             // Close the prepared statement and the database connection in every case
             if (isset($stmt)) {
@@ -124,9 +115,6 @@ class UserDao
             $success = $stmt->execute();
 
             return $success;
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die($e->getMessage());
         } finally {
             // Close the prepared statement and the database connection in every case
             if (isset($stmt)) {
@@ -147,9 +135,6 @@ class UserDao
             $success = $stmt->execute();
 
             return $success;
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die($e->getMessage());
         } finally {
             // Close the prepared statement and the database connection in every case
             if (isset($stmt)) {
@@ -170,9 +155,6 @@ class UserDao
             $success = $stmt->execute();
 
             return $success;
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die($e->getMessage());
         } finally {
             // Close the prepared statement and the database connection in every case
             if (isset($stmt)) {

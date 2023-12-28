@@ -17,26 +17,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit(); // Ensure that no further code is executed after the redirect
         }
 
-
-        // Esempio di autenticazione (controlla se l'utente è registrato)
-        // Questo è un esempio molto basico e insicuro. In un'applicazione del mondo reale, dovresti utilizzare un sistema di autenticazione sicuro.
-        require_once '../DAO/UserDAO.php';
-        $userDAO = new UserDAO();
-        $emailAuth = UserDAO::getUserByEmailPassword($username_or_email, $password);
-        if (!empty($emailAuth)) {
-            session_destroy();
-            save_username_session($emailAuth['username'], $emailAuth['nome'], $emailAuth['cognome']);
-            header("Location: ../prenotazione.php");
-        } else {
-            $UsernameAuth = UserDAO::getUserByUsernamePassword($username_or_email, $password);
-            if (!empty($UsernameAuth)) {
+        try {
+            // Esempio di autenticazione (controlla se l'utente è registrato)
+            // Questo è un esempio molto basico e insicuro. In un'applicazione del mondo reale, dovresti utilizzare un sistema di autenticazione sicuro.
+            require_once '../DAO/UserDAO.php';
+            require_once '../Utility/utilities.php';
+            $userDAO = new UserDAO();
+            $emailAuth = UserDAO::getUserByEmailPassword(sanitize_txt($username_or_email), sanitize_txt($password));
+            if (!empty($emailAuth)) {
                 session_destroy();
-                save_username_session($UsernameAuth['username'], $UsernameAuth['nome'], $UsernameAuth['cognome']);
+                save_username_session($emailAuth['username'], $emailAuth['nome'], $emailAuth['cognome']);
                 header("Location: ../prenotazione.php");
             } else {
-                header("Location: ../login.php?Errorcode=1");
-
+                $UsernameAuth = UserDAO::getUserByUsernamePassword(sanitize_txt($username_or_email), sanitize_txt($password));
+                if (!empty($UsernameAuth)) {
+                    session_destroy();
+                    save_username_session($UsernameAuth['username'], $UsernameAuth['nome'], $UsernameAuth['cognome']);
+                    header("Location: ../prenotazione.php");
+                } else {
+                    header("Location: ../login.php?Errorcode=1");
+                    exit();
+                }
             }
+        } catch (Throwable $th) {
+            header('Location: 500.php');
+            exit();
         }
     }
 } else {

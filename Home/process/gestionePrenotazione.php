@@ -1,17 +1,23 @@
 <?php
 
+try {
+    require_once '../DAO/PrenotazioneDAO.php';
+} catch (Throwable $th) {
+    header('Location: 500.php');
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD']=='POST') {
     $username_utente = isset($_POST['username_utente']) ? $_POST['username_utente'] : null;
     $timestamp_prenotazione = isset($_POST['timestamp_prenotazione']) ? $_POST['timestamp_prenotazione'] : null;
     
     if ($_POST['action']=='Termina') {
         if ($username_utente !== null && $timestamp_prenotazione !== null) {
-            require_once '../DAO/PrenotazioneDAO.php';
             try {
                 PrenotazioneDAO::TerminaPrenotazione($username_utente,$timestamp_prenotazione);
                 header('Location: ../freeTable.php?StatusCode=0');
                 exit(0);
-            } catch (Exception $error) {}
+            } catch (Throwable $error) {}
         }
         header('Location: ../freeTable.php?StatusCode=1');
         exit(0);
@@ -28,19 +34,22 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
 
     } elseif ($_POST['action']=='Conferma') {
         if ($username_utente !== null && $timestamp_prenotazione !== null) {
-            require_once '../DAO/PrenotazioneDAO.php';
-            PrenotazioneDAO::EliminaPrenotazione($username_utente, $timestamp_prenotazione);
-            header('Location: ../freeTable.php?StatusCode=0');
-            exit(0);
-        } else {
-            header('Location: ../freeTable.php?StatusCode=1');
-            exit(0);
-        }
+            try {
+                PrenotazioneDAO::EliminaPrenotazione($username_utente, $timestamp_prenotazione);
+                header('Location: ../freeTable.php?StatusCode=0');
+                exit(0);
+            } catch (Throwable $th) {}
+        } 
+        header('Location: ../freeTable.php?StatusCode=1');
+        exit(0);
     } else {
-
+        # Formulazione richiesta corretta, ma inesistente tra le opzioni
+        header('Location: 500.php');
+        exit();
     } 
 } else {
-    echo "Richiesta non valida";
+    # Accesso illegale, torna in home
+    header('Location: index.php');
 }
 
 ?>

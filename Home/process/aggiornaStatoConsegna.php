@@ -11,16 +11,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($idPiatto !== null && $username !== null && $dataOraOrdine !== null && $nuovoStatoConsegnato !== null) {
         // Connessione al database
-        require_once '../DAO/OrdineDAO.php';
-        $ordineDAO = new OrdineDAO();
-        OrdineDAO::aggiornaStatoConsegna($idPiatto, $username, $dataOraOrdine, $nuovoStatoConsegnato);
+        try {
+            require_once '../DAO/OrdineDAO.php';
+            $ordineDAO = new OrdineDAO();
+            OrdineDAO::aggiornaStatoConsegna($idPiatto, $username, $dataOraOrdine, $nuovoStatoConsegnato);
+        } catch (Throwable $th) {
+            header('Location: 500.php');
+            exit();
+        }
 
     } else {
         // Messaggio di errore se i dati non sono validi
+        #??????
         echo "Errore: Dati non validi";
     }
 } else {
     // Messaggio di errore se la richiesta non è di tipo POST
+    #????
     echo "Errore: Richiesta non valida";
 }
 

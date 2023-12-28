@@ -1,6 +1,12 @@
 <?php
-
-require_once "Utility/utilities.php";
+try {
+    require_once "Utility/utilities.php";
+    require_once "DAO/PrenotazioneDAO.php";
+    require_once "DAO/TavoloDAO.php";
+} catch (Throwable $th) {
+    header('Location: 500.php');
+    exit(0);
+}
 
 session_start();
 //TEMPLATE comune
@@ -8,29 +14,46 @@ if (!isset($_SESSION["username"])) {
     header("Location: login.php?Errorcode=2");
 }
 
-$template = getTemplate('Layouts/main.html');
-
+try {
+    $template = getTemplate('Layouts/main.html');
+} catch (Throwable $th) {
+    header('Location: 500.php');
+    exit(0);
+}
 $pageID = 'prenotationId';
 $title = "Prenotazione - Sushi Brombeis";
 $breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> >> <a href="login.php">Area utente</a> >> Gestisci prenotazione</p> ';
 
-require_once "DAO/PrenotazioneDAO.php";
 if (isset($_SESSION['data_prenotazione_inCorso'])) {
-    if(PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso'])['stato']!='InCorso') {
-        unset($_SESSION['data_prenotazione_inCorso']);
-        header('Location: prenotazione.php?MessageCode=7');
+    try {
+        if(PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso'])['stato']!='InCorso') {
+            unset($_SESSION['data_prenotazione_inCorso']);
+            header('Location: prenotazione.php?MessageCode=7');
+            exit(0);
+        }
+    } catch (Throwable $th) {
+        header('Location: 500.php');
         exit(0);
     }
 
     //Prendi i dati della prenotazione
-    $prenotazioneAttiva = PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso']);
+    try {
+        $prenotazioneAttiva = PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso']);
+    } catch (Throwable $th) {
+        $prenotazioneAttiva = get_error_msg();
+    }
+
     $templatePren = getTemplate('Layouts/ModificaPrenotazioneSection.html');
     $templatePren = str_replace('{{NumeroPersone}}', $prenotazioneAttiva["numero_persone"], $templatePren);
     $templatePren = str_replace('{{NumeroTavolo}}', $prenotazioneAttiva["tavolo"], $templatePren);
     $templatePren = str_replace('{{IndicazioniAggiuntive}}', $prenotazioneAttiva["indicazioni_aggiuntive"], $templatePren);
-} else {
-    require_once "DAO/TavoloDAO.php";
-    $templatePren = getTemplate('Layouts/NuovaPrenotazioneSection.html');
+} else {  
+    try {  
+        $templatePren = getTemplate('Layouts/NuovaPrenotazioneSection.html');
+    } catch (Throwable $th) {
+        $prenotazioneAttiva = get_error_msg();
+    }
+
     if (isset($_GET['n_posti']) && $_GET['n_posti'] > 0) {
         $templatePren = str_replace('{{NumeroPersone}}', $_GET['n_posti'], $templatePren);
     } else {

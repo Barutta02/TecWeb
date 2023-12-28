@@ -1,5 +1,10 @@
 <?php
-require_once "Utility/utilities.php";
+try {
+    require_once "Utility/utilities.php";
+} catch (Throwable $th) {
+    header('Location: 500.php');
+    exit(0);
+}
 
 if (
     (!isset($_SESSION["adminLogged"]) || $_SESSION["adminLogged"] != 1) && 
@@ -15,14 +20,30 @@ if (
             exit(0);
         }
 
-        $template = getTemplate('Layouts/main.html');
+        try {
+            $template = getTemplate('Layouts/main.html');
+        } catch (Throwable $th) {
+            header('Location: 500.php');
+            exit(0);
+        }
+
+        try {
+            $content = getTemplate('Layouts/confermaEliminazione.html');
+        } catch (Throwable $th) {
+            $content = get_error_msg();
+        }
+
         unset($_SESSION['temp_delete_post_data']); # Cleanup per sicurezza
 
         $pageID = 'cancellaPrenotazione';
         $title = "Cancella prenotazione - Sushi Brombeis";
         $breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span> </a> >> <a href="login.php"> Area utente</a> >> <a href="freeTable.php">Gestione tavoli</a> >> Eliminazione Prenotazione</p>';
         
-        $content = getTemplate('Layouts/confermaEliminazione.html');
+        try {
+            $content = getTemplate('Layouts/confermaEliminazione.html');
+        } catch (Throwable $th) {
+            $content = get_error_msg();
+        }
         
         $content = str_replace('{{numero_tavolo}}', $_POST['numero_tavolo'], $content);
         $content = str_replace('{{timestamp_prenotazione}}', $_POST['timestamp_prenotazione'], $content);
@@ -38,5 +59,4 @@ if (
     # Qualcuno sta cercando di accedere a questa pagina in un modo non previsto, redirigo alla pagina Home
     header('Location: index.php');
 }
-
 ?>

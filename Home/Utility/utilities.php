@@ -40,11 +40,11 @@ function replace_in_page($html, $title, $id, $breadcrumbs, $keywords, $descripti
 function getTemplate($templatePath)
 {
     if (!file_exists($templatePath)) {
-        die("Template file not found: $templatePath");
+        throw new Throwable("Template file not found: $templatePath");
     }
     $template = file_get_contents($templatePath);
     if ($template === false) {
-        die("Failed to load template file: $templatePath");
+        throw new Throwable("Failed to load template file: $templatePath");
     }
     return $template;
 
@@ -282,5 +282,10 @@ function get_menu_ext_Admin()
     return $menu;
 }
 
+function sanitize_txt($txt) {
+    $txt=trim($txt);
+    $txt=strip_tags($txt);
+    return $txt;
+}
 
 ?>

@@ -6,7 +6,6 @@ class DBAccess
     private static $HOST_DB = "127.0.0.1";
     private static $DATABASE_NAME = "sushirestaurant";
     #private static $DATABASE_NAME = "test";#dugoalberto
-
     private static $USERNAME = "abustreo";
     private static $PASSWORD = "5254";
     private static $PORT = '3306';
@@ -21,7 +20,7 @@ class DBAccess
         self::$connection = new mysqli(self::$HOST_DB, self::$USERNAME, self::$PASSWORD, self::$DATABASE_NAME, self::$PORT);
 
         if (mysqli_connect_errno()) {
-            echo getDBError();
+            #echo getDBError();
             return false;
         } else {
             return true;
@@ -31,7 +30,7 @@ class DBAccess
     public static function exec_select_query($query)
     {
 
-        $res = $query->execute() or die(getDBError());
+        $res = $query->execute() or throw new Throwable(getDBError());
 
         if (mysqli_num_rows($res) == 0) {
             return array();
@@ -52,7 +51,7 @@ class DBAccess
     //Esegui query che alterano il sistema
     public static function exec_alter_query($query)
     {
-        $res = mysqli_query(self::$connection, $query) or die(getDBError());
+        $res = mysqli_query(self::$connection, $query) or throw new Throwable(getDBError());
         return $res;
     }
 

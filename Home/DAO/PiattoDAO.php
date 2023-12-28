@@ -24,9 +24,6 @@ class PiattoDAO
 
             $result = $stmt->get_result();
             return $result->fetch_assoc();
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die(DBAccess::getDBError());
         } finally {
             // Ensure the database connection is always closed
             DBAccess::close_connection();
@@ -41,15 +38,10 @@ class PiattoDAO
 
     public static function getPlatesByHours_Category($categoria)
     {
-        try {
-            if (self::isTimeForDinner()) {
-                return self::getPiattoByTipoCategory_TipoMenu($categoria, "Cena");
-            } else {
-                return self::getPiattoByTipoCategory_TipoMenu($categoria, "Pranzo");
-            }
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die(DBAccess::getDBError());
+        if (self::isTimeForDinner()) {
+            return self::getPiattoByTipoCategory_TipoMenu($categoria, "Cena");
+        } else {
+            return self::getPiattoByTipoCategory_TipoMenu($categoria, "Pranzo");
         }
     }
 
@@ -63,7 +55,7 @@ class PiattoDAO
 
             // Check for errors in preparing the statement
             if (!$stmt) {
-                throw new Exception('Error in query preparation: ' . DBAccess::get_connection_state()->error);
+                throw new Throwable('Error in query preparation: ' . DBAccess::get_connection_state()->error);
             }
 
             // Bind the parameter
@@ -77,7 +69,7 @@ class PiattoDAO
 
             // Check for errors in executing the statement
             if (!$result) {
-                throw new Exception();
+                throw new Throwable();
             }
 
             $rows = [];
@@ -88,9 +80,6 @@ class PiattoDAO
             }
 
             return $rows;
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die(DBAccess::getDBError());
         } finally {
             // Ensure the database connection is always closed
             DBAccess::close_connection();
@@ -110,7 +99,7 @@ class PiattoDAO
             $stmt = DBAccess::get_connection_state()->prepare($query);
             // Check for errors in preparing the statement
             if (!$stmt) {
-                throw new Exception();
+                throw new Throwable();
             }
 
             // Bind the parameter
@@ -124,7 +113,7 @@ class PiattoDAO
 
             // Check for errors in executing the statement
             if (!$result) {
-                throw new Exception();
+                throw new Throwable();
             }
 
             $rows = [];
@@ -135,9 +124,6 @@ class PiattoDAO
             }
 
             return $rows;
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die(DBAccess::getDBError());
         } finally {
             // Ensure the database connection is always closed
             DBAccess::close_connection();
@@ -160,11 +146,8 @@ class PiattoDAO
 
                 return $rows;
             } else {
-                throw new Exception();
+                throw new Throwable();
             }
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die(DBAccess::getDBError());
         } finally {
             // Ensure the database connection is always closed
             DBAccess::close_connection();
@@ -182,9 +165,6 @@ class PiattoDAO
             $stmt->bind_param('ssdss', $nome, $descrizione, $prezzo, $tipoMenu, $tipoPortata);
 
             return $stmt->execute();
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die(DBAccess::getDBError());
         } finally {
             // Ensure the database connection is always closed
             DBAccess::close_connection();
@@ -207,9 +187,6 @@ class PiattoDAO
             $stmt->bindParam(6, $id);
 
             return $stmt->execute();
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die(DBAccess::getDBError());
         } finally {
             // Ensure the database connection is always closed
             DBAccess::close_connection();
@@ -226,9 +203,6 @@ class PiattoDAO
             $stmt->bindParam(1, $id);
 
             return $stmt->execute();
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die(DBAccess::getDBError());
         } finally {
             // Ensure the database connection is always closed
             DBAccess::close_connection();

@@ -18,11 +18,8 @@ class CategoriaDAO
 
                 return $rows;
             } else {
-                die('Error in query: ' . mysqli_error(DBAccess::get_connection_state()));
+                throw new Throwable('Error in query: ' . mysqli_error(DBAccess::get_connection_state()));
             }
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die($e->getMessage());
         } finally {
             // Ensure the database connection is always closed
             DBAccess::close_connection();
