@@ -12,7 +12,6 @@ class TavoloDAO
     {
         try {
             DBAccess::open_connection();
-
             $query = "SELECT T1.posti as numPosti, 
             COUNT(DISTINCT prenotazione.tavolo) as numeroOccupati, 
             COUNT(DISTINCT T1.id) as totale_disp 
@@ -20,10 +19,8 @@ class TavoloDAO
      LEFT JOIN prenotazione ON T1.id = prenotazione.tavolo AND prenotazione.stato = 'InCorso'
      GROUP BY T1.posti
      ORDER BY T1.posti;
-     
      ";
             $result = mysqli_query(DBAccess::get_connection_state(), $query);
-
             if ($result) {
                 $rows = [];
                 while ($row = $result->fetch_assoc()) {
@@ -35,7 +32,6 @@ class TavoloDAO
                 throw new Throwable('Error in query: ' . mysqli_error(DBAccess::get_connection_state()));
             }
         } finally {
-            // Ensure the database connection is always closed
             DBAccess::close_connection();
         }
     }
@@ -44,10 +40,8 @@ class TavoloDAO
     {
         try {
             DBAccess::open_connection();
-
             $query = "SELECT MAX(posti) AS maxPosti FROM tavolo;";
             $result = mysqli_query(DBAccess::get_connection_state(), $query);
-
             if ($result) {
                 $row = $result->fetch_assoc();
                 $result->free();
@@ -56,7 +50,6 @@ class TavoloDAO
                 throw new Throwable('Error in query: ' . mysqli_error(DBAccess::get_connection_state()));
             }
         } finally {
-            // Ensure the database connection is always closed
             DBAccess::close_connection();
         }
     }

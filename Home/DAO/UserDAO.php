@@ -15,7 +15,6 @@ class UserDao
     {
         try {
             DBAccess::open_connection();
-
             $query = "SELECT * FROM utente WHERE username = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bind_param("s", $username);
@@ -24,7 +23,6 @@ class UserDao
             $user = $result->fetch_assoc();
             return $user;
         } finally {
-            // Close the prepared statement and the database connection in every case
             if (isset($stmt)) {
                 $stmt->close();
             }
@@ -36,31 +34,18 @@ class UserDao
     {
         try {
             DBAccess::open_connection();
-
             $query = "SELECT * FROM utente WHERE username = ? AND password = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
-
-            // Check if the statement was successfully prepared
             if ($stmt) {
-                // Bind parameters
                 $stmt->bind_param("ss", $username, $password);
-
-                // Execute the statement
                 $stmt->execute();
-
-                // Get the result set
                 $result = $stmt->get_result();
-
-                // Fetch the user data
                 $user = $result->fetch_assoc();
-
                 return $user;
             } else {
-                // Handle the error if the statement was not prepared successfully
                 throw new Throwable("Error preparing statement: " . DBAccess::get_connection_state()->error);
             }
         } finally {
-            // Close the prepared statement and the database connection in every case
             if (isset($stmt)) {
                 $stmt->close();
             }
@@ -72,31 +57,18 @@ class UserDao
     {
         try {
             DBAccess::open_connection();
-
             $query = "SELECT * FROM utente WHERE email = ? AND password = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
-
-            // Check if the statement was successfully prepared
             if ($stmt) {
-                // Bind parameters
                 $stmt->bind_param("ss", $email, $password);
-
-                // Execute the statement
                 $stmt->execute();
-
-                // Get the result set
                 $result = $stmt->get_result();
-
-                // Fetch the user data
                 $user = $result->fetch_assoc();
-
                 return $user;
             } else {
-                // Handle the error if the statement was not prepared successfully
                 throw new Throwable("Error preparing statement: " . DBAccess::get_connection_state()->error);
             }
         } finally {
-            // Close the prepared statement and the database connection in every case
             if (isset($stmt)) {
                 $stmt->close();
             }
@@ -108,15 +80,12 @@ class UserDao
     {
         try {
             DBAccess::open_connection();
-
             $query = "INSERT INTO utente (username, nome, cognome, email, password) VALUES (?, ?, ?, ?, ?)";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bind_param("sssss", $username, $name, $surname, $email, $password);
             $success = $stmt->execute();
-
             return $success;
         } finally {
-            // Close the prepared statement and the database connection in every case
             if (isset($stmt)) {
                 $stmt->close();
             }
@@ -128,15 +97,12 @@ class UserDao
     {
         try {
             DBAccess::open_connection();
-
             $query = "UPDATE utente SET nome=?, cognome=?, email=?, password=? WHERE username=?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bind_param("sssss", $name, $surname, $email, $password, $username);
             $success = $stmt->execute();
-
             return $success;
         } finally {
-            // Close the prepared statement and the database connection in every case
             if (isset($stmt)) {
                 $stmt->close();
             }
@@ -148,22 +114,17 @@ class UserDao
     {
         try {
             DBAccess::open_connection();
-
             $query = "DELETE FROM utente WHERE username=?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bind_param("s", $username);
             $success = $stmt->execute();
-
             return $success;
         } finally {
-            // Close the prepared statement and the database connection in every case
             if (isset($stmt)) {
                 $stmt->close();
             }
             DBAccess::close_connection();
         }
     }
-
-    // Add more methods for CRUD operations on the User table
 }
 ?>

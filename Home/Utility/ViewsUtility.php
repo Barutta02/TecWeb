@@ -105,16 +105,9 @@ function get_allergeni_form_section()
         //Sezione lista allergeni
         $templateListaAllergeni = getTemplate('Layouts/SezioneListaAllergeni.html');
         //Checkboc allergeni
-        $templatePathAllergeniChBox = 'Layouts/checkboxItemAllergene.html';
-        $templateAllergeniChbox = file_get_contents($templatePathAllergeniChBox);
-        if ($templateAllergeniChbox === false) {
-            throw new Throwable("Failed to load template file: $templatePathAllergeniChBox");
-        }
-
+        $templateAllergeniChbox = getTemplate('Layouts/checkboxItemAllergene.html');
         $content = '';
-
         $allergeni = AllergeneDAO::getAllAllergeni();
-
         if (!empty($allergeni)) {
             foreach ($allergeni as $allergene) {
                 $templateAllergeniChboxN = $templateAllergeniChbox;
@@ -151,12 +144,12 @@ function get_prenotation_form_menu($process_php_action)
                 } else {
                     $content .= "";
                 }
-    
+
             }
         } else {
             $content .= "<p>No Categories found.</p>";
         }
-    
+
         $content .= '
     <input type="submit" id="submitPrenotazione" value="Invia ordine">
     </form>';
@@ -202,7 +195,6 @@ function getOldOrderView()
         $content = '';
         $prenotazioniPassate = PrenotazioneDAO::getOldPrenotazioniByUsername($_SESSION['username'], $_SESSION['data_prenotazione_inCorso']);
         if (!empty($prenotazioniPassate)) {
-
             foreach ($prenotazioniPassate as $prenotazione) {
                 $ordini = OrdineDAO::getOrdineByPrenotazione($_SESSION['username'], $prenotazione["DataPrenotazione"]);
                 if (!empty($ordini)) {
@@ -213,7 +205,6 @@ function getOldOrderView()
                     }
                     $content .= "</ul></section>";
                 }
-
             }
         }
         return $content;
@@ -227,7 +218,6 @@ function getOldOrderView()
  */
 function toDoOrdersView()
 {
-    //TEMPLATE ORDINAZIONI DA FARE
     try {
         $templatePlatesAdmin = getTemplate('Layouts/adminOrderManager.html');
         $piatti = OrdineDAO::getAllToDoOrder();
@@ -256,11 +246,8 @@ function get_table_avaible()
         $content = '';
         if (!empty($tavoli)) {
             $content .= " <ul class='tableList'>";
-
             foreach ($tavoli as $tavolo) {
-
                 $templateSliderInputIter = $tableSliderLayout;
-                // $ariaLabel = 'Piatto: ' . $piatto['NomePiatto'] . ', Descrizione: ' . $piatto['Descrizione'];
                 $templateSliderInputIter = str_replace('{{Totale_tavoli}}', $tavolo['totale_disp'], $templateSliderInputIter);
                 $templateSliderInputIter = str_replace('{{Occupati}}', $tavolo['numeroOccupati'], $templateSliderInputIter);
                 $templateSliderInputIter = str_replace('{{NumPosti}}', $tavolo['numPosti'], $templateSliderInputIter);
@@ -281,23 +268,17 @@ function get_active_prenotation()
     try {
         require_once 'DAO/PrenotazioneDAO.php';
         $tableSliderLayout = getTemplate('Layouts/activePrenotation.html');
-
         $tavoli = PrenotazioneDAO::getActivePrenotation();
         $content = '';
         if (!empty($tavoli)) {
             $content .= " <ul class='ActivePrenotationList'>";
-
             foreach ($tavoli as $tavolo) {
-
                 $templateSliderInputIter = $tableSliderLayout;
-                // tavolo, data_ora, utente, numero_persone, indicazione_aggiuntive 
                 $templateSliderInputIter = str_replace('{{numTavolo}}', $tavolo['tavolo'], $templateSliderInputIter);
                 $templateSliderInputIter = str_replace('{{numClienti}}', $tavolo['numero_persone'], $templateSliderInputIter);
-
                 $templateSliderInputIter = str_replace('{{Orario}}', $tavolo['data_ora'], $templateSliderInputIter);
                 $templateSliderInputIter = str_replace('{{Username}}', $tavolo['utente'], $templateSliderInputIter);
                 $templateSliderInputIter = str_replace('{{IndicazioniAggiuntive}}', empty($tavolo['indicazione_aggiuntive']) || ctype_space($tavolo['indicazione_aggiuntive']) ? 'Nessuna.' : $tavolo['indicazione_aggiuntive'], $templateSliderInputIter);
-
                 $content .= $templateSliderInputIter;
             }
             $content .= "</ul>";
@@ -324,7 +305,6 @@ function getFrequentView()
             foreach ($piatti as $piatto) {
                 $content .= formatPlateString($templatePlatesQC, $piatto['nome'], $piatto['descrizione'], "", "", "", [], "", "", "", "", $piatto['frequenza']);
             }
-
         } else {
             $content .= "<p>Devi ancora effettuare una prenotazione " . $_SESSION['name'] . '. Che aspetti? Fatti avanti!</p>';
         }
@@ -335,10 +315,10 @@ function getFrequentView()
     }
 }
 
-function get_error_msg($ulteriori_info="") {
+function get_error_msg($ulteriori_info = "")
+{
     $msg_txt = 'A causa di un errore interno al server, questa porzione di pagina è temporaneamente non disponibile.';
-
-    return 
-    '<div class="Message MsgError">' . $msg_txt . '</div>';
+    return
+        '<div class="Message MsgError">' . $msg_txt . '</div>';
 }
 ?>
