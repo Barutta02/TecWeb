@@ -18,7 +18,7 @@ require_once "DAO/PrenotazioneDAO.php";
 if (isset($_SESSION['data_prenotazione_inCorso'])) {
     if(PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso'])['stato']!='InCorso') {
         unset($_SESSION['data_prenotazione_inCorso']);
-        header('Location: prenotazione.php');
+        header('Location: prenotazione.php?MessageCode=7');
         exit(0);
     }
 
@@ -69,6 +69,9 @@ if (isset($_GET['MessageCode'])) {
             break;
         case 6:
             array_push($errorList, "<p class='warning'>Prima di poter visualizzare i tuoi ordini devi prenotare un tavolo!</p> ");
+            break;
+        case 7:
+            array_push($errorList, "<p class='warning'>La tua prenotazione è stata terminata dal proprietario del ristorante!</p> ");
             break;
         default:
             array_push($errorList, "<p class='warning'>Errore sconosciuto!</p> ");
