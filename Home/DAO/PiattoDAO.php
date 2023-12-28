@@ -3,12 +3,21 @@ require_once 'Connection.php';
 
 class PiattoDAO
 {
-
+    /*
+    CREATE TABLE piatto (
+        id                 INT PRIMARY KEY AUTO_INCREMENT,
+        nome               VARCHAR(100) NOT NULL,
+        descrizione        VARCHAR(100), -- maybe?
+        categoria          VARCHAR(20) NOT NULL,
+        prezzo             DECIMAL(5,2) NOT NULL CHECK (prezzo >= 0),
+        tipologia_menu     ENUM('Pranzo', 'Cena', 'Entrambi') NOT NULL,
+        tipologia_portata  ENUM('AllYouCanEat', 'AllaCarta') NOT NULL
+    );*/
     public static function getPiattoById($id)
     {
         try {
             DBAccess::open_connection();
-            $query = "SELECT * FROM Piatto WHERE IDPiatto = ?";
+            $query = "SELECT * FROM Piatto WHERE id = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bind_param('i', $id);
             $stmt->execute();
@@ -49,7 +58,7 @@ class PiattoDAO
         try {
             DBAccess::open_connection();
 
-            $query = "SELECT * FROM Piatto WHERE TipoMenu = ?";
+            $query = "SELECT * FROM Piatto WHERE tipologia_menu = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
 
             // Check for errors in preparing the statement
@@ -93,10 +102,10 @@ class PiattoDAO
         try {
             DBAccess::open_connection();
             if ($tipoMenu == "Cena") {
-                $query = "SELECT * FROM Piatto WHERE Categoria = ?";
+                $query = "SELECT * FROM Piatto WHERE categoria = ?";
 
             } else {
-                $query = "SELECT * FROM Piatto WHERE Categoria = ? and TipoMenu = 'Pranzo'";
+                $query = "SELECT * FROM Piatto WHERE categoria = ? and tipologia_menu = 'Pranzo'";
             }
             $stmt = DBAccess::get_connection_state()->prepare($query);
             // Check for errors in preparing the statement
@@ -167,7 +176,7 @@ class PiattoDAO
         try {
             DBAccess::open_connection();
 
-            $query = "INSERT INTO Piatto (NomePiatto, Descrizione, Prezzo, TipoMenu, TipoPortata) 
+            $query = "INSERT INTO Piatto (nome, descrizione, prezzo, tipologia_menu, TipoPortata) 
                       VALUES (?, ?, ?, ?, ?)";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bind_param('ssdss', $nome, $descrizione, $prezzo, $tipoMenu, $tipoPortata);
@@ -188,7 +197,7 @@ class PiattoDAO
         try {
             DBAccess::open_connection();
 
-            $query = "UPDATE Piatto SET NomePiatto = ?, Descrizione = ?, Prezzo = ?, TipoMenu = ?, TipoPortata = ? WHERE IDPiatto = ?";
+            $query = "UPDATE Piatto SET nomePiatto = ?, descrizione = ?, prezzo = ?, tipologia_menu = ?, tipologia_portata = ? WHERE id = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bindParam(1, $nome);
             $stmt->bindParam(2, $descrizione);
@@ -212,7 +221,7 @@ class PiattoDAO
     {
         try {
             DBAccess::open_connection();
-            $query = "DELETE FROM Piatto WHERE IDPiatto = ?";
+            $query = "DELETE FROM Piatto WHERE id = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bindParam(1, $id);
 
