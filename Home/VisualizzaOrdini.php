@@ -15,6 +15,11 @@ if (!isset($_SESSION["data_prenotazione_inCorso"])) {
     header("Location: prenotazione.php?MessageCode=6");
 }
 
+if(PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso'])['stato']!='InCorso') {
+    unset($_SESSION['data_prenotazione_inCorso']);
+    header("Location: prenotazione.php?MessageCode=6");
+    exit(0);
+}
 
 $template = getTemplate('Layouts/main.html');
 

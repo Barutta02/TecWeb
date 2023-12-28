@@ -283,7 +283,7 @@ function getFrequentView()
     $piatti = OrdineDAO::getOrdiniFrequenti($_SESSION['username']);
     if (!empty($piatti)) {
         foreach ($piatti as $piatto) {
-            $content .= formatPlateString($templatePlatesQC, $piatto['nome'], $piatto['descrizione'], "", "", "", [], "", "", "", "", $piatto['Frequenza']);
+            $content .= formatPlateString($templatePlatesQC, $piatto['nome'], $piatto['descrizione'], "", "", "", [], "", "", "", "", $piatto['frequenza']);
         }
 
     } else {

@@ -22,7 +22,7 @@ class OrdineDAO
         try {
             DBAccess::open_connection();
 
-            $sql = "INSERT INTO Ordine (piatto, utente, data_ora, data_prenotazione, quantita, consegnato) 
+            $sql = "INSERT INTO ordine (piatto, utente, data_ora, data_prenotazione, quantita, consegnato) 
                 VALUES (?, ?, ?, ?, ?, ?)";
 
             $stmt = DBAccess::get_connection_state()->prepare($sql);
@@ -45,10 +45,10 @@ class OrdineDAO
         try {
             DBAccess::open_connection();
 
-            $query = "SELECT  Piatto.nome as nome,Piatto.descrizione as descrizione, Ordine.quantita as quantita, Ordine.consegnato as consegnato  
-                      FROM Ordine JOIN Piatto on Piatto.id = Ordine.piatto 
-                      WHERE Ordine.utente = ? and Ordine.data_prenotazione = ? 
-                      Order by Ordine.consegnato";
+            $query = "SELECT  piatto.nome as nome,piatto.descrizione as descrizione, ordine.quantita as quantita, ordine.consegnato as consegnato  
+                      FROM ordine JOIN piatto on piatto.id = ordine.piatto 
+                      WHERE ordine.utente = ? and ordine.data_prenotazione = ? 
+                      Order by ordine.consegnato";
 
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bind_param('ss', $username, $data);
@@ -78,9 +78,9 @@ class OrdineDAO
         try {
             DBAccess::open_connection();
 
-            $query = "SELECT DISTINCT Piatto.nome as nome, Piatto.descrizione as descrizione, count(*) as Frequenza
-                      FROM Ordine JOIN Piatto on Piatto.id = Ordine.piatto WHERE Ordine.utente = ?
-                      GROUP BY nome ORDER BY Frequenza DESC LIMIT 8;";
+            $query = "SELECT DISTINCT piatto.nome as nome, piatto.descrizione as descrizione, count(*) as frequenza
+                      FROM ordine JOIN piatto on piatto.id = ordine.piatto WHERE ordine.utente = ?
+                      GROUP BY nome ORDER BY frequenza DESC LIMIT 8;";
 
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bind_param('s', $username);
@@ -110,12 +110,12 @@ class OrdineDAO
         try {
             DBAccess::open_connection();
 
-            $query = "SELECT  Piatto.nome as nome,Piatto.Descrizione as descrizione, Ordine.quantita as quantita, 
-                              Ordine.consegnato as consegnato, Ordine.data_ora as data_ora , Ordine.piatto as id, 
-                              Ordine.utente as cliente, Prenotazione.tavolo as tavolo
-                      FROM Ordine JOIN Piatto on Piatto.id = Ordine.piatto 
-                      JOIN Prenotazione on Prenotazione.utente = Ordine.utente and Prenotazione.data_ora = Ordine.data_prenotazione
-                      WHERE Ordine.consegnato = 0";
+            $query = "SELECT  piatto.nome as nome,piatto.Descrizione as descrizione, ordine.quantita as quantita, 
+                              ordine.consegnato as consegnato, ordine.data_ora as data_ora , ordine.piatto as id, 
+                              ordine.utente as cliente, prenotazione.tavolo as tavolo
+                      FROM ordine JOIN piatto on piatto.id = ordine.piatto 
+                      JOIN prenotazione on prenotazione.utente = ordine.utente and prenotazione.data_ora = ordine.data_prenotazione
+                      WHERE ordine.consegnato = 0";
 
             $result = DBAccess::get_connection_state()->query($query);
 
@@ -141,7 +141,7 @@ class OrdineDAO
         try {
             DBAccess::open_connection();
 
-            $sql = "UPDATE Ordine SET consegnato = ? WHERE piatto = ? AND utente = ? AND data_ora = ?";
+            $sql = "UPDATE ordine SET consegnato = ? WHERE piatto = ? AND utente = ? AND data_ora = ?";
             $stmt = DBAccess::get_connection_state()->prepare($sql);
 
             $stmt->bind_param("siss", $nuovoStatoConsegnato, $idPiatto, $username, $dataOraOrdine);

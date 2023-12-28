@@ -17,7 +17,7 @@ class PiattoDAO
     {
         try {
             DBAccess::open_connection();
-            $query = "SELECT * FROM Piatto WHERE id = ?";
+            $query = "SELECT * FROM piatto WHERE id = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bind_param('i', $id);
             $stmt->execute();
@@ -58,7 +58,7 @@ class PiattoDAO
         try {
             DBAccess::open_connection();
 
-            $query = "SELECT * FROM Piatto WHERE tipologia_menu = ?";
+            $query = "SELECT * FROM piatto WHERE tipologia_menu = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
 
             // Check for errors in preparing the statement
@@ -102,10 +102,10 @@ class PiattoDAO
         try {
             DBAccess::open_connection();
             if ($tipoMenu == "Cena") {
-                $query = "SELECT * FROM Piatto WHERE categoria = ?";
+                $query = "SELECT * FROM piatto WHERE categoria = ?";
 
             } else {
-                $query = "SELECT * FROM Piatto WHERE categoria = ? and tipologia_menu = 'Pranzo'";
+                $query = "SELECT * FROM piatto WHERE categoria = ? and tipologia_menu = 'Pranzo'";
             }
             $stmt = DBAccess::get_connection_state()->prepare($query);
             // Check for errors in preparing the statement
@@ -149,7 +149,7 @@ class PiattoDAO
         try {
             DBAccess::open_connection();
 
-            $query = "SELECT * FROM Piatto";
+            $query = "SELECT * FROM piatto";
             $result = DBAccess::get_connection_state()->query($query);
 
             if ($result) {
@@ -176,7 +176,7 @@ class PiattoDAO
         try {
             DBAccess::open_connection();
 
-            $query = "INSERT INTO Piatto (nome, descrizione, prezzo, tipologia_menu, TipoPortata) 
+            $query = "INSERT INTO piatto (nome, descrizione, prezzo, tipologia_menu, TipoPortata) 
                       VALUES (?, ?, ?, ?, ?)";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bind_param('ssdss', $nome, $descrizione, $prezzo, $tipoMenu, $tipoPortata);
@@ -197,7 +197,7 @@ class PiattoDAO
         try {
             DBAccess::open_connection();
 
-            $query = "UPDATE Piatto SET nomePiatto = ?, descrizione = ?, prezzo = ?, tipologia_menu = ?, tipologia_portata = ? WHERE id = ?";
+            $query = "UPDATE piatto SET nomepiatto = ?, descrizione = ?, prezzo = ?, tipologia_menu = ?, tipologia_portata = ? WHERE id = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bindParam(1, $nome);
             $stmt->bindParam(2, $descrizione);
@@ -221,7 +221,7 @@ class PiattoDAO
     {
         try {
             DBAccess::open_connection();
-            $query = "DELETE FROM Piatto WHERE id = ?";
+            $query = "DELETE FROM piatto WHERE id = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bindParam(1, $id);
 

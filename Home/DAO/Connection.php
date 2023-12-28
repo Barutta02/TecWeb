@@ -7,8 +7,8 @@ class DBAccess
     private static $DATABASE_NAME = "sushirestaurant";
     #private static $DATABASE_NAME = "test";#dugoalberto
 
-    private static $USERNAME = "root";
-    private static $PASSWORD = "";
+    private static $USERNAME = "abustreo";
+    private static $PASSWORD = "5254";
     private static $PORT = '3306';
 
     private static $connection;

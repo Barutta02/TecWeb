@@ -20,7 +20,7 @@ class PrenotazioneDAO
         try {
             DBAccess::open_connection();
 
-            $sql = "INSERT INTO prenotazione (utente, data_ora, numero_persone, indicazione_aggiuntive, stato, tavolo) 
+            $sql = "INSERT INTO prenotazione (utente, data_ora, numero_persone, indicazioni_aggiuntive, stato, tavolo) 
                 VALUES (?, ?, ?, ?, ?, ?)";
 
             // Prepara il statement
@@ -117,7 +117,7 @@ class PrenotazioneDAO
         try {
             DBAccess::open_connection();
 
-            $query = "SELECT tavolo, data_ora, utente, numero_persone, indicazione_aggiuntive  from prenotazione where stato = 'InCorso' order by data_ora         ";
+            $query = "SELECT tavolo, data_ora, utente, numero_persone, indicazioni_aggiuntive  from prenotazione where stato = 'InCorso' order by data_ora         ";
             $result = DBAccess::get_connection_state()->query($query);
 
             if ($result) {
@@ -181,7 +181,7 @@ class PrenotazioneDAO
         try {
             DBAccess::open_connection();
 
-            $sql = "UPDATE prenotazione SET indicazione_aggiuntive = ?  WHERE utente = ? AND data_ora = ?";
+            $sql = "UPDATE prenotazione SET indicazioni_aggiuntive = ?  WHERE utente = ? AND data_ora = ?";
             $stmt = DBAccess::get_connection_state()->prepare($sql);
 
             $stmt->bind_param("sss", $indicazioniAggiuntive, $username, $data);
@@ -200,7 +200,7 @@ class PrenotazioneDAO
         try {
             DBAccess::open_connection();
 
-            $query = "SELECT id, posti FROM Tavolo WHERE posti>=? AND id NOT IN
+            $query = "SELECT id, posti FROM tavolo WHERE posti>=? AND id NOT IN
             (SELECT id FROM tavolo JOIN prenotazione ON id=tavolo WHERE stato='InCorso') ORDER BY posti;";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bind_param("i", $n_persone);

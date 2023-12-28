@@ -13,14 +13,21 @@ $template = getTemplate('Layouts/main.html');
 $pageID = 'prenotationId';
 $title = "Prenotazione - Sushi Brombeis";
 $breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> >> <a href="login.php">Area utente</a> >> Gestisci prenotazione</p> ';
+
+require_once "DAO/PrenotazioneDAO.php";
 if (isset($_SESSION['data_prenotazione_inCorso'])) {
+    if(PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso'])['stato']!='InCorso') {
+        unset($_SESSION['data_prenotazione_inCorso']);
+        header('Location: prenotazione.php');
+        exit(0);
+    }
+
     //Prendi i dati della prenotazione
-    require_once "DAO/PrenotazioneDAO.php";
     $prenotazioneAttiva = PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso']);
     $templatePren = getTemplate('Layouts/ModificaPrenotazioneSection.html');
     $templatePren = str_replace('{{NumeroPersone}}', $prenotazioneAttiva["numero_persone"], $templatePren);
     $templatePren = str_replace('{{NumeroTavolo}}', $prenotazioneAttiva["tavolo"], $templatePren);
-    $templatePren = str_replace('{{IndicazioniAggiuntive}}', $prenotazioneAttiva["indicazione_aggiuntive"], $templatePren);
+    $templatePren = str_replace('{{IndicazioniAggiuntive}}', $prenotazioneAttiva["indicazioni_aggiuntive"], $templatePren);
 } else {
     require_once "DAO/TavoloDAO.php";
     $templatePren = getTemplate('Layouts/NuovaPrenotazioneSection.html');

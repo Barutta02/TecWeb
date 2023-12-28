@@ -1,5 +1,6 @@
 <?php
 require_once "Utility/utilities.php";
+require_once "DAO/PrenotazioneDAO.php"; 
 
 //Control login e di aver gia scelto numero di persone e tavolo
 session_start();
@@ -10,6 +11,11 @@ if (!isset($_SESSION["data_prenotazione_inCorso"])) {
     header("Location: prenotazione.php?MessageCode=5");
 }
 
+if(PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso'])['stato']!='InCorso') {
+    unset($_SESSION['data_prenotazione_inCorso']);
+    header("Location: prenotazione.php?MessageCode=5");
+    exit(0);
+}
 
 $template = getTemplate('Layouts/main.html');
 

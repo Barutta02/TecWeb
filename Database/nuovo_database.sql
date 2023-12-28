@@ -40,7 +40,7 @@ CREATE TABLE allergene (
     nome                VARCHAR(50),
     piatto              INT,
     PRIMARY KEY (nome,piatto),
-    FOREIGN KEY (piatto) REFERENCES piatto(id) ON DELETE CASCADE
+    FOREIGN KEY (piatto) REFERENCES piatto(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE tavolo (
@@ -54,10 +54,10 @@ CREATE TABLE prenotazione (
     numero_persone          INT NOT NULL CHECK (numero_persone > 0),
     stato                   ENUM('DaSvolgersi', 'InCorso', 'Terminata') NOT NULL,
     tavolo                  INT NOT NULL,
-    indicazione_aggiuntive  TEXT,
+    indicazioni_aggiuntive  TEXT,
     PRIMARY KEY (utente,data_ora),
-    FOREIGN KEY (utente) REFERENCES utente(username) ON DELETE CASCADE,
-    FOREIGN KEY (tavolo) REFERENCES tavolo(id) ON DELETE CASCADE
+    FOREIGN KEY (utente) REFERENCES utente(username) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (tavolo) REFERENCES tavolo(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE ordine (
@@ -68,8 +68,8 @@ CREATE TABLE ordine (
     quantita            INT NOT NULL CHECK (quantita > 0),
     consegnato          BOOLEAN NOT NULL,
     PRIMARY KEY (utente,piatto,data_ora),
-    FOREIGN KEY (utente,data_prenotazione) REFERENCES prenotazione(utente,data_ora) ON DELETE CASCADE,
-    FOREIGN KEY (piatto) REFERENCES piatto(id) ON DELETE CASCADE
+    FOREIGN KEY (utente,data_prenotazione) REFERENCES prenotazione(utente,data_ora) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (piatto) REFERENCES piatto(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- DATI
