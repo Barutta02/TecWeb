@@ -184,6 +184,10 @@ nav.menu ul li a {
     display: inline-block;
 }
 
+.labelForAllergeneChbox {
+    display: inline;
+}
+
 .allergeneImage {
     position: relative;
     top: 0.4em;
@@ -330,6 +334,7 @@ dd.ingradienti {
 
 main {
     margin: 0;
+    padding-top: 0.5em;
 }
 
 footer {
