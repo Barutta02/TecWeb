@@ -16,22 +16,22 @@ function add_translation_span($text)
 {
     $word_span_replace = array(
         # Japan
-        'Nigiri'    => '<span lang="ja">Nigiri</span>',
-        'Tartare'   => '<span lang="ja">Tartare</span>',
-        'Sashimi'   => '<span lang="ja">Sashimi</span>',
-        'Uramaki'   => '<span lang="ja">Uramaki</span>',
-        'Tatkai'    => '<span lang="ja">Tatkai</span>',
-        'Maki'      => '<span lang="ja">Maki</span>',
-        'Gyoza'     => '<span lang="ja">Gyoza</span>',
-        'Tempura'   => '<span lang="ja">Tempura</span>',
-        'Sushi'     => '<span lang="ja">Sushi</span>',
+        'Nigiri' => '<span lang="ja">Nigiri</span>',
+        'Tartare' => '<span lang="ja">Tartare</span>',
+        'Sashimi' => '<span lang="ja">Sashimi</span>',
+        'Uramaki' => '<span lang="ja">Uramaki</span>',
+        'Tatkai' => '<span lang="ja">Tatkai</span>',
+        'Maki' => '<span lang="ja">Maki</span>',
+        'Gyoza' => '<span lang="ja">Gyoza</span>',
+        'Tempura' => '<span lang="ja">Tempura</span>',
+        'Sushi' => '<span lang="ja">Sushi</span>',
         # English
-        'Deluxe'    => '<span lang="en">Deluxe</span>',
-        'Roll'      => '<span lang="en">Roll</span>',
-        'Rainbow'   => '<span lang="en">Rainbow</span>',
-        'Dragon'    => '<span lang="en">Dragon</span>',
-        'Premium'   => '<span lang="en">Premium</span>',
-        'Philly'    => '<span lang="en">Philly</span>'
+        'Deluxe' => '<span lang="en">Deluxe</span>',
+        'Roll' => '<span lang="en">Roll</span>',
+        'Rainbow' => '<span lang="en">Rainbow</span>',
+        'Dragon' => '<span lang="en">Dragon</span>',
+        'Premium' => '<span lang="en">Premium</span>',
+        'Philly' => '<span lang="en">Philly</span>'
     );
 
     foreach ($word_span_replace as $word => $tag) {
@@ -75,7 +75,7 @@ function get_all_formatted_plates_Menu($piatti)
         $htmlContent .= '<ul class="flexable">';
         $piattotemplate = getTemplate('Layouts/MenuItemWithPrice.html');
         foreach ($piatti as $piatto) {
-            $htmlContent .= formatPlateString($piattotemplate, $piatto['NomePiatto'], $piatto['Descrizione'], $piatto['Prezzo']);
+            $htmlContent .= formatPlateString($piattotemplate, $piatto['nome'], $piatto['descrizione'], $piatto['prezzo']);
         }
         $htmlContent .= '</ul>';
     } else {
@@ -107,7 +107,7 @@ function get_allergeni_form_section()
     if (!empty($allergeni)) {
         foreach ($allergeni as $allergene) {
             $templateAllergeniChboxN = $templateAllergeniChbox;
-            $templateAllergeniChboxN = str_replace('{{NomeAllergene}}', $allergene["NomeAllergene"], $templateAllergeniChbox);
+            $templateAllergeniChboxN = str_replace('{{NomeAllergene}}', $allergene["nome"], $templateAllergeniChbox);
             $content .= $templateAllergeniChboxN;
         }
     }
@@ -125,12 +125,12 @@ function get_prenotation_form_menu($process_php_action)
     $categorie = CategoriaDAO::getAllCategory();
     if (!empty($categorie)) {
         foreach ($categorie as $categoria) {
-            $piatti = PiattoDAO::getPlatesByHours_Category($categoria['Nome']);
+            $piatti = PiattoDAO::getPlatesByHours_Category($categoria['categoria']);
             if (!empty($piatti)) {
-                $content .= " <fieldset> <legend>" . $categoria['Nome'] . "</legend> <ul class='flexable'>";
+                $content .= " <fieldset> <legend>" . $categoria['categoria'] . "</legend> <ul class='flexable'>";
                 foreach ($piatti as $piatto) {
-                    $allergeniPiatto = AllergeneDAO::getAllergeniByPiatto(intval($piatto['IDPiatto']));
-                    $content .= formatPlateString($templatePlatesInput, $piatto['NomePiatto'], $piatto['Descrizione'], "", "", $piatto['IDPiatto'], $allergeniPiatto);
+                    $allergeniPiatto = AllergeneDAO::getAllergeniByPiatto(intval($piatto['id']));
+                    $content .= formatPlateString($templatePlatesInput, $piatto['nome'], $piatto['descrizione'], "", "", $piatto['id'], $allergeniPiatto);
                 }
                 $content .= "</ul></fieldset>";
             } else {
@@ -161,7 +161,7 @@ function getThisPrenotationOrderView()
     if (!empty($piatti)) {
 
         foreach ($piatti as $piatto) {
-            $content .= formatPlateString($templatePlatesQC, $piatto['NomePiatto'], $piatto['Descrizione'], "", $piatto['Quantita'], "", [], "", "", "", $piatto['isConsegnato']);
+            $content .= formatPlateString($templatePlatesQC, $piatto['nome'], $piatto['descrizione'], "", $piatto['quantita'], "", [], "", "", "", $piatto['consegnato']);
         }
 
     } else {
@@ -186,7 +186,7 @@ function getOldOrderView()
                 $content .= '<section class="containerPlatesViewer"> <h3>     Questi sono i piatti che hai ordinato in data ' . $prenotazione["DataPrenotazione"] . '</h3>';
                 $content .= "<ul class='flexable'>";
                 foreach ($ordini as $piatto) {
-                    $content .= formatPlateString($templatePlatesQ, $piatto['NomePiatto'], $piatto['Descrizione'], "", $piatto['Quantita']);
+                    $content .= formatPlateString($templatePlatesQ, $piatto['nome'], $piatto['descrizione'], "", $piatto['quantita']);
                 }
                 $content .= "</ul></section>";
             }
@@ -208,7 +208,7 @@ function toDoOrdersView()
     if (!empty($piatti)) {
         $content .= "<ul class='flexable'>";
         foreach ($piatti as $piatto) {
-            $content .= formatPlateString($templatePlatesAdmin, $piatto['NomePiatto'], $piatto['Descrizione'], "", $piatto['Quantita'], $piatto['IDPiatto'], [], $piatto['Tavolo'], $piatto['cliente'], $piatto['Dataora']);
+            $content .= formatPlateString($templatePlatesAdmin, $piatto['nome'], $piatto['descrizione'], "", $piatto['quantita'], $piatto['id'], [], $piatto['tavolo'], $piatto['cliente'], $piatto['data_ora']);
         }
         $content .= "</ul>";
     } else {
@@ -255,13 +255,13 @@ function get_active_prenotation()
         foreach ($tavoli as $tavolo) {
 
             $templateSliderInputIter = $tableSliderLayout;
-            // $ariaLabel = 'Piatto: ' . $piatto['NomePiatto'] . ', Descrizione: ' . $piatto['Descrizione'];
-            $templateSliderInputIter = str_replace('{{numTavolo}}', $tavolo['Tavolo'], $templateSliderInputIter);
-            $templateSliderInputIter = str_replace('{{numClienti}}', $tavolo['NumPersone'], $templateSliderInputIter);
+            // tavolo, data_ora, utente, numero_persone, indicazione_aggiuntive 
+            $templateSliderInputIter = str_replace('{{numTavolo}}', $tavolo['tavolo'], $templateSliderInputIter);
+            $templateSliderInputIter = str_replace('{{numClienti}}', $tavolo['numero_persone'], $templateSliderInputIter);
 
-            $templateSliderInputIter = str_replace('{{Orario}}', $tavolo['DataPrenotazione'], $templateSliderInputIter);
-            $templateSliderInputIter = str_replace('{{Username}}', $tavolo['Username'], $templateSliderInputIter);
-            $templateSliderInputIter = str_replace('{{IndicazioniAggiuntive}}',  empty($tavolo['IndicazioniAggiuntive']) || ctype_space($tavolo['IndicazioniAggiuntive']) ? 'Nessuna.' :  $tavolo['IndicazioniAggiuntive'], $templateSliderInputIter);
+            $templateSliderInputIter = str_replace('{{Orario}}', $tavolo['data_ora'], $templateSliderInputIter);
+            $templateSliderInputIter = str_replace('{{Username}}', $tavolo['utente'], $templateSliderInputIter);
+            $templateSliderInputIter = str_replace('{{IndicazioniAggiuntive}}', empty($tavolo['indicazione_aggiuntive']) || ctype_space($tavolo['indicazione_aggiuntive']) ? 'Nessuna.' : $tavolo['indicazione_aggiuntive'], $templateSliderInputIter);
 
             $content .= $templateSliderInputIter;
         }
@@ -283,7 +283,7 @@ function getFrequentView()
     $piatti = OrdineDAO::getOrdiniFrequenti($_SESSION['username']);
     if (!empty($piatti)) {
         foreach ($piatti as $piatto) {
-            $content .= formatPlateString($templatePlatesQC, $piatto['NomePiatto'], $piatto['Descrizione'],"", "", "", [], "", "", "", "", $piatto['Frequenza']);
+            $content .= formatPlateString($templatePlatesQC, $piatto['nome'], $piatto['descrizione'], "", "", "", [], "", "", "", "", $piatto['Frequenza']);
         }
 
     } else {

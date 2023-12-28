@@ -18,13 +18,13 @@ if (isset($_SESSION['data_prenotazione_inCorso'])) {
     require_once "DAO/PrenotazioneDAO.php";
     $prenotazioneAttiva = PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso']);
     $templatePren = getTemplate('Layouts/ModificaPrenotazioneSection.html');
-    $templatePren = str_replace('{{NumeroPersone}}', $prenotazioneAttiva["NumPersone"], $templatePren);
-    $templatePren = str_replace('{{NumeroTavolo}}', $prenotazioneAttiva["Tavolo"], $templatePren);
-    $templatePren = str_replace('{{IndicazioniAggiuntive}}', $prenotazioneAttiva["IndicazioniAggiuntive"], $templatePren);
+    $templatePren = str_replace('{{NumeroPersone}}', $prenotazioneAttiva["numero_persone"], $templatePren);
+    $templatePren = str_replace('{{NumeroTavolo}}', $prenotazioneAttiva["tavolo"], $templatePren);
+    $templatePren = str_replace('{{IndicazioniAggiuntive}}', $prenotazioneAttiva["indicazione_aggiuntive"], $templatePren);
 } else {
     require_once "DAO/TavoloDAO.php";
     $templatePren = getTemplate('Layouts/NuovaPrenotazioneSection.html');
-    if(isset($_GET['n_posti']) && $_GET['n_posti']>0){
+    if (isset($_GET['n_posti']) && $_GET['n_posti'] > 0) {
         $templatePren = str_replace('{{NumeroPersone}}', $_GET['n_posti'], $templatePren);
     } else {
         $templatePren = str_replace('{{NumeroPersone}}', 1, $templatePren);
@@ -39,17 +39,17 @@ $content .= $templatePren;
 $errorList = array();
 
 if (isset($_GET['MessageCode'])) {
-    switch ($_GET['MessageCode']){
-        case 1: 
+    switch ($_GET['MessageCode']) {
+        case 1:
             array_push($errorList, "<p class='good'>Prenotazione creata con successo!</p> ");
             break;
         case 2:
             array_push($errorList, "<p class='good'>Prenotazione modificata con successo!</p> ");
             break;
         case 3:
-            if(isset($_GET['n_posti']) && $_GET['n_posti']>0){
+            if (isset($_GET['n_posti']) && $_GET['n_posti'] > 0) {
                 array_push($errorList, "<p class='warning'>Impossibile effettuare la prenotazione. 
-                       Purtroppo al momento non sono disponibili tavoli da almeno ".$_GET['n_posti']."</p> ");
+                       Purtroppo al momento non sono disponibili tavoli da almeno " . $_GET['n_posti'] . "</p> ");
             } else {
                 array_push($errorList, "<p class='warning'>Impossibile effettuare la prenotazione. Errore sconosciuto!</p> ");
             }

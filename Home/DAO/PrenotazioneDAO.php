@@ -3,20 +3,31 @@ require_once 'Connection.php';
 
 class PrenotazioneDAO
 {
-
+    /*
+ CREATE TABLE prenotazione (
+    utente                  VARCHAR(50),
+    data_ora                TIMESTAMP,
+    numero_persone          INT NOT NULL CHECK (numero_persone > 0),
+    stato                   ENUM('DaSvolgersi', 'InCorso', 'Terminata') NOT NULL,
+    tavolo                  INT NOT NULL,
+    indicazione_aggiuntive  TEXT,
+    PRIMARY KEY (utente,data_ora),
+    FOREIGN KEY (utente) REFERENCES utente(username) ON DELETE CASCADE,
+    FOREIGN KEY (tavolo) REFERENCES tavolo(id) ON DELETE CASCADE
+);*/
     public static function createPrenotazione($username, $dataPrenotazione, $n_persone, $indicazioniAggiuntive, $is_inCorso, $n_tavolo)
     {
         try {
             DBAccess::open_connection();
 
-            $sql = "INSERT INTO Prenotazione (Username, DataPrenotazione, NumPersone, IndicazioniAggiuntive, InCorso, Tavolo) 
+            $sql = "INSERT INTO prenotazione (utente, data_ora, numero_persone, indicazione_aggiuntive, stato, tavolo) 
                 VALUES (?, ?, ?, ?, ?, ?)";
 
             // Prepara il statement
             $stmt = DBAccess::get_connection_state()->prepare($sql);
 
             // Lega i parametri
-            $stmt->bind_param("ssisii", $username, $dataPrenotazione, $n_persone, $indicazioniAggiuntive, $is_inCorso, $n_tavolo);
+            $stmt->bind_param("ssissi", $username, $dataPrenotazione, $n_persone, $indicazioniAggiuntive, $is_inCorso, $n_tavolo);
 
             // Esegui la query
             if ($stmt->execute()) {
@@ -41,7 +52,7 @@ class PrenotazioneDAO
         try {
             DBAccess::open_connection();
 
-            $query = "SELECT  * from Prenotazione where Username = ? and DataPrenotazione != ?";
+            $query = "SELECT  * from prenotazione where utente = ? and data_ora != ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bind_param('ss', $username, $todayPrenotation);
 
@@ -81,7 +92,7 @@ class PrenotazioneDAO
         try {
             DBAccess::open_connection();
 
-            $query = "SELECT  * from Prenotazione where Username = ? and DataPrenotazione = ?";
+            $query = "SELECT  * from prenotazione where utente = ? and data_ora = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bind_param("ss", $username, $data);
             $stmt->execute();
@@ -106,7 +117,7 @@ class PrenotazioneDAO
         try {
             DBAccess::open_connection();
 
-            $query = "SELECT Tavolo, DataPrenotazione, Username, NumPersone, IndicazioniAggiuntive  from Prenotazione where InCorso = 1 order by DataPrenotazione         ";
+            $query = "SELECT tavolo, data_ora, utente, numero_persone, indicazione_aggiuntive  from prenotazione where stato = 'InCorso' order by data_ora         ";
             $result = DBAccess::get_connection_state()->query($query);
 
             if ($result) {
@@ -134,7 +145,7 @@ class PrenotazioneDAO
         try {
             DBAccess::open_connection();
 
-            $sql = "UPDATE Prenotazione SET InCorso = 0 WHERE Username = ? AND DataPrenotazione = ?";
+            $sql = "UPDATE prenotazione SET stato = 'Terminata' WHERE utente = ? AND data_ora = ?";
             $stmt = DBAccess::get_connection_state()->prepare($sql);
 
             $stmt->bind_param("ss", $username, $dataPrenotazione);
@@ -147,11 +158,12 @@ class PrenotazioneDAO
         }
     }
 
-    public static function EliminaPrenotazione($username, $timestamp_prenotazione) {
+    public static function EliminaPrenotazione($username, $timestamp_prenotazione)
+    {
         try {
             DBAccess::open_connection();
-            
-            $query = "DELETE FROM Prenotazione WHERE Username = ? AND DataPrenotazione = ?";
+
+            $query = "DELETE FROM prenotazione WHERE utente = ? AND data_ora = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bind_param("ss", $username, $timestamp_prenotazione);
             $stmt->execute();
@@ -169,7 +181,7 @@ class PrenotazioneDAO
         try {
             DBAccess::open_connection();
 
-            $sql = "UPDATE Prenotazione SET IndicazioniAggiuntive = ?  WHERE Username = ? AND DataPrenotazione = ?";
+            $sql = "UPDATE prenotazione SET indicazione_aggiuntive = ?  WHERE utente = ? AND data_ora = ?";
             $stmt = DBAccess::get_connection_state()->prepare($sql);
 
             $stmt->bind_param("sss", $indicazioniAggiuntive, $username, $data);
@@ -181,21 +193,21 @@ class PrenotazioneDAO
             DBAccess::close_connection();
         }
     }
-    
-    
+
+
     public static function getTavoloForPrenotazione($n_persone)
     {
         try {
             DBAccess::open_connection();
 
-            $query = "SELECT IDTavolo, numPosti FROM Tavolo WHERE numPosti>=? AND IDTavolo NOT IN
-            (SELECT IDTavolo FROM Tavolo JOIN Prenotazione ON IDTavolo=Tavolo WHERE InCorso=1) ORDER BY numPosti;";
+            $query = "SELECT id, posti FROM Tavolo WHERE posti>=? AND id NOT IN
+            (SELECT id FROM tavolo JOIN prenotazione ON id=tavolo WHERE stato='InCorso') ORDER BY posti;";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bind_param("i", $n_persone);
             $stmt->execute();
             $result = $stmt->get_result();
-            if($result->num_rows){
-                $tavolo = $result->fetch_assoc()["IDTavolo"];
+            if ($result->num_rows) {
+                $tavolo = $result->fetch_assoc()["id"];
                 return $tavolo;
             }
             return null;

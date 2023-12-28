@@ -25,13 +25,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $emailAuth = UserDAO::getUserByEmailPassword($username_or_email, $password);
         if (!empty($emailAuth)) {
             session_destroy();
-            save_username_session($emailAuth['Username'], $emailAuth['Nome'], $emailAuth['Cognome']);
+            save_username_session($emailAuth['username'], $emailAuth['nome'], $emailAuth['cognome']);
             header("Location: ../prenotazione.php");
         } else {
             $UsernameAuth = UserDAO::getUserByUsernamePassword($username_or_email, $password);
             if (!empty($UsernameAuth)) {
                 session_destroy();
-                save_username_session($UsernameAuth['Username'], $UsernameAuth['Nome'], $UsernameAuth['Cognome']);
+                save_username_session($UsernameAuth['username'], $UsernameAuth['nome'], $UsernameAuth['cognome']);
                 header("Location: ../prenotazione.php");
             } else {
                 header("Location: ../login.php?Errorcode=1");

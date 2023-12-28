@@ -32,7 +32,8 @@ if (isset($_SESSION["username"])) {
 
 
 } elseif (isset($_SESSION['adminLogged'])) {
-    $menu = get_menu_ext_Admin();
+    $menu = get_menu_Admin();
+    $template = str_replace('{{BottomMenu}}', "", $template);
 } else {
     $menu = get_menu_NoLogin();
     $template = str_replace('{{BottomMenu}}', "", $template);
