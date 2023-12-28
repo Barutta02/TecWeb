@@ -181,10 +181,10 @@ class PrenotazioneDAO
         try {
             DBAccess::open_connection();
 
-            $sql = "UPDATE prenotazione SET indicazioni_aggiuntive = ?  WHERE utente = ? AND data_ora = ?";
+            $sql = "UPDATE prenotazione SET indicazioni_aggiuntive = ?, data_ora = ? WHERE utente = ? AND data_ora = ?";
             $stmt = DBAccess::get_connection_state()->prepare($sql);
 
-            $stmt->bind_param("sss", $indicazioniAggiuntive, $username, $data);
+            $stmt->bind_param("ssss", $indicazioniAggiuntive, $data, $username, $data);
             $stmt->execute();
         } catch (Exception $e) {
             die($e->getMessage());
