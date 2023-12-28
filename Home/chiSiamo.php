@@ -34,12 +34,9 @@ session_start();
 if (isset($_SESSION["username"])) {
     $template = str_replace('{{BottomMenu}}', str_replace('{{ListMenuBottom}}', get_bottom_menu_Login(), getTemplate('Layouts/bottomMenu.html')), $template);
     $menu = get_menu_Login();
-
-
 } elseif (isset($_SESSION['adminLogged'])) {
-    $template = str_replace('{{BottomMenu}}', str_replace('{{ListMenuBottom}}', get_bottom_menu_Login(), getTemplate('Layouts/bottomMenu.html')), $template);
-    $menu = get_menu_Admin();
-} else {
+    $menu = get_menu_ext_Admin();
+}else {
     $menu = get_menu_NoLogin();
     $template = str_replace('{{BottomMenu}}', "", $template);
 }
