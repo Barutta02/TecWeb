@@ -35,8 +35,7 @@ if (isset($_SESSION["username"])) {
 
 
 } elseif (isset($_SESSION['adminLogged'])) {
-    $template = str_replace('{{BottomMenu}}', str_replace('{{ListMenuBottom}}', get_bottom_menu_Login(), getTemplate('Layouts/bottomMenu.html')), $template);sftp://avedovat@localhost:8022/home/avedovat/public_html/TecWeb/assets/menu/MenuPranzo.pdf
-    $menu = get_menu_Admin();
+    $menu = get_menu_ext_Admin();
 } else {
     $menu = get_menu_NoLogin();
     $template = str_replace('{{BottomMenu}}', "", $template);
