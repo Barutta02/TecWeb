@@ -34,7 +34,7 @@ class UserDao
     {
         try {
             DBAccess::open_connection();
-            $query = "SELECT * FROM utente WHERE username = ? AND password = ?";
+            $query = "SELECT * FROM utente WHERE BINARY username = ? AND BINARY password = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             if ($stmt) {
                 $stmt->bind_param("ss", $username, $password);
@@ -57,7 +57,7 @@ class UserDao
     {
         try {
             DBAccess::open_connection();
-            $query = "SELECT * FROM utente WHERE email = ? AND password = ?";
+            $query = "SELECT * FROM utente WHERE email = ? AND BINARY password = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             if ($stmt) {
                 $stmt->bind_param("ss", $email, $password);
