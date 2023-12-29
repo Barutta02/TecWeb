@@ -137,9 +137,23 @@ h1.logo {
     color: var(--logoTxtColor);
 }
 
-h3.logo {
+h2.logo {
     letter-spacing: .5em;
 }
+
+p.logo {
+    font-size: 2em;
+    text-transform: uppercase;
+    color: var(--logoTxtColor);
+    font-weight: bold;
+}
+
+p.logo2 {
+    font-size: 1.5em;
+    letter-spacing: .5em;
+    font-weight: bold;
+}
+
 
 nav.menu {
     background-color: var(--headerBgColor);
@@ -253,6 +267,7 @@ nav.menu ul li a {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .containerPlatesViewer ul {
@@ -1071,12 +1086,14 @@ label {
 #SezioneGestioneTavoli {
     width: 70%;
     min-width: 400px;
+    max-width: 40%;
 }
 
 #SezioneGestionePrenotazioni ul {
     width: 30%;
     min-width: 400px;
     max-height: 500px;
+    max-width: 40%;
     overflow-y: scroll;
     direction: rtl;
 }
@@ -1317,11 +1334,12 @@ label {
 }
 
 
-/* Stili per schermi di larghezza compresa tra 601px e 1200px */
+/* Stili per schermi mobile */
 
-@media only screen and (min-width: 601px) and (max-width: 1200px) {}
+@media only screen and (max-width: 480px) {}
 
 
-/* Stili per schermi di larghezza superiore a 1200px */
+/* Stili per schermi di larghezza superiore a 1024 */
 
-@media only screen and (min-width: 1201px) {}
+@media only screen and (min-width: 1024px) {  
+}
