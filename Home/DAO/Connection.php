@@ -27,40 +27,6 @@ class DBAccess
         }
     }
 
-    public static function exec_select_query($query)
-    {
-
-        $res = $query->execute() or throw new Throwable(getDBError());
-
-        if (mysqli_num_rows($res) == 0) {
-            return array();
-        } else {
-
-            $resArray = array();
-
-            while ($row = mysqli_fetch_assoc($res)) {
-                array_push($resArray, $row);
-            }
-
-            $res->free();
-
-            return $resArray;
-        }
-    }
-
-    //Esegui query che alterano il sistema
-    public static function exec_alter_query($query)
-    {
-        $res = mysqli_query(self::$connection, $query) or throw new Throwable(getDBError());
-        return $res;
-    }
-
-    public static function close_connection()
-    {
-        if (self::$connection != null) {
-            self::$connection->close();
-        }
-    }
 
     public static function get_connection_state()
     {

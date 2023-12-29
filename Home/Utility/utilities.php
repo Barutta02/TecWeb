@@ -282,9 +282,10 @@ function get_menu_ext_Admin()
     return $menu;
 }
 
-function sanitize_txt($txt) {
-    $txt=trim($txt);
-    $txt=strip_tags($txt);
+function sanitize_txt($txt)
+{
+    $txt = trim($txt);
+    $txt = strip_tags($txt);
     return $txt;
 }
 
