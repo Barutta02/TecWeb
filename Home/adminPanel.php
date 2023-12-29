@@ -30,7 +30,7 @@ $content = '<section id="piattiDaFare" class="containerPlatesViewer">
 <h2> Piatti da fare </h2>';
 
 $content .= toDoOrdersView();
-
+$content .= '</section>';
 $menu = get_menu_Admin();
 $template = str_replace('{{menu}}', $menu, $template);
 $template = str_replace('{{BottomMenu}}', "", $template);
