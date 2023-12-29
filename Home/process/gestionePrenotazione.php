@@ -17,7 +17,10 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                 PrenotazioneDAO::TerminaPrenotazione($username_utente,$timestamp_prenotazione);
                 header('Location: ../freeTable.php?StatusCode=0');
                 exit(0);
-            } catch (Throwable $error) {}
+            } catch (Throwable $error) {
+                header('Location: ../freeTable.php?StatusCode=1');
+                exit();
+            }
         }
         header('Location: ../freeTable.php?StatusCode=1');
         exit(0);
@@ -38,7 +41,10 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
                 PrenotazioneDAO::EliminaPrenotazione($username_utente, $timestamp_prenotazione);
                 header('Location: ../freeTable.php?StatusCode=0');
                 exit(0);
-            } catch (Throwable $th) {}
+            } catch (Throwable $th) {
+                header('Location: ../freeTable.php?StatusCode=1');
+                exit();
+            }
         } 
         header('Location: ../freeTable.php?StatusCode=1');
         exit(0);
