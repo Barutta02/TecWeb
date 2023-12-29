@@ -28,6 +28,14 @@ class DBAccess
     }
 
 
+
+    public static function close_connection()
+    {
+        if (self::$connection != null) {
+            self::$connection->close();
+        }
+    }
+
     public static function get_connection_state()
     {
         return self::$connection;

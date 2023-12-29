@@ -1212,14 +1212,13 @@ label {
 
 .bottomMenu {
     z-index: 100;
-    box-shadow: 0 -2px 5px -2px #333;
     background-color: #fff;
     position: fixed;
     bottom: 0;
     left: 0.01em;
     right: 0;
     width: 101vw;
-    height: 50px;
+    height: 55px;
     margin: 0;
 }
 
@@ -1292,6 +1291,10 @@ label {
 
     #footerOrganizer {
         justify-content: start;
+    }
+
+    footer {
+        margin-bottom: 55px;
     }
 
     #restaurantImage {
