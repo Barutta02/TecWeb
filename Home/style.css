@@ -1342,4 +1342,9 @@ label {
 /* Stili per schermi di larghezza superiore a 1024 */
 
 @media only screen and (min-width: 1024px) {  
+    main {
+        margin: auto;
+        padding-top: 0.5em;
+        max-width: 1024px;
+    }
 }
