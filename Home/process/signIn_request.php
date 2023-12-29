@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $userDAO = new UserDAO();
             UserDAO::createUser(sanitize_txt($username), sanitize_txt($firstname), sanitize_txt($lastname), sanitize_txt($email), sanitize_txt($password));
         } catch (Throwable $th) {
-            header('Location: 500.php');
+            header('Location: ../500.html');
             exit(0);
         }
 

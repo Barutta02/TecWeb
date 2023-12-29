@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             require_once '../DAO/PrenotazioneDAO.php';
             PrenotazioneDAO::TerminaPrenotazione($username, $dataOra);
         } catch (Throwable $th) {
-            header('Location: 500.php');
+            header('Location: ../500.html');
             exit(0);
         }
 

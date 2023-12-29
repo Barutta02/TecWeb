@@ -2,7 +2,7 @@
 try {
     require_once "Utility/utilities.php";
 } catch (Throwable $th) {
-    header('Location: 500.php');
+    header('Location: 500.html');
     exit(0);
 }
 
@@ -15,7 +15,7 @@ if (!isset($_SESSION["adminLogged"]) || $_SESSION["adminLogged"] != 1) {
 try {
     $template = getTemplate('Layouts/main.html');
 } catch (Throwable $th) {
-    header('Location: 500.php');
+    header('Location: 500.html');
 }
 
 $pageID = 'GestioneTavoli';
@@ -27,15 +27,9 @@ $status = isset($_GET['StatusCode']) ? $_GET['StatusCode'] : null;
 if ($status==null) {
     $content = "";
 } elseif ($status==0) {
-    $content = getTemplate('Layouts/messaggio.html');
-    $content = str_replace('{{tipo_messaggio}}','msgGood',$content);
-    $content = str_replace('{{titolo_messaggio}}','Operazione completata',$content);
-    $content = str_replace('{{messaggio_evento}}','L\'operazione è stata completata con successo.',$content);
+    $content = '<p class="good">L&apos;operazione è andata a buon fine.</p>';
 } elseif ($status==1) {
-    $content = getTemplate('Layouts/messaggio.html');
-    $content = str_replace('{{tipo_messaggio}}','msgError',$content);
-    $content = str_replace('{{titolo_messaggio}}','Errore',$content);
-    $content = str_replace('{{messaggio_evento}}','A causa di un errore interno l\'operazione è stata annullata.',$content);
+    $content = '<p class="warning">C&apos;è stato un errore nel tentativo di eseguire la richiesta. L&apos;operazione è stata annullata.</p>';
 } 
 
 //PRENDO IL FORM PER LA SELEZIONE DEGLI ALLERGENI UTILITIES

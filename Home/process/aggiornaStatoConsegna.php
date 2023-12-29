@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $ordineDAO = new OrdineDAO();
             OrdineDAO::aggiornaStatoConsegna($idPiatto, $username, $dataOraOrdine, $nuovoStatoConsegnato);
         } catch (Throwable $th) {
-            header('Location: 500.php');
+            header('Location: ../500.html');
             exit();
         }
 

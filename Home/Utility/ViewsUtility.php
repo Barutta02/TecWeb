@@ -319,6 +319,6 @@ function get_error_msg($ulteriori_info = "")
 {
     $msg_txt = 'A causa di un errore interno al server, questa porzione di pagina è temporaneamente non disponibile.';
     return
-        '<div class="Message MsgError">' . $msg_txt . '</div>';
+        '<p class="warning">' . $msg_txt . '</div>';
 }
 ?>

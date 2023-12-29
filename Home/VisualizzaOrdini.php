@@ -7,7 +7,7 @@ try {
     require_once 'DAO/OrdineDAO.php';
     require_once 'DAO/PrenotazioneDAO.php';
 } catch (Throwable $th) {
-    header('Location: 500.php');
+    header('Location: 500.html');
     exit(0);
 }
 
@@ -27,14 +27,14 @@ try {
         exit(0);
     }
 } catch (Throwable $th) {
-    header('Location: 500.php');
+    header('Location: 500.html');
     exit(0);
 }
 
 try {
     $template = getTemplate('Layouts/main.html');
 } catch (Throwable $th) {
-    header('Location: 500.php');
+    header('Location: 500.html');
     exit(0);
 }
 

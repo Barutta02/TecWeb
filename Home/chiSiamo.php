@@ -4,7 +4,7 @@ try {
 
     $template = getTemplate('Layouts/main.html');
 } catch (Throwable $th) {
-    header('Location: 500.php');
+    header('Location: 500.html');
     exit(0);
 }
 

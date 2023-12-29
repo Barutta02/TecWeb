@@ -4,7 +4,7 @@ try {
     require_once "DAO/PrenotazioneDAO.php";
     require_once "DAO/TavoloDAO.php";
 } catch (Throwable $th) {
-    header('Location: 500.php');
+    header('Location: 500.html');
     exit(0);
 }
 
@@ -17,7 +17,7 @@ if (!isset($_SESSION["username"])) {
 try {
     $template = getTemplate('Layouts/main.html');
 } catch (Throwable $th) {
-    header('Location: 500.php');
+    header('Location: 500.html');
     exit(0);
 }
 $pageID = 'prenotationId';
@@ -32,7 +32,7 @@ if (isset($_SESSION['data_prenotazione_inCorso'])) {
             exit(0);
         }
     } catch (Throwable $th) {
-        header('Location: 500.php');
+        header('Location: 500.html');
         exit(0);
     }
 
