@@ -138,7 +138,7 @@ h1.logo {
 }
 
 h2.logo {
-    letter-spacing: .5em;
+    letter-spacing: .28em;
 }
 
 p.logo {
@@ -150,7 +150,7 @@ p.logo {
 
 p.logo2 {
     font-size: 1.5em;
-    letter-spacing: .5em;
+    letter-spacing: .28em;
     font-weight: bold;
 }
 
@@ -270,7 +270,7 @@ nav.menu ul li a {
     justify-content: center;
 }
 
-.flexable > li {
+.flexable>li {
     list-style-type: none;
 }
 
@@ -1345,7 +1345,7 @@ label {
 
 /* Stili per schermi di larghezza superiore a 1024 */
 
-@media only screen and (min-width: 1024px) {  
+@media only screen and (min-width: 1024px) {
     main {
         margin: auto;
     }
