@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
         } catch (Throwable $th) {
-            header('Location: 500.php');
+            header('Location: ../500.html');
             exit();
         }
     }

@@ -3,7 +3,7 @@
 try {
     require_once '../DAO/PrenotazioneDAO.php';
 } catch (Throwable $th) {
-    header('Location: 500.php');
+    header('Location: ../500.html');
     exit();
 }
 
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
         exit(0);
     } else {
         # Formulazione richiesta corretta, ma inesistente tra le opzioni
-        header('Location: 500.php');
+        header('Location: ../500.html');
         exit();
     } 
 } else {

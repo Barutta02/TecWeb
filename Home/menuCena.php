@@ -3,14 +3,14 @@ try {
     require_once "Utility/utilities.php";
     require_once 'DAO/PiattoDAO.php';
 } catch (Throwable $th) {
-    header('Location: 500.php');
+    header('Location: 500.html');
     exit(0);
 }
 
 try {
     $template = getTemplate('Layouts/main.html');
 } catch (Throwable $th) {
-    header('Location: 500.php');
+    header('Location: 500.html');
     exit(0);
 }
 

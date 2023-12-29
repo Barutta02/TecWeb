@@ -2,7 +2,7 @@
 try {
     require_once "Utility/utilities.php";
 } catch (Throwable $th) {
-    header('Location: 500.php');
+    header('Location: 500.html');
     exit(0);
 }
 
@@ -15,7 +15,7 @@ if (!isset($_SESSION["adminLogged"]) || $_SESSION["adminLogged"] != 1) {
 try {
     $template = getTemplate('Layouts/main.html');
 } catch (Throwable $th) {
-    header('Location: 500.php');
+    header('Location: 500.html');
 }
 
 $pageID = 'GestioneTavoli';
