@@ -3,23 +3,27 @@ require_once 'Connection.php';
 
 class PiattoDAO
 {
-
+    /*
+    CREATE TABLE piatto (
+        id                 INT PRIMARY KEY AUTO_INCREMENT,
+        nome               VARCHAR(100) NOT NULL,
+        descrizione        VARCHAR(100), -- maybe?
+        categoria          VARCHAR(20) NOT NULL,
+        prezzo             DECIMAL(5,2) NOT NULL CHECK (prezzo >= 0),
+        tipologia_menu     ENUM('Pranzo', 'Cena', 'Entrambi') NOT NULL,
+        tipologia_portata  ENUM('AllYouCanEat', 'AllaCarta') NOT NULL
+    );*/
     public static function getPiattoById($id)
     {
         try {
             DBAccess::open_connection();
-            $query = "SELECT * FROM Piatto WHERE IDPiatto = ?";
+            $query = "SELECT * FROM piatto WHERE id = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bind_param('i', $id);
             $stmt->execute();
-
             $result = $stmt->get_result();
             return $result->fetch_assoc();
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die(DBAccess::getDBError());
         } finally {
-            // Ensure the database connection is always closed
             DBAccess::close_connection();
         }
     }
@@ -32,15 +36,10 @@ class PiattoDAO
 
     public static function getPlatesByHours_Category($categoria)
     {
-        try {
-            if (self::isTimeForDinner()) {
-                return self::getPiattoByTipoCategory_TipoMenu($categoria, "Cena");
-            } else {
-                return self::getPiattoByTipoCategory_TipoMenu($categoria, "Pranzo");
-            }
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die(DBAccess::getDBError());
+        if (self::isTimeForDinner()) {
+            return self::getPiattoByTipoCategory_TipoMenu($categoria, "Cena");
+        } else {
+            return self::getPiattoByTipoCategory_TipoMenu($categoria, "Pranzo");
         }
     }
 
@@ -48,42 +47,23 @@ class PiattoDAO
     {
         try {
             DBAccess::open_connection();
-
-            $query = "SELECT * FROM Piatto WHERE TipoMenu = ?";
+            $query = "SELECT * FROM piatto WHERE tipologia_menu = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
-
-            // Check for errors in preparing the statement
             if (!$stmt) {
-                throw new Exception('Error in query preparation: ' . DBAccess::get_connection_state()->error);
+                throw new Throwable('Error in query preparation: ' . DBAccess::get_connection_state()->error);
             }
-
-            // Bind the parameter
             $stmt->bind_param('s', $tipo);
-
-            // Execute the prepared statement
             $stmt->execute();
-
-            // Get the result set from the executed statement
             $result = $stmt->get_result();
-
-            // Check for errors in executing the statement
             if (!$result) {
-                throw new Exception();
+                throw new Throwable();
             }
-
             $rows = [];
-
-            // Fetch the data from the result set
             while ($row = $result->fetch_assoc()) {
                 $rows[] = $row;
             }
-
             return $rows;
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die(DBAccess::getDBError());
         } finally {
-            // Ensure the database connection is always closed
             DBAccess::close_connection();
         }
     }
@@ -93,44 +73,26 @@ class PiattoDAO
         try {
             DBAccess::open_connection();
             if ($tipoMenu == "Cena") {
-                $query = "SELECT * FROM Piatto WHERE Categoria = ?";
-
+                $query = "SELECT * FROM piatto WHERE categoria = ?";
             } else {
-                $query = "SELECT * FROM Piatto WHERE Categoria = ? and TipoMenu = 'Pranzo'";
+                $query = "SELECT * FROM piatto WHERE categoria = ? and tipologia_menu = 'Pranzo'";
             }
             $stmt = DBAccess::get_connection_state()->prepare($query);
-            // Check for errors in preparing the statement
             if (!$stmt) {
-                throw new Exception();
+                throw new Throwable();
             }
-
-            // Bind the parameter
             $stmt->bind_param('s', $categoria);
-
-            // Execute the prepared statement
             $stmt->execute();
-
-            // Get the result set from the executed statement
             $result = $stmt->get_result();
-
-            // Check for errors in executing the statement
             if (!$result) {
-                throw new Exception();
+                throw new Throwable();
             }
-
             $rows = [];
-
-            // Fetch the data from the result set
             while ($row = $result->fetch_assoc()) {
                 $rows[] = $row;
             }
-
             return $rows;
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die(DBAccess::getDBError());
         } finally {
-            // Ensure the database connection is always closed
             DBAccess::close_connection();
         }
     }
@@ -139,25 +101,18 @@ class PiattoDAO
     {
         try {
             DBAccess::open_connection();
-
-            $query = "SELECT * FROM Piatto";
+            $query = "SELECT * FROM piatto";
             $result = DBAccess::get_connection_state()->query($query);
-
             if ($result) {
                 $rows = [];
                 while ($row = $result->fetch_assoc()) {
                     $rows[] = $row;
                 }
-
                 return $rows;
             } else {
-                throw new Exception();
+                throw new Throwable();
             }
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die(DBAccess::getDBError());
         } finally {
-            // Ensure the database connection is always closed
             DBAccess::close_connection();
         }
     }
@@ -166,18 +121,12 @@ class PiattoDAO
     {
         try {
             DBAccess::open_connection();
-
-            $query = "INSERT INTO Piatto (NomePiatto, Descrizione, Prezzo, TipoMenu, TipoPortata) 
+            $query = "INSERT INTO piatto (nome, descrizione, prezzo, tipologia_menu, TipoPortata) 
                       VALUES (?, ?, ?, ?, ?)";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bind_param('ssdss', $nome, $descrizione, $prezzo, $tipoMenu, $tipoPortata);
-
             return $stmt->execute();
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die(DBAccess::getDBError());
         } finally {
-            // Ensure the database connection is always closed
             DBAccess::close_connection();
         }
     }
@@ -187,8 +136,7 @@ class PiattoDAO
     {
         try {
             DBAccess::open_connection();
-
-            $query = "UPDATE Piatto SET NomePiatto = ?, Descrizione = ?, Prezzo = ?, TipoMenu = ?, TipoPortata = ? WHERE IDPiatto = ?";
+            $query = "UPDATE piatto SET nomepiatto = ?, descrizione = ?, prezzo = ?, tipologia_menu = ?, tipologia_portata = ? WHERE id = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bindParam(1, $nome);
             $stmt->bindParam(2, $descrizione);
@@ -196,13 +144,8 @@ class PiattoDAO
             $stmt->bindParam(4, $tipoMenu);
             $stmt->bindParam(5, $tipoPortata);
             $stmt->bindParam(6, $id);
-
             return $stmt->execute();
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die(DBAccess::getDBError());
         } finally {
-            // Ensure the database connection is always closed
             DBAccess::close_connection();
         }
     }
@@ -212,16 +155,11 @@ class PiattoDAO
     {
         try {
             DBAccess::open_connection();
-            $query = "DELETE FROM Piatto WHERE IDPiatto = ?";
+            $query = "DELETE FROM piatto WHERE id = ?";
             $stmt = DBAccess::get_connection_state()->prepare($query);
             $stmt->bindParam(1, $id);
-
             return $stmt->execute();
-        } catch (Exception $e) {
-            // Handle the exception (log, display an error message, etc.)
-            die(DBAccess::getDBError());
         } finally {
-            // Ensure the database connection is always closed
             DBAccess::close_connection();
         }
     }

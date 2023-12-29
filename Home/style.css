@@ -184,6 +184,10 @@ nav.menu ul li a {
     display: inline-block;
 }
 
+.labelForAllergeneChbox {
+    display: inline;
+}
+
 .allergeneImage {
     position: relative;
     top: 0.4em;
@@ -263,7 +267,8 @@ nav.menu ul li a {
 .menuItem {
     display: grid;
     grid-template-columns: 1fr 3fr;
-    width: 250px;
+    min-width: 175px;
+    max-width: 400px;
     background-color: var(--menuBackground);
     text-align: left;
     border: 0.5px solid var(--borderMenuItem);
@@ -330,6 +335,7 @@ dd.ingradienti {
 
 main {
     margin: 0;
+    padding-top: 0.5em;
 }
 
 footer {
@@ -1206,14 +1212,13 @@ label {
 
 .bottomMenu {
     z-index: 100;
-    box-shadow: 0 -2px 5px -2px #333;
     background-color: #fff;
     position: fixed;
     bottom: 0;
     left: 0.01em;
     right: 0;
     width: 101vw;
-    height: 50px;
+    height: 55px;
     margin: 0;
 }
 
@@ -1286,6 +1291,10 @@ label {
 
     #footerOrganizer {
         justify-content: start;
+    }
+
+    footer {
+        margin-bottom: 55px;
     }
 
     #restaurantImage {

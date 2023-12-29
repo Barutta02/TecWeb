@@ -8,12 +8,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($username !== null && $dataOra !== null) {
         // Connessione al database
-        require_once '../DAO/PrenotazioneDAO.php';
-
-        PrenotazioneDAO::TerminaPrenotazione($username, $dataOra);
+        try {
+            require_once '../DAO/PrenotazioneDAO.php';
+            PrenotazioneDAO::TerminaPrenotazione($username, $dataOra);
+        } catch (Throwable $th) {
+            header('Location: ../500.html');
+            exit(0);
+        }
 
     } else {
         // Messaggio di errore se i dati non sono validi
+        # BOOOHHH, qui che ci va?
         echo "Errore: Dati non validi";
     }
 } else {
