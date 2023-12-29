@@ -177,7 +177,7 @@ function getThisPrenotationOrderView()
             }
 
         } else {
-            $content .= "<p>Devi ancora effettuare ordinazioni oggi " . $_SESSION['name'] . '.</p>';
+            $content .= "<li>Devi ancora effettuare ordinazioni oggi " . $_SESSION['name'] . '.</li>';
         }
         $content .= "</ul></section>";
         return $content;
@@ -306,7 +306,7 @@ function getFrequentView()
                 $content .= formatPlateString($templatePlatesQC, $piatto['nome'], $piatto['descrizione'], "", "", "", [], "", "", "", "", $piatto['frequenza']);
             }
         } else {
-            $content .= "<p>Devi ancora effettuare una prenotazione " . $_SESSION['name'] . '. Che aspetti? Fatti avanti!</p>';
+            $content .= "<li>Devi ancora effettuare una prenotazione " . $_SESSION['name'] . '. Che aspetti? Fatti avanti!</li>';
         }
         $content .= "</ul></section>";
         return $content;
@@ -319,6 +319,6 @@ function get_error_msg($ulteriori_info = "")
 {
     $msg_txt = 'A causa di un errore interno al server, questa porzione di pagina è temporaneamente non disponibile.';
     return
-        '<div class="Message MsgError">' . $msg_txt . '</div>';
+        '<p class="warning">' . $msg_txt . '</div>';
 }
 ?>
