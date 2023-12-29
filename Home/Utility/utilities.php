@@ -4,37 +4,53 @@ require_once 'ViewsUtility.php';
 
 define("ROOT_FOLDER", "/TecWeb/Home/");
 
-
-/*
-    Rimpiazza i placeholder del template html del sito
-*/
-function replace_in_page($html, $title, $id, $breadcrumbs, $keywords, $description, $content, $onload, $usertype = "User")
+function render_page($html, $title, $id, $breadcrumbs, $keywords, $description, $content, $onload, )
 {
     //Header presente in ogni pagina
     $header = file_get_contents('Layouts/header.html');
-
     $footer = file_get_contents('Layouts/footer.html');
-
-    if ($usertype == "Admin") {
-        $footer = file_get_contents('Layouts/adminFooter.html');
-
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
     }
-
+    if (isset($_SESSION['adminLogged'])) {
+        $footer = file_get_contents('Layouts/adminFooter.html');
+    }
     $html = str_replace('{{onload}}', $onload, $html);
-
     $html = str_replace('{{header}}', $header, $html);
-
     $html = str_replace('{{title}}', $title, $html);
     $html = str_replace('{{keywords}}', $keywords, $html);
     $html = str_replace('{{description}}', $description, $html);
     $html = str_replace('{{pageID}}', $id, $html);
     $html = str_replace('{{breadcrumbs}}', $breadcrumbs, $html);
     $html = str_replace('{{content}}', $content, $html);
-
     //Footer presente in ogni pagina
     $html = str_replace('{{footer}}', $footer, $html);
 
+    //navbar Manager
+    if (isset($_SESSION["username"])) {
+        $menu = get_menu_Login();
+
+    } elseif (isset($_SESSION['adminLogged'])) {
+        $menu = get_menu_Admin();
+    } else {
+        $menu = get_menu_NoLogin();
+    }
+    $html = str_replace('{{BottomMenu}}', get_bottom_menu_by_session(), $html);
+    $html = str_replace('{{menu}}', $menu, $html);
+
     return $html;
+}
+
+function get_bottom_menu_by_session()
+{
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    $menu = "";
+    if (isset($_SESSION["username"])) { //Se sei loggato come utente allora visualizza la bottom navbar e la navbar specifica per utente registrato
+        $menu = str_replace('{{ListMenuBottom}}', get_bottom_menu_Login(), getTemplate('Layouts/bottomMenu.html'));
+    }
+    return $menu;
 }
 
 function getTemplate($templatePath)
@@ -50,71 +66,6 @@ function getTemplate($templatePath)
 
 }
 
-
-/*
-    Rimpiazza i placeholder del template html dell'area utente
-    Senza keywords e descrizione
-*/
-function replace_in_user_page(string $html, string $title, string $id, string $breadcrumbs, string $content, string $onload)
-{
-
-    //Header presente in ogni pagina
-    $header = file_get_contents('../layouts/header.html');
-    $html = str_replace('{{onload}}', $onload, $html);
-    $html = str_replace('{{header}}', $header, $html);
-    $html = str_replace('{{title}}', $title, $html);
-    $html = str_replace('{{pageID}}', $id, $html);
-    $html = str_replace('{{breadcrumbs}}', $breadcrumbs, $html);
-    $html = str_replace('{{content}}', $content, $html);
-
-    //Footer presente in ogni pagina
-    $footer = file_get_contents('../layouts/footer.html');
-    $footer = str_replace("privacy.html", "../privacy.html", $footer);
-    $html = str_replace('{{footer}}', $footer, $html);
-
-    return $html;
-}
-
-/*
-    Rimpiazza i codici per la lingua con tag span
-    [en]...[/en]
-*/
-function parse_lang(string $string, bool $delete)
-{
-
-    if ($delete) {
-        $replaceStart = '';
-        $replaceEnd = '';
-    } else {
-        $replaceStart = '<span lang="${2}">';
-        $replaceEnd = '</span>';
-    }
-
-    //Rimpiazza i tag di fine con </span>
-    $string = preg_replace('/\[\/.{2}\]/', $replaceEnd, $string);
-
-    //Rimpiazza i tag di inizio con <span lang="xx">
-    $string = preg_replace('/(\[)([a-z]{2})(\])/', $replaceStart, $string);
-
-    return $string;
-
-}
-
-/*
-    Rimpiazza i codici per l'abbreviazione con tag span
-    _cm|centrimetri_
-*/
-function parse_abbr(string $string, bool $delete)
-{
-
-    if ($delete) {
-        $replace = '';
-    } else {
-        $replace = '<abbr title="${2}">${1}</abbr>';
-    }
-
-    return preg_replace('/_(.*?)\|(.*?)_/', $replace, $string);
-}
 
 
 /* 

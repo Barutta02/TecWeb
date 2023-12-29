@@ -975,7 +975,7 @@ input[type="submit"].doneButton {
 }
 
 #piattiDaFare .buttonDoneCompleted::after {
-    content: ' - Consegnato';
+    content: attr(data-onDoneContent);
 }
 
 /***TABLE MANAGMENT**********/
@@ -1281,13 +1281,15 @@ label {
 
     .menu-toggle-label::before {
         font-size: 1.5em;
-        content: "☰ Menu";
+        content: attr(data-toOpenContent);
+        ;
     }
 
     /* Cambia il contenuto prima dell'icona quando il checkbox è selezionato */
     #mobile-menu-toggle:checked+.menu-toggle-label::before {
         font-size: 1.5em;
-        content: "✕ Chiudi";
+        content: attr(data-toCloseContent);
+        ;
     }
 
     /* Animazione di transizione */

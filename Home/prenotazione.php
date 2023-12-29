@@ -26,7 +26,7 @@ $breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span><
 
 if (isset($_SESSION['data_prenotazione_inCorso'])) {
     try {
-        if(PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso'])['stato']!='InCorso') {
+        if (PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso'])['stato'] != 'InCorso') {
             unset($_SESSION['data_prenotazione_inCorso']);
             header('Location: prenotazione.php?MessageCode=7');
             exit(0);
@@ -47,8 +47,8 @@ if (isset($_SESSION['data_prenotazione_inCorso'])) {
     $templatePren = str_replace('{{NumeroPersone}}', $prenotazioneAttiva["numero_persone"], $templatePren);
     $templatePren = str_replace('{{NumeroTavolo}}', $prenotazioneAttiva["tavolo"], $templatePren);
     $templatePren = str_replace('{{IndicazioniAggiuntive}}', $prenotazioneAttiva["indicazioni_aggiuntive"], $templatePren);
-} else {  
-    try {  
+} else {
+    try {
         $templatePren = getTemplate('Layouts/NuovaPrenotazioneSection.html');
     } catch (Throwable $th) {
         $prenotazioneAttiva = get_error_msg();
@@ -104,15 +104,6 @@ if (isset($_GET['MessageCode'])) {
 $content = str_replace('{{Message}}', implode(" ", $errorList), $content);
 
 
-if (isset($_SESSION["username"])) {
-    $template = str_replace('{{BottomMenu}}', str_replace('{{ListMenuBottom}}', get_bottom_menu_Login(), getTemplate('Layouts/bottomMenu.html')), $template);
-    $menu = get_menu_Login();
 
-} else {
-    $menu = get_menu_NoLogin();
-    $template = str_replace('{{BottomMenu}}', "", $template);
-}
-$template = str_replace('{{menu}}', $menu, $template);
-
-echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
+echo render_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
 ?>

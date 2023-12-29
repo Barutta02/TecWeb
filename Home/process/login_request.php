@@ -10,10 +10,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: ../login.php?Errorcode=1");
     } else {
         if ($username_or_email == 'Admin' && $password == 'Admin') {
-            header("Location: ../adminPanel.php");
             session_destroy();
             session_start();
             $_SESSION['adminLogged'] = 1;
+            header("Location: ../adminPanel.php");
             exit(); // Ensure that no further code is executed after the redirect
         }
 
