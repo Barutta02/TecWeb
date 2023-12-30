@@ -46,5 +46,5 @@ if (isset($_SESSION["username"])) {
 $template = str_replace('{{menu}}', $menu, $template);
 
 
-echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, 'setLoginChecks();addOnBlur();');
+echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Login per Sushi Brombeis, Ristorante sushi via brombeis, registrati in Sushi Brombeis', 'Login per accedere alle prenotazioni del del ristorante di sushi a Napoli in via Brombeis.', $content, 'setLoginChecks();addOnBlur();');
 ?>

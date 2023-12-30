@@ -36,5 +36,5 @@ if (isset($_SESSION["username"])) {
 }
 $template = str_replace('{{menu}}', $menu, $template);
 
-echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Siamo Sushi Brombeis, Ristorante sushi via brombeis, sushi chef', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
+echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Siamo Sushi Brombeis, Ristorante sushi via brombeis, sushi chef, sushi Napoli, chef Mesoka CagaDoxo, chef Sudo Magodo, chef Mi Sudo La Paga', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis. Chi siamo.', $content, '');
 ?>
