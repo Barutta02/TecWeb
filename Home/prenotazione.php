@@ -114,5 +114,5 @@ if (isset($_SESSION["username"])) {
 }
 $template = str_replace('{{menu}}', $menu, $template);
 
-echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
+echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Nuova prenotazione da Sushi Brombeis, Ristorante sushi via brombeis, sushi all you can eat prenotazione', 'Prenotazione del miglior ristorante di sushi all you can eat di Napoli, via Brombeis.', $content, '');
 ?>

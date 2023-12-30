@@ -39,5 +39,5 @@ if (isset($_SESSION["username"])) {
 }
 $template = str_replace('{{menu}}', $menu, $template);
 
-echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Menu cena Sushi Brombeis, menu cena all you can eat', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, "updateLinkWithSize('../assets/menu/MenuCena.pdf','downloadMenu')");
+echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Menu cena Sushi Brombeis, menu cena all you can eat, piatti sushi', 'Menu cena del ristorante di sushi a Napoli in via brombeis.', $content, "updateLinkWithSize('../assets/menu/MenuCena.pdf','downloadMenu')");
 ?>
