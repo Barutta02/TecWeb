@@ -240,4 +240,15 @@ function sanitize_txt($txt)
     return $txt;
 }
 
+function check_admin_privileges($username_or_email, $password) {
+    $user = UserDao::getUserByEmailPassword(sanitize_txt($username_or_email), sanitize_txt($password));
+    $user = !empty($user) ? $user : UserDao::getUserByUsernamePassword(sanitize_txt($username_or_email), sanitize_txt($password));
+
+
+    if (!empty($user) && isset($user['privilegi']) && $user['privilegi']=='Admin') {
+        return true;
+    }
+    return false;
+}
+
 ?>

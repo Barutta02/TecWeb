@@ -1,4 +1,12 @@
 <?php
+try {
+    require_once '../DAO/UserDAO.php';
+    require_once '../Utility/utilities.php';
+} catch (Throwable $th) {
+    header('Location: ../500.html');
+    exit();
+}
+
 // Verifica se il modulo è stato inviato
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recupera i dati dal modulo
@@ -9,19 +17,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($username_or_email) || empty($password)) {
         header("Location: ../login.php?Errorcode=1");
     } else {
-        if ($username_or_email == 'Admin' && $password == 'Admin') {
-            session_destroy();
-            session_start();
-            $_SESSION['adminLogged'] = 1;
-            header("Location: ../adminPanel.php");
-            exit(); // Ensure that no further code is executed after the redirect
-        }
-
         try {
+            if (check_admin_privileges($username_or_email, $password) == true) {
+                session_destroy();
+                session_start();
+                $_SESSION['adminLogged'] = 1;
+                header("Location: ../adminPanel.php");
+                exit(); // Ensure that no further code is executed after the redirect
+            }
+
             // Esempio di autenticazione (controlla se l'utente è registrato)
             // Questo è un esempio molto basico e insicuro. In un'applicazione del mondo reale, dovresti utilizzare un sistema di autenticazione sicuro.
-            require_once '../DAO/UserDAO.php';
-            require_once '../Utility/utilities.php';
             $userDAO = new UserDAO();
             $emailAuth = UserDAO::getUserByEmailPassword(sanitize_txt($username_or_email), sanitize_txt($password));
             if (!empty($emailAuth)) {
