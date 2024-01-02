@@ -14,7 +14,7 @@
   <body id="{{pageID}}" onload="{{onload}}">
     <a href="#content" class="srOnly">Vai al contenuto</a> {{header}}
 
-    <nav id="menu" class="menu" aria-label="Navigazione Principale" tabindex="0">
+    <nav id="menu" class="menu" tabindex="0">
       <!-- TODO aria-checked="{{state}} tabindex="0" ? dovrebbe funzionare con le freccette, dovrebbe essere già corretto -->
       <form id="toggleMenuForm">
         <div>
@@ -26,7 +26,7 @@
         </div>
       </form>
     </nav>
-    <nav id="breadcrumb" aria-label="Percorso">{{breadcrumbs}}</nav>
+    <nav id="breadcrumb" >{{breadcrumbs}}</nav>
 
     <main id="content">{{content}}</main>
     <aside id="bottomMenu" class="onlyMobile">{{BottomMenu}}</aside>
