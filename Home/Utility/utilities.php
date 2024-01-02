@@ -80,7 +80,7 @@ function get_bottom_menu_Login()
     // Link da inserire
     $links = ["VisualizzaOrdini.php", "Prenota.php", "prenotazione.php"];
     // Nomi delle voci di menu
-    $names = ["Ordini", "Prenota", "Tavolo"];
+    $names = ["Ordini", "Ordina", "Tavolo"];
     // Lingue dei link (se diverse da Italiano)
     $langs = ["", "", ""];
     // Numero dei link da mostrare (grandezza array)
@@ -106,7 +106,7 @@ function get_menu_Login()
     // Link da inserire
     $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "#footerOrganizer", "VisualizzaOrdini.php", "Prenota.php", "prenotazione.php"];
     // Nomi delle voci di menu
-    $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Ordini", "Prenota", "Tavolo"];
+    $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Ordini", "Ordina", "Tavolo"];
     // Lingue dei link (se diverse da Italiano)
     $langs = ["en", "", "", "", "", "", "", ""];
     // Numero dei link da mostrare (grandezza array)

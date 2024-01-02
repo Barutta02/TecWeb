@@ -30,7 +30,7 @@ try {
 
 $pageID = 'PrenotaBody';
 $title = "Prenota piatti - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> >> <a href="login.php">Area utente</a> >> Prenota</p> ';
+$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> >> <a href="login.php">Area utente</a> >> Ordina</p> ';
 
 //RaccogliWarning
 $errorList = array();

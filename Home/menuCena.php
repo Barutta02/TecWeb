@@ -24,5 +24,5 @@ $content .= '<section id="PiattiMenu" class="containerPlatesViewer"><h2>Piatti</
 $content .= get_all_formatted_plates_Menu('Cena');
 $content .= ' </section>';
 
-echo render_page($template, $title, $pageID, $breadcrumbs, 'Menu cena Sushi Brombeis, menu cena all you can eat', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, "updateLinkWithSize('../assets/menu/MenuCena.pdf','downloadMenu')");
+echo render_page($template, $title, $pageID, $breadcrumbs, 'Menu cena Sushi Brombeis, menu cena all you can eat', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, "updateLinkWithSize('assets/menu/MenuCena.pdf','downloadMenu')");
 ?>

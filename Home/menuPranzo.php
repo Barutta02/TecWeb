@@ -22,6 +22,6 @@ $content .= ' </section>';
 
 
 
-echo render_page($template, $title, $pageID, $breadcrumbs, 'Menu pranzo Sushi Brombeis, menu cena all you can eat', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, "updateLinkWithSize('../assets/menu/MenuPranzo.pdf','downloadMenu')");
+echo render_page($template, $title, $pageID, $breadcrumbs, 'Menu pranzo Sushi Brombeis, menu cena all you can eat', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, "updateLinkWithSize('assets/menu/MenuPranzo.pdf','downloadMenu')");
 
 ?>
