@@ -24,13 +24,13 @@ $breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span><
 
 #Msg error (temporaneo, converite alla stessa tipologia di errore dell'area utente)
 $status = isset($_GET['StatusCode']) ? $_GET['StatusCode'] : null;
-if ($status==null) {
+if ($status == null) {
     $content = "";
-} elseif ($status==0) {
+} elseif ($status == 0) {
     $content = '<p class="good">L&apos;operazione è andata a buon fine.</p>';
-} elseif ($status==1) {
+} elseif ($status == 1) {
     $content = '<p class="warning">C&apos;è stato un errore nel tentativo di eseguire la richiesta. L&apos;operazione è stata annullata.</p>';
-} 
+}
 
 //PRENDO IL FORM PER LA SELEZIONE DEGLI ALLERGENI UTILITIES
 $content .= '<div class="flexable"><section id="SezioneGestioneTavoli"><h2>Gestione tavoli</h2>' . get_table_avaible() . '</section>';
@@ -38,10 +38,8 @@ $content .= '<section id="SezioneGestionePrenotazioni"><h2>Prenotazioni attive</
 
 
 //PRENDO IL FORM PER LA  PRENOTAZIONE DEI PIATTI DA UTILITIES
-$menu = get_menu_Admin();
-$template = str_replace('{{menu}}', $menu, $template);
-$template = str_replace('{{BottomMenu}}', "", $template);
 
 
-echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Prenotazione tavolo da Sushi Brombeis, Ristorante sushi via brombeis', 'Login per accedere al Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '', "Admin");
+
+echo render_page($template, $title, $pageID, $breadcrumbs, 'Prenotazione tavolo da Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
 ?>

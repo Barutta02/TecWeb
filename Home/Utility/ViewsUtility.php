@@ -278,7 +278,7 @@ function get_active_prenotation()
                 $templateSliderInputIter = str_replace('{{numClienti}}', $tavolo['numero_persone'], $templateSliderInputIter);
                 $templateSliderInputIter = str_replace('{{Orario}}', $tavolo['data_ora'], $templateSliderInputIter);
                 $templateSliderInputIter = str_replace('{{Username}}', $tavolo['utente'], $templateSliderInputIter);
-                $templateSliderInputIter = str_replace('{{IndicazioniAggiuntive}}', empty($tavolo['indicazione_aggiuntive']) || ctype_space($tavolo['indicazione_aggiuntive']) ? 'Nessuna.' : $tavolo['indicazione_aggiuntive'], $templateSliderInputIter);
+                $templateSliderInputIter = str_replace('{{IndicazioniAggiuntive}}', empty($tavolo['indicazioni_aggiuntive']) || ctype_space($tavolo['indicazioni_aggiuntive']) ? 'Nessuna.' : $tavolo['indicazioni_aggiuntive'], $templateSliderInputIter);
                 $content .= $templateSliderInputIter;
             }
             $content .= "</ul>";

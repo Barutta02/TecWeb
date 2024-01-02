@@ -21,19 +21,6 @@ try {
 $content = '';
 $content .= $templatePres;
 
-session_start();
-if (isset($_SESSION["username"])) {
-    $template = str_replace('{{BottomMenu}}', str_replace('{{ListMenuBottom}}', get_bottom_menu_Login(), getTemplate('Layouts/bottomMenu.html')), $template);
-    $menu = get_menu_Login();
-} elseif (isset($_SESSION['adminLogged'])) {
-    $menu = get_menu_Admin();
-    $template = str_replace('{{BottomMenu}}', "", $template);
-} else {
-    $menu = get_menu_NoLogin();
-    $template = str_replace('{{BottomMenu}}', "", $template);
-}
-$template = str_replace('{{menu}}', $menu, $template);
 
-
-echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via Brombeis, piatti sushi, sushi Napoli', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
+echo render_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
 ?>

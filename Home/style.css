@@ -115,17 +115,17 @@ header {
 
 .warning::before {
     background-position-y: 7px;
-    background-image: url(../assets/icon/warning.png);
+    background-image: url(assets/icon/warning.png);
 }
 
 .good::before {
-    background-image: url(../assets/icon/check.png);
+    background-image: url(assets/icon/check.png);
 }
 
 /**
     TODO non riesco a farlo funzionare
 .userAreaLink::before{
-    content: url('../assets/Images/user.svg'); 
+    content: url('assets/Images/user.svg'); 
     margin-right: 5px;
 position: relative;
 top: 7px;
@@ -214,34 +214,34 @@ nav.menu ul li a {
 }
 
 .CrostaceiImage {
-    background: url(../assets/icon/Crostacei.png) center center/contain no-repeat;
+    background: url(assets/icon/Crostacei.png) center center/contain no-repeat;
     /* Utilizza il percorso dell'immagine da data-allergene */
 
 }
 
 .PesceImage {
-    background: url(../assets/icon/fish.png) center center/contain no-repeat;
+    background: url(assets/icon/fish.png) center center/contain no-repeat;
     /* Utilizza il percorso dell'immagine da data-allergene */
 
 }
 
 .SedanoImage {
-    background: url(../assets/icon/celery.png) center center/contain no-repeat;
+    background: url(assets/icon/celery.png) center center/contain no-repeat;
     /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
 .SenapeImage {
-    background: url(../assets/icon/mustard.png) center center/contain no-repeat;
+    background: url(assets/icon/mustard.png) center center/contain no-repeat;
     /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
 .SoiaImage {
-    background: url(../assets/icon/soy.png) center center/contain no-repeat;
+    background: url(assets/icon/soy.png) center center/contain no-repeat;
     /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
 .UovaImage {
-    background: url(../assets/icon/eggs.png) center center/contain no-repeat;
+    background: url(assets/icon/eggs.png) center center/contain no-repeat;
     /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
@@ -413,15 +413,15 @@ a.socialLogo {
 }
 
 a.instagramLogo::before {
-    background-image: url(../assets/icon/instagram.png);
+    background-image: url(assets/icon/instagram.png);
 }
 
 a.facebookLogo::before {
-    background-image: url(../assets/icon/facebook-app-symbol.png);
+    background-image: url(assets/icon/facebook-app-symbol.png);
 }
 
 a.tikTokLogo::before {
-    background-image: url(../assets/icon/tik-tok.png);
+    background-image: url(assets/icon/tik-tok.png);
 }
 
 /******************* SITO: MESSAGGI *********************/
@@ -503,11 +503,11 @@ dl.ListinoPrezzi div {
 }
 
 .Cena {
-    background-image: url(../assets/Images/moon.PNG);
+    background-image: url(assets/Images/moon.PNG);
 }
 
 .Pranzo {
-    background-image: url(../assets/Images/sun.PNG);
+    background-image: url(assets/Images/sun.PNG);
 }
 
 .bold {
@@ -738,7 +738,7 @@ textarea {
 /*******************HOME************************/
 
 .homeImage {
-    background-image: url(../assets/Images/japan.jpg);
+    background-image: url(assets/Images/japan.jpg);
     width: 100%;
     height: 80vh;
     background-size: cover;
@@ -815,17 +815,17 @@ textarea {
 }
 
 #restaurantImage {
-    background-image: url(../assets/Images/restoraunt.jpg);
+    background-image: url(assets/Images/restoraunt.jpg);
     position: relative;
     top: -3em;
 }
 
 #imageDescription {
-    background-image: url(../assets/Images/home_image.jpg);
+    background-image: url(assets/Images/home_image.jpg);
 }
 
 #qualityImage {
-    background-image: url(../assets/Images/quality.jpg);
+    background-image: url(assets/Images/quality.jpg);
 
 }
 
@@ -975,7 +975,7 @@ input[type="submit"].doneButton {
 }
 
 #piattiDaFare .buttonDoneCompleted::after {
-    content: ' - Consegnato';
+    content: attr(data-onDoneContent);
 }
 
 /***TABLE MANAGMENT**********/
@@ -1160,17 +1160,17 @@ label {
 }
 
 .bottomMenu .Ordini {
-    background-image: url('../assets/icon/list.png');
+    background-image: url('assets/icon/list.png');
 
 }
 
-.bottomMenu .Prenota {
-    background-image: url('../assets/icon/sushi.png');
+.bottomMenu .Ordina {
+    background-image: url('assets/icon/sushi.png');
 
 }
 
 .bottomMenu .Tavolo {
-    background-image: url('../assets/icon/management.png');
+    background-image: url('assets/icon/management.png');
 
 }
 
@@ -1281,13 +1281,15 @@ label {
 
     .menu-toggle-label::before {
         font-size: 1.5em;
-        content: "☰ Menu";
+        content: attr(data-toOpenContent);
+        ;
     }
 
     /* Cambia il contenuto prima dell'icona quando il checkbox è selezionato */
     #mobile-menu-toggle:checked+.menu-toggle-label::before {
         font-size: 1.5em;
-        content: "✕ Chiudi";
+        content: attr(data-toCloseContent);
+        ;
     }
 
     /* Animazione di transizione */
