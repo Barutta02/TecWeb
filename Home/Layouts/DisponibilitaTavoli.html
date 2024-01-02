@@ -1,10 +1,9 @@
 <li>
-  <label for="sliderTable">Tavoli da {{NumPosti}} posti: {{Occupati}} su {{Totale_tavoli}} occupati</label>
+  <label for="sliderTable{{NumPosti}}">Tavoli da {{NumPosti}} posti: {{Occupati}} su {{Totale_tavoli}} occupati</label>
   <progress
-          id="sliderTable"
+          id="sliderTable{{NumPosti}}"
           class="progressTable"
           max="{{Totale_tavoli}}"
           value="{{Occupati}}"
-          aria-describedby="progress per visualizzare il numero di posti occupati"
   ></progress>
 </li>

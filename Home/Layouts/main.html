@@ -9,13 +9,12 @@
     <link rel="icon" href="../assets/icon/icona.ico" type="image/x-icon" >
     <link rel="stylesheet" href="style.css" media="screen" >
     <link rel="stylesheet" href="print.css" media="print" >
-    <script src="script/script.js"></script>
   </head>
 
   <body id="{{pageID}}" onload="{{onload}}">
     <a href="#content" class="srOnly">Vai al contenuto</a> {{header}}
 
-    <nav id="menu" class="menu" >
+    <nav id="menu" class="menu" tabindex="0">
       <!-- TODO aria-checked="{{state}} tabindex="0" ? dovrebbe funzionare con le freccette, dovrebbe essere già corretto -->
       <form id="toggleMenuForm">
         <div>
@@ -34,5 +33,6 @@
 
     {{footer}}
 
+    <script src="script/script.js"></script>
   </body>
 </html>

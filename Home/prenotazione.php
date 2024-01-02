@@ -1,6 +1,12 @@
 <?php
-
-require_once "Utility/utilities.php";
+try {
+    require_once "Utility/utilities.php";
+    require_once "DAO/PrenotazioneDAO.php";
+    require_once "DAO/TavoloDAO.php";
+} catch (Throwable $th) {
+    header('Location: 500.html');
+    exit(0);
+}
 
 session_start();
 //TEMPLATE comune
@@ -8,22 +14,46 @@ if (!isset($_SESSION["username"])) {
     header("Location: login.php?Errorcode=2");
 }
 
-$template = getTemplate('Layouts/main.html');
-
+try {
+    $template = getTemplate('Layouts/main.html');
+} catch (Throwable $th) {
+    header('Location: 500.html');
+    exit(0);
+}
 $pageID = 'prenotationId';
 $title = "Prenotazione - Sushi Brombeis";
 $breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> >> <a href="login.php">Area utente</a> >> Gestisci prenotazione</p> ';
+
 if (isset($_SESSION['data_prenotazione_inCorso'])) {
+    try {
+        if(PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso'])['stato']!='InCorso') {
+            unset($_SESSION['data_prenotazione_inCorso']);
+            header('Location: prenotazione.php?MessageCode=7');
+            exit(0);
+        }
+    } catch (Throwable $th) {
+        header('Location: 500.html');
+        exit(0);
+    }
+
     //Prendi i dati della prenotazione
-    require_once "DAO/PrenotazioneDAO.php";
-    $prenotazioneAttiva = PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso']);
+    try {
+        $prenotazioneAttiva = PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso']);
+    } catch (Throwable $th) {
+        $prenotazioneAttiva = get_error_msg();
+    }
+
     $templatePren = getTemplate('Layouts/ModificaPrenotazioneSection.html');
     $templatePren = str_replace('{{NumeroPersone}}', $prenotazioneAttiva["numero_persone"], $templatePren);
     $templatePren = str_replace('{{NumeroTavolo}}', $prenotazioneAttiva["tavolo"], $templatePren);
-    $templatePren = str_replace('{{IndicazioniAggiuntive}}', $prenotazioneAttiva["indicazione_aggiuntive"], $templatePren);
-} else {
-    require_once "DAO/TavoloDAO.php";
-    $templatePren = getTemplate('Layouts/NuovaPrenotazioneSection.html');
+    $templatePren = str_replace('{{IndicazioniAggiuntive}}', $prenotazioneAttiva["indicazioni_aggiuntive"], $templatePren);
+} else {  
+    try {  
+        $templatePren = getTemplate('Layouts/NuovaPrenotazioneSection.html');
+    } catch (Throwable $th) {
+        $prenotazioneAttiva = get_error_msg();
+    }
+
     if (isset($_GET['n_posti']) && $_GET['n_posti'] > 0) {
         $templatePren = str_replace('{{NumeroPersone}}', $_GET['n_posti'], $templatePren);
     } else {
@@ -63,6 +93,9 @@ if (isset($_GET['MessageCode'])) {
         case 6:
             array_push($errorList, "<p class='warning'>Prima di poter visualizzare i tuoi ordini devi prenotare un tavolo!</p> ");
             break;
+        case 7:
+            array_push($errorList, "<p class='warning'>La tua prenotazione è stata terminata dal proprietario del ristorante!</p> ");
+            break;
         default:
             array_push($errorList, "<p class='warning'>Errore sconosciuto!</p> ");
     }
@@ -81,5 +114,5 @@ if (isset($_SESSION["username"])) {
 }
 $template = str_replace('{{menu}}', $menu, $template);
 
-echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
+echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Nuova prenotazione da Sushi Brombeis, Ristorante sushi via brombeis, sushi all you can eat prenotazione', 'Prenotazione del miglior ristorante di sushi all you can eat di Napoli, via Brombeis.', $content, '');
 ?>

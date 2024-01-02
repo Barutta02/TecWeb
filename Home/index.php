@@ -1,29 +1,25 @@
 <?php
-
-require_once "Utility/utilities.php";
-//TEMPLATE comune
-$template = getTemplate('Layouts/main.html');
+try {
+    require_once "Utility/utilities.php";
+    $template = getTemplate('Layouts/main.html');
+} catch (Throwable $th) {
+    header('Location: 500.html');
+    exit(0);
+}
 
 $pageID = 'homeID';
 $title = "Home - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in: <span lang="en" aria-current="page">Home</span></p> ';
-
+$breadcrumbs = '<p tabindex="0">Ti trovi in: <span lang="en" aria-current="page">Home</span></p> ';
 
 //Sezione di presentazione del ristorante
-$sectionPresentation = 'Layouts/presentationSection.html';
-if (!file_exists($sectionPresentation)) {
-    die("Template file not found: $sectionPresentation");
+try {
+    $templatePres = getTemplate('Layouts/presentationSection.html');
+} catch (Throwable $th) {
+    $templatePres = get_error_msg();
 }
-$templatePres = file_get_contents($sectionPresentation);
-if ($templatePres === false) {
-    die("Failed to load template file: $templatePres");
-}
-
 
 $content = '';
-
 $content .= $templatePres;
-
 
 session_start();
 if (isset($_SESSION["username"])) {
@@ -39,5 +35,5 @@ if (isset($_SESSION["username"])) {
 $template = str_replace('{{menu}}', $menu, $template);
 
 
-echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
+echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via Brombeis, piatti sushi, sushi Napoli', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
 ?>

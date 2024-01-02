@@ -1,6 +1,12 @@
 <?php
-require_once "Utility/utilities.php";
 
+try {
+    require_once "Utility/utilities.php";
+    require_once "DAO/PrenotazioneDAO.php"; 
+} catch (Throwable $th) {
+    header('Location: 500.html');
+    exit(0);
+}
 //Control login e di aver gia scelto numero di persone e tavolo
 session_start();
 if (!isset($_SESSION["username"])) {
@@ -10,16 +16,21 @@ if (!isset($_SESSION["data_prenotazione_inCorso"])) {
     header("Location: prenotazione.php?MessageCode=5");
 }
 
-
-$template = getTemplate('Layouts/main.html');
-
-
-
+try {
+    if(PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso'])['stato']!='InCorso') {
+        unset($_SESSION['data_prenotazione_inCorso']);
+        header("Location: prenotazione.php?MessageCode=7");
+        exit(0);
+    }
+    $template = getTemplate('Layouts/main.html');
+} catch (Throwable $th) {
+    header('Location: 500.html');
+    exit(0);
+}
 
 $pageID = 'PrenotaBody';
 $title = "Prenota piatti - Sushi Brombeis";
 $breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> >> <a href="login.php">Area utente</a> >> Prenota</p> ';
-
 
 //RaccogliWarning
 $errorList = array();
@@ -33,9 +44,6 @@ if (isset($_GET['ResponseCode'])) {
         array_push($errorList, "<p class='warning'>Qualcosa è andato storto.</p> ");
     }
 }
-
-
-
 
 //PRENDO IL FORM PER LA SELEZIONE DEGLI ALLERGENI UTILITIES
 $content = get_allergeni_form_section();
@@ -54,8 +62,7 @@ if (isset($_SESSION["username"])) {
 
 
 } elseif (isset($_SESSION['adminLogged'])) {
-    $template = str_replace('{{BottomMenu}}', str_replace('{{ListMenuBottom}}', get_bottom_menu_Login(), getTemplate('Layouts/bottomMenu.html')), $template);
-    $menu = get_menu_Admin();
+    $menu = get_menu_ext_Admin();
 } else {
     $menu = get_menu_NoLogin();
     $template = str_replace('{{BottomMenu}}', "", $template);
@@ -63,5 +70,5 @@ if (isset($_SESSION["username"])) {
 $template = str_replace('{{menu}}', $menu, $template);
 
 
-echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Prenota da Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
+echo replace_in_page($template, $title, $pageID, $breadcrumbs, 'Prenota da Sushi Brombeis, Ristorante sushi via brombeis, ordina sushi, sushi Napoli, piatti sushi', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
 ?>

@@ -40,11 +40,11 @@ function replace_in_page($html, $title, $id, $breadcrumbs, $keywords, $descripti
 function getTemplate($templatePath)
 {
     if (!file_exists($templatePath)) {
-        die("Template file not found: $templatePath");
+        throw new Throwable("Template file not found: $templatePath");
     }
     $template = file_get_contents($templatePath);
     if ($template === false) {
-        die("Failed to load template file: $templatePath");
+        throw new Throwable("Failed to load template file: $templatePath");
     }
     return $template;
 
@@ -181,7 +181,7 @@ function get_menu_Login()
         }
     }
     #$menu .= '<li><a class="button userAreaLink" href="login.php" >Area Utente</a></li>';
-    $menu .= '<li><a class="userAreaLink" href="esci.php" >Esci</a></li>';
+    $menu .= '<li><a class="userAreaLink" href="esci.php" tabindex="0" >Esci</a></li>';
 
     return $menu;
 }
@@ -206,9 +206,9 @@ function get_menu_NoLogin()
 
     for ($i = 0; $i < $nLinks; $i++) {
         if ($fileName == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
-            $menu .= '<li class="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><p>' . $names[$i] . '</p></li>';
+            $menu .= '<li class="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . ' tabindex = "0"><p>' . $names[$i] . '</p></li>';
         } else {
-            $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
+            $menu .= '<li tabindex="0"><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
         }
     }
     return $menu;
@@ -219,11 +219,11 @@ function get_menu_Admin()
     $menu = '';
 
     // Link da inserire
-    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "#footerOrganizer", "adminPanel.php", "freeTable.php"];
+    $links = ["adminPanel.php", "freeTable.php"];
     // Nomi delle voci di menu
-    $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Pannello amministratore", "Gestione Prenotazioni"];
+    $names = ["Pannello amministratore", "Gestione Prenotazioni"];
     // Lingue dei link (se diverse da Italiano)
-    $langs = ["en", "", "", "", "", "", ""];
+    $langs = ["", ""];
     // Numero dei link da mostrare (grandezza array)
     $nLinks = count($links);
 
@@ -244,6 +244,49 @@ function get_menu_Admin()
     return $menu;
 }
 
+function get_menu_ext_Admin()
+{
+    $menu = '';
 
+    // Link da inserire
+    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "#footerOrganizer", "adminPanel.php"];
+    // Nomi delle voci di menu
+    $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Pannello amministratore"];
+    // Lingue dei link (se diverse da Italiano)
+    $langs = ["en", "", "", "", "", ""];
+    // Numero dei link da mostrare (grandezza array)
+    $nLinks = count($links);
+
+    //Togliere dall'url restituito da PHP -- cambierà in base all'hosting
+    $currentPage = str_replace(ROOT_FOLDER, "", $_SERVER['REQUEST_URI']);
+    $fileName = basename(parse_url($currentPage, PHP_URL_PATH));
+
+    for ($i = 0; $i < $nLinks; $i++) {
+        if ($fileName == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
+            $menu .= '<li class="currentLink ';
+            if ($names[$i] == "Ordini" || $names[$i] == "Prenota" || $names[$i] == "Tavolo") {
+                $menu .= 'bigScreenOnly';
+            }
+            $menu .= '"' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '> <p>' . $names[$i] . '</p></li>';
+        } else {
+            $menu .= '<li ';
+            if ($names[$i] == "Ordini" || $names[$i] == "Prenota" || $names[$i] == "Tavolo") {
+                $menu .= 'class="bigScreenOnly" ';
+            }
+            $menu .= '><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
+        }
+    }
+    #$menu .= '<li><a class="button userAreaLink" href="login.php" >Area Utente</a></li>';
+    $menu .= '<li><a class="userAreaLink" href="esci.php" >Esci</a></li>';
+
+    return $menu;
+}
+
+function sanitize_txt($txt)
+{
+    $txt = trim($txt);
+    $txt = strip_tags($txt);
+    return $txt;
+}
 
 ?>
