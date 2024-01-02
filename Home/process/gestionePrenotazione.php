@@ -18,6 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 header('Location: ../freeTable.php?StatusCode=0');
                 exit(0);
             } catch (Throwable $error) {
+                header('Location: ../freeTable.php?StatusCode=1');
+                exit();
             }
         }
         header('Location: ../freeTable.php?StatusCode=1');
@@ -40,8 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 header('Location: ../freeTable.php?StatusCode=0');
                 exit(0);
             } catch (Throwable $th) {
+                header('Location: ../freeTable.php?StatusCode=1');
+                exit();
             }
-        }
+        } 
         header('Location: ../freeTable.php?StatusCode=1');
         exit(0);
     } else {
