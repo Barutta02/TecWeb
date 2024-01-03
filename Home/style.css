@@ -102,8 +102,14 @@ header {
     color: var(--goodEndingMessage);
 }
 
+.info {
+    padding: .5em;
+
+}
+
 .warning::before,
-.good::before {
+.good::before,
+.info::before {
     content: "";
     display: inline-block;
     width: 40px;
@@ -120,6 +126,12 @@ header {
 
 .good::before {
     background-image: url(assets/icon/check.png);
+}
+
+.info::before {
+    width: 25px;
+    height: 25px;
+    background-image: url(assets/icon/info.png);
 }
 
 /**

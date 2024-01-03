@@ -1,12 +1,14 @@
 <section id="prenotazione">
-  <h2>Nuova prenotazione</h2>
+  <h2>Crea una nuova prenotazione</h2>
   {{Message}}
+  <p class="info">Per proseguire con l'ordinazione dei piatti devi prima creare una prenotazione inserendo i dati richiesti </p>
   <form action="process/newPrenotazione_process.php" method="post">
     <fieldset>
-      <legend>Inserisci dati</legend>
+      <legend>Inserisci i dati richiesti</legend>
+      <p>(* = Campo obbligatorio)</p>
       <ul>
         <li>
-          <label for="n_persone">Numero di persone:</label>
+          <label for="n_persone">Numero di persone *:</label>
           <input
             type="number"
             id="n_persone"

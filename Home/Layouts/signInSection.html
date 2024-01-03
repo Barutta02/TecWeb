@@ -1,28 +1,29 @@
 <!-- TODO eliminare??-->
 <section id="signIn">
-  <h2>SignIn</h2>
+  <h2>Registrazione</h2>
   <form action="process/signIn_request.php" onsubmit="return validateForm();" method="post">
     <fieldset>
-      <legend>Inserisci dati per la registrazione</legend>
+      <legend>Inserisci dati per registrarti</legend>
+      <p>(* = Campo obbligatorio)</p>
       <ul>
         <li>
-          <label for="username">Username:</label>
+          <label for="username">Username *:</label>
           <input type="text" id="username" name="username">
         </li>
         <li>
-          <label for="firstname">Nome:</label>
+          <label for="firstname">Nome *:</label>
           <input type="text" id="firstname" name="firstname">
         </li>
         <li>
-          <label for="lastname">Cognome:</label>
+          <label for="lastname">Cognome *:</label>
           <input type="text" id="lastname" name="lastname">
         </li>
         <li>
-          <label for="email">Email:</label>
+          <label for="email">Email *:</label>
           <input type="text" id="email" name="email">
         </li>
         <li>
-          <label for="password">Password:</label>
+          <label for="password">Password *:</label>
           <input type="password" id="password" name="password">
         </li>
       </ul>
