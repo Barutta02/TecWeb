@@ -1,6 +1,7 @@
 <section id="prenotazione">
-  <h2>Modifica prenotazione</h2>
+  <h2>Modifica la tua prenotazione</h2>
   {{Message}}
+  <p class="info">Modifica qui le indicazioni aggiuntive sulla tua prenotazione.</p>
   <form action="process/modifyPrenotazione_process.php" method="post">
     <fieldset>
       <legend>Inserisci dati</legend>
@@ -13,6 +14,7 @@
             name="n_persone"
             value="{{NumeroPersone}}"
             readonly
+            disabled
           >
         </li>
 
@@ -24,6 +26,7 @@
             name="n_tavolo"
             value="{{NumeroTavolo}}"
             readonly
+            disabled
           >
         </li>
         <li>

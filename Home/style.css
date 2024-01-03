@@ -102,8 +102,14 @@ header {
     color: var(--goodEndingMessage);
 }
 
+.info {
+    padding: .5em;
+
+}
+
 .warning::before,
-.good::before {
+.good::before,
+.info::before {
     content: "";
     display: inline-block;
     width: 40px;
@@ -120,6 +126,12 @@ header {
 
 .good::before {
     background-image: url(assets/icon/check.png);
+}
+
+.info::before {
+    width: 25px;
+    height: 25px;
+    background-image: url(assets/icon/info.png);
 }
 
 /**
@@ -1088,16 +1100,15 @@ label {
 
 
 #SezioneGestioneTavoli {
-    width: 70%;
-    min-width: 400px;
-    max-width: 40%;
+    text-align: center;
+}
+
+#SezioneGestionePrenotazioni {
+    text-align: center;
 }
 
 #SezioneGestionePrenotazioni ul {
-    width: 30%;
-    min-width: 400px;
-    max-height: 500px;
-    max-width: 40%;
+    text-align: right;
     overflow-y: scroll;
     direction: rtl;
 }

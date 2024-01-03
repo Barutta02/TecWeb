@@ -75,8 +75,11 @@ function get_all_formatted_plates_Menu($categoria)
 {
     try {
         $htmlContent = '';
-
-        $piatti = PiattoDAO::getPiattoByTipoMenu($categoria);
+        if ($categoria == "Cena") {
+            $piatti = PiattoDAO::getAllPiatti();
+        } else {
+            $piatti = PiattoDAO::getPiattoByTipoMenu($categoria);
+        }
 
         if (!empty($piatti)) {
             $htmlContent .= '<ul class="flexable">';
@@ -130,6 +133,7 @@ function get_prenotation_form_menu($process_php_action)
         require_once 'DAO/CategoriaDAO.php';
         $templatePlatesInput = getTemplate('Layouts/MenuItemInputQuantity.html');
         $content = ' <form action="' . $process_php_action . '" method="post">';
+        $content .= '<p class="info">Seleziona la quantità dei piatti che desideri ordinare.</p>';
         $categorie = CategoriaDAO::getAllCategory();
         if (!empty($categorie)) {
             foreach ($categorie as $categoria) {

@@ -3,12 +3,13 @@
   {{error}}
   <form action="process/login_request.php" onsubmit="return validateForm();" method="post">
     <fieldset>
-      <legend id="loginLegend">Dati di accesso</legend>
+      <legend id="loginLegend">Inserisci i dati di accesso</legend>
+      <p>(* = Campo obbligatorio)</p>
       <ul>
         <li>
           <label for="username_or_email">
             <span lang="en">Username</span> o
-            <span lang="en">Email</span>:
+            <span lang="en">Email</span> *:
           </label>
           <input
             type="text"
@@ -17,7 +18,7 @@
           >
         </li>
         <li>
-          <label for="password"><span lang="en">Password:</span></label>
+          <label for="password"><span lang="en">Password *:</span></label>
           <input type="password" id="password" name="password">
         </li>
       </ul>
