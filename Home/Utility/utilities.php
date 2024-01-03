@@ -132,7 +132,7 @@ function get_menu_Login()
         }
     }
     #$menu .= '<li><a class="button userAreaLink" href="login.php" >Area Utente</a></li>';
-    $menu .= '<li><a class="userAreaLink" href="esci.php" tabindex="0" >Esci</a></li>';
+    $menu .= '<li><a class="userAreaLink" href="esci.php">Esci</a></li>';
 
     return $menu;
 }
@@ -157,9 +157,9 @@ function get_menu_NoLogin()
 
     for ($i = 0; $i < $nLinks; $i++) {
         if ($fileName == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
-            $menu .= '<li class="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . ' tabindex = "0"><p>' . $names[$i] . '</p></li>';
+            $menu .= '<li class="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><p>' . $names[$i] . '</p></li>';
         } else {
-            $menu .= '<li tabindex="0"><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
+            $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
         }
     }
     return $menu;
