@@ -9,7 +9,7 @@ try {
 
 $pageID = 'homeID';
 $title = "Home - Sushi Brombeis";
-$breadcrumbs = '<p tabindex="0">Ti trovi in: <span lang="en" aria-current="page">Home</span></p> ';
+$breadcrumbs = '<p>Ti trovi in: <span lang="en" aria-current="page">Home</span></p> ';
 
 //Sezione di presentazione del ristorante
 try {
