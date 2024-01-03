@@ -27,7 +27,8 @@ $title = "Pannello ristoratore - Sushi Brombeis";
 $breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span> </a> >> <a href="login.php"> Area utente</a> >> Pannello amministratore</p> ';
 
 $content = '<section id="piattiDaFare" class="containerPlatesViewer">
-<h2> Piatti da fare </h2>';
+<h2> Piatti da fare </h2>
+<p class="info">Visualizza qui i piatti ordinati, clicca su "Fatto" quando sono pronti.</p>';
 
 $content .= toDoOrdersView();
 $content .= '</section>';

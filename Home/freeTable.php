@@ -33,8 +33,8 @@ if ($status == null) {
 }
 
 //PRENDO IL FORM PER LA SELEZIONE DEGLI ALLERGENI UTILITIES
-$content .= '<div class="flexable"><section id="SezioneGestioneTavoli"><h2>Gestione tavoli</h2>' . get_table_avaible() . '</section>';
-$content .= '<section id="SezioneGestionePrenotazioni"><h2>Prenotazioni attive</h2>' . get_active_prenotation() . '</section></div>';
+$content .= '<div class="flexable"><section id="SezioneGestioneTavoli"><h2>Stato occupazione tavoli</h2>' . get_table_avaible() . '</section>';
+$content .= '<section id="SezioneGestionePrenotazioni"><h2>Prenotazioni attive</h2><p class="info">Visualizza e gestisci qui le prenotazioni attive</p>' . get_active_prenotation() . '</section></div>';
 
 
 //PRENDO IL FORM PER LA  PRENOTAZIONE DEI PIATTI DA UTILITIES

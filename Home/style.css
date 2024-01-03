@@ -1100,16 +1100,15 @@ label {
 
 
 #SezioneGestioneTavoli {
-    width: 70%;
-    min-width: 400px;
-    max-width: 40%;
+    text-align: center;
+}
+
+#SezioneGestionePrenotazioni {
+    text-align: center;
 }
 
 #SezioneGestionePrenotazioni ul {
-    width: 30%;
-    min-width: 400px;
-    max-height: 500px;
-    max-width: 40%;
+    text-align: right;
     overflow-y: scroll;
     direction: rtl;
 }
