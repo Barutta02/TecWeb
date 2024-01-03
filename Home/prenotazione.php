@@ -26,8 +26,13 @@ $breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span><
 
 if (isset($_SESSION['data_prenotazione_inCorso'])) {
     try {
-        if (PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso'])['stato'] != 'InCorso') {
-            unset($_SESSION['data_prenotazione_inCorso']);
+        $prenotazione = PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso']);
+        if (empty($prenotazione)) {
+            $_SESSION['data_prenotazione_inCorso'] = null;
+            header('Location: prenotazione.php?MessageCode=8');
+            exit(0);
+        } elseif ($prenotazione['stato'] != 'InCorso') {
+            $_SESSION['data_prenotazione_inCorso'] = null;
             header('Location: prenotazione.php?MessageCode=7');
             exit(0);
         }
@@ -95,6 +100,9 @@ if (isset($_GET['MessageCode'])) {
             break;
         case 7:
             array_push($errorList, "<p class='warning'>La tua prenotazione è stata terminata dal proprietario del ristorante!</p> ");
+            break;
+        case 8:
+            array_push($errorList, "<p class='warning'>La tua prenotazione è stata cancellata dal proprietario del ristorante!</p> ");
             break;
         default:
             array_push($errorList, "<p class='warning'>Errore sconosciuto!</p> ");

@@ -106,9 +106,9 @@ class PrenotazioneDAO
     {
         try {
             DBAccess::open_connection();
-            $sql = "UPDATE prenotazione SET stato = 'Terminata' WHERE utente = ? AND data_ora = ?";
+            $sql = "UPDATE prenotazione SET stato = 'Terminata', data_ora = ? WHERE utente = ? AND data_ora = ?";
             $stmt = DBAccess::get_connection_state()->prepare($sql);
-            $stmt->bind_param("ss", $username, $dataPrenotazione);
+            $stmt->bind_param("sss", $dataPrenotazione, $username, $dataPrenotazione);
             $stmt->execute();
         } finally {
             $stmt->close();
