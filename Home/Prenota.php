@@ -11,15 +11,22 @@ try {
 session_start();
 if (!isset($_SESSION["username"])) {
     header("Location: login.php");
+    exit();
 }
-if (!isset($_SESSION["data_prenotazione_inCorso"])) {
+if (empty($_SESSION['data_prenotazione_inCorso'])) {
     header("Location: prenotazione.php?MessageCode=5");
+    exit();
 }
 
 try {
-    if (PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso'])['stato'] != 'InCorso') {
-        unset($_SESSION['data_prenotazione_inCorso']);
-        header("Location: prenotazione.php?MessageCode=7");
+    $prenotazione = PrenotazioneDAO::getPrenotationByUsernameData($_SESSION["username"], $_SESSION['data_prenotazione_inCorso']);
+    if (empty($prenotazione)) {
+        $_SESSION['data_prenotazione_inCorso'] = null;
+        header('Location: prenotazione.php?MessageCode=8');
+        exit(0);
+    } elseif ($prenotazione['stato'] != 'InCorso') {
+        $_SESSION['data_prenotazione_inCorso'] = null;
+        header('Location: prenotazione.php?MessageCode=7');
         exit(0);
     }
     $template = getTemplate('Layouts/main.html');
