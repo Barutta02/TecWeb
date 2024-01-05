@@ -16,7 +16,7 @@
     --txtColor: rgb(0, 0, 0);
     --footerBgColor: #000;
     --footerTxtColor: rgb(255, 255, 255);
-    --linkColor: #ffffff;
+    --linkColor: #f91edc;
     --visitedLinkColor: #ff6758;
     /*importante il contrasto tra link visitato e non*/
     --flagColor: #ff6758;
@@ -1123,6 +1123,49 @@ label {
 
 #SezioneGestionePrenotazioni .buttonDoneCompleted::after {
     content: ' - Terminata';
+}
+
+.infoPersonalArea h1 {
+    color: var(--alternative_text);
+    text-align: center;
+}
+
+.mainTitle {
+    color: var(--LegendTxtColor);
+    text-align: center;
+}
+
+.infoPersonalArea {
+    margin: 1em;
+    border-left: 3px solid var(--alternative_text);
+    padding-left: 1em;
+}
+
+.infoPersonalArea dt {
+    font-weight: bold;
+    color: var(--alternative_text);
+    font-size: 1.3em;
+}
+
+.infoPersonalArea h2 {
+    font-size: 1.4em;
+    padding-top: .4em;
+
+}
+
+.infoPersonalArea dl {
+    padding-left: .5em;
+    padding-top: .2em;
+}
+
+.infoPersonalArea dd {
+    padding-left: .5em;
+    padding-top: .2em;
+    list-style-type: disc;
+}
+
+.infoPersonalArea dd::before {
+    content: "- ";
 }
 
 /*******************404 e 500*********************/
