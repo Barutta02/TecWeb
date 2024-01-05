@@ -122,7 +122,7 @@ function get_menu_Login()
             if ($names[$i] == "Ordini" || $names[$i] == "Prenota" || $names[$i] == "Tavolo") {
                 $menu .= 'bigScreenOnly';
             }
-            $menu .= '"' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '> <p>' . $names[$i] . '</p></li>';
+            $menu .= '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '> <p>' . $names[$i] . '</p></li>';
         } else {
             $menu .= '<li ';
             if ($names[$i] == "Ordini" || $names[$i] == "Prenota" || $names[$i] == "Tavolo") {
@@ -157,7 +157,7 @@ function get_menu_NoLogin()
 
     for ($i = 0; $i < $nLinks; $i++) {
         if ($fileName == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
-            $menu .= '<li class="currentLink" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '><p>' . $names[$i] . '</p></li>';
+            $menu .= '<li class="currentLink" ' . (($langs[$i]) ? ' lang="' . $langs[$i] . '"' : '') . '><p>' . $names[$i] . '</p></li>';
         } else {
             $menu .= '<li><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
         }
@@ -240,12 +240,13 @@ function sanitize_txt($txt)
     return $txt;
 }
 
-function check_admin_privileges($username_or_email, $password) {
+function check_admin_privileges($username_or_email, $password)
+{
     $user = UserDao::getUserByEmailPassword(sanitize_txt($username_or_email), sanitize_txt($password));
     $user = !empty($user) ? $user : UserDao::getUserByUsernamePassword(sanitize_txt($username_or_email), sanitize_txt($password));
 
 
-    if (!empty($user) && isset($user['privilegi']) && $user['privilegi']=='Admin') {
+    if (!empty($user) && isset($user['privilegi']) && $user['privilegi'] == 'Admin') {
         return true;
     }
     return false;
