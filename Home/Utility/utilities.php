@@ -80,7 +80,7 @@ function get_bottom_menu_Login()
     // Link da inserire
     $links = ["VisualizzaOrdini.php", "Prenota.php", "prenotazione.php"];
     // Nomi delle voci di menu
-    $names = ["Ordini", "Ordina", "Tavolo"];
+    $names = ["I miei Ordini", "Ordina", "Prenota"];
     // Lingue dei link (se diverse da Italiano)
     $langs = ["", "", ""];
     // Numero dei link da mostrare (grandezza array)
@@ -106,7 +106,7 @@ function get_menu_Login()
     // Link da inserire
     $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "#footerOrganizer", "VisualizzaOrdini.php", "Prenota.php", "prenotazione.php"];
     // Nomi delle voci di menu
-    $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Ordini", "Ordina", "Tavolo"];
+    $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "I miei Ordini", "Ordina", "Prenota"];
     // Lingue dei link (se diverse da Italiano)
     $langs = ["en", "", "", "", "", "", "", ""];
     // Numero dei link da mostrare (grandezza array)
@@ -119,13 +119,13 @@ function get_menu_Login()
     for ($i = 0; $i < $nLinks; $i++) {
         if ($fileName == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
             $menu .= '<li class="currentLink ';
-            if ($names[$i] == "Ordini" || $names[$i] == "Ordina" || $names[$i] == "Tavolo") {
+            if ($names[$i] == "I miei Ordini" || $names[$i] == "Ordina" || $names[$i] == "Prenota") {
                 $menu .= 'bigScreenOnly';
             }
             $menu .= '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '> <p>' . $names[$i] . '</p></li>';
         } else {
             $menu .= '<li ';
-            if ($names[$i] == "Ordini" || $names[$i] == "Ordina" || $names[$i] == "Tavolo") {
+            if ($names[$i] == "I miei Ordini" || $names[$i] == "Ordina" || $names[$i] == "Prenota") {
                 $menu .= 'class="bigScreenOnly" ';
             }
             $menu .= '><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
