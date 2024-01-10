@@ -1219,7 +1219,7 @@ label {
 }
 
 .bottomMenu .Ordina {
-    background-image: url('assets/icon/sushi.png');
+    background-image: url('assets/icon/sushi2.png');
 
 }
 
@@ -1270,9 +1270,9 @@ label {
 }
 
 .bottomMenu li .ListIcon {
-    width: 20px;
+    width: 25px;
     /* Larghezza dell'icona */
-    height: 20px;
+    height: 25px;
     /* Altezza dell'icona */
     background-size: contain;
     /* Adatta l'icona alle dimensioni specificate */
@@ -1289,7 +1289,7 @@ label {
 
 .bottomMenu {
     z-index: 100;
-    background-color: #fff;
+    background-color: #000;
     position: fixed;
     bottom: 0;
     left: 0.01em;
@@ -1297,6 +1297,7 @@ label {
     width: 101vw;
     height: 55px;
     margin: 0;
+    border-top: 2px solid #fff;
 }
 
 /********************* SITO: ADMIN > ELIMINAZIONE PRENOTAZIONE CONFERMA ****************/
