@@ -66,8 +66,22 @@ h1.logo {
     color: var(--logoTxtColor);
 }
 
-h3.logo {
-    letter-spacing: 0.5em;
+h2.logo {
+    letter-spacing: 5px;
+    font-size: 24px;
+}
+
+p.logo {
+    font-size: 34px;
+    text-transform: uppercase;
+    color: var(--logoTxtColor);
+    font-weight: bold;
+}
+
+p.logo2 {
+    font-size: 24px;
+    letter-spacing: 5px;
+    font-weight: bold;
 }
 
 .flexable{
@@ -120,7 +134,7 @@ body {
     min-height: 100vh;
 }
 
-h3{
+h2{
     margin-bottom: 10px;
     margin-top: 10px;
 }
@@ -148,6 +162,13 @@ input[type="submit"] {
 #homeTitle {
     text-align: center;
     margin: auto;
+    margin-bottom: 40px;
+}
+
+.homeSection h3 {
+    color: var(--LegendTxtColor);
+    font-size: 18px;
+    padding: 10px;
 }
 
 /*******************404*********************/
@@ -454,6 +475,49 @@ fieldset legend {
     font-size: 15px;
     font-weight: bold;
     padding: 5px;
+}
+
+.mainTitle {
+    color: var(--LegendTxtColor);
+    text-align: center;
+}
+
+.infoPersonalArea h1 {
+    color: var(--alternative_text);
+    text-align: center;
+}
+
+.infoPersonalArea {
+    margin: 10px;
+    border-left: 3px solid var(--alternative_text);
+    padding-left: 10px;
+}
+
+.infoPersonalArea dt {
+    font-weight: bold;
+    color: var(--alternative_text);
+    font-size: 13px;
+}
+
+.infoPersonalArea h2 {
+    font-size: 14px;
+    padding-top: 4px;
+
+}
+
+.infoPersonalArea dl {
+    padding-left: 5px;
+    padding-top: 2px;
+}
+
+.infoPersonalArea dd {
+    padding-left: .5em;
+    padding-top: .2em;
+    list-style-type: disc;
+}
+
+.infoPersonalArea dd::before {
+    content: "- ";
 }
 
 /************warning e good*************/
