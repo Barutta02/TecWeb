@@ -816,6 +816,10 @@ textarea {
     color: #000;
 }
 
+#presentationMenu h3 {
+    color: #000;
+}
+
 .homeSection .image {
     min-width: 300px;
     min-height: 300px;
