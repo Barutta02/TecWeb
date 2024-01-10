@@ -33,5 +33,5 @@ if (isset($_GET['Errorcode'])) {
 }
 $content = str_replace('{{error}}', implode(" ", $errorList), $content);
 
-echo render_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, 'setLoginChecks();addOnBlur();');
+echo render_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Accedi al sito ufficiale del ristorante di sushi a Napoli in via brombeis. Prenota il tuo tavolo e vieni a trovarci!', $content, 'setLoginChecks();addOnBlur();');
 ?>

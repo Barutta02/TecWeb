@@ -41,5 +41,5 @@ $content .= '<section id="SezioneGestionePrenotazioni"><h2>Prenotazioni attive</
 
 
 
-echo render_page($template, $title, $pageID, $breadcrumbs, 'Prenotazione tavolo da Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
+echo render_page($template, $title, $pageID, $breadcrumbs, 'Prenotazione tavolo da Sushi Brombeis, Ristorante sushi via brombeis', 'Prenota un tavolo online per mangiare il miglior sushi all you can eat di Napoli, vieni a trovarci in via brombeis.', $content, '');
 ?>
