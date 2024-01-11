@@ -233,11 +233,43 @@ function get_menu_ext_Admin()
     return $menu;
 }
 
-function sanitize_txt($txt)
+function sanitize_txt($txt, $keep_htlm_tags = false)
 {
     $txt = trim($txt);
-    $txt = strip_tags($txt);
+    if($keep_htlm_tags) {
+        $txt = htmlentities($txt);
+    } else {
+        $txt = strip_tags($txt);
+    }
     return $txt;
+}
+
+function check_password_format($password) {
+
+    return
+        strlen($password) >=5 &&
+        preg_match('/[A-Z]/', $password) &&
+        preg_match('/[a-z]/', $password) &&
+        preg_match('/\d/', $password) &&
+        preg_match('/[!@#$%^&*()_+]/', $password);
+}
+
+function check_username_format($username) {
+    return
+        strlen(trim($username)) > 0 && preg_match('/\w{2,}/', $username);
+
+}
+
+function check_firstname_or_lastname_format($firstname_or_lastname) {
+    return
+        strlen(trim($firstname_or_lastname)) > 0 &&
+        preg_match('/^[^\d]+$/ ', $firstname_or_lastname);
+}
+
+function check_email_format($email) {
+    return
+        strlen(trim($email)) >= 2 &&
+        preg_match('/^([\w\-\+\.]+)\@([\w\-\+\.]+)\.([\w\-\+\.]+)$/', $email);
 }
 
 function check_admin_privileges($username_or_email, $password)

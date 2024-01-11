@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Esempio di verifica delle credenziali (puoi personalizzarla in base alle tue esigenze)
     if (empty($username_or_email) || empty($password)) {
-        header("Location: ../login.php?Errorcode=1");
+        header("Location: ../login.php?MessageCode=1");
     } else {
         try {
             if (check_admin_privileges($username_or_email, $password) == true) {
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     save_username_session($UsernameAuth['username'], $UsernameAuth['nome'], $UsernameAuth['cognome']);
                     header("Location: ../prenotazione.php");
                 } else {
-                    header("Location: ../login.php?Errorcode=1");
+                    header("Location: ../login.php?MessageCode=1");
                     exit();
                 }
             }

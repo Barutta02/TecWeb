@@ -85,6 +85,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    margin: auto;
 }
 
 header {
@@ -153,14 +154,14 @@ h2.logo {
     letter-spacing: .28em;
 }
 
-p.logo {
+footer .logo {
     font-size: 2em;
     text-transform: uppercase;
     color: var(--logoTxtColor);
     font-weight: bold;
 }
 
-p.logo2 {
+footer .logo2 {
     font-size: 1.5em;
     letter-spacing: .28em;
     font-weight: bold;
@@ -1409,8 +1410,8 @@ label {
 /* Stili per schermi di larghezza superiore a 1024 */
 
 @media only screen and (min-width: 1024px) {
-    main {
-        margin: auto;
+    body {
+        max-width: 1024px;
     }
 
     .homeImage {
