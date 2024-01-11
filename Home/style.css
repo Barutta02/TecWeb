@@ -621,6 +621,11 @@ fieldset ul li {
     text-align: center;
 }
 
+#allergeni fieldset {
+    padding: 0;
+    margin: 0;
+}
+
 /* Nascondi la checkbox predefinita */
 
 #allergeni input[type="checkbox"] {
