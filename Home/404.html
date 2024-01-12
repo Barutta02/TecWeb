@@ -19,15 +19,11 @@
 
 
     <nav id="menu" class="menu" aria-label="Navigazione Principale">
-      <form id="toggleMenuForm">
-        <div>
-          <input type="checkbox" id="mobile-menu-toggle" >
-          <label for="mobile-menu-toggle" class="menu-toggle-label"></label>
-          <ul class="nav-list">
-            <li ><a href="index.php" lang="en">Home</a></li><li ><a href="menuPranzo.php" >Menù pranzo</a></li><li ><a href="menuCena.php" >Menù cena</a></li><li ><a href="chiSiamo.php" >Chi Siamo</a></li><li ><a href="#footerOrganizer" >Contatti</a></li><li class="bigScreenOnly" ><a href="VisualizzaOrdini.php" >Ordini</a></li><li class="bigScreenOnly" ><a href="Prenota.php" >Prenota</a></li><li class="bigScreenOnly" ><a href="prenotazione.php" >Tavolo</a></li><li><a class="userAreaLink" href="esci.php" >Esci</a></li>
-          </ul>
-        </div>
-      </form>
+      <input type="checkbox" id="mobile-menu-toggle" hidden>
+      <label for="mobile-menu-toggle" class="menu-toggle-label" data-toOpenContent="☰ Menù" data-toCloseContent="✕ Chiudi" hidden></label>
+      <ul class="nav-list">
+        <li ><a href="index.php" lang="en">Home</a></li><li ><a href="menuPranzo.php" >Menù pranzo</a></li><li ><a href="menuCena.php" >Menù cena</a></li><li ><a href="chiSiamo.php" >Chi Siamo</a></li><li ><a href="#footerOrganizer" >Contatti</a></li><li class="bigScreenOnly" ><a href="VisualizzaOrdini.php" >Ordini</a></li><li class="bigScreenOnly" ><a href="Prenota.php" >Prenota</a></li><li class="bigScreenOnly" ><a href="prenotazione.php" >Tavolo</a></li><li><a class="userAreaLink" href="esci.php" >Esci</a></li>
+      </ul>
     </nav>
     <nav id="breadcrumb" aria-label="Percorso"><p>Ti trovi in: Un luogo in cui non dovresti trovarti</p> </nav>
 
@@ -40,9 +36,9 @@
     "ogni errore è solo un extra in più sulla strada verso la perfezione!"</p>
 </section>
 </main>
-    <nav id="bottomMenu" class="onlyMobile bottomMenu">
+    <nav id="bottomMenu" class="onlyMobile bottomMenu" aria-label="Navigazione Mobile">
   <ul class="flexable">
-    <li><a href="VisualizzaOrdini.php" ><i class="ListIcon Ordini"></i><p>Ordini</p></a></li><li><a href="Prenota.php" ><i class="ListIcon Prenota"></i><p>Prenota</p></a></li><li><a href="prenotazione.php" ><i class="ListIcon Tavolo"></i><p>Tavolo</p></a></li>
+    <li><a href="VisualizzaOrdini.php" ><i class="ListIcon Ordini"></i><p>I miei Ordini</p></a></li><li><a href="Prenota.php" ><i class="ListIcon Prenota"></i><p>Prenota</p></a></li><li><a href="prenotazione.php" ><i class="ListIcon Tavolo"></i><p>Tavolo</p></a></li>
   </ul>
 </nav>
 
@@ -70,7 +66,7 @@
       <dd><a href="tel:+3934833240302">348 332 4030 2 </a></dd>
       <dt>Cellulare</dt>
       <dd>
-        <a aria-label="Chiamaci al numero:" href="tel:+3934833240302"
+        <a aria-label="Chiamaci al numero: 348 332 4030 2" href="tel:+3934833240302"
           >348 332 4030 2
         </a>
       </dd>
