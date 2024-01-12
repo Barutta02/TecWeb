@@ -11,17 +11,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             require_once '../Utility/utilities.php';
             PrenotazioneDAO::updatePrenotazione($username, $_SESSION['data_prenotazione_inCorso'], sanitize_txt($indicazioniAggiuntive));
             header("Location: ../prenotazione.php?MessageCode=2");
+            exit();
         } else {
-            echo "TODO";
+            header("Location: ../prenotazione.php?MessageCode=9");
+            exit();
         }
     } catch (Throwable $th) {
-        header('Location: 500.html');
+        header('Location: ../500.html');
         exit();
     }
 
 } else {
     // Se qualcuno tenta di accedere direttamente a questo file senza inviare il modulo, reindirizza alla pagina di registrazione
-    header("Location: signIn.php");
+    header("Location: ../signIn.php");
     exit();
 }
 
