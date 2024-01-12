@@ -159,6 +159,7 @@ footer .logo {
     text-transform: uppercase;
     color: var(--logoTxtColor);
     font-weight: bold;
+    letter-spacing: 0;
 }
 
 footer .logo2 {
