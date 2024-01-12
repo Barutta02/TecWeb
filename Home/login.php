@@ -22,8 +22,8 @@ $breadcrumbs = '<p>Ti trovi in:  <a href="index.php"><span lang="en">Home</span>
 $content = $loginSectionhtml;
 $errorList = array();
 
-if (isset($_GET['Errorcode'])) {
-    switch ($_GET['Errorcode']) {
+if (isset($_GET['MessageCode'])) {
+    switch ($_GET['MessageCode']) {
         case 1:
             array_push($errorList, "<p class='warning'>Utente non trovato</p> ");
             break;
