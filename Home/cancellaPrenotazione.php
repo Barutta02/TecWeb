@@ -49,7 +49,7 @@ if (
     $content = str_replace('{{timestamp_prenotazione}}', $_POST['timestamp_prenotazione'], $content);
     $content = str_replace('{{username_utente}}', $_POST['username_utente'], $content);
 
-    echo render_page($template, $title, $pageID, $breadcrumbs, 'Cancella prenotazione', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
+    echo render_page($template, $title, $pageID, $breadcrumbs, 'Cancella prenotazione', 'Elimina facilmente la tua prenotazione al sushi Brombeis attraverso il sito ufficiale del ristorante.', $content, '');
 
 } else {
     # Qualcuno sta cercando di accedere a questa pagina in un modo non previsto, redirigo alla pagina Home

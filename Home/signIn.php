@@ -21,5 +21,5 @@ $content = $signInSectionhtml;
 
 
 
-echo render_page($template, $title, $pageID, $breadcrumbs, 'Registrazione per ordinare Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, 'setSignInChecks();addOnBlur();');
+echo render_page($template, $title, $pageID, $breadcrumbs, 'Registrazione per ordinare Sushi Brombeis, Ristorante sushi via brombeis', 'Accedi al sito ufficiale del miglior ristorante di sushi a Napoli in via Brombeis e poi vieni a trovarci!', $content, 'setSignInChecks();addOnBlur();');
 ?>
