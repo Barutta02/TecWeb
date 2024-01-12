@@ -20,7 +20,6 @@ class DBAccess
         self::$connection = new mysqli(self::$HOST_DB, self::$USERNAME, self::$PASSWORD, self::$DATABASE_NAME, self::$PORT);
 
         if (mysqli_connect_errno()) {
-            #echo getDBError();
             return false;
         } else {
             return true;

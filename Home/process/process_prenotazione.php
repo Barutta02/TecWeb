@@ -12,7 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         foreach ($_POST as $key => $value) {
             // Verifica se il campo inizia con "quantita_"
             if (strpos($key, 'quantita_') === 0) {
-                // echo ($_SESSION['data_prenotazione_inCorso']);
                 $id = intval(str_replace('_', ' ', substr($key, 9)));
                 $quantita = intval($value);
                 if ($quantita > 0) {

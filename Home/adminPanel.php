@@ -24,7 +24,7 @@ try {
 
 $pageID = 'AdminPanelBody';
 $title = "Pannello ristoratore - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span> </a> >> <a href="login.php"> Area utente</a> >> Pannello amministratore</p> ';
+$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span> </a> &gt;&gt; <a href="login.php"> Area utente</a> &gt;&gt; Pannello amministratore</p> ';
 
 $content = '<section id="piattiDaFare" class="containerPlatesViewer">
 <h2> Piatti da fare </h2>

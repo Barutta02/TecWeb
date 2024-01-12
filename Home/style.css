@@ -159,6 +159,7 @@ footer .logo {
     text-transform: uppercase;
     color: var(--logoTxtColor);
     font-weight: bold;
+    letter-spacing: 0;
 }
 
 footer .logo2 {
@@ -485,7 +486,7 @@ a.tikTokLogo::before {
     font-size: 1em;
 }
 
-/******************* HOME >> SIGNIN **********************/
+/******************* HOME &gt;&gt; SIGNIN **********************/
 #signInButton {
     font-size: 1.5em;
 }
