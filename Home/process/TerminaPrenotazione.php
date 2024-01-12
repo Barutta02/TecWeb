@@ -1,13 +1,10 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Recupera i dati dalla richiesta POST
     $username = isset($_POST['username']) ? $_POST['username'] : null;
     $dataOra = isset($_POST['dataOra']) ? $_POST['dataOra'] : null;
-    // Validazione dei dati (puoi implementare ulteriori controlli a seconda delle tue esigenze)
 
     if ($username !== null && $dataOra !== null) {
-        // Connessione al database
         try {
             require_once '../DAO/PrenotazioneDAO.php';
             PrenotazioneDAO::TerminaPrenotazione($username, $dataOra);
