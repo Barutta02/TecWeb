@@ -104,6 +104,9 @@ if (isset($_GET['MessageCode'])) {
         case 8:
             array_push($errorList, "<p class='warning'>La tua prenotazione è stata cancellata dal proprietario del ristorante!</p> ");
             break;
+        case 9:
+            array_push($errorList, "<p class='good'>Abbiamo recuperato la tua prenotazione ancora attiva!</p> ");
+            break;
         default:
             array_push($errorList, "<p class='warning'>Errore sconosciuto!</p> ");
     }
