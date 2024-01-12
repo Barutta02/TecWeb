@@ -16,7 +16,7 @@ try {
 
 $pageID = 'signInBody';
 $title = "SignIn - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in:  <a href="index.php"><span lang="en">Home</span></a>  >> <span lang="en">SignIn</span></p> ';
+$breadcrumbs = '<p>Ti trovi in:  <a href="index.php"><span lang="en">Home</span></a>  &gt;&gt; <span lang="en">SignIn</span></p> ';
 $content = $signInSectionhtml;
 
 $errorList = array();

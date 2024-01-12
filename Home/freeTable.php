@@ -20,7 +20,7 @@ try {
 
 $pageID = 'GestioneTavoli';
 $title = "Gestione tavoli - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> >> <a href="login.php">Area utente</a> >> Gestione tavoli</p> ';
+$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> &gt;&gt; <a href="login.php">Area utente</a> &gt;&gt; Gestione tavoli</p> ';
 
 #Msg error (temporaneo, converite alla stessa tipologia di errore dell'area utente)
 $status = isset($_GET['StatusCode']) ? $_GET['StatusCode'] : null;

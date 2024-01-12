@@ -37,7 +37,7 @@ if (
 
     $pageID = 'cancellaPrenotazione';
     $title = "Cancella prenotazione - Sushi Brombeis";
-    $breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span> </a> >> <a href="login.php"> Area utente</a> >> <a href="freeTable.php">Gestione tavoli</a> >> Eliminazione Prenotazione</p>';
+    $breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span> </a> &gt;&gt; <a href="login.php"> Area utente</a> &gt;&gt; <a href="freeTable.php">Gestione tavoli</a> &gt;&gt; Eliminazione Prenotazione</p>';
 
     try {
         $content = getTemplate('Layouts/confermaEliminazione.html');

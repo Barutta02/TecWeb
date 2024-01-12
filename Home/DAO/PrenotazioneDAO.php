@@ -23,9 +23,7 @@ class PrenotazioneDAO
                 VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = DBAccess::get_connection_state()->prepare($sql);
             $stmt->bind_param("ssissi", $username, $dataPrenotazione, $n_persone, $indicazioniAggiuntive, $is_inCorso, $n_tavolo);
-            if ($stmt->execute()) {
-                echo "Prenotazione inserita con successo";
-            } else {
+            if (!$stmt->execute()) {
                 throw new Throwable("Errore nell'inserimento della prenotazione: " . $stmt->error);
             }
         } finally {
