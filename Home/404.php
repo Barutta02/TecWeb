@@ -1,6 +1,10 @@
 <?php
-
-require_once "Utility/utilities.php";
+try {
+    require_once "Utility/utilities.php";
+} catch (Throwable $th) {
+    header('Location: 500.html');
+    exit();
+}
 
 //TEMPLATE comune
 $templatePath = 'Layouts/main.html';
