@@ -107,6 +107,9 @@ if (isset($_GET['MessageCode'])) {
         case 9:
             array_push($errorList, "<p class='warning'>A causa di un errore non è possibile modificare la prenotazione.</p> ");
             break;
+        case 10:
+            array_push($errorList, "<p class='good'>Abbiamo recuperato la tua prenotazione ancora attiva!</p> ");
+            break;
         default:
             array_push($errorList, "<p class='warning'>Errore sconosciuto!</p> ");
     }

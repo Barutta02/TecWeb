@@ -1,6 +1,7 @@
 <?php
 try {
     require_once '../DAO/UserDAO.php';
+    require_once '../DAO/PrenotazioneDAO.php';
     require_once '../Utility/utilities.php';
 } catch (Throwable $th) {
     header('Location: ../500.html');
@@ -56,6 +57,18 @@ function save_username_session($username, $name, $surname)
     $_SESSION['username'] = $username;
     $_SESSION['name'] = $name;
     $_SESSION['surname'] = $surname;
-
+    hasAlreadyPrenotate($_SESSION['username']);
 }
+
+//COntrolla che non ci sia una prenotazione dell'utente attiva e in caso la recupera
+function hasAlreadyPrenotate($username)
+{
+    $prenotation = PrenotazioneDAO::getActivePrenotationByUsername($username);
+    if (!empty($prenotation)) {
+        $_SESSION['data_prenotazione_inCorso'] = $prenotation['data_ora'];
+        header("Location: ../prenotazione.php?MessageCode=10");
+        exit();
+    }
+}
+
 ?>

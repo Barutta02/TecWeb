@@ -98,7 +98,24 @@ class PrenotazioneDAO
             DBAccess::close_connection();
         }
     }
-
+    public static function getActivePrenotationByUsername($username)
+    {
+        try {
+            DBAccess::open_connection();
+            $query = "SELECT * from prenotazione where utente = ? and stato = 'InCorso' order by data_ora desc limit 1";
+            $stmt = DBAccess::get_connection_state()->prepare($query);
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $prenotazione = $result->fetch_assoc();
+            return $prenotazione;
+        } finally {
+            if (isset($stmt)) {
+                $stmt->close();
+            }
+            DBAccess::close_connection();
+        }
+    }
 
     public static function TerminaPrenotazione($username, $dataPrenotazione)
     {
