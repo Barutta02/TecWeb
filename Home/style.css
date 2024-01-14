@@ -697,6 +697,7 @@ fieldset ul li {
 
 .inputQuantityLabelInpt {
     float: right;
+    text-align: right;
 }
 
 
