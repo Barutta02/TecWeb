@@ -122,17 +122,17 @@ header {
 
 .warning::before {
     background-position-y: 7px;
-    background-image: url(assets/icon/warning.png);
+    background-image: url(assets/icon/warning.webp);
 }
 
 .good::before {
-    background-image: url(assets/icon/check.png);
+    background-image: url(assets/icon/check.webp);
 }
 
 .info::before {
     width: 25px;
     height: 25px;
-    background-image: url(assets/icon/info.png);
+    background-image: url(assets/icon/info.webp);
 }
 
 /**
@@ -228,34 +228,34 @@ nav.menu ul li a {
 }
 
 .CrostaceiImage {
-    background: url(assets/icon/Crostacei.png) center center/contain no-repeat;
+    background: url(assets/icon/Crostacei.webp) center center/contain no-repeat;
     /* Utilizza il percorso dell'immagine da data-allergene */
 
 }
 
 .PesceImage {
-    background: url(assets/icon/fish.png) center center/contain no-repeat;
+    background: url(assets/icon/fish.webp) center center/contain no-repeat;
     /* Utilizza il percorso dell'immagine da data-allergene */
 
 }
 
 .SedanoImage {
-    background: url(assets/icon/celery.png) center center/contain no-repeat;
+    background: url(assets/icon/celery.webp) center center/contain no-repeat;
     /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
 .SenapeImage {
-    background: url(assets/icon/mustard.png) center center/contain no-repeat;
+    background: url(assets/icon/mustard.webp) center center/contain no-repeat;
     /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
 .SoiaImage {
-    background: url(assets/icon/soy.png) center center/contain no-repeat;
+    background: url(assets/icon/soy.webp) center center/contain no-repeat;
     /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
 .UovaImage {
-    background: url(assets/icon/eggs.png) center center/contain no-repeat;
+    background: url(assets/icon/eggs.webp) center center/contain no-repeat;
     /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
@@ -427,15 +427,15 @@ a.socialLogo {
 }
 
 a.instagramLogo::before {
-    background-image: url(assets/icon/instagram.png);
+    background-image: url(assets/icon/instagram.webp);
 }
 
 a.facebookLogo::before {
-    background-image: url(assets/icon/facebook-app-symbol.png);
+    background-image: url(assets/icon/facebook-app-symbol.webp);
 }
 
 a.tikTokLogo::before {
-    background-image: url(assets/icon/tik-tok.png);
+    background-image: url(assets/icon/tik-tok.webp);
 }
 
 /******************* SITO: MESSAGGI *********************/
@@ -517,11 +517,11 @@ dl.ListinoPrezzi div {
 }
 
 .Cena {
-    background-image: url(assets/Images/moon.PNG);
+    background-image: url(assets/Images/moon.webp);
 }
 
 .Pranzo {
-    background-image: url(assets/Images/sun.PNG);
+    background-image: url(assets/Images/sun.webp);
 }
 
 .bold {
@@ -758,7 +758,7 @@ textarea {
 /*******************HOME************************/
 
 .homeImage {
-    background-image: url(assets/Images/japan.jpg);
+    background-image: url(assets/Images/japan.webp);
     width: 100%;
     height: 80vh;
     background-size: cover;
@@ -839,17 +839,17 @@ textarea {
 }
 
 #restaurantImage {
-    background-image: url(assets/Images/restoraunt.jpg);
+    background-image: url(assets/Images/restoraunt.webp);
     position: relative;
     top: -3em;
 }
 
 #imageDescription {
-    background-image: url(assets/Images/home_image.jpg);
+    background-image: url(assets/Images/home_image.webp);
 }
 
 #qualityImage {
-    background-image: url(assets/Images/quality.jpg);
+    background-image: url(assets/Images/quality.webp);
 
 }
 
@@ -1226,17 +1226,17 @@ label {
 }
 
 .bottomMenu .ImieiOrdini {
-    background-image: url('assets/icon/list.png');
+    background-image: url('assets/icon/list.webp');
 
 }
 
 .bottomMenu .Ordina {
-    background-image: url('assets/icon/sushi2.png');
+    background-image: url('assets/icon/sushi2.webp');
 
 }
 
 .bottomMenu .Prenota {
-    background-image: url('assets/icon/management.png');
+    background-image: url('assets/icon/management.webp');
 
 }
 
