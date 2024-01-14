@@ -25,10 +25,8 @@ class OrdineDAO
                 VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = DBAccess::get_connection_state()->prepare($sql);
             $stmt->bind_param("isssii", $idPiatto, $username, $dataOraOrdine, $dataPrenotazione, $quantita, $consegnato);
-            if ($stmt->execute()) {
-                echo "Ordine inserito con successo";
-            } else {
-                echo "Errore nell'inserimento dell'ordine: " . $stmt->error;
+            if (!$stmt->execute()) {
+                throw new Throwable('Error in query execution: ' . DBAccess::get_connection_state()->error);
             }
         } finally {
             DBAccess::close_connection();

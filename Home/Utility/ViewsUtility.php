@@ -89,7 +89,7 @@ function get_all_formatted_plates_Menu($categoria)
             }
             $htmlContent .= '</ul>';
         } else {
-            $htmlContent .= "<p>No piatti found.</p>";
+            $htmlContent .= "<p>Nessun piatto trovato</p>";
         }
         return $htmlContent;
     } catch (Throwable $th) {
@@ -151,7 +151,7 @@ function get_prenotation_form_menu($process_php_action)
 
             }
         } else {
-            $content .= "<p>No Categories found.</p>";
+            $content .= "<p>Nessuna categoria trovata!</p>";
         }
 
         $content .= '
@@ -260,7 +260,7 @@ function get_table_avaible()
             }
             $content .= "</ul>";
         } else {
-            $content .= "<p>No table found.</p>";
+            $content .= "<p>Nessun tavolo trovato!</p>";
         }
         return $content;
     } catch (Throwable $th) {
@@ -287,7 +287,7 @@ function get_active_prenotation()
             }
             $content .= "</ul>";
         } else {
-            $content .= "<p>No active prenotation found.</p>";
+            $content .= "<p>Nessuna prenotazione attiva trovata!</p>";
         }
         return $content;
     } catch (Throwable $th) {

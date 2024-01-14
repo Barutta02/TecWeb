@@ -17,7 +17,6 @@ function aggiornaConsegna(button) {
   var idPiatto = button.getAttribute("data-piatto");
   var username = button.getAttribute("data-cliente");
 
-  // Chiamata AJAX
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "process/aggiornaStatoConsegna.php", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

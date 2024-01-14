@@ -6,33 +6,31 @@ try {
     header('Location: ../500.html');
 }
 
-// Verifica se il modulo è stato inviato
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recupera i dati dal modulo
     $username = $_POST["username"];
     $firstname = $_POST["firstname"];
     $lastname = $_POST["lastname"];
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    // Login input checks
-    if(!check_username_format($username)) {
+    // Controlli input sul login
+    if (!check_username_format($username)) {
         header('Location: ../signIn.php?MessageCode=0');
         exit(0);
     }
-    if(!check_firstname_or_lastname_format(($firstname))) {
+    if (!check_firstname_or_lastname_format(($firstname))) {
         header('Location: ../signIn.php?MessageCode=1');
         exit(0);
     }
-    if(!check_firstname_or_lastname_format(($lastname))){
+    if (!check_firstname_or_lastname_format(($lastname))) {
         header('Location: ../signIn.php?MessageCode=2');
         exit(0);
     }
-    if(!check_email_format($email)) {
+    if (!check_email_format($email)) {
         header('Location: ../signIn.php?MessageCode=3');
         exit(0);
     }
-    if(!check_password_format($password)) {
+    if (!check_password_format($password)) {
         header('Location: ../signIn.php?MessageCode=4');
         exit(0);
     }
@@ -45,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit(0);
     }
 
-    //echo "Registrazione avvenuta con successo."; Non serve
     header("Location: ../login.php");
 } else {
     // Se qualcuno tenta di accedere direttamente a questo file senza inviare il modulo, reindirizza alla pagina di registrazione

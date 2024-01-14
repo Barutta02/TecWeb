@@ -22,7 +22,7 @@ try {
 }
 $pageID = 'prenotationId';
 $title = "Prenotazione - Sushi Brombeis";
-$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> >> <a href="login.php">Area utente</a> >> Prenota</p> ';
+$breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> &gt;&gt; <a href="login.php">Area utente</a> &gt;&gt; Prenota</p> ';
 
 if (isset($_SESSION['data_prenotazione_inCorso'])) {
     try {
@@ -105,6 +105,9 @@ if (isset($_GET['MessageCode'])) {
             array_push($errorList, "<p class='warning'>La tua prenotazione è stata cancellata dal proprietario del ristorante!</p> ");
             break;
         case 9:
+            array_push($errorList, "<p class='warning'>A causa di un errore non è possibile modificare la prenotazione.</p> ");
+            break;
+        case 10:
             array_push($errorList, "<p class='good'>Abbiamo recuperato la tua prenotazione ancora attiva!</p> ");
             break;
         default:

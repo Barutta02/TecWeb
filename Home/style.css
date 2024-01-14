@@ -159,6 +159,7 @@ footer .logo {
     text-transform: uppercase;
     color: var(--logoTxtColor);
     font-weight: bold;
+    letter-spacing: 0;
 }
 
 footer .logo2 {
@@ -485,7 +486,7 @@ a.tikTokLogo::before {
     font-size: 1em;
 }
 
-/******************* HOME >> SIGNIN **********************/
+/******************* HOME &gt;&gt; SIGNIN **********************/
 #signInButton {
     font-size: 1.5em;
 }
@@ -696,6 +697,7 @@ fieldset ul li {
 
 .inputQuantityLabelInpt {
     float: right;
+    text-align: right;
 }
 
 
@@ -1409,7 +1411,20 @@ label {
 
 /* Stili per schermi mobile */
 
-@media only screen and (max-width: 480px) {}
+@media only screen and (max-width: 480px) {
+    .menuItem {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .infoItem {
+        width: 100%;
+    }
+
+    .button.azioneStandard {
+        float: right;
+    }
+}
 
 
 /* Stili per schermi di larghezza superiore a 1024 */

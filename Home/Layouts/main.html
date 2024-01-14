@@ -14,22 +14,18 @@
   <body id="{{pageID}}" onload="{{onload}}">
     <a href="#content" class="srOnly">Vai al contenuto</a> {{header}}
 
-    <nav id="menu" class="menu">
+    <nav id="menu" class="menu" aria-label="Navigazione Principale">
       <!-- TODO aria-checked="{{state}} ? dovrebbe funzionare con le freccette, dovrebbe essere già corretto -->
-      <form id="toggleMenuForm">
-        <div>
-          <input type="checkbox" id="mobile-menu-toggle" >
-          <label for="mobile-menu-toggle" class="menu-toggle-label" data-toOpenContent="☰ Menu" data-toCloseContent="✕ Chiudi"></label>
-          <ul class="nav-list">
-            {{menu}}
-          </ul>
-        </div>
-      </form>
+      <input type="checkbox" id="mobile-menu-toggle" hidden>
+      <label for="mobile-menu-toggle" class="menu-toggle-label" data-toOpenContent="☰ Menù" data-toCloseContent="✕ Chiudi" hidden></label>
+      <ul class="nav-list">
+        {{menu}}
+      </ul>
     </nav>
-    <nav id="breadcrumb" >{{breadcrumbs}}</nav>
+    <nav id="breadcrumb" aria-label="Percorso">{{breadcrumbs}}</nav>
 
     <main id="content">{{content}}</main>
-    <aside id="bottomMenu" class="onlyMobile">{{BottomMenu}}</aside>
+   {{BottomMenu}}
 
     {{footer}}
 

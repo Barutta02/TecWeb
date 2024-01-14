@@ -8,13 +8,10 @@ try {
     exit();
 }
 
-// Verifica se il modulo è stato inviato
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recupera i dati dal modulo
     $username_or_email = $_POST["username_or_email"];
     $password = $_POST["password"];
 
-    // Esempio di verifica delle credenziali (puoi personalizzarla in base alle tue esigenze)
     if (empty($username_or_email) || empty($password)) {
         header("Location: ../login.php?MessageCode=1");
     } else {
@@ -24,11 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 session_start();
                 $_SESSION['adminLogged'] = 1;
                 header("Location: ../adminPanel.php");
-                exit(); // Ensure that no further code is executed after the redirect
+                exit();
             }
 
-            // Esempio di autenticazione (controlla se l'utente è registrato)
-            // Questo è un esempio molto basico e insicuro. In un'applicazione del mondo reale, dovresti utilizzare un sistema di autenticazione sicuro.
+            $userDAO = new UserDAO();
             $emailAuth = UserDAO::getUserByEmailPassword(sanitize_txt($username_or_email), sanitize_txt($password));
             if (!empty($emailAuth)) {
                 session_destroy();
@@ -58,7 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 function save_username_session($username, $name, $surname)
 {
     session_start();
-    // Save the username in the session
     $_SESSION['username'] = $username;
     $_SESSION['name'] = $name;
     $_SESSION['surname'] = $surname;
@@ -71,7 +66,7 @@ function hasAlreadyPrenotate($username)
     $prenotation = PrenotazioneDAO::getActivePrenotationByUsername($username);
     if (!empty($prenotation)) {
         $_SESSION['data_prenotazione_inCorso'] = $prenotation['data_ora'];
-        header("Location: ../prenotazione.php?MessageCode=9");
+        header("Location: ../prenotazione.php?MessageCode=10");
         exit();
     }
 }
