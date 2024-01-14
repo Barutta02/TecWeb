@@ -6,16 +6,14 @@ try {
     header('Location: ../500.html');
 }
 
-// Verifica se il modulo è stato inviato
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recupera i dati dal modulo
     $username = $_POST["username"];
     $firstname = $_POST["firstname"];
     $lastname = $_POST["lastname"];
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    // Login input checks
+    // Controlli input sul login
     if (!check_username_format($username)) {
         header('Location: ../signIn.php?MessageCode=0');
         exit(0);

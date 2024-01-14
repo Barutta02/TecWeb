@@ -22,13 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     } else {
         // Messaggio di errore se i dati non sono validi
-        #??????
-        echo "Errore: Dati non validi";
+        header('Location: ../500.html');
+        exit();
     }
 } else {
     // Messaggio di errore se la richiesta non è di tipo POST
-    #????
-    echo "Errore: Richiesta non valida";
+    header("Location: ../signIn.php");
+    exit();
 }
 
 ?>
