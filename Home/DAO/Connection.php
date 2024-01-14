@@ -5,7 +5,6 @@ class DBAccess
 
     private static $HOST_DB = "127.0.0.1";
     private static $DATABASE_NAME = "sushirestaurant";
-    #private static $DATABASE_NAME = "test";#dugoalberto
     private static $USERNAME = "root";
     private static $PASSWORD = "";
     private static $PORT = '3306';
@@ -20,7 +19,6 @@ class DBAccess
         self::$connection = new mysqli(self::$HOST_DB, self::$USERNAME, self::$PASSWORD, self::$DATABASE_NAME, self::$PORT);
 
         if (mysqli_connect_errno()) {
-            #echo getDBError();
             return false;
         } else {
             return true;
