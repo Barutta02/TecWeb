@@ -1416,6 +1416,14 @@ label {
         grid-template-columns: 1fr;
         justify-items: center;
     }
+
+    .infoItem {
+        width: 100%;
+    }
+
+    .button.azioneStandard {
+        float: right;
+    }
 }
 
 
