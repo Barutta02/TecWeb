@@ -1411,7 +1411,12 @@ label {
 
 /* Stili per schermi mobile */
 
-@media only screen and (max-width: 480px) {}
+@media only screen and (max-width: 480px) {
+    .menuItem {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+}
 
 
 /* Stili per schermi di larghezza superiore a 1024 */
