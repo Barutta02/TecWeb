@@ -93,7 +93,7 @@ function get_menu_Login()
 {
     $menu = '';
     $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "#footerOrganizer", "VisualizzaOrdini.php", "Prenota.php", "prenotazione.php"];
-    $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "I miei Ordini", "Ordina", "Prenota"];
+    $names = ["Home", "Menù pranzo", "Menù cena", "Chi Siamo", "Contatti", "I miei Ordini", "Ordina", "Prenota"];
     $langs = ["en", "", "", "", "", "", "", ""];
     $nLinks = count($links);
     $currentPage = str_replace(ROOT_FOLDER, "", $_SERVER['REQUEST_URI']);
@@ -122,7 +122,7 @@ function get_menu_NoLogin()
 {
     $menu = '';
     $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "#footerOrganizer", "login.php"];
-    $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Area utente"];
+    $names = ["Home", "Menù pranzo", "Menù cena", "Chi Siamo", "Contatti", "Area utente"];
     $langs = ["en", "", "", "", "", ""];
     $nLinks = count($links);
     $currentPage = str_replace(ROOT_FOLDER, "", $_SERVER['REQUEST_URI']);
@@ -162,7 +162,7 @@ function get_menu_ext_Admin()
 {
     $menu = '';
     $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "#footerOrganizer", "adminPanel.php"];
-    $names = ["Home", "Menu pranzo", "Menu cena", "Chi Siamo", "Contatti", "Pannello amministratore"];
+    $names = ["Home", "Menù pranzo", "Menù cena", "Chi Siamo", "Contatti", "Pannello amministratore"];
     $langs = ["en", "", "", "", "", ""];
     $nLinks = count($links);
     $currentPage = str_replace(ROOT_FOLDER, "", $_SERVER['REQUEST_URI']);
