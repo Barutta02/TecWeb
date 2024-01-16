@@ -1254,7 +1254,6 @@ label {
     list-style: none;
     /* Rimuove i punti elenco predefiniti */
     font-size: 12px;
-    color: var(--flagColor);
     display: grid;
     grid-template-rows: auto auto;
     place-items: center;
