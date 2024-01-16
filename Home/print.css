@@ -14,10 +14,11 @@
     --surface-color: #fff;
     --curve: 40;
     --warningMessage: #ff6758;
-    --goodEndingMessage: #07a61f ;
+    --goodEndingMessage: #07a61f;
 }
 
-html, body {
+html,
+body {
     font-size: 11pt;
     font-family: "Times New Roman", Time, sans-serif;
     margin: auto;
@@ -33,18 +34,21 @@ a:visited {
     color: var(--visitedLinkColor);
 }
 
-a[href^="tel"]{
+a[href^="tel"] {
     text-decoration: none;
     color: unset;
 }
 
-a:not([href^="tel"]):link:after, 
-a:not([href^="tel"]):visited:after{
+a:not([href^="tel"]):link:after,
+a:not([href^="tel"]):visited:after {
     content: " [" attr(href) "] ";
-    font-size:90%;
+    font-size: 90%;
 }
 
-#menu, #bottomMenu, .srOnly, .onlyMobile{
+#menu,
+#bottomMenu,
+.srOnly,
+.onlyMobile {
     display: none;
 }
 
@@ -74,7 +78,7 @@ footer h3.logo {
     font-size: 24px;
 }
 
-.flexable{
+.flexable {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -91,7 +95,7 @@ footer {
     padding-bottom: 10px;
 }
 
-footer dt{
+footer dt {
     display: inline-block;
     font-weight: bold;
     color: var(--LegendTxtColor);
@@ -99,16 +103,17 @@ footer dt{
     padding-top: 2px;
 }
 
-footer div, footer dl{
+footer div,
+footer dl {
     min-width: 200px;
     text-align: left;
 }
 
-#footerDesc{
+#footerDesc {
     max-width: 300px;
 }
 
-#footerRights{
+#footerRights {
     border-top: 1px solid var(--borderColor);
     padding: 10px;
     text-align: center;
@@ -124,7 +129,7 @@ body {
     min-height: 100vh;
 }
 
-h2{
+h2 {
     margin-bottom: 10px;
     margin-top: 10px;
 }
@@ -163,38 +168,41 @@ input[type="submit"] {
 
 /*******************404*********************/
 
-#Section404, #Section500{
+#Section404,
+#Section500 {
     text-align: center;
 }
 
-#Section404 p, #Section500 p{
+#Section404 p,
+#Section500 p {
     margin: auto;
     width: 450px;
 }
 
-#nigiriTriste{
+#nigiriTriste {
     width: 300px;
     height: auto;
 }
 
-#nigiriKO{
+#nigiriKO {
     width: 300px;
     height: auto;
 }
 
 /*******************MENU*********************/
 
-#downloadMenu{
+#downloadMenu {
     display: none;
 }
 
-.downloadSize{
+.downloadSize {
     display: none;
 }
 
-.prices{
+.prices {
     text-align: center;
 }
+
 .containerPlatesViewer h2,
 .prices h2 {
     color: var(--alternative_text);
@@ -212,7 +220,7 @@ input[type="submit"] {
     margin-bottom: 5px;
 }
 
-.menuItem dl{
+.menuItem dl {
     padding-left: 5px;
 
 }
@@ -227,7 +235,7 @@ input[type="submit"] {
     padding-left: 4%;
 }
 
-.allergeniPlateList{
+.allergeniPlateList {
     list-style-type: none;
 }
 
@@ -239,6 +247,7 @@ input[type="submit"] {
 
 .imageMenuItem {
     max-width: 125px;
+    height: 125px;
     height: auto;
     display: block;
     border: none;
@@ -246,6 +255,13 @@ input[type="submit"] {
     border-radius: 8px;
     margin: 0;
     padding: 0;
+}
+
+.imageMenuItem source,
+.imageMenuItem img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .containerPlatesViewer {
@@ -261,7 +277,7 @@ input[type="submit"] {
 
 dd.ingradienti {
     color: var(--flagColor);
-    padding:  4px 0 4px;
+    padding: 4px 0 4px;
 }
 
 dl.ListinoPrezzi {
@@ -289,14 +305,15 @@ dl.ListinoPrezzi {
     list-style: none;
     margin: 10px;
     justify-content: space-around;
-    
+
 }
-#chiSiamoSection h2{
+
+#chiSiamoSection h2 {
     padding: 5px;
     text-align: center;
 }
 
-.componentList li{
+.componentList li {
     height: 350px;
     background: #fff;
     border-radius: calc(var(--curve) * 1px);
@@ -308,91 +325,93 @@ dl.ListinoPrezzi {
     grid-template-columns: repeat(auto-fit, 300px);
     padding: 0;
     list-style-type: none;
-  }
-  
-  .card {
+}
+
+.card {
     position: relative;
     display: block;
-    height: 100%;  
+    height: 100%;
     border-radius: calc(var(--curve) * 1px);
     border: 1px solid black;
     overflow: hidden;
     text-decoration: none;
     padding: 0;
-  }
-  
-  .card__image {      
+}
+
+.card__image {
     min-height: 250px;
     min-width: 250px;
     max-width: 250px;
-  }
-  
-  .card__overlay {
+}
+
+.card__overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 1;      
-    border-radius:calc(var(--curve) * 1px) 0 0 0;    
-    background-color: var(--surface-color);      
-  }
-  
-  .card__header {
+    z-index: 1;
+    border-radius: calc(var(--curve) * 1px) 0 0 0;
+    background-color: var(--surface-color);
+}
+
+.card__header {
     position: relative;
     display: flex;
     align-items: center;
     gap: 20px;
     padding: 10px;
-    border-top: 1px solid black;  
+    border-top: 1px solid black;
     background-color: var(--surface-color);
-  }
-  
-  .card__arc {
+}
+
+.card__arc {
     width: 80px;
     height: 80px;
     position: absolute;
     bottom: 100%;
-    right: 0;      
+    right: 0;
     z-index: 1;
-  }
-  
-  .card__arc path {
+}
+
+.card__arc path {
     fill: var(--surface-color);
-  }       
-  
-  .card__thumb {
+}
+
+.card__thumb {
     width: 50px;
-    height: 50px;      
-    border-radius: 50%;      
-  }
-  
-  .card__title {
+    height: 50px;
+    border-radius: 50%;
+}
+
+.card__title {
     font-size: 14px;
     margin: 0 0 3px;
     color: #6A515E;
-  }
-  
-  .card__tagline {
+}
+
+.card__tagline {
     display: block;
     margin: 10px 0;
-    font-size: 12px; 
-    color: #D7BDCA;  
-  }
-  
-  .card__status {
     font-size: 12px;
     color: #D7BDCA;
-  }
-  
-  .card__description {
+}
+
+.card__status {
+    font-size: 12px;
+    color: #D7BDCA;
+}
+
+.card__description {
     padding: 0 20px 20px;
     margin: 0;
     color: #D7BDCA;
     overflow: hidden;
-  }    
+}
 
-  /*******************login signin prenotazione *********************/
-#login, #signIn, #prenotazione{
+/*******************login signin prenotazione *********************/
+#login,
+#signIn,
+#prenotazione {
     text-align: center;
     padding: 10px;
 }
@@ -405,7 +424,7 @@ dl.ListinoPrezzi {
 
 #signIn h2,
 #login h2,
-#prenotazione h2{
+#prenotazione h2 {
     color: var(--alternative_text);
     margin: 15px;
 }
@@ -423,7 +442,7 @@ fieldset ul li {
 #signIn ul,
 #login ul,
 #signIn li,
-#login li  {
+#login li {
     text-align: right;
     width: auto;
     padding: 5px;
@@ -449,11 +468,11 @@ input {
     border: none;
 }
 
-label[for="indicazioniAggiuntive"]{
+label[for="indicazioniAggiuntive"] {
     display: list-item;
 }
 
-textarea{
+textarea {
     margin-top: 4px;
     width: fit-content;
     border: none;
@@ -511,16 +530,16 @@ fieldset legend {
 }
 
 /************warning e good*************/
-.warning{
+.warning {
     color: var(--warningMessage);
 }
 
-.good{
+.good {
     color: var(--goodEndingMessage);
 }
 
 /************prenota*************/
-#allergeni{
+#allergeni {
     padding: 5px;
 }
 
@@ -535,14 +554,16 @@ fieldset legend {
 }
 
 /*ALLERGENI*/
-.menuItem .allergeneImage{
+.menuItem .allergeneImage {
     margin: 0;
 }
 
-.allergeniPlateList , .allergeniPlateList + dd{
-   
+.allergeniPlateList,
+.allergeniPlateList+dd {
+
     display: inline-block;
 }
+
 .allergeneImage::after {
     position: relative;
     display: inline-block;
@@ -558,22 +579,25 @@ fieldset legend {
     width: 350px;
     display: inline;
 }
+
 #SezioneGestionePrenotazioni h2,
-#SezioneGestioneTavoli h2{
+#SezioneGestioneTavoli h2 {
     padding: 5px;
     text-align: center;
 }
-.tableList, .ActivePrenotationList{
+
+.tableList,
+.ActivePrenotationList {
     list-style-type: none;
 }
 
-.tableList li{
+.tableList li {
     padding: 10px;
     text-align: center;
 }
 
 .ActivePrenotationList li {
-    margin-top: 2px ;
+    margin-top: 2px;
     margin-bottom: 10px;
 }
 
