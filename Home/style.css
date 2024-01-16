@@ -344,7 +344,7 @@ nav.menu ul li a {
 
 .imageMenuItem {
     max-width: 125px;
-    height: auto;
+    height: 125px;
     display: block;
     border: none;
     /*vertical-align: middle; Non funziona se l'elemento è un blocco*/
@@ -352,6 +352,13 @@ nav.menu ul li a {
     border-radius: 8px;
     margin: 0;
     padding: 0;
+}
+
+.imageMenuItem source,
+.imageMenuItem img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 
