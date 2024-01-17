@@ -119,6 +119,10 @@ footer dl {
     text-align: center;
 }
 
+.valid {
+    display: none;
+}
+
 main {
     margin: auto;
 }

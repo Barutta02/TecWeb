@@ -415,6 +415,18 @@ footer div {
     max-width: 300px;
 }
 
+.valid {
+    display: inline;
+    width: 60px;
+    max-height: 25px;
+}
+
+#footerRights,
+#adminFooterRights {
+    display: inline;
+
+}
+
 a.socialLogo::before {
     content: "";
     display: inline-block;
