@@ -230,9 +230,14 @@ function setLoginChecks(){
 
 function setPrenotaScript() {
   // Recupera per gli input 
-  const inputs = document.querySelectorAll('input[type="number"]');
-  inputs.forEach(input => {
+  const inputsNum = document.querySelectorAll('input[type="number"]');
+  inputsNum.forEach(input => {
       input.addEventListener('blur', handleSubmitButton);
+  });
+  // Recupera i checkbox
+  const inputsCheck = document.querySelectorAll('input[type="checkbox"]');
+  inputsCheck.forEach(input => {
+    input.addEventListener('change', handleSubmitButton);
   });
   handleSubmitButton();
 }
@@ -240,7 +245,7 @@ function setPrenotaScript() {
 //funzione per ridurre il carico sul server nel caso in cui la prenotazione sia vuota
 function handleSubmitButton() {
   var submitButton = document.getElementById("submitPrenotazione");
-  const inputs = document.querySelectorAll('input[type="number"]');
+  const inputs = document.querySelectorAll('li:not(.hide) input[type="number"]');
   let validPrenotazione = false;
   for (let i = 0; i < inputs.length && !validPrenotazione; i++) {
     if(inputs[i].value>0){
