@@ -20,6 +20,10 @@
         Tavolo:
         <span class="bold afterDuePunti">{{NTavolo}}</span>
       </dd>
+      <dd data-title="Orario">
+        Orario ordinazione:
+        <span class="bold afterDuePunti">{{Ora}}</span>
+      </dd>
     </dl>
     <button
         onclick="aggiornaConsegna(this)"
@@ -27,6 +31,7 @@
         data-dataOra="{{Orario}}"
         data-piatto="{{IDPiatto}}"
         data-cliente="{{Cliente}}"
+        title="Ordine piatto {{IDPiatto}} in quantità {{Quantita}} per il tavolo {{NTavolo}} delle ore {{Ora}}"
         data-onDoneContent=" - Consegnato">
         Fatto
       </button>

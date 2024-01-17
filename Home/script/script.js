@@ -43,32 +43,6 @@ function aggiornaConsegna(button) {
   xhr.send(params);
 }
 
-/* Deprecata, se JS è disabilitato viene a mancare una funzionalità fondamentale
-function closePrenotation(button) {
-  // Recupera i dati direttamente dal pulsante
-  var dataOra = button.getAttribute("data-dataOra");
-  var username = button.getAttribute("data-username");
-
-  // Chiamata AJAX
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "process/TerminaPrenotazione.php", true);
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      console.log("Stato consegnato aggiornato con successo!");
-      button.classList.add("buttonDoneCompleted"); // Aggiungi la classe al pulsante
-      button.disabled = true; // Disabilita il pulsante dopo l'aggiornamento
-    } else if (xhr.readyState === 4 && xhr.status !== 200) {
-      console.error(
-        "Errore durante l'aggiornamento dello stato consegnato:",
-        xhr.statusText
-      );
-    }
-  };
-  var params = "username=" + username + "&dataOra=" + dataOra;
-  xhr.send(params);
-}*/
-
 // Funzione per ottenere la dimensione del file
 function getFileSize(url, callback) {
   var xhr = new XMLHttpRequest();
@@ -98,9 +72,9 @@ function updateLinkWithSize(url, linkId) {
   });
 }
 
-//Aggiungi l'evento onBlur agli elementi dei form
+//Aggiungi la funzione validateInputAfterEvent all'avvenire dell'evento onBlur degli elementi dei form
 function addOnBlur(){
-  // Aggiungi per gli input e le textarea
+  // Recupera gli input e le textarea
   const inputs = document.querySelectorAll('input, textarea');
   inputs.forEach(input => {
       input.addEventListener('blur', validateInputAfterEvent);
@@ -252,4 +226,45 @@ function setLoginChecks(){
           }
       }*/
   }
+}
+
+function setPrenotaScript() {
+  // Recupera per gli input 
+  const inputs = document.querySelectorAll('input[type="number"]');
+  inputs.forEach(input => {
+      input.addEventListener('blur', handleSubmitButton);
+  });
+  handleSubmitButton();
+}
+
+//funzione per ridurre il carico sul server nel caso in cui la prenotazione sia vuota
+function handleSubmitButton() {
+  var submitButton = document.getElementById("submitPrenotazione");
+  const inputs = document.querySelectorAll('input[type="number"]');
+  let validPrenotazione = false;
+  for (let i = 0; i < inputs.length && !validPrenotazione; i++) {
+    if(inputs[i].value>0){
+      validPrenotazione=true;
+    }
+  }
+  // Rimuovi il tag <p> di suggerimento se presente
+  const siblingToRemove = submitButton.nextSibling;
+  if (siblingToRemove) {
+      siblingToRemove.remove();
+  }
+  if(validPrenotazione){
+    submitButton.disabled=false;
+    submitButton.classList.remove('disabledButton');
+  } else {
+    submitButton.disabled=true;
+    submitButton.classList.add('disabledButton');
+    // Crea un nuovo elemento <p> con il suggerimento
+    const instruction = document.createElement('p');
+    instruction.classList.add('instruction');
+    instruction.innerHTML = "Aggiungi dei piatti all'ordinazione per poter inviare l'ordine";
+    const parentNode = submitButton.parentNode;
+    const insertBeforeElement = submitButton.nextSibling;
+    parentNode.insertBefore(instruction, insertBeforeElement);
+  }
+  
 }
