@@ -413,6 +413,12 @@ dl.ListinoPrezzi {
 }
 
 /*******************login signin prenotazione *********************/
+.instruction {
+    max-width: 600px;
+    color: var(--instructionMessage);
+    margin: auto;
+}
+
 #login,
 #signIn,
 #prenotazione {

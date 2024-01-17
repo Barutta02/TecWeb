@@ -37,6 +37,7 @@
     --standardOperationTxtColor: white;
     --irreversibleOperationBgColor: red;
     --irreversibleOperationTxtColor: white;
+    --disabledButton: #b12d21;
 
     --fieldSetBorderColor: #6ccb07;
     --LegendTxtColor: #cb9407;
@@ -610,7 +611,7 @@ fieldset legend {
     text-align: center;
 }
 
-#submitPrenotazione,
+.submitPrenotazione,
 #signIn button,
 #login button,
 #prenotazione button
@@ -623,6 +624,7 @@ fieldset legend {
     font-size: 1.3em;
     border-radius: 10px;
     margin-top: 1em;
+    margin-bottom: 1em;
     padding: 1em;
     border: 0;
     text-align: center;
@@ -722,9 +724,10 @@ fieldset ul li {
 
 
 /*******************login signin prenotazione *********************/
-#passwordInstruction {
+.instruction {
     max-width: 600px;
     color: var(--instructionMessage);
+    margin: auto;
 }
 
 #login,
@@ -1015,8 +1018,8 @@ input[type="submit"].doneButton {
     background-color: var(--submitButtonColor);
 }
 
-.buttonDoneCompleted {
-    background: var(--endPrenotation);
+.buttonDoneCompleted:disabled, .disabledButton {
+    background-color: var(--disabledButton);
 }
 
 #piattiDaFare .buttonDoneCompleted::after {

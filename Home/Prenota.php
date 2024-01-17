@@ -65,5 +65,5 @@ $content .= ' <section id="PiattiMenu" class="containerPlatesViewer">
 
 
 
-echo render_page($template, $title, $pageID, $breadcrumbs, 'Prenota da Sushi Brombeis, Ristorante sushi via brombeis', 'Prenota un tavolo, ordina i tuoi piatti preferiti e vieni a trovarci in via Brombeis a Napoli!', $content, '');
+echo render_page($template, $title, $pageID, $breadcrumbs, 'Prenota da Sushi Brombeis, Ristorante sushi via brombeis', 'Prenota un tavolo, ordina i tuoi piatti preferiti e vieni a trovarci in via Brombeis a Napoli!', $content, 'setPrenotaScript()');
 ?>
