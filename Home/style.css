@@ -491,7 +491,8 @@ a.tikTokLogo::before {
     border: 0;
 }
 
-.button.azioneStandard {
+.button.azioneStandard,
+.button.sendButton {
     color: var(--standardOperationTxtColor);
     background-color: var(--standardOperationBgColor);
 }
@@ -769,6 +770,7 @@ label[for="indicazioniAggiuntive"] {
 
 textarea {
     margin-top: .4em;
+    width: 95%;
     max-width: 300px;
     box-sizing: border-box;
     resize: none;
