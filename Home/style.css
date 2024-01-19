@@ -318,10 +318,10 @@ nav.menu ul li a {
 
 }
 
-.menuItem:hover {
+/*.menuItem:hover {
     box-shadow: 0 0 11px rgba(255, 250, 250, 0.2);
     transform: scale(1.1);
-}
+}*/
 
 .menuItem.oldOrders {
     border: 1px solid #6f6969;
@@ -1447,6 +1447,12 @@ label {
     }
 
     fieldset {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .containerPlatesViewer {
+        width: 100%;
         padding: 0;
     }
 
