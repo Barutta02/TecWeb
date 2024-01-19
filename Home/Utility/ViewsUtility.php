@@ -48,7 +48,7 @@ function add_translation_span($text)
 /**
  * Metodo universale che dato un template per visionare piatti sostituisce il contenuto con i dati passati
  */
-function formatPlateString($piattotemplates, $nomePiatto = "", $Descrizione = "", $Prezzo = "", $Quantita = "", $IDPiatto = "", $allergeniPiatto = [], $Ntavolo = "", $Cliente = "", $Orario = "", $Ore="", $isConsegnato = "", $frequenza = "")
+function formatPlateString($piattotemplates, $nomePiatto = "", $Descrizione = "", $Prezzo = "", $Quantita = "", $IDPiatto = "", $allergeniPiatto = [], $Ntavolo = "", $Cliente = "", $Orario = "", $isConsegnato = "", $frequenza = "", $Ore = "")
 {
     $piattotemplates = str_replace('{{NomePiattoUnderscored}}', str_replace(' ', '', strtolower($nomePiatto)), $piattotemplates);
     $piattotemplates = str_replace('{{NomePiatto}}', add_translation_span($nomePiatto), $piattotemplates);
@@ -230,7 +230,7 @@ function toDoOrdersView()
         if (!empty($piatti)) {
             $content .= "<ul class='flexable'>";
             foreach ($piatti as $piatto) {
-                $content .= formatPlateString($templatePlatesAdmin, $piatto['nome'], $piatto['descrizione'], "", $piatto['quantita'], $piatto['id'], [], $piatto['tavolo'], $piatto['cliente'], $piatto['data_ora'], explode(":",explode(" ", $piatto['data_ora'])[1])[0].":".explode(":",explode(" ", $piatto['data_ora'])[1])[1]);
+                $content .= formatPlateString($templatePlatesAdmin, $piatto['nome'], $piatto['descrizione'], "", $piatto['quantita'], $piatto['id'], [], $piatto['tavolo'], $piatto['cliente'], $piatto['data_ora'], "", "", explode(":", explode(" ", $piatto['data_ora'])[1])[0] . ":" . explode(":", explode(" ", $piatto['data_ora'])[1])[1]);
             }
             $content .= "</ul>";
         } else {
