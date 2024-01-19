@@ -1446,6 +1446,9 @@ label {
         width: 100%;
     }
 
+    fieldset {
+        padding: 0;
+    }
 
     .button.azioneStandard,
     .button.azioneIrreversibile {
