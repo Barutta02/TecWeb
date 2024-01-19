@@ -48,7 +48,7 @@ function add_translation_span($text)
 /**
  * Metodo universale che dato un template per visionare piatti sostituisce il contenuto con i dati passati
  */
-function formatPlateString($piattotemplates, $nomePiatto = "", $Descrizione = "", $Prezzo = "", $Quantita = "", $IDPiatto = "", $allergeniPiatto = [], $Ntavolo = "", $Cliente = "", $Orario = "", $isConsegnato = "", $frequenza = "")
+function formatPlateString($piattotemplates, $nomePiatto = "", $Descrizione = "", $Prezzo = "", $Quantita = "", $IDPiatto = "", $allergeniPiatto = [], $Ntavolo = "", $Cliente = "", $Orario = "", $Ore="", $isConsegnato = "", $frequenza = "")
 {
     $piattotemplates = str_replace('{{NomePiattoUnderscored}}', str_replace(' ', '', strtolower($nomePiatto)), $piattotemplates);
     $piattotemplates = str_replace('{{NomePiatto}}', add_translation_span($nomePiatto), $piattotemplates);
@@ -60,6 +60,7 @@ function formatPlateString($piattotemplates, $nomePiatto = "", $Descrizione = ""
     $piattotemplates = str_replace('{{NTavolo}}', $Ntavolo, $piattotemplates);
     $piattotemplates = str_replace('{{Cliente}}', $Cliente, $piattotemplates);
     $piattotemplates = str_replace('{{Orario}}', $Orario, $piattotemplates);
+    $piattotemplates = str_replace('{{Ora}}', $Ore, $piattotemplates);
     $piattotemplates = str_replace('{{isConsegnato}}', (($isConsegnato == true) ? "Si" : "No"), $piattotemplates);
     $piattotemplates = str_replace('{{Frequenza}}', $frequenza, $piattotemplates);
     $platesAllergeniList = "";
@@ -155,7 +156,7 @@ function get_prenotation_form_menu($process_php_action)
         }
 
         $content .= '
-    <input type="submit" id="submitPrenotazione" value="Invia ordine">
+    <input type="submit" id="submitPrenotazione" class="submitPrenotazione" value="Invia ordine">
     </form>';
         return $content;
     } catch (Throwable $error) {
@@ -229,7 +230,7 @@ function toDoOrdersView()
         if (!empty($piatti)) {
             $content .= "<ul class='flexable'>";
             foreach ($piatti as $piatto) {
-                $content .= formatPlateString($templatePlatesAdmin, $piatto['nome'], $piatto['descrizione'], "", $piatto['quantita'], $piatto['id'], [], $piatto['tavolo'], $piatto['cliente'], $piatto['data_ora']);
+                $content .= formatPlateString($templatePlatesAdmin, $piatto['nome'], $piatto['descrizione'], "", $piatto['quantita'], $piatto['id'], [], $piatto['tavolo'], $piatto['cliente'], $piatto['data_ora'], explode(":",explode(" ", $piatto['data_ora'])[1])[0].":".explode(":",explode(" ", $piatto['data_ora'])[1])[1]);
             }
             $content .= "</ul>";
         } else {
