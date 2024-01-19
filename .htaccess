@@ -1,4 +1,4 @@
 # Questo file va nella root del sito, i path devono essere assoluti esempio:
 # www.sito.com/tecWeb/Home/500.html ==> ErrorDocument  500 /tecWeb/Home/500.html
-ErrorDocument 404 /tecWeb/Home/404.php
-ErrorDocument 500 /tecWeb/Home/500.html
+ErrorDocument 404 /tecWeb/SushiBrombeis/404.php
+ErrorDocument 500 /tecWeb/SushiBrombeis/500.html
