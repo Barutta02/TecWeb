@@ -585,6 +585,10 @@ dl.ListinoPrezzi div {
     padding-bottom: 1em;
 }
 
+.infoPrices {
+    width: 90vw;
+    margin: auto;
+}
 
 /*******************PRENOTA *********************/
 
