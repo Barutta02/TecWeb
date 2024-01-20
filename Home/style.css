@@ -1230,9 +1230,16 @@ label {
     text-align: right;
     color: var(--menuToggleColor);
     font-weight: bold;
+}
+
+.menu-toggle-label {
     display: none;
 }
 
+#mobile-menu-toggle {
+    position: absolute;
+    left: -999em;
+}
 
 .bottomMenu li a:link {
     color: var(--linkColor);
