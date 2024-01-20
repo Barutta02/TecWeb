@@ -1241,7 +1241,7 @@ label {
     left: -999em;
 }
 
-#mobile-menu-toggle:focus .menu-toggle-label {
+#mobile-menu-toggle:focus+.menu-toggle-label {
     outline: 1px solid #fff;
 }
 
