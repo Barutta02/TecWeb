@@ -65,7 +65,7 @@ function formatPlateString($piattotemplates, $nomePiatto = "", $Descrizione = ""
     $piattotemplates = str_replace('{{Frequenza}}', $frequenza, $piattotemplates);
     $platesAllergeniList = "";
     foreach ($allergeniPiatto as $allergene) {
-        $platesAllergeniList .= '<dd aria-label="Allergene ' . $allergene . '" title="' . $allergene . '" class="allergeneImage ' . $allergene . 'Image" data-allergene="' . $allergene . '"></dd>';
+        $platesAllergeniList .= '<dd title="' . $allergene . '" class="allergeneImage ' . $allergene . 'Image" data-allergene="' . $allergene . '">' . $allergene . '</dd>';
     }
     $piattotemplates = str_replace('{{Allergeni}}', $platesAllergeniList, $piattotemplates);
     return $piattotemplates;

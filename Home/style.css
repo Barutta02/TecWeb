@@ -217,15 +217,22 @@ nav.menu ul li a {
     display: inline;
 }
 
-.allergeneImage {
+
+
+#listaAllergeni .allergeneImage {
     position: relative;
     top: 0.4em;
     left: 0.5em;
     display: inline-block;
     width: 25px;
-    /* Imposta la larghezza dell'immagine */
     height: 25px;
-    /* Imposta l'altezza dell'immagine */
+}
+
+.menuItem .allergeneImage {
+    text-indent: -999em;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
 }
 
 .CrostaceiImage {
@@ -654,7 +661,8 @@ fieldset ul li {
 /* Nascondi la checkbox predefinita */
 
 #allergeni input[type="checkbox"] {
-    display: none;
+    position: absolute;
+    left: -999em;
 }
 
 
