@@ -675,6 +675,9 @@ fieldset ul li {
     cursor: pointer;
 }
 
+#allergeni input[type="checkbox"]:focus+label {
+    outline: 1px solid #fff;
+}
 
 /* Stile del segno di spunta */
 
