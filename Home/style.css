@@ -658,20 +658,18 @@ fieldset ul li {
     margin: 0;
 }
 
-/* Nascondi la checkbox predefinita */
+/* Nascondi la checkbox predefinita
+PER TORNARE A QUELLA NORMALE CANCELLA DA QUI
+*/
 
 #allergeni input[type="checkbox"] {
     position: absolute;
     left: -999em;
 }
 
-
-/* Stile della checkbox personalizzata */
-
 #allergeni input[type="checkbox"]+label {
     position: relative;
     padding-left: 30px;
-    /* Regola se necessario */
     cursor: pointer;
 }
 
@@ -679,55 +677,37 @@ fieldset ul li {
     outline: 1px solid #fff;
 }
 
-/* Stile del segno di spunta */
-
 #allergeni input[type="checkbox"]+label:before {
     content: "";
     position: absolute;
     left: 0;
     top: 0;
     width: 20px;
-    /* Regola la dimensione della checkbox */
     height: 20px;
-    /* Regola la dimensione della checkbox */
     background-color: #fff;
-    /* Colore di sfondo */
     transition: background 0.3s;
 }
 
-
-/* Stile del segno di spunta quando è selezionato */
-
 #allergeni input[type="checkbox"]:checked+label:before {
     background-color: #3498db;
-    /* Cambia il colore di sfondo quando è selezionato */
 }
-
-
-/* Stile dell'area interna del segno di spunta (opzionale) */
 
 #allergeni input[type="checkbox"]+label:after {
     content: "\2713";
-    /* Carattere Unicode per il checkmark */
     position: absolute;
     left: 4px;
-    /* Regola la posizione se necessario */
     top: 0;
-    /* Regola la posizione se necessario */
     color: #ffffff;
-    /* Colore dell'icona del checkmark */
     font-size: 16px;
-    /* Regola la dimensione dell'icona del checkmark */
     visibility: hidden;
     transition: color 0.3s;
 }
 
-
-/* Stile dell'area interna quando è selezionata (opzionale) */
-
 #allergeni input[type="checkbox"]:checked+label:after {
     visibility: visible;
 }
+
+/*A QUI*/
 
 .inputQuantityLabelInpt {
     float: right;
