@@ -1,9 +1,9 @@
 <li>
-  <p>Tavoli da {{NumPosti}} posti: {{Occupati}} su {{Totale_tavoli}} occupati</p>
-  <progress
+  <label for="sliderTable{{NumPosti}}">Tavoli da {{NumPosti}} posti: {{Occupati}} su {{Totale_tavoli}} occupati</label>
+  <meter
           id="sliderTable{{NumPosti}}"
           class="progressTable"
           max="{{Totale_tavoli}}"
           value="{{Occupati}}"
-  ></progress>
+  ></meter>
 </li>

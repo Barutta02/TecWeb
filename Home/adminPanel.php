@@ -28,7 +28,26 @@ $breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span> 
 
 $content = '<section id="piattiDaFare" class="containerPlatesViewer">
 <h2> Piatti da fare </h2>
+{{Message}} 
 <p class="info">Visualizza qui i piatti ordinati, clicca su "Fatto" quando sono pronti.</p>';
+
+
+$errorList = array();
+
+if (isset($_GET['MessageCode'])) {
+    switch ($_GET['MessageCode']) {
+        case 1:
+            array_push($errorList, "<p class='good'>Il piatto selezionato è stato segnato come pronto!</p> ");
+            break;
+        case 2:
+            array_push($errorList, "<p class='warning'>A causa di un errore è stato impossibile segnare il piatto selzionato come pronto!</p> ");
+            break;
+        default:
+            array_push($errorList, "<p class='warning'>Errore sconosciuto!</p> ");
+    }
+}
+
+$content = str_replace('{{Message}}', implode(" ", $errorList), $content);
 
 $content .= toDoOrdersView();
 $content .= '</section>';
