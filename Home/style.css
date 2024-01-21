@@ -617,6 +617,7 @@ fieldset legend {
     font-size: 1.5em;
     font-weight: bold;
     text-align: center;
+    margin: auto;
 }
 
 .submitPrenotazione,
@@ -1088,37 +1089,12 @@ input[type="submit"].doneButton {
 
 */
 
-.progressTable {
-    width: 100%;
+.meterTable {
+    width: 65%;
+    scale: 1.5;
     height: 20px;
-    /* Set the height of the progress bar */
-    color: var(--alternative_text);
-    background-color: grey;
 }
 
-/* Customize the color and add a border to the progress bar based on occupancy */
-.progressTable::-webkit-progress-bar {
-    background-color: var(--menuBackground);
-    border: 1px solid grey;
-    /* Add a border */
-}
-
-.progressTable::-webkit-progress-value {
-    background-color: var(--alternative_text);
-    /* Red color for the progress bar */
-    border: 1px solid var(--alternative_text);
-    /* Add a border */
-}
-
-.progressTable::-moz-progress-bar {
-    background-color: var(--alternative_text);
-    border: 1px solid var(--alternative_text);
-}
-
-/* Hide the default appearance on Firefox */
-progress[value]::-moz-progress-bar {
-    background-color: transparent;
-}
 
 label {
     display: block;
@@ -1378,14 +1354,12 @@ label {
     .menu-toggle-label::before {
         font-size: 1.5em;
         content: attr(data-toOpenContent);
-        ;
     }
 
     /* Cambia il contenuto prima dell'icona quando il checkbox è selezionato */
     #mobile-menu-toggle:checked+.menu-toggle-label::before {
         font-size: 1.5em;
         content: attr(data-toCloseContent);
-        ;
     }
 
     /* Animazione di transizione */
@@ -1470,6 +1444,10 @@ label {
 @media only screen and (min-width: 1024px) {
     body {
         max-width: 1024px;
+    }
+
+    .containerPlatesViewer ul {
+        font-size: 85%;
     }
 
     .homeImage {

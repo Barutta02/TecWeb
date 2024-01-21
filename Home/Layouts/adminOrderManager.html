@@ -1,5 +1,4 @@
 <li class="menuItem">
-  <!--TODO mettere alt?? -->
   <picture  class="imageMenuItem">
     <source srcset="assets/Images/sushi_plates/{{NomePiattoUnderscored}}.webp" type="image/webp">
     <img src="assets/Images/sushi_plates/{{NomePiattoUnderscored}}.jpg" alt="">
@@ -25,15 +24,11 @@
         <span class="bold afterDuePunti">{{Ora}}</span>
       </dd>
     </dl>
-    <button
-        onclick="aggiornaConsegna(this)"
-        class="button azioneStandard"
-        data-dataOra="{{Orario}}"
-        data-piatto="{{IDPiatto}}"
-        data-cliente="{{Cliente}}"
-        title="Ordine piatto {{IDPiatto}} in quantità {{Quantita}} per il tavolo {{NTavolo}} delle ore {{Ora}}"
-        data-onDoneContent=" - Consegnato">
-        Fatto
-      </button>
+    <form action="process/aggiornaStatoConsegna.php" method="post">
+      <input type="hidden" name="orario_ordine" value="{{Orario}}">
+      <input type="hidden" name="ID_piatto" value="{{IDPiatto}}">
+      <input type="hidden" name="cliente" value="{{Cliente}}">
+      <input type="submit" class="button azioneStandard" title="Ordine piatto {{IDPiatto}} in quantità {{Quantita}} per il tavolo {{NTavolo}} delle ore {{Ora}}" value="Fatto">
+    </form>
   </div>
 </li>

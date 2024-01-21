@@ -2,27 +2,28 @@
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Recupera i dati dalla richiesta POST
-    $idPiatto = isset($_POST['idPiatto']) ? $_POST['idPiatto'] : null;
-    $username = isset($_POST['username']) ? $_POST['username'] : null;
-    $dataOraOrdine = isset($_POST['dataOraOrdine']) ? $_POST['dataOraOrdine'] : null;
-    $nuovoStatoConsegnato = isset($_POST['nuovoStatoConsegnato']) ? $_POST['nuovoStatoConsegnato'] : null;
+    $id_piatto = isset($_POST['ID_piatto']) ? $_POST['ID_piatto'] : null;
+    $username = isset($_POST['cliente']) ? $_POST['cliente'] : null;
+    $dataOraOrdine = isset($_POST['orario_ordine']) ? $_POST['orario_ordine'] : null;
+    $nuovoStatoConsegnato = 1; # MAH
 
     // Validazione dei dati (puoi implementare ulteriori controlli a seconda delle tue esigenze)
 
-    if ($idPiatto !== null && $username !== null && $dataOraOrdine !== null && $nuovoStatoConsegnato !== null) {
+    if ($id_piatto !== null && $username !== null && $dataOraOrdine !== null && $nuovoStatoConsegnato !== null) {
         // Connessione al database
         try {
             require_once '../DAO/OrdineDAO.php';
             $ordineDAO = new OrdineDAO();
-            OrdineDAO::aggiornaStatoConsegna($idPiatto, $username, $dataOraOrdine, $nuovoStatoConsegnato);
+            OrdineDAO::aggiornaStatoConsegna($id_piatto, $username, $dataOraOrdine, $nuovoStatoConsegnato);
         } catch (Throwable $th) {
             header('Location: ../500.html');
             exit();
         }
-
+        header('Location: ../adminPanel.php?MessageCode=1');
+        exit();
     } else {
         // Messaggio di errore se i dati non sono validi
-        header('Location: ../500.html');
+        header('Location: ../adminPanel.php?MessageCode=2');
         exit();
     }
 } else {
