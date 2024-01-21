@@ -48,5 +48,5 @@ if (isset($_SESSION["username"])) {
 $template = str_replace('{{menu}}', $menu, $template);
 
 
-echo render_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Sito ufficiale del ristorante di sushi a Napoli in via brombeis.', $content, '');
+echo render_page($template, $title, $pageID, $breadcrumbs, 'Errore 404 Sushi Brombeis, Errore 404 ristorante sushi via brombeis', 'Pagina relativa all\'errore 404 del ristorante di sushi a Napoli in via brombeis.', $content, '');
 ?>

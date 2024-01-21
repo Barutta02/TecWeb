@@ -24,5 +24,5 @@ $content = '';
 $content .= $templatePres;
 
 
-echo render_page($template, $title, $pageID, $breadcrumbs, 'Siamo Sushi Brombeis, Ristorante sushi via brombeis, sushi chef', 'Siamo il miglior sushi all you can eat di Napoli, vieni a trovarci in via Brombeis.', $content, '');
+echo render_page($template, $title, $pageID, $breadcrumbs, 'Chi Siamo Sushi Brombeis, Ristorante sushi via brombeis, sushi chef', 'Siamo il miglior sushi all you can eat di Napoli, vieni a trovarci in via Brombeis.', $content, '');
 ?>
