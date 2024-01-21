@@ -1348,23 +1348,26 @@ label {
         background-color: var(--headerBgColor);
     }
 
-    #mobile-menu-toggle:not(:checked)+.menu-toggle-label+.nav-list:focus-within,
-    #mobile-menu-toggle:checked+.menu-toggle-label+.nav-list {
-        display: flex;
+    #mobile-menu-toggle:not(:checked)+.mobile-menu-x:focus-within > .nav-list,
+    #mobile-menu-toggle:checked+.mobile-menu-x > .nav-list {
         position: static;
         height: auto;
         overflow: auto;
+    }   
+    
+    .mobile-menu-x:focus-within > .menu-toggle-label > .mobile-menu-toggle-label-content,
+    #mobile-menu-toggle:checked+.mobile-menu-x > .menu-toggle-label > .mobile-menu-toggle-label-content {
+        display: none;
     }
-
-    .menu-toggle-label::before {
-        font-size: 1.5em;
-        content: attr(data-toOpenContent);
-    }
-
+       
     /* Cambia il contenuto prima dell'icona quando il checkbox è selezionato */
-    #mobile-menu-toggle:checked+.menu-toggle-label::before {
-        font-size: 1.5em;
+    .mobile-menu-x:focus-within > .menu-toggle-label::before,
+    #mobile-menu-toggle:checked+.mobile-menu-x > .menu-toggle-label::before{
         content: attr(data-toCloseContent);
+    }
+
+    .mobile-menu-x{
+        display: inline;
     }
 
     /* Animazione di transizione */
