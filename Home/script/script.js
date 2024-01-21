@@ -1,10 +1,3 @@
-
-var toggleMenu = document.getElementById('mobile-menu-toggle');
-
-toggleMenu.addEventListener('focus', function() {
-  toggleMenu.checked = true;
-});
-
 function addCheckboxListeners() {
   var checkboxes = document.querySelectorAll('input[type="checkbox"]');
   checkboxes.forEach(function (checkbox) {
