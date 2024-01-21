@@ -1337,18 +1337,23 @@ label {
     }
 
     .nav-list {
-        display: none;
+        display: flex;
         flex-direction: column;
         position: absolute;
         top: 60px;
         left: 0;
         width: 100%;
+        height: 0px;
+        overflow: hidden;
         background-color: var(--headerBgColor);
     }
 
+    #mobile-menu-toggle:not(:checked)+.menu-toggle-label+.nav-list:focus-within,
     #mobile-menu-toggle:checked+.menu-toggle-label+.nav-list {
         display: flex;
         position: static;
+        height: auto;
+        overflow: auto;
     }
 
     .menu-toggle-label::before {
