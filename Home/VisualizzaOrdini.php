@@ -54,6 +54,6 @@ $content .= getThisPrenotationOrderView();
 $content .= getFrequentView();
 
 
-echo render_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Visualizza gli ordini
+echo render_page($template, $title, $pageID, $breadcrumbs, 'I tuoi ordini da Sushi Brombeis, Ordini ristorante sushi via brombeis', 'Visualizza gli ordini
 che più hai preferito nel ristorante sushi all you can eat a Napoli!', $content, '');
 ?>

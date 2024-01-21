@@ -53,5 +53,5 @@ $content .= toDoOrdersView();
 $content .= '</section>';
 
 
-echo render_page($template, $title, $pageID, $breadcrumbs, 'Sushi Brombeis, Ristorante sushi via brombeis', 'Pagina amministratore del sito di sushi Brombeis a Napoli.', $content, '');
+echo render_page($template, $title, $pageID, $breadcrumbs, 'Pannello amministratore Sushi Brombeis, Pagina amministratore ristorante sushi via brombeis', 'Pagina amministratore del sito di sushi Brombeis a Napoli.', $content, '');
 ?>

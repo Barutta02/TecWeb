@@ -119,5 +119,5 @@ $content = str_replace('{{Message}}', implode(" ", $errorList), $content);
 
 
 
-echo render_page($template, $title, $pageID, $breadcrumbs, 'Prenotazione del tavolo da Sushi Brombeis, Ristorante sushi via brombeis', 'Prenota il tuo tavolo nel ristorante da sushi Brombeis, ne sarai soddisfatto!', $content, '');
+echo render_page($template, $title, $pageID, $breadcrumbs, 'Prenotazione del tavolo da Sushi Brombeis, Prenotazione ristorante sushi via brombeis', 'Prenota il tuo tavolo nel ristorante da sushi Brombeis, ne sarai soddisfatto!', $content, '');
 ?>

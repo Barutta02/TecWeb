@@ -22,6 +22,6 @@ $content .= ' </section>';
 
 
 
-echo render_page($template, $title, $pageID, $breadcrumbs, 'Menù pranzo Sushi Brombeis, menù cena all you can eat', 'Dai un occhiata al menù di sushi più buono che puoi trovare a Napoli dopodiché vienici a trovare', $content, "updateLinkWithSize('assets/menu/MenuPranzo.pdf','downloadMenu')");
+echo render_page($template, $title, $pageID, $breadcrumbs, 'Menù pranzo Sushi Brombeis, menù pranzo all you can eat', 'Dai un occhiata al menù di sushi più buono che puoi trovare a Napoli dopodiché vienici a trovare!', $content, "updateLinkWithSize('assets/menu/MenuPranzo.pdf','downloadMenu')");
 
 ?>
