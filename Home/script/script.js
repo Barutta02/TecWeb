@@ -1,17 +1,3 @@
-<<<<<<< Updated upstream
-=======
-
-var toggleMenu = document.getElementById('mobile-menu-toggle');
-
-/*
-toggleMenu.addEventListener('click', function() {toggleMenu.checked = !toggleMenu.checked; console.log("click")});
-toggleMenu.addEventListener('focus', function() {
-  console.log("Focus");
-  toggleMenu.checked = true;
-});
-*/
-
->>>>>>> Stashed changes
 function addCheckboxListeners() {
   var checkboxes = document.querySelectorAll('input[type="checkbox"]');
   checkboxes.forEach(function (checkbox) {
