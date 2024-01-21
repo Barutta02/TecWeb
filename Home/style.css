@@ -1210,6 +1210,7 @@ label {
 
 .menu-toggle-label {
     display: none;
+    font-size: 1.4em;
 }
 
 #mobile-menu-toggle {
@@ -1348,25 +1349,25 @@ label {
         background-color: var(--headerBgColor);
     }
 
-    #mobile-menu-toggle:not(:checked)+.mobile-menu-x:focus-within > .nav-list,
-    #mobile-menu-toggle:checked+.mobile-menu-x > .nav-list {
+    #mobile-menu-toggle:not(:checked)+.mobile-menu-x:focus-within>.nav-list,
+    #mobile-menu-toggle:checked+.mobile-menu-x>.nav-list {
         position: static;
         height: auto;
         overflow: auto;
-    }   
-    
-    .mobile-menu-x:focus-within > .menu-toggle-label > .mobile-menu-toggle-label-content,
-    #mobile-menu-toggle:checked+.mobile-menu-x > .menu-toggle-label > .mobile-menu-toggle-label-content {
+    }
+
+    .mobile-menu-x:focus-within>.menu-toggle-label>.mobile-menu-toggle-label-content,
+    #mobile-menu-toggle:checked+.mobile-menu-x>.menu-toggle-label>.mobile-menu-toggle-label-content {
         display: none;
     }
-       
+
     /* Cambia il contenuto prima dell'icona quando il checkbox è selezionato */
-    .mobile-menu-x:focus-within > .menu-toggle-label::before,
-    #mobile-menu-toggle:checked+.mobile-menu-x > .menu-toggle-label::before{
+    .mobile-menu-x:focus-within>.menu-toggle-label::before,
+    #mobile-menu-toggle:checked+.mobile-menu-x>.menu-toggle-label::before {
         content: attr(data-toCloseContent);
     }
 
-    .mobile-menu-x{
+    .mobile-menu-x {
         display: inline;
     }
 
