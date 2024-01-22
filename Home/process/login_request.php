@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         try {
             if (check_admin_privileges($username_or_email, $password) == true) {
+                session_start();
                 session_destroy();
                 session_start();
                 $_SESSION['adminLogged'] = 1;
@@ -27,12 +28,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $userDAO = new UserDAO();
             $emailAuth = UserDAO::getUserByEmailPassword(sanitize_txt($username_or_email), sanitize_txt($password));
             if (!empty($emailAuth)) {
+                session_start();
                 session_destroy();
                 save_username_session($emailAuth['username'], $emailAuth['nome'], $emailAuth['cognome']);
                 header("Location: ../prenotazione.php");
             } else {
                 $UsernameAuth = UserDAO::getUserByUsernamePassword(sanitize_txt($username_or_email), sanitize_txt($password));
                 if (!empty($UsernameAuth)) {
+                    session_start();
                     session_destroy();
                     save_username_session($UsernameAuth['username'], $UsernameAuth['nome'], $UsernameAuth['cognome']);
                     header("Location: ../prenotazione.php");
