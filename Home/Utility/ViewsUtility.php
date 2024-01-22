@@ -24,6 +24,7 @@ function add_translation_span($text)
         'Tartare' => '<span lang="ja">Tartare</span>',
         'Sashimi' => '<span lang="ja">Sashimi</span>',
         'Uramaki' => '<span lang="ja">Uramaki</span>',
+        'Uromaki' => '<span lang="ja">Uromaki</span>',
         'Tatkai' => '<span lang="ja">Tatkai</span>',
         'Maki' => '<span lang="ja">Maki</span>',
         'Gyoza' => '<span lang="ja">Gyoza</span>',
@@ -140,7 +141,7 @@ function get_prenotation_form_menu($process_php_action)
             foreach ($categorie as $categoria) {
                 $piatti = PiattoDAO::getPlatesByHours_Category($categoria['categoria']);
                 if (!empty($piatti)) {
-                    $content .= " <fieldset> <legend>" . $categoria['categoria'] . "</legend> <ul class='flexable'>";
+                    $content .= " <fieldset> <legend>" . add_translation_span($categoria['categoria']) . "</legend> <ul class='flexable'>";
                     foreach ($piatti as $piatto) {
                         $allergeniPiatto = AllergeneDAO::getAllergeniByPiatto(intval($piatto['id']));
                         $content .= formatPlateString($templatePlatesInput, $piatto['nome'], $piatto['descrizione'], "", "", $piatto['id'], $allergeniPiatto);
