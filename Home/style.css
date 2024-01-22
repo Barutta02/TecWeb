@@ -425,6 +425,7 @@ footer div {
 
 .valid {
     display: inline;
+    margin-top: 0.4em;
 }
 
 #footerRights,
