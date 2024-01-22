@@ -21,25 +21,18 @@ try {
 $pageID = 'GestioneTavoli';
 $title = "Gestione tavoli - Sushi Brombeis";
 $breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> &gt;&gt; <a href="login.php">Area utente</a> &gt;&gt; Gestione tavoli</p> ';
+$content = "";
 
-#Msg error (temporaneo, converite alla stessa tipologia di errore dell'area utente)
-$status = isset($_GET['StatusCode']) ? $_GET['StatusCode'] : null;
-if ($status == null) {
-    $content = "";
-} elseif ($status == 0) {
-    $content = '<p class="good">L&apos;operazione è andata a buon fine.</p>';
-} elseif ($status == 1) {
-    $content = '<p class="warning">C&apos;è stato un errore nel tentativo di eseguire la richiesta. L&apos;operazione è stata annullata.</p>';
-}
-
-//PRENDO IL FORM PER LA SELEZIONE DEGLI ALLERGENI UTILITIES
 $content .= '<div class="flexable"><section id="SezioneGestioneTavoli"><h2>Stato occupazione tavoli</h2>' . get_table_avaible() . '</section>';
-$content .= '<section id="SezioneGestionePrenotazioni"><h2>Prenotazioni attive</h2><p class="info">Visualizza e gestisci qui le prenotazioni attive</p>' . get_active_prenotation() . '</section></div>';
+$content .= '<section id="SezioneGestionePrenotazioni"><h2>Prenotazioni attive</h2>';
+$status = isset($_GET['StatusCode']) ? $_GET['StatusCode'] : null;
+if ($status!=null && $status == 0) {
+    $content .= '<p class="good">L&apos;operazione è andata a buon fine.</p>';
+} elseif ($status == 1) {
+    $content .= '<p class="warning">C&apos;è stato un errore nel tentativo di eseguire la richiesta. L&apos;operazione è stata annullata.</p>';
+}
+$content .='<p class="info">Visualizza e gestisci qui le prenotazioni attive</p>' . get_active_prenotation() . '</section></div>';
 
 
-//PRENDO IL FORM PER LA  PRENOTAZIONE DEI PIATTI DA UTILITIES
-
-
-
-echo render_page($template, $title, $pageID, $breadcrumbs, 'Prenotazione tavolo da Sushi Brombeis, Ristorante sushi via brombeis', 'Prenota un tavolo online per mangiare il miglior sushi all you can eat di Napoli, vieni a trovarci in via brombeis.', $content, '');
+echo render_page($template, $title, $pageID, $breadcrumbs, 'Gestione tavoli Sushi Brombeis, Prenotazioni ristorante sushi via brombeis', 'Gestisci i tavoli e le prenotazioni del ristorante Sushi Brombeis.', $content, '');
 ?>
