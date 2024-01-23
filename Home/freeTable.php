@@ -25,11 +25,13 @@ $content = "";
 
 $content .= '<div class="flexable"><section id="SezioneGestioneTavoli"><h2>Stato occupazione tavoli</h2>' . get_table_avaible() . '</section>';
 $content .= '<section id="SezioneGestionePrenotazioni"><h2>Prenotazioni attive</h2>';
-$status = isset($_GET['StatusCode']) ? $_GET['StatusCode'] : null;
+$status = isset($_GET['MessageCode']) ? $_GET['MessageCode'] : null;
 if ($status!=null && $status == 0) {
     $content .= '<p class="good">L&apos;operazione è andata a buon fine.</p>';
 } elseif ($status == 1) {
-    $content .= '<p class="warning">C&apos;è stato un errore nel tentativo di eseguire la richiesta. L&apos;operazione è stata annullata.</p>';
+    $content .= '<p class="warning">C&apos;è stato un errore nel tentativo di eseguire la richiesta. Operazione annullata.</p>';
+} elseif($status!=null) {
+    $content .= '<p class="warning">Errore sconosciuto.</p>';
 }
 $content .='<p class="info">Visualizza e gestisci qui le prenotazioni attive</p>' . get_active_prenotation() . '</section></div>';
 

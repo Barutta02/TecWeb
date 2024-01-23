@@ -15,14 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($username_utente !== null && $timestamp_prenotazione !== null) {
             try {
                 PrenotazioneDAO::TerminaPrenotazione($username_utente, $timestamp_prenotazione);
-                header('Location: ../freeTable.php?StatusCode=0');
+                header('Location: ../freeTable.php?MessageCode=0');
                 exit(0);
             } catch (Throwable $error) {
-                header('Location: ../freeTable.php?StatusCode=1');
+                header('Location: ../freeTable.php?MessageCode=1');
                 exit();
             }
         }
-        header('Location: ../freeTable.php?StatusCode=1');
+        header('Location: ../freeTable.php?MessageCode=1');
         exit(0);
 
     } elseif ($_POST['action'] == 'Elimina') {
@@ -39,14 +39,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($username_utente !== null && $timestamp_prenotazione !== null) {
             try {
                 PrenotazioneDAO::EliminaPrenotazione($username_utente, $timestamp_prenotazione);
-                header('Location: ../freeTable.php?StatusCode=0');
+                header('Location: ../freeTable.php?MessageCode=0');
                 exit(0);
             } catch (Throwable $th) {
-                header('Location: ../freeTable.php?StatusCode=1');
+                header('Location: ../freeTable.php?MessageCode=1');
                 exit();
             }
         } 
-        header('Location: ../freeTable.php?StatusCode=1');
+        header('Location: ../freeTable.php?MessageCode=1');
         exit(0);
     } else {
         # Formulazione richiesta corretta, ma inesistente tra le opzioni
