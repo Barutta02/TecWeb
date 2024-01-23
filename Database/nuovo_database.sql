@@ -1,84 +1,93 @@
 -- Nota 1: l'uso dei 'ON DELETE CASCADE' sono una soluzione temporanea
 -- DB Target
-
 USE sushirestaurant;
 
 -- Pulizia DB
-SET FOREIGN_KEY_CHECKS=0;
-DROP TABLE IF EXISTS prenotazione CASCADE;
-DROP TABLE IF EXISTS tavolo CASCADE;
-DROP TABLE IF EXISTS recensione CASCADE;
-DROP TABLE IF EXISTS utente CASCADE;
-DROP TABLE IF EXISTS piatto CASCADE;
-DROP TABLE IF EXISTS allergene CASCADE;
-DROP TABLE IF EXISTS ordine CASCADE;
-SET FOREIGN_KEY_CHECKS=1;
+SET
+    FOREIGN_KEY_CHECKS = 0;
 
+DROP TABLE IF EXISTS prenotazione CASCADE;
+
+DROP TABLE IF EXISTS tavolo CASCADE;
+
+DROP TABLE IF EXISTS recensione CASCADE;
+
+DROP TABLE IF EXISTS utente CASCADE;
+
+DROP TABLE IF EXISTS piatto CASCADE;
+
+DROP TABLE IF EXISTS allergene CASCADE;
+
+DROP TABLE IF EXISTS ordine CASCADE;
+
+SET
+    FOREIGN_KEY_CHECKS = 1;
 
 -- Crea lo schema e i vincoli
-
 CREATE TABLE utente (
-    username    VARCHAR(50) PRIMARY KEY,
-    email       VARCHAR(100) CHECK (email LIKE '%@%.%'),
-    nome        VARCHAR(50) NOT NULL,
-    cognome     VARCHAR(50) NOT NULL,
-    password    VARCHAR(255) NOT NULL CHECK (length(password) >= 4),
-    privilegi   ENUM('Cliente', 'Admin') DEFAULT 'Cliente'
+    username VARCHAR(50) PRIMARY KEY,
+    email VARCHAR(100) CHECK (email LIKE '%@%.%'),
+    nome VARCHAR(50) NOT NULL,
+    cognome VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL CHECK (length(password) >= 4),
+    privilegi ENUM('Cliente', 'Admin') DEFAULT 'Cliente'
 );
 
 CREATE TABLE piatto (
-    id                 INT PRIMARY KEY AUTO_INCREMENT,
-    nome               VARCHAR(100) NOT NULL,
-    descrizione        VARCHAR(100), -- maybe?
-    categoria          VARCHAR(20) NOT NULL,
-    prezzo             DECIMAL(5,2) NOT NULL CHECK (prezzo >= 0),
-    tipologia_menu     ENUM('Pranzo', 'Cena', 'Entrambi') NOT NULL,
-    tipologia_portata  ENUM('AllYouCanEat', 'AllaCarta') NOT NULL
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    descrizione VARCHAR(100),
+    -- maybe?
+    categoria VARCHAR(20) NOT NULL,
+    prezzo DECIMAL(5, 2) NOT NULL CHECK (prezzo >= 0),
+    tipologia_menu ENUM('Pranzo', 'Cena', 'Entrambi') NOT NULL,
+    tipologia_portata ENUM('AllYouCanEat', 'AllaCarta') NOT NULL
 );
 
 CREATE TABLE allergene (
-    nome                VARCHAR(50),
-    piatto              INT,
-    PRIMARY KEY (nome,piatto),
+    nome VARCHAR(50),
+    piatto INT,
+    PRIMARY KEY (nome, piatto),
     FOREIGN KEY (piatto) REFERENCES piatto(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE tavolo (
-    id      INT PRIMARY KEY,
-    posti   INT NOT NULL CHECK (posti > 0)
+    id INT PRIMARY KEY,
+    posti INT NOT NULL CHECK (posti > 0)
 );
 
 CREATE TABLE prenotazione (
-    utente                  VARCHAR(50),
-    data_ora                TIMESTAMP,
-    numero_persone          INT NOT NULL CHECK (numero_persone > 0),
-    stato                   ENUM('DaSvolgersi', 'InCorso', 'Terminata') NOT NULL,
-    tavolo                  INT NOT NULL,
-    indicazioni_aggiuntive  TEXT,
-    PRIMARY KEY (utente,data_ora),
+    utente VARCHAR(50),
+    data_ora TIMESTAMP,
+    numero_persone INT NOT NULL CHECK (numero_persone > 0),
+    stato ENUM('DaSvolgersi', 'InCorso', 'Terminata') NOT NULL,
+    tavolo INT NOT NULL,
+    indicazioni_aggiuntive TEXT,
+    PRIMARY KEY (utente, data_ora),
     FOREIGN KEY (utente) REFERENCES utente(username) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (tavolo) REFERENCES tavolo(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE ordine (
-    utente              VARCHAR(50),
-    piatto              INT,
-    data_ora            TIMESTAMP,
-    data_prenotazione   TIMESTAMP NOT NULL,
-    quantita            INT NOT NULL CHECK (quantita > 0),
-    consegnato          BOOLEAN NOT NULL,
-    PRIMARY KEY (utente,piatto,data_ora),
-    FOREIGN KEY (utente,data_prenotazione) REFERENCES prenotazione(utente,data_ora) ON UPDATE CASCADE ON DELETE CASCADE,
+    utente VARCHAR(50),
+    piatto INT,
+    data_ora TIMESTAMP,
+    data_prenotazione TIMESTAMP NOT NULL,
+    quantita INT NOT NULL CHECK (quantita > 0),
+    consegnato BOOLEAN NOT NULL,
+    PRIMARY KEY (utente, piatto, data_ora),
+    FOREIGN KEY (utente, data_prenotazione) REFERENCES prenotazione(utente, data_ora) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (piatto) REFERENCES piatto(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- DATI
-INSERT INTO utente 
+INSERT INTO
+    utente
 VALUES
     (
         'admin',
         'admin@sysadmin.net',
-        'Giovanni', 
+        'Giovanni',
         'Muciaccia',
         'admin',
         'Admin'
@@ -86,14 +95,14 @@ VALUES
     (
         'user',
         'user@example.net',
-        'Pippo', 
+        'Pippo',
         'Baudo',
         'user',
         'Cliente'
-    )
-;
-    
-INSERT INTO piatto
+    );
+
+INSERT INTO
+    piatto
 VALUES
     (
         1,
@@ -171,7 +180,8 @@ VALUES
         9,
         'Gyoza di Verdure',
         'Ravioli giapponesi ripieni di verdure',
-        'Secondi Piatti', 11.99,
+        'Secondi Piatti',
+        11.99,
         'Entrambi',
         'AllaCarta'
     ),
@@ -282,11 +292,77 @@ VALUES
         14.99,
         'Cena',
         'AllaCarta'
-    )
-;
+    );
 
+INSERT INTO
+    piatto
+VALUES
+    (
+        22,
+        'Nigiri di granchio',
+        'Granchio fresco su letto di riso',
+        'Nigiri',
+        12.99,
+        'Pranzo',
+        'AllaCarta'
+    ),
+    (
+        23,
+        'Maki Tokyo',
+        'Avocado, granchio, tonno avvolti in alga e riso',
+        'Uromaki',
+        14.99,
+        'Pranzo',
+        'AllaCarta'
+    ),
+    (
+        24,
+        'Sashimi di salmone',
+        'Salmone fresco su letto di riso',
+        'Sashimi',
+        10.99,
+        'Pranzo',
+        'AllaCarta'
+    ),
+    (
+        25,
+        'Patatine fritte',
+        'Patatine fritte con salse varie',
+        'Fritti',
+        9.99,
+        'Pranzo',
+        'AllaCarta'
+    ),
+    (
+        26,
+        'Sushi misto vegano',
+        'Sushi di verdure ogni genere',
+        'Barche',
+        74.52,
+        'Pranzo',
+        'AllaCarta'
+    ),
+    (
+        27,
+        'Tartare di branzino',
+        'Branzino crudo tritato con cipolla rossa e avocado',
+        'Tartare',
+        6.99,
+        'Pranzo',
+        'AllaCarta'
+    ),
+    (
+        28,
+        'Udon con verdure',
+        'Spaghetti giapponesi conditi con verdure',
+        'Secondi Piatti',
+        4.99,
+        'Pranzo',
+        'AllaCarta'
+    );
 
-INSERT INTO allergene
+INSERT INTO
+    allergene
 VALUES
     ('Pesce', 1),
     -- Nigiri di Salmone
@@ -328,11 +404,13 @@ VALUES
     -- Gyoza di Pollo
     ('Pesce', 20),
     -- Roll Vegano
-    ('Pesce', 21)
-;
+    ('Pesce', 21);
 
-INSERT INTO tavolo 
-SELECT n AS id, FLOOR(RAND() * (10 - 2 + 1) + 2) AS numPosti
+INSERT INTO
+    tavolo
+SELECT
+    n AS id,
+    FLOOR(RAND() * (10 - 2 + 1) + 2) AS numPosti
 FROM
     (
         SELECT
@@ -340,5 +418,5 @@ FROM
         FROM
             information_schema.tables
     ) AS numbers
-LIMIT 50
-;
+LIMIT
+    50;

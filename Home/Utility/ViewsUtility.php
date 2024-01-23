@@ -65,8 +65,12 @@ function formatPlateString($piattotemplates, $nomePiatto = "", $Descrizione = ""
     $piattotemplates = str_replace('{{isConsegnato}}', (($isConsegnato == true) ? "Si" : "No"), $piattotemplates);
     $piattotemplates = str_replace('{{Frequenza}}', $frequenza, $piattotemplates);
     $platesAllergeniList = "";
-    foreach ($allergeniPiatto as $allergene) {
-        $platesAllergeniList .= '<dd title="' . $allergene . '" class="allergeneImage ' . $allergene . 'Image" data-allergene="' . $allergene . '">' . $allergene . '</dd>';
+    if (empty($allergeniPiatto)) {
+        $platesAllergeniList .= "Nessuno";
+    } else {
+        foreach ($allergeniPiatto as $allergene) {
+            $platesAllergeniList .= '<dd title="' . $allergene . '" class="allergeneImage ' . $allergene . 'Image" data-allergene="' . $allergene . '">' . $allergene . '</dd>';
+        }
     }
     $piattotemplates = str_replace('{{Allergeni}}', $platesAllergeniList, $piattotemplates);
     return $piattotemplates;
