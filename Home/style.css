@@ -817,7 +817,7 @@ textarea {
 }
 
 #homeDescription {
-    margin: 2em;
+    margin-top: 2em;
 }
 
 .homeSection div {
@@ -845,8 +845,9 @@ textarea {
 }
 
 .homeSection .image {
-    min-width: 300px;
+    width: 300px;
     min-height: 300px;
+    max-width: 100vw;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
