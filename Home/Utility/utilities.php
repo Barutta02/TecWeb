@@ -11,7 +11,7 @@ function render_page($html, $title, $id, $breadcrumbs, $keywords, $description, 
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
-    if (isset($_SESSION['adminLogged'])) {
+    if (isset($_SESSION['adminLogged']) && ($id=="GestioneTavoli" || $id=="AdminPanelBody")) {
         $footer = file_get_contents('Layouts/adminFooter.html');
     }
     $html = str_replace('{{onload}}', $onload, $html);
