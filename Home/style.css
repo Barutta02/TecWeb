@@ -551,11 +551,11 @@ dl.ListinoPrezzi div {
     background-image: url(assets/Images/sun.PNG);
 }
 
-.bold {
+.infoPlateImportant {
     font-weight: bold;
 }
 
-.afterDuePunti {
+.infoPlates {
     display: inline;
 }
 
