@@ -92,9 +92,9 @@ function get_bottom_menu_Login()
 function get_menu_Login()
 {
     $menu = '';
-    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "#footerOrganizer", "VisualizzaOrdini.php", "Prenota.php", "prenotazione.php"];
-    $names = ["Home", "Menù pranzo", "Menù cena", "Chi Siamo", "Contatti", "I miei Ordini", "Ordina", "Prenota"];
-    $langs = ["en", "", "", "", "", "", "", ""];
+    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "VisualizzaOrdini.php", "Prenota.php", "prenotazione.php"];
+    $names = ["Home", "Menù pranzo", "Menù cena", "Chi Siamo", "I miei Ordini", "Ordina", "Prenota"];
+    $langs = ["en", "", "", "", "", "", ""];
     $nLinks = count($links);
     $currentPage = str_replace(ROOT_FOLDER, "", $_SERVER['REQUEST_URI']);
     $fileName = basename(parse_url($currentPage, PHP_URL_PATH));
@@ -121,9 +121,9 @@ function get_menu_Login()
 function get_menu_NoLogin()
 {
     $menu = '';
-    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "#footerOrganizer", "login.php"];
-    $names = ["Home", "Menù pranzo", "Menù cena", "Chi Siamo", "Contatti", "Area utente"];
-    $langs = ["en", "", "", "", "", ""];
+    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "login.php"];
+    $names = ["Home", "Menù pranzo", "Menù cena", "Chi Siamo", "Area utente"];
+    $langs = ["en", "", "", "", ""];
     $nLinks = count($links);
     $currentPage = str_replace(ROOT_FOLDER, "", $_SERVER['REQUEST_URI']);
     $fileName = basename(parse_url($currentPage, PHP_URL_PATH));
@@ -155,34 +155,6 @@ function get_menu_Admin()
     }
     $menu .= '<li><a class="userAreaLink" href="esci.php" >Esci</a></li>';
 
-    return $menu;
-}
-
-function get_menu_ext_Admin()
-{
-    $menu = '';
-    $links = ["index.php", "menuPranzo.php", "menuCena.php", "chiSiamo.php", "#footerOrganizer", "adminPanel.php"];
-    $names = ["Home", "Menù pranzo", "Menù cena", "Chi Siamo", "Contatti", "Pannello amministratore"];
-    $langs = ["en", "", "", "", "", ""];
-    $nLinks = count($links);
-    $currentPage = str_replace(ROOT_FOLDER, "", $_SERVER['REQUEST_URI']);
-    $fileName = basename(parse_url($currentPage, PHP_URL_PATH));
-    for ($i = 0; $i < $nLinks; $i++) {
-        if ($fileName == $links[$i] || ($currentPage == '' && $links[$i] == 'index.php')) {
-            $menu .= '<li class="currentLink ';
-            if ($names[$i] == "Ordini" || $names[$i] == "Ordina" || $names[$i] == "Tavolo") {
-                $menu .= 'bigScreenOnly';
-            }
-            $menu .= '"' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '> <p>' . $names[$i] . '</p></li>';
-        } else {
-            $menu .= '<li ';
-            if ($names[$i] == "Ordini" || $names[$i] == "Ordina" || $names[$i] == "Tavolo") {
-                $menu .= 'class="bigScreenOnly" ';
-            }
-            $menu .= '><a href="' . $links[$i] . '" ' . (($langs[$i]) ? 'lang="' . $langs[$i] . '"' : '') . '>' . $names[$i] . '</a></li>';
-        }
-    }
-    $menu .= '<li><a class="userAreaLink" href="esci.php" >Esci</a></li>';
     return $menu;
 }
 
