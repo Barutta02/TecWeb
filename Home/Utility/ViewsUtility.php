@@ -66,7 +66,7 @@ function formatPlateString($piattotemplates, $nomePiatto = "", $Descrizione = ""
     $piattotemplates = str_replace('{{Frequenza}}', $frequenza, $piattotemplates);
     $platesAllergeniList = "";
     if (empty($allergeniPiatto)) {
-        $platesAllergeniList .= "Nessuno";
+        $platesAllergeniList .= "<dd>Nessuno</dd>";
     } else {
         foreach ($allergeniPiatto as $allergene) {
             $platesAllergeniList .= '<dd title="' . $allergene . '" class="allergeneImage ' . $allergene . 'Image" data-allergene="' . $allergene . '">' . $allergene . '</dd>';
