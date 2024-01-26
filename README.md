@@ -35,7 +35,7 @@ Il tunnel va tenuto aperto per tutto il tempo necessario (non chiudere la shell 
 Per accedere usare:
 | **Contenuto** | **URL** |
 |---|---|
-| Sito | http://localhost:8080/nome_utente_laboratorio/Home/index.php |
+| Sito | http://localhost:8080/nome_utente_laboratorio/SushiBrombeis/index.php |
 | PHPMyAdmin  | http://localhost:8080/phpmyadmin/ |
 
 ### Recuperare la password del proprio database
