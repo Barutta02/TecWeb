@@ -1,127 +1,119 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8" >
-    <title>Error 500 - Sushi Brombeis</title>
-    <meta name="description" content="Pagina relativa all\'errore 500 del ristorante di sushi a Napoli in via brombeis." >
-    <meta name="keywords" content="Errore 500 Sushi Brombeis, Errore 500 ristorante sushi via brombeis" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <link rel="icon" href="assets/icon/icona.ico" type="image/x-icon" >
-    <link rel="stylesheet" href="style.css" media="screen" >
-    <link rel="stylesheet" href="print.css" media="print" >
-  </head>
 
-  <body id="500ID" onload="">
-    <a href="#content" class="srOnly">Vai al contenuto</a> <header>
-  <h1 class="logo">Sushi Brombeis</h1>
-  <h2 class="logo" lang="en">all you can eat</h2>
-</header>
+<head>
+  <meta charset="UTF-8">
+  <title>Error 500 - Sushi Brombeis</title>
+  <meta name="description" content="Pagina relativa all\'errore 500 del ristorante di sushi a Napoli in via brombeis.">
+  <meta name="keywords" content="Errore 500 Sushi Brombeis, Errore 500 ristorante sushi via brombeis">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="assets/icon/icona.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css" media="screen">
+  <link rel="stylesheet" href="print.css" media="print">
+</head>
 
-
-    <nav id="menu" class="menu" aria-label="Navigazione Principale">
-      <!-- TODO aria-checked="{{state}} tabindex="0" ? dovrebbe funzionare con le freccette, dovrebbe essere già corretto -->
-      <input type="checkbox" id="mobile-menu-toggle" hidden>
-      <label for="mobile-menu-toggle" class="menu-toggle-label" data-toOpenContent="☰ Menù" data-toCloseContent="✕ Chiudi" hidden></label>
+<body id="500ID" onload="">
+  <a href="#content" class="srOnly">Vai al contenuto</a>
+  <header>
+    <h1 class="logo">Sushi Brombeis</h1>
+    <h2 class="logo" lang="en">all you can eat</h2>
+  </header>
+  <nav id="menu" class="menu" aria-label="Navigazione Principale">
+    <input type="checkbox" id="mobile-menu-toggle">
+    <div class="mobile-menu-x">
+      <label for="mobile-menu-toggle" class="menu-toggle-label" data-toCloseContent="✕ Chiudi">
+        <span class="mobile-menu-toggle-label-content">☰ Menù</span>
+      </label>
       <ul class="nav-list">
-        <li ><a href="index.php" lang="en">Home</a></li><li ><a href="menuPranzo.php" >Menù pranzo</a></li><li ><a href="menuCena.php" >Menù cena</a></li><li ><a href="chiSiamo.php" >Chi Siamo</a></li><li ><a href="#footerOrganizer" >Contatti</a></li>
+        <li class="currentLink" lang="en">
+          <p>Home</p>
+        </li>
+        <li><a href="menuPranzo.php">Menù pranzo</a></li>
+        <li><a href="menuCena.php">Menù cena</a></li>
+        <li><a href="chiSiamo.php">Chi Siamo</a></li>
+        <li><a href="login.php">Area utente</a></li>
       </ul>
-    </nav>
-    <nav id="breadcrumb" aria-label="Percorso"><p>Ti trovi in: Un luogo in cui non dovresti trovarti</p> </nav>
-
-    <main id="content"><section id="Section500">
-    <img src="assets/Images/nigiri_ko.png" alt="Il nigiri di gambero è al tappeto!" id="nigiriKO"/>
-    <p>Ops! Qualcosa è andato storto nella cucina virtuale del nostro <span lang="ja">sushi</span> bar!</p>
-    <p>Errore 500: Il nostro <span lang="en">chef robot</span> è in sciopero temporaneo e sta protestando contro la mancanza di alghe digitali.</p>
-    <p>Non temere, stiamo cercando di negoziare, ma nel frattempo ci scusiamo per il disagio.</p>
-    <p>Grazie per la tua pazienza e promettiamo che torneremo presto con una porzione <span lang="en">extra</span> di riso ben cotto!</p>
-</section></main>
-
-
-    <footer>
-  <div id="footerOrganizer" class="flexable">
-    <div>
-      <h2 class="logo">Sushi Brombeis</h2>
-      <h3 class="logo2" lang="en">all you can eat</h3>
-      <p id="footerDesc">
-        Sushi Brombeis propone una vasta gamma di menù e di piatti tipici
-        giapponesi e della cucina cinese. Sushi, uramaki, sashimi, temaki, maki
-        e tempura oltre ai classici della cucina cinese come involtini e riso
-        alla cantonese.
-      </p>
     </div>
-    <dl class="footerInfo">
-      <dt>Indirizzo</dt>
-      <dd>
-        <address aria-label="Il nostro Indirizzo:">
-          Via Brombeis 14, (<abbr title="Napoli">NA</abbr>) 25231
-        </address>
-      </dd>
-      <dt>Telefono</dt>
-      <dd><a href="tel:+3934833240302">348 332 4030 2 </a></dd>
-      <dt>Cellulare</dt>
-      <dd>
-        <a aria-label="Chiamaci al numero: 348 332 4030 1" href="tel:+3934833240301"
-          >348 332 4030 1
-        </a>
-      </dd>
-      <dt>Orari</dt>
-      <dd>
-        <time aria-label="Orario apertura pranzo" datetime="11:00">11:00</time>
-        -
-        <time aria-label="Orario chiusura pranzo" datetime="15:00">15:00</time>
-      </dd>
-      <dd>
-        <time aria-label="Orario apertura Cena" datetime="18:00">18:00</time> -
-        <time aria-label="Orario chiusura Cena" datetime="22:00">22:00</time>
-      </dd>
-    </dl>
-    <!-- manca separazione link -->
-    <dl class="socialInfo">
-      <dt>Social:</dt>
-      <dd>
-        <a
-          href="https://www.instagram.com"
-          class="socialLogo instagramLogo"
-          lang="en"
-          title="Vai alla nostra pagina instagram"
-          aria-label="Vai alla nostra pagina instagram"
-          >Instagram</a
-        >
-      </dd>
-      <dd>
-        <a
-          href="https://www.facebook.com"
-          class="socialLogo facebookLogo"
-          lang="en"
-          title="vai alla nostra pagina facebook"
-          aria-label="Vai alla nostra pagina facebook"
-          >Facebook</a
-        >
-      </dd>
-      <dd>
-        <a
-          href="https://www.tiktok.com"
-          class="socialLogo tikTokLogo"
-          lang="en"
-          title="vai alla nostra pagina TikTok"
-          aria-label="Vai alla nostra pagina TikTok"
-          >TikTok</a
-        >
-      </dd>
-    </dl>
-  </div>
+  </nav>
+  <nav id="breadcrumb" aria-label="Percorso">
+    <p>Ti trovi in: Un luogo in cui non dovresti trovarti</p>
+  </nav>
+  <main id="content">
+    <h2 class="mainTitle">Ops! Qualcosa è andato storto nella cucina virtuale del nostro <span lang="ja">sushi</span> bar!</h2>
+    <section id="Section500">
+      <img src="assets/Images/nigiri_ko.png" alt="Il nigiri di gambero è al tappeto!" id="nigiriKO">
+      <p>Errore 500: Il nostro <span lang="en">chef robot</span> è in sciopero temporaneo e sta protestando contro la
+        mancanza di alghe digitali.</p>
+      <p>Non temere, stiamo cercando di negoziare, ma nel frattempo ci scusiamo per il disagio.</p>
+      <p>Grazie per la tua pazienza e promettiamo che torneremo presto con una porzione <span lang="en">extra</span> di
+        riso ben cotto!</p>
+    </section>
+  </main>
+  <footer>
+    <div id="footerOrganizer" class="flexable">
+      <div>
+        <h2 class="logo">Sushi Brombeis</h2>
+        <h3 class="logo2" lang="en">all you can eat</h3>
+        <p id="footerDesc">
+          Sushi Brombeis propone una vasta gamma di menù e di piatti tipici
+          giapponesi e della cucina cinese. Sushi, uramaki, sashimi, temaki, maki
+          e tempura oltre ai classici della cucina cinese come involtini e riso
+          alla cantonese.
+        </p>
+      </div>
+      <dl class="footerInfo">
+        <dt>Indirizzo</dt>
+        <dd>
+          <address>
+            Via Brombeis 14, (<abbr title="Napoli">NA</abbr>) 25231
+          </address>
+        </dd>
+        <dt>Telefono</dt>
+        <dd><a href="tel:+3934833240302">348 332 4030 2 </a></dd>
+        <dt>Cellulare</dt>
+        <dd>
+          <a aria-label="Chiamaci al numero: 348 332 4030 1" href="tel:+3934833240301"
+            >348 332 4030 1
+          </a>
+        </dd>
+        <dt>Orari</dt>
+        <dd>
+          <time  datetime="11:00">11:00</time> -
+          <time  datetime="15:00">15:00</time>
+        </dd>
+        <dd>
+          <time  datetime="18:00">18:00</time> -
+          <time  datetime="22:00">22:00</time>
+        </dd>
+      </dl>
+      <dl class="socialInfo">
+        <dt>Social:</dt>
+        <dd>
+          <a href="https://www.instagram.com" class="socialLogo instagramLogo" lang="en"
+            title="Vai alla nostra pagina instagram" aria-label="Vai alla nostra pagina instagram">Instagram</a>
+        </dd>
+        <dd>
+          <a href="https://www.facebook.com" class="socialLogo facebookLogo" lang="en"
+            title="vai alla nostra pagina facebook" aria-label="Vai alla nostra pagina facebook">Facebook</a>
+        </dd>
+        <dd>
+          <a href="https://www.tiktok.com" class="socialLogo tikTokLogo" lang="en" title="vai alla nostra pagina TikTok"
+            aria-label="Vai alla nostra pagina TikTok">TikTok</a>
+        </dd>
+      </dl>
+    </div>
+    <img src="assets/Images/certificati/html5.png" height="32" width="88" alt="Icona html5 valido" class="valid">
+    <img src="assets/Images/certificati/css3.png" height="32" width="88" alt="Icona CSS valido" class="valid">
+    <a href="http://www.w3.org/WAI/WCAG1AA-Conformance" class="valid"
+      aria-label="Spiegazione del livello Doppia-A di conformita">
+      <img height="32" width="88" src="assets/Images/certificati/WCAG_AA.png"
+        alt="Icona del livello Doppia-A di conformita">
+    </a>
+    <p id="footerRights">
+      Sushi brombeis - <span lang="en"> All the right reserved </span>
+    </p>
+  </footer>
+  <script src="script/script.js"></script>
+</body>
 
-  <img src="assets/Images/certificati/html5.png" height="32" width="88" alt="Icona html5 valido" class="valid">
-  <img src="assets/Images/certificati/css3.png" height="32" width="88" alt="Icona CSS valido" class="valid">
-  <a href="http://www.w3.org/WAI/WCAG1AA-Conformance" class="valid" aria-label="Spiegazione del livello Doppia-A di conformita">
-    <img height="32" width="88" src="assets/Images/certificati/WCAG_AA.png" alt="Icona del livello Doppia-A di conformita">
-  </a>
-  <p id="footerRights">
-    Sushi brombeis - <span lang="en"> All the right reserved </span>
-  </p>
-</footer>
-
-
-    <script src="script/script.js"></script>
-  </body>
 </html>
