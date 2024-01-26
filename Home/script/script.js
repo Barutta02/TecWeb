@@ -30,12 +30,12 @@ function getFileSize(url, callback) {
 // Funzione per aggiornare il link con la dimensione del file
 function updateLinkWithSize(url, linkId) {
   getFileSize(url, function(size) {
-      const sizeInMB = (size / 1048576).toFixed(2);
+      const sizeInKb = (size / 1024).toFixed(2);
       const link = document.getElementById(linkId);
       // Crea un nuovo elemento <p> con la dimensione del file
       const sizeP = document.createElement('p');
       sizeP.classList.add('downloadSize');
-      sizeP.innerHTML = (" (Dimensione: " + sizeInMB + " MB)");
+      sizeP.innerHTML = (" (Dimensione: " + sizeInKb + " kB)");
       // Inserisci la dimensione del file dopo il link
       const parentNode = link.parentNode;
       const insertBeforeElement = link.nextSibling;
