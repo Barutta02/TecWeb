@@ -235,7 +235,7 @@ function toDoOrdersView()
         if (!empty($piatti)) {
             $content .= "<ul class='flexable'>";
             foreach ($piatti as $piatto) {
-                $content .= formatPlateString($templatePlatesAdmin, $piatto['nome'], $piatto['descrizione'], "", $piatto['quantita'], $piatto['id'], [], $piatto['tavolo'], $piatto['cliente'], $piatto['data_ora'], "", "", explode(":", explode(" ", $piatto['data_ora'])[1])[0] . ":" . explode(":", explode(" ", $piatto['data_ora'])[1])[1]);
+                $content .= formatPlateString($templatePlatesAdmin, $piatto['nome'], $piatto['descrizione'], "", $piatto['quantita'], $piatto['id'], [], $piatto['tavolo'], $piatto['cliente'], $piatto['data_ora'], "", "", substr($piatto['data_ora'], 11));
             }
             $content .= "</ul>";
         } else {
