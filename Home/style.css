@@ -53,12 +53,9 @@
 
 html {
     font-size: 100%;
-    /* rispetto requisti utente*/
     font-family: var(--font-body-family);
     line-height: 1.5em;
-    /* da mettere sempre*/
     margin: auto;
-    /* per centrare*/
     background-color: var(--bgColor);
     color: var(--pageTxtColor);
 }
@@ -136,16 +133,6 @@ header {
     background-image: url(assets/icon/info.png);
 }
 
-/**
-    TODO non riesco a farlo funzionare
-.userAreaLink::before{
-    content: url('assets/Images/user.svg'); 
-    margin-right: 5px;
-position: relative;
-top: 7px;
-color: #ff0000; 
-
-}**/
 h1.logo {
     text-transform: uppercase;
     color: var(--logoTxtColor);
@@ -173,7 +160,6 @@ footer .logo2 {
 nav.menu {
     background-color: var(--headerBgColor);
     align-items: center;
-    /* Aggiunto per centrare verticalmente gli elementi */
     padding: 10px;
 }
 
@@ -193,11 +179,9 @@ nav.menu ul,
 nav.menu ul li {
     display: inline-block;
     margin: 0 15px;
-    /* Rimuovi il margine da .menu e applica qui */
 }
 
 nav.menu ul li a {
-    /* max-font-size: auto; Questo proprietà non esiste */
     font-weight: bold;
     transition: color 0.3s ease;
     text-underline-offset: .3em;
@@ -217,8 +201,6 @@ nav.menu ul li a {
     display: inline;
 }
 
-
-
 #listaAllergeni .allergeneImage {
     position: relative;
     top: 0.4em;
@@ -237,34 +219,27 @@ nav.menu ul li a {
 
 .CrostaceiImage {
     background: url(assets/icon/Crostacei.png) center center/contain no-repeat;
-    /* Utilizza il percorso dell'immagine da data-allergene */
-
 }
 
 .PesceImage {
     background: url(assets/icon/fish.png) center center/contain no-repeat;
-    /* Utilizza il percorso dell'immagine da data-allergene */
 
 }
 
 .SedanoImage {
     background: url(assets/icon/celery.png) center center/contain no-repeat;
-    /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
 .SenapeImage {
     background: url(assets/icon/mustard.png) center center/contain no-repeat;
-    /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
 .SoiaImage {
     background: url(assets/icon/soy.png) center center/contain no-repeat;
-    /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
 .UovaImage {
     background: url(assets/icon/eggs.png) center center/contain no-repeat;
-    /* Utilizza il percorso dell'immagine da data-allergene */
 }
 
 #breadcrumb {
@@ -325,11 +300,6 @@ nav.menu ul li a {
 
 }
 
-/*.menuItem:hover {
-    box-shadow: 0 0 11px rgba(255, 250, 250, 0.2);
-    transform: scale(1.1);
-}*/
-
 .menuItem.oldOrders {
     border: 1px solid #6f6969;
     border-radius: 10px;
@@ -355,7 +325,6 @@ nav.menu ul li a {
     height: 125px;
     display: block;
     border: none;
-    /*vertical-align: middle; Non funziona se l'elemento è un blocco*/
     object-fit: cover;
     border-radius: 8px;
     margin: 0;
@@ -658,10 +627,6 @@ fieldset ul li {
     margin: 0;
 }
 
-/* Nascondi la checkbox predefinita
-PER TORNARE A QUELLA NORMALE CANCELLA DA QUI
-*/
-
 #allergeni input[type="checkbox"] {
     position: absolute;
     left: -999em;
@@ -707,13 +672,10 @@ PER TORNARE A QUELLA NORMALE CANCELLA DA QUI
     visibility: visible;
 }
 
-/*A QUI*/
-
 .inputQuantityLabelInpt {
     float: right;
     text-align: right;
 }
-
 
 /*******************login signin prenotazione *********************/
 .instruction {
@@ -807,7 +769,6 @@ textarea {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
-    /* L'ultimo valore (0.5) rappresenta l'opacità */
 }
 
 .homeSection {
@@ -1047,63 +1008,16 @@ input[type="submit"].doneButton {
     margin: 1em 0 1em
 }
 
-/*
-.sliderTablelider {
-    width: 80%;
-    margin: 20px auto;
-}
-
-.sliderTable {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 80%;
-    height: 10px;
-    border-radius: 5px;
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    transition: opacity 0.2s;
-
-}
-
-.sliderTable:hover {
-    opacity: 1;
-}
-
-.sliderTable::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--flagColor);
-    cursor: pointer;
-}
-
-.sliderTable::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--flagColor);
-    cursor: pointer;
-}
-
-*/
-
 .meterTable {
     width: 65%;
     transform: scale(1.5);
     height: 20px;
 }
 
-
 label {
     display: block;
     margin-bottom: 5px;
 }
-
-
-
 
 #SezioneGestioneTavoli {
     text-align: center;
