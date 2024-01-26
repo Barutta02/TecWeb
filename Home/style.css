@@ -823,6 +823,7 @@ textarea {
 .homeSection div {
     padding: 2em;
     max-width: 500px;
+    flex-grow: 1;
 }
 
 .homeSection h3 {
@@ -1091,7 +1092,7 @@ input[type="submit"].doneButton {
 
 .meterTable {
     width: 65%;
-    scale: 1.5;
+    transform: scale(1.5);
     height: 20px;
 }
 
@@ -1114,8 +1115,6 @@ label {
 
 #SezioneGestionePrenotazioni ul {
     text-align: right;
-    overflow-y: scroll;
-    direction: rtl;
 }
 
 #SezioneGestionePrenotazioni ul>* {
