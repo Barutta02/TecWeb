@@ -15,6 +15,7 @@
     --curve: 40;
     --warningMessage: #ff6758;
     --goodEndingMessage: #07a61f;
+    --instructionMessage: #f1ab33;
 }
 
 html,
@@ -45,6 +46,16 @@ a:not([href^="tel"]):visited:after {
     font-size: 90%;
 }
 
+a:not(.socialLogo):not([href^="tel"]):link:after,
+a:not(.socialLogo):not([href^="tel"]):visited:after {
+    content: " [http://tecweb.studenti.math.unipd.it/abustreo/SushiBrombeis/" attr(href) "] ";
+}
+
+.infoPersonalArea a[href^="#prenotazione"]:link:after,
+.infoPersonalArea a[href^="#prenotazione"]:visited:after {
+    content: " [http://tecweb.studenti.math.unipd.it/abustreo/SushiBrombeis/prenotazione.php" attr(href) "] ";
+}
+
 #menu,
 #bottomMenu,
 .srOnly,
@@ -67,13 +78,14 @@ header {
 
 header h1.logo,
 footer h2.logo {
+    font-size: 30px;
     text-transform: uppercase;
     color: var(--logoTxtColor);
 }
 
 
 header h2.logo,
-footer h3.logo {
+footer h3.logo2 {
     letter-spacing: 5px;
     font-size: 24px;
 }
@@ -611,6 +623,6 @@ fieldset legend {
     margin-bottom: 10px;
 }
 
-.progressTable {
+.meterTable {
     display: none;
 }

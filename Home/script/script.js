@@ -5,6 +5,9 @@ function addCheckboxListeners() {
       var className = checkbox.id.replace("Chbox", "");
       document.querySelectorAll("." + className).forEach(function (element) {
         element.classList.toggle("hide", checkbox.checked);
+        document.querySelectorAll("." + className + " input").forEach(function (input) {
+          input.value=0;
+        });
       });
     });
   });
@@ -200,7 +203,7 @@ function setPrenotaScript() {
   // Recupera per gli input 
   const inputsNum = document.querySelectorAll('input[type="number"]');
   inputsNum.forEach(input => {
-      input.addEventListener('blur', handleSubmitButton);
+      input.addEventListener('change', handleSubmitButton);
   });
   // Recupera i checkbox
   const inputsCheck = document.querySelectorAll('input[type="checkbox"]');
