@@ -82,7 +82,14 @@ CREATE TABLE ordine (
 
 -- DATI
 INSERT INTO
-    utente
+    utente (
+        username,
+        email,
+        nome,
+        cognome,
+        password,
+        privilegi
+    )
 VALUES
     (
         'admin',
@@ -91,7 +98,189 @@ VALUES
         'Muciaccia',
         'admin',
         'Admin'
-    ),
+    );
+
+INSERT INTO
+    utente (
+        username,
+        email,
+        nome,
+        cognome,
+        password,
+        privilegi
+    )
+VALUES
+    (
+        'albe',
+        'www.da.0502@gmail.com',
+        'alberto',
+        'dugo',
+        'Prova21!',
+        'Cliente'
+    );
+
+INSERT INTO
+    utente (
+        username,
+        email,
+        nome,
+        cognome,
+        password,
+        privilegi
+    )
+VALUES
+    (
+        'francesco',
+        'www.da.0412@gmail.com',
+        'francesco',
+        'dugo',
+        'Prova21!',
+        'Cliente'
+    );
+
+INSERT INTO
+    utente (
+        username,
+        email,
+        nome,
+        cognome,
+        password,
+        privilegi
+    )
+VALUES
+    (
+        'francesco01',
+        'www.da.1502@gmail.com',
+        'francesco',
+        'dugo',
+        'Prova21!',
+        'Cliente'
+    );
+
+INSERT INTO
+    utente (
+        username,
+        email,
+        nome,
+        cognome,
+        password,
+        privilegi
+    )
+VALUES
+    (
+        'francesco02',
+        'www.da.0513@gmail.com',
+        'francesco',
+        'muciacia',
+        'Prova21!',
+        'Cliente'
+    );
+
+INSERT INTO
+    utente (
+        username,
+        email,
+        nome,
+        cognome,
+        password,
+        privilegi
+    )
+VALUES
+    (
+        'gianluca',
+        'www.da.0102@gmail.com',
+        'gianluca',
+        'muciacia',
+        'Prova21!',
+        'Cliente'
+    );
+
+INSERT INTO
+    utente (
+        username,
+        email,
+        nome,
+        cognome,
+        password,
+        privilegi
+    )
+VALUES
+    (
+        'gianluca01',
+        'www.da.0504@gmail.com',
+        'gianluca',
+        'dugo',
+        'Prova21!',
+        'Cliente'
+    );
+
+INSERT INTO
+    utente (
+        username,
+        email,
+        nome,
+        cognome,
+        password,
+        privilegi
+    )
+VALUES
+    (
+        'luca',
+        'www.da.0501@gmail.com',
+        'luca',
+        'salmaso',
+        'Prova21!',
+        'Cliente'
+    );
+
+INSERT INTO
+    utente (
+        username,
+        email,
+        nome,
+        cognome,
+        password,
+        privilegi
+    )
+VALUES
+    (
+        'luca01',
+        'www.ad.0502@gmail.com',
+        'luca',
+        'dugo',
+        'Prova21!',
+        'Cliente'
+    );
+
+INSERT INTO
+    utente (
+        username,
+        email,
+        nome,
+        cognome,
+        password,
+        privilegi
+    )
+VALUES
+    (
+        'marco',
+        'www.da.0522@gmail.com',
+        'marco',
+        'dugo',
+        'Prova21!',
+        'Cliente'
+    );
+
+INSERT INTO
+    utente (
+        username,
+        email,
+        nome,
+        cognome,
+        password,
+        privilegi
+    )
+VALUES
     (
         'user',
         'user@example.net',
@@ -407,16 +596,802 @@ VALUES
     ('Pesce', 21);
 
 INSERT INTO
-    tavolo
-SELECT
-    n AS id,
-    FLOOR(RAND() * (10 - 2 + 1) + 2) AS numPosti
-FROM
+    tavolo (id, posti)
+VALUES
+    (1, 5);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (2, 2);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (3, 3);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (4, 8);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (5, 2);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (6, 10);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (7, 7);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (8, 4);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (9, 6);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (10, 8);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (11, 3);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (12, 6);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (13, 2);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (14, 8);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (15, 6);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (16, 3);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (17, 4);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (18, 10);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (19, 9);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (20, 5);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (21, 5);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (22, 8);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (23, 7);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (24, 10);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (25, 10);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (26, 7);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (27, 4);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (28, 6);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (29, 7);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (30, 6);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (31, 7);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (32, 9);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (33, 10);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (34, 7);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (35, 2);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (36, 4);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (37, 4);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (38, 7);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (39, 2);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (40, 8);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (41, 6);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (42, 3);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (43, 5);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (44, 6);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (45, 4);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (46, 10);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (47, 9);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (48, 3);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (49, 6);
+
+INSERT INTO
+    tavolo (id, posti)
+VALUES
+    (50, 10);
+
+INSERT INTO
+    prenotazione (
+        utente,
+        data_ora,
+        numero_persone,
+        stato,
+        tavolo,
+        indicazioni_aggiuntive
+    )
+VALUES
     (
-        SELECT
-            ROW_NUMBER() OVER () AS n
-        FROM
-            information_schema.tables
-    ) AS numbers
-LIMIT
-    50;
+        'albe',
+        '2024-01-26 15:17:14',
+        10,
+        'InCorso',
+        6,
+        ' '
+    );
+
+INSERT INTO
+    prenotazione (
+        utente,
+        data_ora,
+        numero_persone,
+        stato,
+        tavolo,
+        indicazioni_aggiuntive
+    )
+VALUES
+    (
+        'francesco',
+        '2024-01-26 15:17:14',
+        8,
+        'InCorso',
+        10,
+        ' '
+    );
+
+INSERT INTO
+    prenotazione (
+        utente,
+        data_ora,
+        numero_persone,
+        stato,
+        tavolo,
+        indicazioni_aggiuntive
+    )
+VALUES
+    (
+        'francesco01',
+        '2024-01-26 15:17:14',
+        2,
+        'InCorso',
+        13,
+        ' '
+    );
+
+INSERT INTO
+    prenotazione (
+        utente,
+        data_ora,
+        numero_persone,
+        stato,
+        tavolo,
+        indicazioni_aggiuntive
+    )
+VALUES
+    (
+        'francesco02',
+        '2024-01-26 15:17:14',
+        8,
+        'InCorso',
+        14,
+        ' '
+    );
+
+INSERT INTO
+    prenotazione (
+        utente,
+        data_ora,
+        numero_persone,
+        stato,
+        tavolo,
+        indicazioni_aggiuntive
+    )
+VALUES
+    (
+        'gianluca',
+        '2024-01-26 15:17:14',
+        3,
+        'InCorso',
+        11,
+        ' '
+    );
+
+INSERT INTO
+    prenotazione (
+        utente,
+        data_ora,
+        numero_persone,
+        stato,
+        tavolo,
+        indicazioni_aggiuntive
+    )
+VALUES
+    (
+        'gianluca01',
+        '2024-01-26 15:17:14',
+        6,
+        'InCorso',
+        12,
+        ' '
+    );
+
+INSERT INTO
+    prenotazione (
+        utente,
+        data_ora,
+        numero_persone,
+        stato,
+        tavolo,
+        indicazioni_aggiuntive
+    )
+VALUES
+    (
+        'luca',
+        '2024-01-26 15:17:14',
+        6,
+        'InCorso',
+        9,
+        ' '
+    );
+
+INSERT INTO
+    prenotazione (
+        utente,
+        data_ora,
+        numero_persone,
+        stato,
+        tavolo,
+        indicazioni_aggiuntive
+    )
+VALUES
+    (
+        'luca01',
+        '2024-01-26 15:17:14',
+        7,
+        'InCorso',
+        7,
+        ' '
+    );
+
+INSERT INTO
+    prenotazione (
+        utente,
+        data_ora,
+        numero_persone,
+        stato,
+        tavolo,
+        indicazioni_aggiuntive
+    )
+VALUES
+    (
+        'marco',
+        '2024-01-26 15:17:14',
+        4,
+        'InCorso',
+        8,
+        ' '
+    );
+
+INSERT INTO
+    prenotazione (
+        utente,
+        data_ora,
+        numero_persone,
+        stato,
+        tavolo,
+        indicazioni_aggiuntive
+    )
+VALUES
+    (
+        'user',
+        '2024-01-26 15:17:14',
+        8,
+        'Terminata',
+        40,
+        ' '
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'albe',
+        2,
+        '2024-01-26 14:49:57',
+        '2024-01-26 15:17:14',
+        1,
+        0
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'albe',
+        10,
+        '2024-01-26 14:55:49',
+        '2024-01-26 15:17:14',
+        2,
+        1
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'francesco',
+        6,
+        '2024-01-26 14:49:57',
+        '2024-01-26 15:17:14',
+        1,
+        0
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'francesco',
+        14,
+        '2024-01-26 14:55:49',
+        '2024-01-26 15:17:14',
+        2,
+        1
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'francesco01',
+        9,
+        '2024-01-26 14:49:57',
+        '2024-01-26 15:17:14',
+        2,
+        0
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'francesco01',
+        17,
+        '2024-01-26 14:55:49',
+        '2024-01-26 15:17:14',
+        1,
+        0
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'francesco02',
+        10,
+        '2024-01-26 14:49:57',
+        '2024-01-26 15:17:14',
+        1,
+        0
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'francesco02',
+        18,
+        '2024-01-26 14:55:49',
+        '2024-01-26 15:17:14',
+        2,
+        0
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'gianluca',
+        7,
+        '2024-01-26 14:49:57',
+        '2024-01-26 15:17:14',
+        2,
+        0
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'gianluca',
+        15,
+        '2024-01-26 14:55:49',
+        '2024-01-26 15:17:14',
+        3,
+        1
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'gianluca01',
+        8,
+        '2024-01-26 14:49:57',
+        '2024-01-26 15:17:14',
+        1,
+        0
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'gianluca01',
+        16,
+        '2024-01-26 14:55:49',
+        '2024-01-26 15:17:14',
+        2,
+        1
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'luca',
+        5,
+        '2024-01-26 14:49:57',
+        '2024-01-26 15:17:14',
+        2,
+        0
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'luca',
+        13,
+        '2024-01-26 14:55:49',
+        '2024-01-26 15:17:14',
+        1,
+        1
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'luca01',
+        3,
+        '2024-01-26 14:49:57',
+        '2024-01-26 15:17:14',
+        2,
+        0
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'luca01',
+        11,
+        '2024-01-26 14:55:49',
+        '2024-01-26 15:17:14',
+        1,
+        1
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'marco',
+        4,
+        '2024-01-26 14:49:57',
+        '2024-01-26 15:17:14',
+        1,
+        0
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'marco',
+        12,
+        '2024-01-26 14:55:49',
+        '2024-01-26 15:17:14',
+        2,
+        1
+    );
+
+INSERT INTO
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    )
+VALUES
+    (
+        'user',
+        1,
+        '2024-01-26 14:55:03',
+        '2024-01-26 15:17:14',
+        2,
+        1
+    );
