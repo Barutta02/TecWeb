@@ -823,6 +823,7 @@ textarea {
 .homeSection div {
     padding: 2em;
     max-width: 500px;
+    flex-grow: 1;
 }
 
 .homeSection h3 {
@@ -1114,8 +1115,6 @@ label {
 
 #SezioneGestionePrenotazioni ul {
     text-align: right;
-    overflow-y: scroll;
-    direction: rtl;
 }
 
 #SezioneGestionePrenotazioni ul>* {
