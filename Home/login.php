@@ -25,7 +25,7 @@ $errorList = array();
 if (isset($_GET['MessageCode'])) {
     switch ($_GET['MessageCode']) {
         case 1:
-            array_push($errorList, "<p class='warning'>Utente non trovato</p> ");
+            array_push($errorList, "<p class='warning'>Credenziali non valide!</p> ");
             break;
         default:
             array_push($errorList, "<p class='warning'>Errore sconosciuto!</p> ");

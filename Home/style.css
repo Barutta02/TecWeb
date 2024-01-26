@@ -1091,7 +1091,7 @@ input[type="submit"].doneButton {
 
 .meterTable {
     width: 65%;
-    scale: 1.5;
+    transform: scale(1.5);
     height: 20px;
 }
 
