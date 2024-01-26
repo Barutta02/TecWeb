@@ -1121,8 +1121,14 @@ label {
     direction: ltr;
 }
 
-#SezioneGestionePrenotazioni h2 {
+#SezioneGestionePrenotazioni h2,
+#SezioneGestioneTavoli h2 {
     padding: .5em;
+}
+
+.ActivePrenotationList dt {
+    font-weight: bold;
+    color: var(--alternative_text);
 }
 
 #SezioneGestionePrenotazioni .buttonDoneCompleted::after {
