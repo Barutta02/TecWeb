@@ -2,9 +2,9 @@
 
 require_once 'ViewsUtility.php';
 
-define("ROOT_FOLDER", "/SushiBrombeis");
+define("ROOT_FOLDER", "/TecWeb/SushiBrombeis");
 
-function render_page($html, $title, $id, $breadcrumbs, $keywords, $description, $content, $onload, )
+function render_page($html, $title, $id, $breadcrumbs, $keywords, $description, $content, $onload )
 {
     $header = file_get_contents('Layouts/header.html');
     $footer = file_get_contents('Layouts/footer.html');
