@@ -994,7 +994,7 @@ input[type="submit"].doneButton {
 
 .ActivePrenotationList li {
     border-top: 1px solid var(--flagColor);
-    margin: 1em;
+    margin-bottom: 1em;
     min-height: 75px;
 }
 
@@ -1022,10 +1022,6 @@ label {
 
 #SezioneGestionePrenotazioni ul {
     text-align: right;
-}
-
-#SezioneGestionePrenotazioni ul>* {
-    direction: ltr;
 }
 
 #SezioneGestionePrenotazioni h2,
