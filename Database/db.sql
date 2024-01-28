@@ -1390,8 +1390,27 @@ VALUES
     (
         'user',
         1,
-        '2024-01-26 14:55:03',
+        '2024-01-26 15:55:03',
         '2024-01-26 15:17:14',
         2,
+        1
+    );
+
+INSERT INTO 
+    ordine (
+        utente,
+        piatto,
+        data_ora,
+        data_prenotazione,
+        quantita,
+        consegnato
+    ) 
+VALUES 
+    (
+        'user', 
+        3, 
+        '2024-01-26 15:57:03', 
+        '2024-01-26 15:17:14', 
+        6, 
         1
     );
