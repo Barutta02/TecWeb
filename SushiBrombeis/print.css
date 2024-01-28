@@ -511,6 +511,7 @@ fieldset legend {
 .mainTitle {
     color: var(--LegendTxtColor);
     text-align: center;
+    padding: 3px;
 }
 
 .infoPersonalArea h1 {
@@ -554,10 +555,12 @@ fieldset legend {
 /************warning e good*************/
 .warning {
     color: var(--warningMessage);
+    text-align: center;
 }
 
 .good {
     color: var(--goodEndingMessage);
+    text-align: center;
 }
 
 /************prenota*************/
