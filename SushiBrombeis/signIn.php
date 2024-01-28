@@ -38,6 +38,9 @@ if (isset($_GET['MessageCode'])) {
         case 4:
             array_push($errorList, "<p class='warning'>Formato <span lang='en'>password</span> non corretto!</p>");
             break;
+        case 5:
+            array_push($errorList, "<p class='warning'>Username e/o e-mail già utilizzati.</p>");
+            break;
         default:
             array_push($errorList, "<p class='warning'>Qualcosa è andato storto.</p>");
     }

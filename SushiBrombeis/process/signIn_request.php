@@ -36,7 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     try {
-        UserDAO::createUser(sanitize_txt($username, true), sanitize_txt($firstname), sanitize_txt($lastname), sanitize_txt($email), $password);
+        if(!UserDAO::createUser(sanitize_txt($username, true), sanitize_txt($firstname), sanitize_txt($lastname), sanitize_txt($email), $password)) {
+            header('Location: ../signIn.php?MessageCode=5');
+            exit();
+        }
     } catch (Throwable $th) {
         header('Location: ../500.html');
         exit(0);

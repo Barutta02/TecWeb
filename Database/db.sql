@@ -26,7 +26,7 @@ SET
 -- Crea lo schema e i vincoli
 CREATE TABLE utente (
     username VARCHAR(50) PRIMARY KEY,
-    email VARCHAR(100) CHECK (email LIKE '%@%.%'),
+    email VARCHAR(100) UNIQUE CHECK (email LIKE '%@%.%'),
     nome VARCHAR(50) NOT NULL,
     cognome VARCHAR(50) NOT NULL,
     password VARCHAR(255) NOT NULL CHECK (length(password) >= 4),
