@@ -90,10 +90,12 @@ header {
 
 .warning {
     color: var(--warningMessage);
+    text-align: center;
 }
 
 .good {
     color: var(--goodEndingMessage);
+    text-align: center;
 }
 
 .info {
@@ -1046,6 +1048,7 @@ label {
 .mainTitle {
     color: var(--LegendTxtColor);
     text-align: center;
+    padding: 0.3em;
 }
 
 .infoPersonalArea {

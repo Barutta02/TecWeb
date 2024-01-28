@@ -22,9 +22,6 @@ $pageID = 'GestioneTavoli';
 $title = "Gestione tavoli - Sushi Brombeis";
 $breadcrumbs = '<p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> &gt;&gt; <a href="login.php">Area utente</a> &gt;&gt; Gestione tavoli</p> ';
 $content = "";
-
-$content .= '<div class="flexable"><section id="SezioneGestioneTavoli"><h2>Stato occupazione tavoli</h2>' . get_table_avaible() . '</section>';
-$content .= '<section id="SezioneGestionePrenotazioni"><h2>Prenotazioni attive</h2>';
 $status = isset($_GET['MessageCode']) ? $_GET['MessageCode'] : null;
 if ($status!=null && $status == 0) {
     $content .= '<p class="good">L&apos;operazione è andata a buon fine.</p>';
@@ -33,6 +30,8 @@ if ($status!=null && $status == 0) {
 } elseif($status!=null) {
     $content .= '<p class="warning">Errore sconosciuto.</p>';
 }
+$content .= '<div class="flexable"><section id="SezioneGestioneTavoli"><h2>Stato occupazione tavoli</h2>' . get_table_avaible() . '</section>';
+$content .= '<section id="SezioneGestionePrenotazioni"><h2>Prenotazioni attive</h2>';
 $content .='<p class="info">Visualizza e gestisci qui le prenotazioni attive</p>' . get_active_prenotation() . '</section></div>';
 
 
