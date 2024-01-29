@@ -63,7 +63,7 @@ html {
 
 .srOnly {
     position: absolute;
-    left: -999em;
+    left: -9999em;
 }
 
 a:link {
@@ -208,7 +208,7 @@ nav.menu ul li a {
 }
 
 .menuItem .allergeneImage {
-    text-indent: -999em;
+    text-indent: -9999em;
     display: inline-block;
     width: 25px;
     height: 25px;
@@ -626,7 +626,7 @@ fieldset ul li {
 
 #allergeni input[type="checkbox"] {
     position: absolute;
-    left: -999em;
+    left: -9999em;
 }
 
 #allergeni input[type="checkbox"]+label {
@@ -1126,7 +1126,7 @@ label {
 
 #mobile-menu-toggle {
     position: absolute;
-    left: -999em;
+    left: -9999em;
 }
 
 #mobile-menu-toggle:focus+.menu-toggle-label {
