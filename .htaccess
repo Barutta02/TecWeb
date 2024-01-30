@@ -1,3 +1,3 @@
 # Pagine d'errore
-ErrorDocument 404 /SushiBrombeis/404.php
-ErrorDocument 500 /SushiBrombeis/500.html
+ErrorDocument 404 /abustreo/SushiBrombeis/404.php
+ErrorDocument 500 /abustreo/SushiBrombeis/500.html
