@@ -1125,8 +1125,7 @@ label {
 }
 
 #mobile-menu-toggle {
-    position: absolute;
-    left: -9999em;
+    display: none;
 }
 
 #mobile-menu-toggle:focus+.menu-toggle-label {
@@ -1252,6 +1251,11 @@ label {
         height: 0px;
         overflow: hidden;
         background-color: var(--headerBgColor);
+    }
+    #mobile-menu-toggle {
+        display: block;
+        position: absolute;
+        left: -9999em;
     }
     #mobile-menu-toggle:not(:checked)+.mobile-menu-x:focus-within>.nav-list,
     #mobile-menu-toggle:checked+.mobile-menu-x>.nav-list {
