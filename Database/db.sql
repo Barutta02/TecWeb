@@ -1,6 +1,5 @@
--- Nota 1: l'uso dei 'ON DELETE CASCADE' sono una soluzione temporanea
 -- DB Target
-USE sushirestaurant;
+USE abustreo;
 
 -- Pulizia DB
 SET
@@ -880,7 +879,7 @@ VALUES
         8,
         'InCorso',
         10,
-        ' '
+        'Siamo tutti celiaci'
     );
 
 INSERT INTO
@@ -918,7 +917,7 @@ VALUES
         8,
         'InCorso',
         14,
-        ' '
+        'Due forchette'
     );
 
 INSERT INTO
@@ -956,7 +955,7 @@ VALUES
         6,
         'InCorso',
         12,
-        ' '
+        'Mi piace molto il vostro sito web'
     );
 
 INSERT INTO
@@ -994,7 +993,7 @@ VALUES
         7,
         'InCorso',
         7,
-        ' '
+        'Con alga o senza'
     );
 
 INSERT INTO
@@ -1032,7 +1031,7 @@ VALUES
         8,
         'Terminata',
         40,
-        ' '
+        'per favore senza tenia!1!'
     );
 
 INSERT INTO
