@@ -2,7 +2,7 @@
 
 require_once 'ViewsUtility.php';
 
-define("ROOT_FOLDER", "/SushiBrombeis");
+define("ROOT_FOLDER", "/abustreo/SushiBrombeis/");
 
 function render_page($html, $title, $id, $breadcrumbs, $keywords, $description, $content, $onload )
 {
@@ -181,7 +181,7 @@ function check_password_format($password)
 
 function check_username_format($username)
 {
-    return
+    return !strpos($username, ' ') &&
         strlen(trim($username)) > 0 && preg_match('/\w{2,}/', $username);
 
 }
