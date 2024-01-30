@@ -112,7 +112,7 @@ function setSignInChecks(){
       username:{
           message:"Formato username non corretto, deve contenere almeno 2 caratteri e non può contenere spazi!",
           condition: function(str){
-            return /\s/.test(str) > 0 && /\w{2,}/.test(str);
+            return /^\S*$/.test(str) && /\w{2,}/.test(str);
           }
       },
       firstname:{
@@ -182,7 +182,7 @@ function setLoginChecks(){
       username_or_email:{
           message:"Formato username o email non corretto, deve contenere almeno 2 caratteri e non può contenere spazi!",
           condition: function(str){
-              return /\s/.test(str) > 0 && /\w{2,}/.test(str);
+              return /^\S*$/.test(str) && /\w{2,}/.test(str);
           }
       }/*
       tolto perchè altrimenti user e admin hanno password non sicure e non possono entrare. 
