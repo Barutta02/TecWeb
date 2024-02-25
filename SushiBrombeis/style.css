@@ -316,7 +316,7 @@ nav.menu ul li a {
 }
 
 .imageMenuItem {
-    max-width: 170px;
+    width: 150px;
     height: 170px;
     display: block;
     border: none;
