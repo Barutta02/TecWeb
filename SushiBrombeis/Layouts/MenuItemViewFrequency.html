@@ -1,21 +1,20 @@
 <li class="menuItem">
-  <img
-    class="imageMenuItem"
-    alt=""
-    src="assets/Images/sushi_plates/{{NomePiattoUnderscored}}.jpg"
-  >
-  <div class="infoItem">
-    <dl>
-      <dt class="nomePiatto" data-title="Nome Piatto" lang="it">
+    <picture class="imageMenuItem">
+        <source srcset="assets/Images/sushi_plates/{{NomePiattoUnderscored}}.webp" type="image/webp">
+        <img src="assets/Images/sushi_plates/{{NomePiattoUnderscored}}.jpg" alt="">
+    </picture>
+    <div class="infoItem">
+        <dl>
+            <dt class="nomePiatto" data-title="Nome Piatto" lang="it">
         {{NomePiatto}}
       </dt>
-      <dd class="ingradienti" data-title="Descrizione ingredienti">
-        {{Descrizione}}
-      </dd>
-      <dd data-title="Frequenza">
-        Frequenza:
-        <p class="infoPlateImportant infoPlates">{{Frequenza}}</p>
-      </dd>
-    </dl>
-  </div>
+            <dd class="ingradienti" data-title="Descrizione ingredienti">
+                {{Descrizione}}
+            </dd>
+            <dd data-title="Frequenza">
+                Frequenza:
+                <p class="infoPlateImportant infoPlates">{{Frequenza}}</p>
+            </dd>
+        </dl>
+    </div>
 </li>
