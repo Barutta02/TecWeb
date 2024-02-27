@@ -1,5 +1,5 @@
 -- DB Target
-USE abustreo;
+USE avedovat;
 
 -- Pulizia DB
 SET
@@ -1031,7 +1031,7 @@ VALUES
         8,
         'Terminata',
         40,
-        'per favore senza tenia!1!'
+        'Io a Napoli non ci sono mai stato'
     );
 
 INSERT INTO

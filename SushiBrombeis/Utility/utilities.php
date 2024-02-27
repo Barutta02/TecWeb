@@ -2,7 +2,7 @@
 
 require_once 'ViewsUtility.php';
 
-define("ROOT_FOLDER", "/abustreo/SushiBrombeis/");
+define("ROOT_FOLDER", "/avedovat/SushiBrombeis/");
 
 function render_page($html, $title, $id, $breadcrumbs, $keywords, $description, $content, $onload )
 {
