@@ -48,12 +48,12 @@ a:not([href^="tel"]):visited:after {
 
 a:not(.socialLogo):not([href^="tel"]):link:after,
 a:not(.socialLogo):not([href^="tel"]):visited:after {
-    content: " [http://tecweb.studenti.math.unipd.it/abustreo/SushiBrombeis/" attr(href) "] ";
+    content: " [https://caa.studenti.math.unipd.it/avedovat/SushiBrombeis/" attr(href) "] ";
 }
 
 .infoPersonalArea a[href^="#prenotazione"]:link:after,
 .infoPersonalArea a[href^="#prenotazione"]:visited:after {
-    content: " [http://tecweb.studenti.math.unipd.it/abustreo/SushiBrombeis/prenotazione.php" attr(href) "] ";
+    content: " [https://caa.studenti.math.unipd.it/avedovat/SushiBrombeis/prenotazione.php" attr(href) "] ";
 }
 
 #menu,
